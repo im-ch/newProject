@@ -17,8 +17,6 @@ public class Alliance {
 	private String openingHours;
 	private String detail;
 	
-	private String name; 
-
 	public String getOpeningHours() {
 		return openingHours;
 	}
