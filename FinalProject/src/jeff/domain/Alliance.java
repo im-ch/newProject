@@ -16,7 +16,7 @@ public class Alliance {
 	private int businessNumber;
 	private String openingHours;
 	private String detail;
-
+	
 	public String getOpeningHours() {
 		return openingHours;
 	}
