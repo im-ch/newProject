@@ -18,6 +18,8 @@ public class Answer {
 	private String questionId;
 	private Date regDate;
 	
+	private String name;
+	
 	public int getAnswerId() {
 		return answerId;
 	}
