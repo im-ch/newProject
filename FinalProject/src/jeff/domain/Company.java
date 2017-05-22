@@ -21,7 +21,7 @@ public class Company {
 	private String location;
 	@XmlElement(name="coupons")
 	private Coupons couponList;
-	private String OpeningTime;
+	
 	public String getOwnerName() {
 		return ownerName;
 	}
@@ -70,17 +70,11 @@ public class Company {
 	public void setCouponList(Coupons couponList) {
 		this.couponList = couponList;
 	}
-	public String getOpeningTime() {
-		return OpeningTime;
-	}
-	public void setOpeningTime(String openingTime) {
-		OpeningTime = openingTime;
-	}
-	@Override
+	
 	public String toString() {
 		return "Company [ownerName=" + ownerName + ", comId=" + comId + ", comPassword=" + comPassword + ", comEmail="
 				+ comEmail + ", comPhoneNumber=" + comPhoneNumber + ", comName=" + comName + ", location=" + location
-				+ ", couponList=" + couponList + ", OpeningTime=" + OpeningTime + "]";
+				+ ", couponList=" + couponList + ", OpeningTime=" + "]";
 	}
 	
 	
