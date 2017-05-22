@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Component
 public class AllianceForm {
-
 	@XmlElement(name = "company")
 	private Company company;
 	private int businessNumber;
