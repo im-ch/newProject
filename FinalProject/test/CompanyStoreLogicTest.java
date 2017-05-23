@@ -19,22 +19,22 @@ public class CompanyStoreLogicTest {
 	}
 	
 
-//	@Test
-//	public void CreateTest() {
-//		
-//		Company c = new Company();
-//		
-//		c.setComId("11");
-//		c.setComEmail("ddd");
-//		c.setComName("dd");
-//		c.setComPassword("111");
-//		c.setComPhoneNumber(123);
-//		c.setLocation("daa");
-//		c.setOwnerName("asda");
-//		
-//		store.createCompany(c);
-//				
-//	}
+	@Test
+	public void CreateTest() {
+		
+		Company c = new Company();
+		
+		c.setComId("3");
+		c.setComEmail("ddd");
+		c.setComName("dd");
+		c.setComPassword("111");
+		c.setComPhoneNumber(123);
+		c.setLocation("daa");
+		c.setOwnerName("asda");
+		
+		store.createCompany(c);
+				
+	}
 	
 //	@Test
 //	public void  testSearchAll(){
