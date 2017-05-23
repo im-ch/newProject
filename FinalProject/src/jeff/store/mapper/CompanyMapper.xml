@@ -9,19 +9,16 @@
   	
   	<result property="ownerName" column="ownerName"/>
   	<result property="comPassword" column="comPassword"/>
-  	<result property="email" column="email"/>
+  	<result property="comEmail" column="email"/>
   	<result property="comName" column="comName"/>
   	<result property="location" column="location"/>
-  	<result property="phoneNumber" column="phoneNumber"/>
+  	<result property="comPhoneNumber" column="phoneNumber"/>
   	
   	</resultMap>
   	
   	<insert id="createCompany" parameterType="Company">
-  	<selectKey keyProperty="comId" resultType="string" order="BEFORE">
-  	select company_tb_seq.nextval FROM DUAL
-  	</selectKey>
-  	INSERT INTO company_tb(comId,ownerName,comPassword,email,comName,location,phoneNumber)
-  	VALUES(#{comId},#{ownerName},#{comPassword},#{email},#{comName},#{location},#{phoneNumber})
+  	INSERT INTO company_tb(comId,ownerName,comPassword,email,comName,location,phoneNumber) 
+  	VALUES(#{comId},#{ownerName},#{comPassword},#{comEmail,jdbcType=VARCHAR},#{comName},#{location},#{comPhoneNumber})
    	</insert>
    	
    	<delete id="deleteCompany" parameterType="String">
@@ -32,31 +29,29 @@
   	
   	<update id="modifyCompany" parameterType="Company">
   	UPDATE company_tb
-  	SET ownerName = #{ownerName},comPassword=#{comPassword}, email = #{email} , comName = #{comName},location = #{location},phoneNumber = #{phoneNumber}
+  	SET ownerName = #{ownerName},comPassword=#{comPassword}, email = #{comEmail} , comName = #{comName},location = #{location},phoneNumber = #{comPhoneNumber}
   	WHERE comId = #{comId}
    	</update>
   	
    	
    	<select id="selectAllCompany" resultMap="companyMap">
-   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber
-  	FROM company_tb
-  	ORDER BY comId DESC
+   	SELECT comId, ownerName, comPassword, email, comName, location, phoneNumber 
+   	FROM company_tb 
+   	ORDER BY comId ASC
    	</select>
    	
    	<select id="selectCompany"  resultMap="companyMap">
-   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber
-  	FROM company_tb
-  	WHERE comId = #{comId}
+   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber 
+   	FROM company_tb 
+   	WHERE comId = #{comId}
    	</select>
    	
    	<select id="selectCompanyByName" resultMap="companyMap">
-   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber
-  	FROM company_tb
-  	WHERE comName = #{comName}
+   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber 
+   	FROM company_tb 
+   	WHERE comName = #{comName}
    	</select>
-   	
-   	
-   	
+   	   	
    
   
   </mapper>

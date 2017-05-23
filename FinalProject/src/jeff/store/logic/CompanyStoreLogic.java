@@ -13,97 +13,70 @@ import jeff.store.mapper.CompanyMapper;
 
 @Repository
 public class CompanyStoreLogic implements CompanyStore {
-	
-	@Autowired
-	private SqlSessionFactory factory;
-
-	public CompanyStoreLogic() {
-		factory = SqlSessionFactoryProvider.getSqlSessionFactory();
-	}
 
 	@Override
 	public void createCompany(Company company) {
-		SqlSession session = factory.openSession();
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
 
-		try {
-			CompanyMapper mapper = session.getMapper(CompanyMapper.class);
-			mapper.createCompany(company);
-			session.commit();
+		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
+		mapper.createCompany(company);
+		session.close();
 
-		} finally {
-			session.close();
-		}
 	}
 
 	@Override
 	public void deleteCompany(String companyId) {
-		SqlSession session = factory.openSession();
-		
-		try{
-			CompanyMapper mapper = session.getMapper(CompanyMapper.class);
-			mapper.deleteCompany(companyId);
-			session.commit();
-		}finally{
-			session.close();
-		}
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+
+		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
+		mapper.deleteCompany(companyId);
 
 	}
 
 	@Override
 	public void modifyCompany(Company company) {
-		SqlSession session = factory.openSession();
-		
-		try{
-			CompanyMapper mapper = session.getMapper(CompanyMapper.class);
-			mapper.modifyCompany(company);
-			session.commit();
-		}finally{
-			session.close();
-		}
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+
+		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
+		mapper.modifyCompany(company);
+		session.close();
 
 	}
 
 	@Override
 	public List<Company> selectAllCompany() {
-		SqlSession session = factory.openSession();
-		List<Company> list = null;
-		
-		try{
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+
 		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
-		list = mapper.selectAllCompany();
-		}finally{
-			session.close();
-		}
+		List<Company> list = mapper.selectAllCompany();
+
+		session.close();
+
 		return list;
-		
+
 	}
 
 	@Override
 	public Company selectCompany(String companyId) {
-		SqlSession session = factory.openSession();
-		Company company = null;
-		
-		try{
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+
 		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
-		company= mapper.selectCompany(companyId);
-		}finally{
-			session.close();
-		}
-		
+		Company company = mapper.selectCompany(companyId);
+
+		session.close();
+
 		return company;
 	}
 
 	@Override
 	public Company selectCompanyByName(String comName) {
-		SqlSession session = factory.openSession();
-		Company company = null;
-		try{
-			CompanyMapper mapper = session.getMapper(CompanyMapper.class);
-			company = mapper.selectCompanyByName(comName);
-		}finally{
-			session.close();
-		}
-		
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+
+		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
+		Company company = mapper.selectCompanyByName(comName);
+
+		session.close();
+
 		return company;
 	}
 

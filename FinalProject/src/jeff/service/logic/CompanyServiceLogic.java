@@ -2,11 +2,14 @@ package jeff.service.logic;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import jeff.domain.Company;
 import jeff.service.CompanyService;
 import jeff.store.CompanyStore;
 import jeff.store.logic.CompanyStoreLogic;
 
+@Service
 public class CompanyServiceLogic implements CompanyService{
 	
 	private CompanyStore store;
