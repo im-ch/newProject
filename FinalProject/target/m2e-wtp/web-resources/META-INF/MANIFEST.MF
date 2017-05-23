@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: kosta
+=======
+Built-By: imch
+>>>>>>> 85e718daee935f464112aa7f0d191c4df5269ae3
 Build-Jdk: 1.8.0_121
 Created-By: Maven Integration for Eclipse
 
