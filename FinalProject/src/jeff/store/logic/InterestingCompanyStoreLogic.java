@@ -14,13 +14,9 @@ import jeff.store.mapper.InterestingCompanyMapper;
 @Repository
 public class InterestingCompanyStoreLogic implements InterestingCompanyStore {
 
-	@Autowired
-	private SqlSessionTemplate sqlSession;
 
 	@Override
 	public void createInterestingCompany(HashMap<String, Object> map) {
-		InterestingCompanyMapper mapper = sqlSession.getMapper(InterestingCompanyMapper.class);
-		mapper.createInterestingCompany(map);
 	}
 
 	@Override

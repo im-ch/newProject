@@ -8,28 +8,4 @@
 
 	<mvc:annotation-driven />
 	<context:component-scan base-package="jeff" />
-<<<<<<< HEAD
-
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<!-- //오라클 세팅 -->
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="scott" />
-		<property name="password" value="tiger" />
-	</bean>
-
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="mapperLocations" value="classpath:/jeff/store/mapper/*.xml" />
-		<!-- //쿼리 정보 파일 경로 -->
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:/jeff/store/config.xml"></property>
-	</bean>
-
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sqlSessionFactory" />
-	</bean>
-
-=======
-	
->>>>>>> this
 </beans>
