@@ -9,7 +9,8 @@ import jeff.store.CouponStore;
 
 @Repository
 public class CouponStoreLogic implements CouponStore{
-
+	
+	
 	@Override
 	public void createCoupon(Coupon coupon) {
 		// TODO Auto-generated method stub
