@@ -14,43 +14,47 @@ import jeff.store.mapper.AllianceMapper;
 @Repository
 public class AllianceStoreLogic implements AllianceStore{
 	
-//	@Autowired
-//	private SqlSessionTemplate sqlSession;
-	
-	private SqlSession session = JeffSessionFactory.getInstance().getSession();
-	
-//	private AllianceMapper mapper = sqlSession.getMapper(AllianceMapper.class);
-
 	@Override
 	public Alliance selectAlliance(String companyId) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		AllianceMapper mapper = session.getMapper(AllianceMapper.class);
 		Alliance alliance = mapper.selectAlliance(companyId);
+		session.close();
 		return alliance;
 	}
 
 	@Override
 	public List<String> selectAllAlliance() {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		AllianceMapper mapper = session.getMapper(AllianceMapper.class);
 		List<String> list = mapper.selectAllAlliance();
+		
+		session.close();
 		return list;
 	}
 
 	@Override
 	public void createAlliance(Alliance alliance) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		AllianceMapper mapper = session.getMapper(AllianceMapper.class);
 		mapper.createAlliance(alliance);
+		session.close();
 	}
 
 	@Override
 	public void deleteAlliance(String companyId) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		AllianceMapper mapper = session.getMapper(AllianceMapper.class);
 		mapper.deleteAlliance(companyId);
+		session.close();
 	}
 
 	@Override
 	public void modifyAlliance(Alliance alliance) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		AllianceMapper mapper = session.getMapper(AllianceMapper.class);
 		mapper.modifyAlliance(alliance);
+		session.close();
 	}
 
 }

@@ -30,7 +30,7 @@
 		WHERE comId = #{company.comId}
 	</select>
 
-	<select id="selectAllAlliance" resultType="list">
+	<select id="selectAllAlliance" resultType="String">
 		SELECT comId
 		FROM Alliance_tb
 	</select>

@@ -24,46 +24,54 @@ public class AllianceStoreLogicTest {
 //
 //	@Test
 //	public void testSelectAlliance() {
-//		fail("Not yet implemented");
+//		Alliance a = store.selectAlliance("fff");
+//		assertEquals("fff", a.getCompany().getComId());
 //	}
 
 //	@Test
 //	public void testSelectAllAlliance() {
 //		List<String> list = store.selectAllAlliance();
 //		
-//		assertEquals(4, list.size());
+//		assertEquals(6, list.size());
 //	}
 
-	@Test
-	public void testCreateAlliance() {
-		Alliance alliance = new Alliance();
-		alliance.setDetail("dfsdf");
-		alliance.setOpeningHours("55");
-		alliance.setBusinessNumber(6565);
-		Company company = new Company();
-		company.setComId("fff");
-		company.setComName("sdff");
-		company.setComPassword("dfdf");
-		company.setComEmail("sdfs");
-		company.setComPhoneNumber(324324);
-		company.setLocation("sdfsdf");
-		company.setOwnerName("asdf");
-		Coupons coupons = new Coupons();
-		company.setCouponList(coupons);
-		alliance.setCompany(company);
-		
-		store.createAlliance(alliance);
-//		assertEquals("dfsdf", store.selectAlliance("fff"));
-	}
+//	@Test
+//	public void testCreateAlliance() {
+//		Alliance alliance = new Alliance();
+//		alliance.setDetail("dfsdf");
+//		alliance.setOpeningHours("55");
+//		alliance.setBusinessNumber(6565);
+//		Company company = new Company();
+//		company.setComId("dddd");
+//		company.setComName("sdff");
+//		company.setComPassword("dfdf");
+//		company.setComEmail("sdfs");
+//		company.setComPhoneNumber(324324);
+//		company.setLocation("sdfsdf");
+//		company.setOwnerName("asdf");
+//		Coupons coupons = new Coupons();
+//		company.setCouponList(coupons);
+//		alliance.setCompany(company);
+//		
+//		store.createAlliance(alliance);
+////		assertEquals("dfsdf", store.selectAlliance("fff"));
+//	}
 
 //	@Test
 //	public void testDeleteAlliance() {
-//		fail("Not yet implemented");
+//		store.deleteAlliance("fff");
 //	}
-//
-//	@Test
-//	public void testModifyAlliance() {
-//		fail("Not yet implemented");
-//	}
+
+	@Test
+	public void testModifyAlliance() {
+		Alliance a = new Alliance();
+		Company company = new Company();
+		company.setComId("dddd");
+		a.setCompany(company);
+		a.setBusinessNumber(5555);
+		a.setDetail("update");
+		a.setOpeningHours("open");
+		store.modifyAlliance(a);
+	}
 
 }
