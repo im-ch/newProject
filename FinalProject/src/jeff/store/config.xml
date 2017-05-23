@@ -21,8 +21,5 @@
  	<typeAlias type="jeff.domain.User" alias="User"/>
 </typeAliases>
 
-
-
-	
 </configuration>
   
