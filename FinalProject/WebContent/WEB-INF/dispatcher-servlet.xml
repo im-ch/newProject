@@ -7,6 +7,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
+	<mvc:annotation-driven />
 	<context:component-scan base-package="jeff" />
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -21,7 +22,7 @@
 		<property name="mapperLocations" value="classpath:/jeff/store/mapper/*.xml" />
 		<!-- //쿼리 정보 파일 경로 -->
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:/jeff/store/config.xml"></property>
+		<property name="configLocation" value="classpath:/jeff/store/config.xml"/>
 	</bean>
 	
 		<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">

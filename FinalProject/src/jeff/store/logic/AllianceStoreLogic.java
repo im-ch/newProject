@@ -2,42 +2,46 @@ package jeff.store.logic;
 
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import jeff.domain.Alliance;
 import jeff.store.AllianceStore;
+import jeff.store.mapper.AllianceMapper;
 
 @Repository
 public class AllianceStoreLogic implements AllianceStore{
+	
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	private AllianceMapper mapper = sqlSession.getMapper(AllianceMapper.class);
 
 	@Override
 	public Alliance selectAlliance(String companyId) {
-		// TODO Auto-generated method stub
-		return null;
+		Alliance alliance = mapper.selectAlliance(companyId);
+		return alliance;
 	}
 
 	@Override
 	public List<String> selectAllAlliance() {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> list = mapper.selectAllAlliance();
+		return list;
 	}
 
 	@Override
 	public void createAlliance(Alliance alliance) {
-		// TODO Auto-generated method stub
-		
+		mapper.createAlliance(alliance);
 	}
 
 	@Override
 	public void deleteAlliance(String companyId) {
-		// TODO Auto-generated method stub
-		
+		mapper.deleteAlliance(companyId);
 	}
 
 	@Override
 	public void modifyAlliance(Alliance alliance) {
-		// TODO Auto-generated method stub
-		
+		mapper.modifyAlliance(alliance);
 	}
 
 }
