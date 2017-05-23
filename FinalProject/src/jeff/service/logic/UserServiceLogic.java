@@ -3,11 +3,13 @@ package jeff.service.logic;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import jeff.domain.User;
 import jeff.service.UserService;
 import jeff.store.UserStore;
 
+@Service
 public class UserServiceLogic implements UserService{
 	
 	@Autowired
