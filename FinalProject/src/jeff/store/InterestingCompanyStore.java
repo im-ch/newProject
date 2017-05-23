@@ -9,8 +9,8 @@ public interface InterestingCompanyStore {
 
 	void createInterestingCompany(HashMap<String, Object> map);
 
-	void deleteInterestingCompany(String userId, String companyId);
+	void deleteInterestingCompany(HashMap<String, Object> map);
 
-	List<Company> selectInterestingCompany(String userId);
+	List<String> selectInterestingCompany(String userId);
 
 }

@@ -22,12 +22,13 @@ public class InterestingCompanyServiceLogic implements InterestingCompanyService
 	}
 
 	@Override
-	public void removceInterestingCompany(String userId, String companyId) {
+	public void removeInterestingCompany(HashMap<String, Object> map) {
+		store.deleteInterestingCompany(map);
 	}
 
 	@Override
-	public List<Company> findInterestingCompany(String userId) {
-		return null;
+	public List<String> findInterestingCompany(String userId) {
+		return store.selectInterestingCompany(userId);
 	}
 
 	

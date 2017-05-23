@@ -9,8 +9,8 @@ public interface InterestingCompanyService {
 
 	public void registInterestingCompany(HashMap<String, Object> map);
 
-	public void removceInterestingCompany(String userId, String companyId);
+	public void removeInterestingCompany(HashMap<String, Object> map);
 
-	public List<Company> findInterestingCompany(String userId);
+	public List<String> findInterestingCompany(String userId);
 
 }
