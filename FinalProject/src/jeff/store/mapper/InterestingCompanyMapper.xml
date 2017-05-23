@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- void createInterestingCompany(String userId, String companyId); void 
+	deleteInterestingCompany(String userId, String companyId); List<Company> 
+	selectInterestingCompany(String userId); -->
+
+<mapper namespace="jeff.store.mapper.InterestingCompanyMapper">
+
+	<resultMap type="company" id="selectCompany">
+		<id column="comId" property="comId" />
+		<result column="comPassword" property="comPassword" />
+		<result column="ownerName" property="ownerName" />
+		<result column="email" property="comEmail" />
+		<result column="phoneNumber" property="comPhoneNumber" />
+	</resultMap>
+
+	<insert id="createInterestingCompany" parameterType="hashmap">
+		INSERT INTO
+		interestingCompany_tb(userId, comId)
+		VALUES (userId = #{userId},
+		comId={#comId})
+	</insert>
+
+	<select id="selectInterestingCompany" resultMap="selectCompany"
+		parameterType="string">
+		SELECT comId, comPassword, ownerName, email, phoneNumber
+		FROM Company_tb
+		JOIN interestingCompany_tb
+		ON comId = comId
+		WHERE userId = #{userId}
+	</select>
+
+	<delete id="deleteInterestingCompany" parameterMap="string">
+		DELETE
+		interestingCompany_tb
+		WHERE comId = #{comId} AND userId = #{userId}
+	</delete>
+</mapper>
