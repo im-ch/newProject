@@ -13,8 +13,8 @@
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<!-- //오라클 세팅 -->
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="hr" />
-		<property name="password" value="hr" />
+		<property name="username" value="Jeff" />
+		<property name="password" value="Jeff" />
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
