@@ -2,44 +2,44 @@ package jeff.service.logic;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import jeff.domain.User;
 import jeff.service.UserService;
+import jeff.store.UserStore;
 
 public class UserServiceLogic implements UserService{
+	
+	@Autowired
+	private UserStore store;
 
 	@Override
 	public void registUser(User user) {
-		// TODO Auto-generated method stub
-		
+		store.createUser(user);
 	}
 
 	@Override
 	public void removeUser(String userId) {
-		// TODO Auto-generated method stub
-		
+		store.deleteUser(userId);
 	}
 
 	@Override
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-		
+		store.modifyUser(user);
 	}
 
 	@Override
 	public List<User> findAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		return store.selectAllUser();
 	}
 
 	@Override
 	public User findUser(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return store.selectUser(userId);
 	}
 
 	@Override
 	public boolean login(User user) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
