@@ -6,11 +6,44 @@
   <mapper namespace="jeff.store.mapper.ReviewMapper">
   
   	<resultMap type="Review" id="reviewMap">
-		<id column="reviewId" property="reviewId"/>
-		<result column="name" property="name" />
-		<result column="password" property="password" />		
-		<result column="email" property="email" />
-		<result column="phoneNumber" property="phoneNumber" />
+		<id column="reviewId" property="reviewId" />	
+		<result column="regDate" property="regDate" />
+		<result column="reported" property="reported" javaType="Boolean" jdbcType="VARCHAR"/>
+		<result column="content" property="content" />
+		<result property="companyId" column="comId" />
+		<result property="userId" column="userId"/>
 	</resultMap>
   
+  	<insert id="createReview" parameterType="Review">
+  		<selectKey keyProperty="reviewId" resultType="int" order="BEFORE">
+         select review_tb_seq.nextval FROM DUAL
+      	</selectKey>
+		INSERT INTO review_tb (reviewId, userId, comId, content, regDate, reported)
+		VALUES (#{reviewId}, #{userId}, #{companyId}, #{content}, sysdate, #{reported})
+	</insert>
+
+	<delete id="deleteReview" parameterType="int">
+		DELETE review_tb
+		WHERE reviewId = #{reviewId}
+	</delete>
+
+	<update id="modifyReview" parameterType="Review">
+		UPDATE review_tb
+		SET content = #{content}
+		WHERE reviewId = #{reviewId}
+	</update>
+	
+	<select id="selectReviewByCompany" parameterType="String" resultMap="reviewMap">
+		SELECT reviewId, userId, comId, content, regDate, reported
+		FROM review_tb
+		WHERE comId = #{companyId}
+		ORDER BY reviewId ASC
+	</select>
+
+	<select id="selectReviewByReviewId" parameterType="int" resultMap="reviewMap" resultType="Review">
+		SELECT reviewId, userId, comId, content, regDate, reported
+		FROM review_tb
+		WHERE reviewId = #{reviewId}
+	</select>
+	
   </mapper>
