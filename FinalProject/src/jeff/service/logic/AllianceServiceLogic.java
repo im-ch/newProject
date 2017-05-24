@@ -16,9 +16,6 @@ public class AllianceServiceLogic implements AllianceService{
 	@Autowired
 	private AllianceStore store;
 	
-	public AllianceServiceLogic() {
-		store = new AllianceStoreLogic();
-	}
 
 	@Override
 	public Alliance findAlliance(String companyId) {

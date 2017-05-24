@@ -16,9 +16,6 @@ public class CompanyServiceLogic implements CompanyService{
 	@Autowired
 	private CompanyStore store;
 	
-	public CompanyServiceLogic() {
-		store = new CompanyStoreLogic();
-	}
 
 	@Override
 	public void registCompany(Company company) {
