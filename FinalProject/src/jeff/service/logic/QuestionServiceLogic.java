@@ -24,10 +24,6 @@ public class QuestionServiceLogic implements QuestionService{
 	@Autowired
 	private AnswerStore aStore;
 	
-	public QuestionServiceLogic() {
-		qStore = new QuestionStoreLogic();
-		aStore = new AnswerStoreLogic();
-	}
 
 	@Override
 	public void registQuestion(Question question) {
