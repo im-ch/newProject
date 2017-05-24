@@ -2,49 +2,76 @@ package jeff.store.logic;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import jeff.domain.CompanySales;
 import jeff.domain.Sales;
 import jeff.store.SalesStore;
+import jeff.store.mapper.SalesMapper;
 
 @Repository
 public class SalesStoreLogic implements SalesStore{
 
 	@Override
 	public void createSales(Sales sales) {
-		// TODO Auto-generated method stub
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		
+		SalesMapper mapper = session.getMapper(SalesMapper.class);
+		mapper.createSales(sales);
+		session.close();
 	}
 
 	@Override
 	public void modifySales(Sales sales) {
-		// TODO Auto-generated method stub
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+		
+		SalesMapper mapper = session.getMapper(SalesMapper.class);
+		mapper.modifySales(sales);
+		session.close();
 		
 	}
 
 	@Override
 	public void deleteSales(int salesId) {
-		// TODO Auto-generated method stub
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+		
+		SalesMapper mapper = session.getMapper(SalesMapper.class);
+		mapper.deleteSales(salesId);
+		session.close();
 		
 	}
 
 	@Override
 	public CompanySales selectSalesByCompany(String companyId) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+		
+		SalesMapper mapper = session.getMapper(SalesMapper.class);
+		CompanySales companySales = mapper.selectSalesByCompany(companyId);
+		
+		session.close();
+		return companySales;
 	}
 
 	@Override
-	public Sales selectBySalesId(int saleId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Sales selectBySalesId(int salesId) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+		
+		SalesMapper mapper = session.getMapper(SalesMapper.class);
+		Sales sales = mapper.selectBySalesId(salesId);
+		
+		session.close();
+		return sales;
 	}
 
 	@Override
 	public List<Sales> selectAllSales(String companyId) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+		SalesMapper mapper = session.getMapper(SalesMapper.class);
+		List<Sales> list = mapper.selectAllSales(companyId);
+		
+		session.close();
+		return list;
 	}
 
 }

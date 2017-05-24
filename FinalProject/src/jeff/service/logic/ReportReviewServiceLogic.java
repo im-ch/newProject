@@ -2,33 +2,36 @@ package jeff.service.logic;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import jeff.domain.ReportReview;
 import jeff.service.ReportReviewService;
+import jeff.store.ReportReviewStore;
 
+@Service
 public class ReportReviewServiceLogic implements ReportReviewService{
 
+	@Autowired
+	private ReportReviewStore store;
 	@Override
 	public ReportReview findReportReview(int reviewId) {
-		// TODO Auto-generated method stub
-		return null;
+		return store.selectReportReview(reviewId);
 	}
 
 	@Override
 	public List<ReportReview> findAllReportReviews() {
-		// TODO Auto-generated method stub
-		return null;
+		return store.selectAllReportReview();
 	}
 
 	@Override
 	public void registReportReview(ReportReview reportReview) {
-		// TODO Auto-generated method stub
-		
+		store.createReportReview(reportReview);
 	}
 
 	@Override
 	public void removeReportReview(int reviewId) {
-		// TODO Auto-generated method stub
-		
+		store.deleteReportReview(reviewId);
 	}
 	
 	

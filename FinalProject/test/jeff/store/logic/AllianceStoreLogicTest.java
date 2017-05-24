@@ -21,18 +21,20 @@ public class AllianceStoreLogicTest {
 	public void AllianceStoreLogicTest() {
 		store = new AllianceStoreLogic();
 	}
-//
+
 //	@Test
 //	public void testSelectAlliance() {
-//		Alliance a = store.selectAlliance("fff");
-//		assertEquals("fff", a.getCompany().getComId());
+//		Alliance a = store.selectAlliance("ckdgml");
+//		
+//		assertEquals(22, a.getBusinessNumber());
 //	}
 
 //	@Test
 //	public void testSelectAllAlliance() {
 //		List<String> list = store.selectAllAlliance();
 //		
-//		assertEquals(6, list.size());
+//		assertEquals(5, list.size());
+//		assertEquals("ckdgml", list.get(0));
 //	}
 
 //	@Test
@@ -62,16 +64,16 @@ public class AllianceStoreLogicTest {
 //		store.deleteAlliance("fff");
 //	}
 
-	@Test
-	public void testModifyAlliance() {
-		Alliance a = new Alliance();
-		Company company = new Company();
-		company.setComId("dddd");
-		a.setCompany(company);
-		a.setBusinessNumber(5555);
-		a.setDetail("update");
-		a.setOpeningHours("open");
-		store.modifyAlliance(a);
-	}
+//	@Test
+//	public void testModifyAlliance() {
+//		Alliance a = new Alliance();
+//		Company company = new Company();
+//		company.setComId("dddd");
+//		a.setCompany(company);
+//		a.setBusinessNumber(5555);
+//		a.setDetail("update");
+//		a.setOpeningHours("open");
+//		store.modifyAlliance(a);
+//	}
 
 }

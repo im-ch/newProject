@@ -1,6 +1,4 @@
 /target/
-/bin/
-
 *.class
 pom.properties
 Thumbs.db
@@ -13,5 +11,3 @@ Thumbs.db
 .springBeans
 .externalToolBuilders
 .project
-
-

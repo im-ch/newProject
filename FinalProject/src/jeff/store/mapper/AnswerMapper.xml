@@ -2,14 +2,45 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-<mapper namespace="jeff.store.mapper.AnswerMapper">
-	
-	<resultMap type="Answer" id="answerMap">
-		
-	
-	</resultMap>
-	
 
+<mapper namespace="jeff.store.mapper.AnswerMapper">
+
+	<resultMap type="Answer" id="answerMap">
+		<id column="answerId" property="answerId" />
+		<result column="content" property="content" />
+		<result column="questionId" property="questionId" />
+		<result column="regDate" property="regDate"/>
+	</resultMap>
+
+	<insert id="createAnswer" parameterType="Answer">
+	  	<selectKey keyProperty="answerId" resultType="int" order="BEFORE">
+			select answer_tb_seq.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO answer_tb(answerId, content, questionId, regDate)
+		VALUES (#{answerId}, #{content}, #{questionId}, sysdate)
+	</insert>
+
+	<delete id="deleteAnswer" parameterType="int">
+		DELETE FROM answer_tb
+		WHERE answerId = #{answerId}
+	</delete>
+
+	<update id="modifyAnswer" parameterType="Answer">
+		UPDATE answer_tb
+		SET content = #{content}
+		WHERE answerId = #{answerId}
+	</update>
+
+	<select id="selectAnswer" parameterType="int" resultMap="answerMap">
+		SELECT answerId, content, questionId, regDate
+		FROM answer_tb
+		WHERE answerId = #{answerId}
+	</select>
+
+	<select id="selectAllAnswer" resultType="Answer" parameterType="int" resultMap="answerMap">
+		SELECT answerId, content, questionId, regDate
+		FROM answer_tb
+		WHERE questionId = #{questionId}
+	</select>
 
 </mapper>
