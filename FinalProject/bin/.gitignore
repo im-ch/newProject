@@ -1,4 +1,5 @@
 /target/
+<<<<<<< HEAD
 *.class
 pom.properties
 Thumbs.db
@@ -11,3 +12,6 @@ Thumbs.db
 .springBeans
 .externalToolBuilders
 .project
+=======
+/bin/
+>>>>>>> sangjin
