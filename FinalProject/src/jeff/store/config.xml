@@ -41,10 +41,7 @@
 		<mapper resource="jeff/store/mapper/CouponMapper.xml" />
 		<mapper resource="jeff/store/mapper/ReportReviewMapper.xml" />
 		<mapper resource="jeff/store/mapper/InterestingCompanyMapper.xml" />
-<<<<<<< HEAD
 		<mapper resource="jeff/store/mapper/UserCouponMapper.xml" />
-=======
->>>>>>> 2f533c029675818360e6308fba99e00dc2c22ab9
 		<mapper resource="jeff/store/mapper/QuestionMapper.xml" />
 		<mapper resource="jeff/store/mapper/ReviewMapper.xml" />
 		<mapper resource="jeff/store/mapper/SalesMapper.xml" />
