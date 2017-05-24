@@ -1,1 +1,13 @@
 /target/
+*.class
+pom.properties
+Thumbs.db
+.settings
+.classpath
+/bin
+*.java.hsp
+*.sonarj
+.DS_Store
+.springBeans
+.externalToolBuilders
+.project
