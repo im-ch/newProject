@@ -2,12 +2,17 @@ package jeff.service.logic;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import jeff.domain.Coupon;
 import jeff.service.UserCouponService;
 import jeff.store.UserCouponStore;
 
+@Service
 public class UserCouponServiceLogic implements UserCouponService{
 	
+	@Autowired
 	private UserCouponStore store;
 
 	@Override
@@ -22,8 +27,7 @@ public class UserCouponServiceLogic implements UserCouponService{
 
 	@Override
 	public List<Integer> findUserCoupons(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return store.selectUserCoupon(userId);
 	}
 
 	@Override

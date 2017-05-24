@@ -16,9 +16,6 @@ public class SalesServiceLogic implements SalesService{
 	@Autowired
 	private SalesStore store;
 	
-	public SalesServiceLogic() {
-		store = new SalesStoreLogic();
-	}
 	
 	@Override
 	public void registSales(Sales sales) {

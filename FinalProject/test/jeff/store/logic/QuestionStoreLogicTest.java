@@ -46,7 +46,10 @@ public class QuestionStoreLogicTest {
 
 //	@Test
 //	public void testSelectQuestion() {
-//		fail("Not yet implemented");
+//		Question q = store.selectQuestion(1);
+//		List<Answer> list = q.getAnswerList();
+//		System.out.println(list.get(0).getAnswerId());
+//		assertNotNull(list);
 //	}
 
 //	@Test

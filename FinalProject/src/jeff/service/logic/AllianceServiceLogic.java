@@ -2,39 +2,44 @@ package jeff.service.logic;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import jeff.domain.Alliance;
 import jeff.service.AllianceService;
+import jeff.store.AllianceStore;
+import jeff.store.logic.AllianceStoreLogic;
 
+@Service
 public class AllianceServiceLogic implements AllianceService{
+	
+	@Autowired
+	private AllianceStore store;
+	
 
 	@Override
 	public Alliance findAlliance(String companyId) {
-		// TODO Auto-generated method stub
-		return null;
+		return store.selectAlliance(companyId);
 	}
 
 	@Override
 	public List<String> findAllAlliance() {
-		// TODO Auto-generated method stub
-		return null;
+		return store.selectAllAlliance();
 	}
 
 	@Override
 	public void registAlliance(Alliance alliance) {
-		// TODO Auto-generated method stub
-		
+		store.createAlliance(alliance);
 	}
 
 	@Override
 	public void removeAlliance(String companyId) {
-		// TODO Auto-generated method stub
-		
+		store.deleteAlliance(companyId);
 	}
 
 	@Override
 	public void updateAlliance(Alliance alliance) {
-		// TODO Auto-generated method stub
-		
+		store.modifyAlliance(alliance);
 	}
 	
 	
