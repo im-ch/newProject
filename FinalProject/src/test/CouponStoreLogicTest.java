@@ -45,7 +45,7 @@ public class CouponStoreLogicTest {
 		c.setCouponName("500원할인수정");
 		c.setCom(com);
 		store.modifyCoupon(c);
-	
+		
 	}
 	
 	private void sysout() {
