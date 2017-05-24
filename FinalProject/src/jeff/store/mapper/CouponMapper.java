@@ -17,5 +17,7 @@ public interface CouponMapper {
 	List<Coupon> selectCouponByCompany(String companyId);
 	
 	Coupon selectCoupon (int couponId);
+	
+	void deleteExprCoupon();
 
 }

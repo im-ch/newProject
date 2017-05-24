@@ -34,6 +34,7 @@
 	</environments>
 
 	 <mappers>
+
 		<mapper resource="jeff/store/mapper/AllianceMapper.xml" />
 		<mapper resource="jeff/store/mapper/AnswerMapper.xml" />
 		<mapper resource="jeff/store/mapper/CompanyMapper.xml" />

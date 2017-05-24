@@ -10,11 +10,11 @@ import jeff.service.CouponService;
 import jeff.store.CouponStore;
 
 @Service
-public class CouponServiceLogic implements CouponService{
-	
+public class CouponServiceLogic implements CouponService {
+
 	@Autowired
 	private CouponStore couponStore;
-	
+
 	@Override
 	public void registCoupon(Coupon coupon) {
 		couponStore.createCoupon(coupon);
@@ -48,6 +48,9 @@ public class CouponServiceLogic implements CouponService{
 		return list;
 	}
 
-	
-	
+	@Override
+	public void removeExprCoupon() {
+		couponStore.deleteExprCoupon();
+	}
+
 }

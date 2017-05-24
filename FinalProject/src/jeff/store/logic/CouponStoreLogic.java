@@ -10,9 +10,8 @@ import jeff.store.CouponStore;
 import jeff.store.mapper.CouponMapper;
 
 @Repository
-public class CouponStoreLogic implements CouponStore{
-	
-	
+public class CouponStoreLogic implements CouponStore {
+
 	@Override
 	public void createCoupon(Coupon coupon) {
 		SqlSession session = JeffSessionFactory.getInstance().getSession();
@@ -62,6 +61,14 @@ public class CouponStoreLogic implements CouponStore{
 		Coupon coupon = mapper.selectCoupon(couponId);
 		session.close();
 		return coupon;
+	}
+
+	@Override
+	public void deleteExprCoupon() {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+		CouponMapper mapper = session.getMapper(CouponMapper.class);
+		mapper.deleteExprCoupon();
+		session.close();
 	}
 
 }
