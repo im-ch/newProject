@@ -15,7 +15,7 @@ public class Answer {
 
 	private int answerId;
 	private String content;
-	private String questionId;
+	private int questionId;
 	private Date regDate;
 	
 	public int getAnswerId() {
@@ -30,10 +30,10 @@ public class Answer {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getQuestionId() {
+	public int getQuestionId() {
 		return questionId;
 	}
-	public void setQuestionId(String questionId) {
+	public void setQuestionId(int questionId) {
 		this.questionId = questionId;
 	}
 	public Date getRegDate() {
