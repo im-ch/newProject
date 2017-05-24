@@ -10,37 +10,51 @@
 		<result column="openingHour" property="openingHours" />
 		<result column="businessNumber" property="businessNumber" />
 		<result column="detail" property="detail" />
-		<association column="comId" property="company" javaType="Company"
-			select="jeff.store.mapper.CompanyMapper.selectCompany" />
+		<collection column="comId" property="company" javaType="Company"
+			select="jeff.store.mapper.CompanyMapper.selectCompany">
+			<id property="comId" column="comId" />
+			<result property="ownerName" column="ownerName" />
+			<result property="comPassword" column="comPassword" />
+			<result property="comEmail" column="email" />
+			<result property="comName" column="comName" />
+			<result property="location" column="location" />
+			<result property="comPhoneNumber" column="phoneNumber" />
+		</collection>
 	</resultMap>
 
 	<insert id="createAlliance" parameterType="Alliance">
-		INSERT INTO Alliance_tb(comId, openingHour, businessNumber, detail)
-		VALUES (#{company.comId}, #{openingHours}, #{businessNumber}, #{detail})
+		INSERT INTO
+		Alliance_tb(comId, openingHour, businessNumber, detail)
+		VALUES
+		(#{company.comId}, #{openingHours}, #{businessNumber}, #{detail})
 	</insert>
 
 	<delete id="deleteAlliance" parameterType="string">
-		DELETE FROM Alliance_tb
+		DELETE FROM
+		Alliance_tb
 		WHERE comId = #{company.comId}
 	</delete>
 
-	<select id="selectAlliance" resultMap="allianceMap" resultType="Alliance" parameterType="String">
+	<select id="selectAlliance" resultMap="allianceMap" resultType="Alliance"
+		parameterType="String">
 		SELECT comId, openingHour, businessNumber, detail
-		FROM Alliance_tb
+		FROM
+		Alliance_tb
 		WHERE comId = #{company.comId}
 	</select>
 
 	<select id="selectAllAlliance" resultType="String">
 		SELECT comId
-		FROM Alliance_tb
+		FROM
+		Alliance_tb
 	</select>
 
 	<update id="modifyAlliance" parameterType="Alliance">
 		UPDATE Alliance_tb
-		SET openingHour = #{openingHours}, businessNumber = #{businessNumber}, detail = #{detail}
+		SET
+		openingHour = #{openingHours}, businessNumber = #{businessNumber},
+		detail = #{detail}
 		WHERE comId = #{company.comId}
 	</update>
-
-
 
 </mapper>
