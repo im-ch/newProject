@@ -13,13 +13,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class Review {
 
+	private int reviewId;
 	private String companyId;
 	private String userId;
-	private String title;
 	private String content;
 	private Date regDate;
 	private Boolean reported;
 	
+	public int getReviewId() {
+		return reviewId;
+	}
+	public void setReviewId(int reviewId) {
+		this.reviewId = reviewId;
+	}
 	public String getCompanyId() {
 		return companyId;
 	}
@@ -31,12 +37,6 @@ public class Review {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
 	}
 	public String getContent() {
 		return content;
@@ -56,11 +56,13 @@ public class Review {
 	public void setReported(Boolean reported) {
 		this.reported = reported;
 	}
+	
 	@Override
 	public String toString() {
-		return "Review [companyId=" + companyId + ", userId=" + userId + ", title=" + title + ", content=" + content
-				+ ", regDate=" + regDate + ", reported=" + reported + "]";
+		return "Review [reviewId=" + reviewId + ", companyId=" + companyId + ", userId=" + userId + ", content="
+				+ content + ", regDate=" + regDate + ", reported=" + reported + "]";
 	}
+	
 	
 	
 }

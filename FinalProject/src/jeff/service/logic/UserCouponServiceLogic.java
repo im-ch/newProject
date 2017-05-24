@@ -4,45 +4,32 @@ import java.util.List;
 
 import jeff.domain.Coupon;
 import jeff.service.UserCouponService;
+import jeff.store.UserCouponStore;
 
 public class UserCouponServiceLogic implements UserCouponService{
+	
+	private UserCouponStore store;
 
 	@Override
 	public boolean registUserCoupon(String userId, int couponId) {
-		// TODO Auto-generated method stub
-		return false;
+		return store.createUserCoupon(userId, couponId);
 	}
 
 	@Override
 	public void removeUserCoupon(String userId, int couponId) {
-		// TODO Auto-generated method stub
-		
+		store.deleteUserCoupon(userId, couponId);
 	}
 
 	@Override
-	public List<Coupon> findUserCoupons(String userId) {
+	public List<Integer> findUserCoupons(String userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void useUserCoupon(String userId, int couponId) {
-		// TODO Auto-generated method stub
+		store.useUserCoupon(userId, couponId);
 		
 	}
-
-	@Override
-	public Coupon findCoupon(String userId, int couponId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void removeExprUserCoupons(String userId, List<Integer> couponIdList) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
 
 }

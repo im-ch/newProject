@@ -17,7 +17,13 @@ public class Coupon {
 	private String couponContent;
 	private int couponId;
 	private Date expiryDate;
-	
+	private Company com;
+	public Company getCom() {
+		return com;
+	}
+	public void setCom(Company com) {
+		this.com = com;
+	}
 	public String getCouponName() {
 		return couponName;
 	}
