@@ -51,7 +51,5 @@
    	FROM company_tb 
    	WHERE comName = #{comName}
    	</select>
-   	   	
-   
-  
+   	   	  
   </mapper>

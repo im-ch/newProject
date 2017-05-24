@@ -24,7 +24,7 @@ public class CompanyStoreLogicTest {
 		
 		Company c = new Company();
 		
-		c.setComId("3");
+		c.setComId("1");
 		c.setComEmail("ddd");
 		c.setComName("dd");
 		c.setComPassword("111");
@@ -52,10 +52,18 @@ public class CompanyStoreLogicTest {
 //	@Test
 //	public void testUpdate(){
 //		Company c = new Company();
+//		c.setComId("1");
+//		c.setComEmail("11");
+//		c.setComName("11");
+//		c.setComPassword("11");
+//		c.setComPhoneNumber(11);
+//		c.setOwnerName("11");
+//		c.setLocation("11");
+//		
 //		
 //		store.modifyCompany(c);
 //	}
-//	
+	
 	
 
 }
