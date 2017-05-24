@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jeff.store.mapper.InterestingCompanyMapper">
+
+	<insert id="createInterestingCompany" parameterType="Hashmap">
+		INSERT INTO
+		interestingCompany_tb(userId, comId)
+		VALUES (#{userId}, #{comId})
+	</insert>
+
+	<select id="selectInterestingCompany" resultType="string" 
+	parameterType="string">
+		SELECT comId
+		FROM interestingCompany_tb
+		WHERE userId = #{userId}
+	</select>
+
+	<delete id="deleteInterestingCompany" parameterType="Hashmap">
+		DELETE interestingCompany_tb
+		WHERE comId = #{comId} AND userId = #{userId}
+	</delete>
+	
+</mapper>

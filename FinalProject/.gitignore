@@ -1,5 +1,6 @@
 /target/
 <<<<<<< HEAD
+<<<<<<< HEAD
 /bin/
 =======
 *.class
@@ -15,3 +16,6 @@ Thumbs.db
 .externalToolBuilders
 .project
 >>>>>>> 47f2c3bad092c29ae53868d1e71e79c368f9cfd3
+=======
+/bin/
+>>>>>>> hyun
