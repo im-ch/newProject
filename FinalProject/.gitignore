@@ -1,1 +1,23 @@
 /target/
+/bin/
+<<<<<<< HEAD
+=======
+
+>>>>>>> 715db3dfe11335572a9d0812d35d1c3a3a1face3
+*.class
+pom.properties
+Thumbs.db
+.settings
+.classpath
+/bin
+*.java.hsp
+*.sonarj
+.DS_Store
+.springBeans
+.externalToolBuilders
+.project
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 715db3dfe11335572a9d0812d35d1c3a3a1face3
