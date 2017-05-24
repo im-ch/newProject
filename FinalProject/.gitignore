@@ -1,4 +1,8 @@
 /target/
+<<<<<<< HEAD
+<<<<<<< HEAD
+/bin/
+=======
 *.class
 pom.properties
 Thumbs.db
@@ -11,3 +15,7 @@ Thumbs.db
 .springBeans
 .externalToolBuilders
 .project
+>>>>>>> 47f2c3bad092c29ae53868d1e71e79c368f9cfd3
+=======
+/bin/
+>>>>>>> hyun

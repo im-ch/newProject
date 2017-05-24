@@ -2,15 +2,8 @@
     <wb-module deploy-name="FinalProject-0.0.1-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-<<<<<<< HEAD
-=======
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
-<<<<<<< HEAD
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-=======
->>>>>>> hyun
->>>>>>> 6ba032159f4cc29a6c73ec4725c54884cd6b6515
         <property name="java-output-path" value="/FinalProject/build/classes"/>
         <property name="context-root" value="FinalProject"/>
     </wb-module>
