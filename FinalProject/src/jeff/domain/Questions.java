@@ -9,6 +9,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.stereotype.Component;
 
+import jeff.domain.Question;
+
 @XmlRootElement(name="questions")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Component

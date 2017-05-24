@@ -7,6 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.stereotype.Component;
 
+import jeff.domain.Coupons;
+
 @XmlRootElement(name="company")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Component
