@@ -1,4 +1,4 @@
-package test;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -48,9 +48,5 @@ public class CouponStoreLogicTest {
 		
 	}
 	
-	private void sysout() {
-		// TODO Auto-generated method stub
 
-	}
-	
 }
