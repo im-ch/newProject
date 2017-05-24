@@ -43,14 +43,14 @@ public class InterestingCompanyStoreLogicTest {
 	// store.deleteInterestingCompany(map);
 	// }
 
-	@Test
-	public void testSelectInterestingCompany() {
-		List<String> list = new ArrayList<>();
-		list = store.selectInterestingCompany("heehyun");
-		
-		assertEquals(list.size(), 3);
-		assertEquals(list.get(0), "789");
-
-	}
+//	@Test
+//	public void testSelectInterestingCompany() {
+//		List<String> list = new ArrayList<>();
+//		list = store.selectInterestingCompany("heehyun");
+//		
+//		assertEquals(list.size(), 3);
+//		assertEquals(list.get(0), "789");
+//
+//	}
 
 }

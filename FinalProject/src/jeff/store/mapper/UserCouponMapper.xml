@@ -3,8 +3,30 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="jeff.store.mapper.UserCouponMapper">
-  
-  
-  </mapper>
+
+<mapper namespace="jeff.store.mapper.UserCouponMapper">
+
+	<insert id="createUserCoupon" parameterType="map">
+		INSERT INTO
+		User_Coupon_tb(userId, couponId)
+		VALUES (#{userId}, #{couponId})
+	</insert>
+
+	<delete id="deleteUserCoupon" parameterType="map">
+		DELETE
+		User_Coupon_tb
+		WHERE userId = #{userId} AND couponId = #{couponId}
+	</delete>
+
+	<delete id="useUserCoupon" parameterType="map">
+		DELETE User_Coupon_tb
+		WHERE userId = #{userId} AND couponId = #{couponId}
+	</delete>
+
+	<select id="selectUserCoupon" parameterType="string" resultType="Integer">
+		SELECT couponId
+		FROM User_Coupon_tb
+		WHERE userId = #{userId}
+	</select>
+
+</mapper>
