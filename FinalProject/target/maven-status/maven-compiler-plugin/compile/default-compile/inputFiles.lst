@@ -3,7 +3,10 @@ C:\Users\imch\git\newProject\FinalProject\src\jeff\store\mapper\ReviewMapper.jav
 C:\Users\imch\git\newProject\FinalProject\src\jeff\webController\ReviewController.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\service\ReportReviewService.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\service\SalesService.java
+<<<<<<< HEAD
 C:\Users\imch\git\newProject\FinalProject\src\jeff\test\CouponStoreLogicTest.java
+=======
+>>>>>>> 47f2c3bad092c29ae53868d1e71e79c368f9cfd3
 C:\Users\imch\git\newProject\FinalProject\src\jeff\mobileController\ReportReviewMobileController.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\store\ReviewStore.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\mobileController\UserCouponMobileController.java
@@ -11,7 +14,10 @@ C:\Users\imch\git\newProject\FinalProject\src\jeff\store\mapper\SalesMapper.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\store\SalesStore.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\webController\UserController.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\service\UserService.java
+<<<<<<< HEAD
 C:\Users\imch\git\newProject\FinalProject\src\jeff\store\logic\JeffSessionFactory.java
+=======
+>>>>>>> 47f2c3bad092c29ae53868d1e71e79c368f9cfd3
 C:\Users\imch\git\newProject\FinalProject\src\jeff\store\mapper\AllianceMapper.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\store\mapper\AnswerMapper.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\webController\InterestingCompanyController.java
@@ -77,7 +83,10 @@ C:\Users\imch\git\newProject\FinalProject\src\jeff\domain\Company.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\service\logic\CompanyServiceLogic.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\store\UserCouponStore.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\webController\AnswerController.java
+<<<<<<< HEAD
 C:\Users\imch\git\newProject\FinalProject\src\test\CouponStoreLogicTest.java
+=======
+>>>>>>> 47f2c3bad092c29ae53868d1e71e79c368f9cfd3
 C:\Users\imch\git\newProject\FinalProject\src\jeff\service\logic\ReportReviewServiceLogic.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\webController\AllianceController.java
 C:\Users\imch\git\newProject\FinalProject\src\jeff\webController\UserCouponController.java

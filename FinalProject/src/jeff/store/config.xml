@@ -21,11 +21,27 @@
 		<typeAlias type="jeff.domain.User" alias="User" />
 	</typeAliases>
 
-	<mappers>
+	<environments default="dev">
+		<environment id="dev">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+				<property name="username" value="Jeff" />
+				<property name="password" value="Jeff" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	 <mappers>
+	 <!--
 		<mapper resource="jeff/store/mapper/AllianceMapper.xml" />
 		<mapper resource="jeff/store/mapper/AnswerMapper.xml" />
 		<mapper resource="jeff/store/mapper/CompanyMapper.xml" />
+		-->
+	 
 		<mapper resource="jeff/store/mapper/CouponMapper.xml" />
+		<!-- 
 		<mapper resource="jeff/store/mapper/InterestingCompanyMapper.xml" />
 		<mapper resource="jeff/store/mapper/QuestionMapper.xml" />
 		<mapper resource="jeff/store/mapper/ReportReviewMapper.xml" />
@@ -33,9 +49,7 @@
 		<mapper resource="jeff/store/mapper/SalesMapper.xml" />
 		<mapper resource="jeff/store/mapper/UserCouponMapper.xml" />
 		<mapper resource="jeff/store/mapper/UserMapper.xml" />
-	</mappers>
-
-
+		-->
+	</mappers> 
 
 </configuration>
-  
