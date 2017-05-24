@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="jeff.store.mapper.ReportReviewMapper">
+  
+  	<sql id ="reportSelect">
+  		select reviewId, reportReason
+  		from reportReview_tb
+  	</sql>
+  	<select id="selectReportReview" parameterType="int" resultType="ReportReview">
+  		<include refid="reportSelect"/>
+  		where reviewId=#{reviewId}
+  	</select>
+  	
+  	<select id="selectAllReportReview" resultType="ReportReview">
+  		<include refid="reportSelect"/>
+  	</select>
+  	
+  	<insert id="createReportReview" parameterType="ReportReview">
+  		<selectKey keyProperty="reviewId" resultType="int" order="BEFORE">
+    		select reportReview_tb_seq.nextval FROM DUAL
+  		</selectKey>
+  		insert into reportReview_tb(reviewId, reportReason)
+  		values
+  		(#{reviewId}, #{reportReason})
+  	</insert>	
+  	
+  	<delete id="deleteReportReview" parameterType="int">
+  		delete from reportReview_tb
+  		where reviewId=#{reviewId}
+  	</delete>
+  
+  </mapper>
