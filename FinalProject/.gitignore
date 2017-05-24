@@ -1,9 +1,12 @@
 /target/
 /bin/
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 715db3dfe11335572a9d0812d35d1c3a3a1face3
+=======
+>>>>>>> eojin
 *.class
 pom.properties
 Thumbs.db
@@ -15,9 +18,13 @@ Thumbs.db
 .DS_Store
 .springBeans
 .externalToolBuilders
+<<<<<<< HEAD
 .project
 
 <<<<<<< HEAD
 =======
 
 >>>>>>> 715db3dfe11335572a9d0812d35d1c3a3a1face3
+=======
+.project
+>>>>>>> eojin
