@@ -12,4 +12,5 @@ public interface CompanyService {
 	public List<Company> findAllCompany();
 	public Company findCompany(String companyId);
 	public boolean login(Company company);
+	public List<Company> findCompanyByCategory(String category);
 }

@@ -56,6 +56,10 @@ public class CompanyServiceLogic implements CompanyService{
 		return false;
 	}
 
+	@Override
+	public List<Company> findCompanyByCategory(String category) {
+		return store.selectCompanyByCategory(category);
+	}
 	
 	
 }
