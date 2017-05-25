@@ -47,7 +47,7 @@ public class AnswerStoreLogicTest {
 //	@Test
 //	public void testSelectAllAnswer() {
 //		List<Answer> list = store.selectAllAnswer(1);
-//		assertEquals(3, list.size());
+//		assertEquals(2, list.size());
 //	}
 
 }

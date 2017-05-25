@@ -19,8 +19,8 @@ public class User {
 	private String password;
 	private String email;
 	private int phoneNumber;
-	@XmlElement(name="coupons")
-	private Coupons couponList;
+	@XmlElement(name="coupon")
+	private List<Coupon> couponList;
 	@XmlElement(name="company")
 	private List<Company> companyList;
 	public String getName() {
@@ -53,10 +53,10 @@ public class User {
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public Coupons getCouponList() {
+	public List<Coupon> getCouponList() {
 		return couponList;
 	}
-	public void setCouponList(Coupons couponList) {
+	public void setCouponList(List<Coupon> couponList) {
 		this.couponList = couponList;
 	}
 	public List<Company> getCompanyList() {
