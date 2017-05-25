@@ -23,7 +23,14 @@ public class Company {
 	private String location;
 	@XmlElement(name="coupon")
 	private List<Coupon> couponList;
+	private String category;
 	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public String getOwnerName() {
 		return ownerName;
 	}
