@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import jeff.domain.Coupon;
 import jeff.store.UserCouponStore;
 import jeff.store.mapper.InterestingCompanyMapper;
 import jeff.store.mapper.UserCouponMapper;

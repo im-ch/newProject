@@ -8,14 +8,12 @@ import org.springframework.stereotype.Service;
 import jeff.domain.Alliance;
 import jeff.service.AllianceService;
 import jeff.store.AllianceStore;
-import jeff.store.logic.AllianceStoreLogic;
 
 @Service
-public class AllianceServiceLogic implements AllianceService{
-	
+public class AllianceServiceLogic implements AllianceService {
+
 	@Autowired
 	private AllianceStore store;
-	
 
 	@Override
 	public Alliance findAlliance(String companyId) {
@@ -41,7 +39,5 @@ public class AllianceServiceLogic implements AllianceService{
 	public void updateAlliance(Alliance alliance) {
 		store.modifyAlliance(alliance);
 	}
-	
-	
 
 }

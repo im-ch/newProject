@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import jeff.domain.Company;
 
 public class InterestingCompanyStoreLogicTest {
 

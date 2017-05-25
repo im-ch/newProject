@@ -8,12 +8,8 @@ import org.springframework.stereotype.Service;
 import jeff.domain.Answer;
 import jeff.domain.Question;
 import jeff.service.QuestionService;
-import jeff.store.AllianceStore;
 import jeff.store.AnswerStore;
 import jeff.store.QuestionStore;
-import jeff.store.logic.AllianceStoreLogic;
-import jeff.store.logic.AnswerStoreLogic;
-import jeff.store.logic.QuestionStoreLogic;
 
 @Service
 public class QuestionServiceLogic implements QuestionService{
