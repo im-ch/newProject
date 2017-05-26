@@ -18,8 +18,8 @@ public class AllianceServiceLogic implements AllianceService{
 	
 
 	@Override
-	public Alliance findAlliance(String companyId) {
-		return store.selectAlliance(companyId);
+	public Alliance findAlliance(String comId) {
+		return store.selectAlliance(comId);
 	}
 
 	@Override
@@ -33,8 +33,8 @@ public class AllianceServiceLogic implements AllianceService{
 	}
 
 	@Override
-	public void removeAlliance(String companyId) {
-		store.deleteAlliance(companyId);
+	public void removeAlliance(String comId) {
+		store.deleteAlliance(comId);
 	}
 
 	@Override

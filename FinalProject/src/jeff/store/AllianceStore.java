@@ -6,13 +6,13 @@ import jeff.domain.Alliance;
 
 public interface AllianceStore {
 
-	Alliance selectAlliance(String companyId);
+	Alliance selectAlliance(String comId);
 
 	List<String> selectAllAlliance();
 
 	void createAlliance(Alliance alliance);
 
-	void deleteAlliance(String companyId);
+	void deleteAlliance(String comId);
 
 	void modifyAlliance(Alliance alliance);
 
