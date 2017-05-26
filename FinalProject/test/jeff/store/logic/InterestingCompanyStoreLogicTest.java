@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import jeff.domain.Company;
 
 public class InterestingCompanyStoreLogicTest {
 
@@ -20,15 +19,15 @@ public class InterestingCompanyStoreLogicTest {
 		store = new InterestingCompanyStoreLogic();
 	}
 
-	// @Test
-	// public void testCreateInterestingCompany() {
-	// HashMap<String, Object> map = new HashMap<String, Object>();
-	// String userId = "heehyun";
-	// Object comId = "789";
-	// map.put("userId", userId);
-	// map.put("comId", comId);
-	// store.createInterestingCompany(map);
-	// }
+//	 @Test
+//	 public void testCreateInterestingCompany() {
+//	 HashMap<String, Object> map = new HashMap<String, Object>();
+//	 String userId = "heehyun";
+//	 Object comId = "dd";
+//	 map.put("userId", userId);
+//	 map.put("comId", comId);
+//	 store.createInterestingCompany(map);
+//	 }
 
 	// @Test
 	// public void testDeleteInterestingCompany() {

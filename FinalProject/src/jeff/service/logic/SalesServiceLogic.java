@@ -8,19 +8,17 @@ import org.springframework.stereotype.Service;
 import jeff.domain.Sales;
 import jeff.service.SalesService;
 import jeff.store.SalesStore;
-import jeff.store.logic.SalesStoreLogic;
 
 @Service
-public class SalesServiceLogic implements SalesService{
-	
+public class SalesServiceLogic implements SalesService {
+
 	@Autowired
 	private SalesStore store;
-	
-	
+
 	@Override
 	public void registSales(Sales sales) {
 		store.createSales(sales);
-		
+
 	}
 
 	@Override
@@ -42,7 +40,5 @@ public class SalesServiceLogic implements SalesService{
 	public Sales findBySalesId(int salesId) {
 		return store.selectBySalesId(salesId);
 	}
-	
-	
 
 }
