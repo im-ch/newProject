@@ -49,6 +49,7 @@ public class QuestionStoreLogicTest {
 //		Question q = store.selectQuestion(1);
 //		List<Answer> list = q.getAnswerList();
 //		System.out.println(list.get(0).getAnswerId());
+//		System.out.println(list.size());
 //		assertNotNull(list);
 //	}
 
