@@ -85,4 +85,15 @@ public class CompanyStoreLogic implements CompanyStore {
 		return false;
 	}
 
+	@Override
+	public List<Company> selectCompanyByCategory(String category) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+
+		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
+		List<Company> companyList = mapper.selectCompanyByCategory(category);
+		session.close();
+
+		return companyList;
+	}
+
 }

@@ -7,8 +7,16 @@ import jeff.domain.Coupon;
 public interface CouponService {
 
 	public void registCoupon(Coupon coupon);
+
 	public void removeCoupon(int couponId);
+
 	public void updateCoupon(Coupon coupon);
+
+	public List<Coupon> findAllCoupon();
+
 	public List<Coupon> findCouponByCompany(String companyId);
+
 	public Coupon findCoupon(int couponId);
+
+	void removeExprCoupon();
 }

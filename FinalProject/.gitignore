@@ -1,2 +1,17 @@
 /target/
+<<<<<<< HEAD
 /bin/
+=======
+*.class
+pom.properties
+Thumbs.db
+.settings
+.classpath
+/bin
+*.java.hsp
+*.sonarj
+.DS_Store
+.springBeans
+.externalToolBuilders
+.project
+>>>>>>> 5887d7a24ff82250c4922494a527e269aed54565

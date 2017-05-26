@@ -17,7 +17,14 @@ public class Coupon {
 	private String couponContent;
 	private int couponId;
 	private Date expiryDate;
+	private String comId;
 	
+	public String getComId() {
+		return comId;
+	}
+	public void setComId(String comId) {
+		this.comId = comId;
+	}
 	public String getCouponName() {
 		return couponName;
 	}
