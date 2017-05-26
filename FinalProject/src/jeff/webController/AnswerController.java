@@ -1,14 +1,5 @@
 package jeff.webController;
 
-<<<<<<< HEAD
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.servlet.ModelAndView;
-
-import jeff.domain.Question;
-=======
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,14 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jeff.domain.Answer;
 import jeff.service.QuestionService;
->>>>>>> eojin
+
 
 @Controller
 @RequestMapping("answer")
 public class AnswerController {
-<<<<<<< HEAD
-	
-=======
+
 
 	@Autowired
 	private QuestionService service;
@@ -55,5 +44,4 @@ public class AnswerController {
 		service.updateAnswer(answer);
 		return "redirect:questionDetail?QuestionId=" + answer.getQuestionId();
 	}
->>>>>>> eojin
 }
