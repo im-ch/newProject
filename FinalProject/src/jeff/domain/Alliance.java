@@ -7,6 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.stereotype.Component;
 
+import jeff.domain.Company;
+
 @XmlRootElement(name = "alliance")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Component

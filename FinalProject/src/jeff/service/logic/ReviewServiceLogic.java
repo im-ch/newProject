@@ -1,5 +1,7 @@
 package jeff.service.logic;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class ReviewServiceLogic implements ReviewService{
 
 	@Override
 	public void registReview(Review review) {
+		Date today = new Date(Calendar.getInstance().getTimeInMillis());
+		review.setRegDate(today);
 		store.createReview(review);
 	}
 
@@ -27,17 +31,16 @@ public class ReviewServiceLogic implements ReviewService{
 
 	@Override
 	public void updateReview(Review review) {
+		Date today = new Date(Calendar.getInstance().getTimeInMillis());
+		review.setRegDate(today);
 		store.modifyReview(review);
 	}
 
-	@Override
-	public List<Review> findReviewByCompany(String companyId) {
-		return store.selectReviewByCompany(companyId);
-	}
+	
 
-	@Override
-	public Review findReviewByReviewId(int reviewId) {
-		return store.selectReviewByReviewId(reviewId);
-	}
+//	@Override
+//	public Review findReviewByReviewId(int reviewId) {
+//		return store.selectReviewByReviewId(reviewId);
+//	}
 	
 }

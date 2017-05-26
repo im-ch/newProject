@@ -12,8 +12,7 @@ public interface ReviewMapper {
 
 	void deleteReview(int reviewId);
 
-	Review selectReviewByReviewId(int reviewId);
+//	Review selectReviewByReviewId(int reviewId);
 
-	List<Review> selectReviewByCompany(String companyId);
 
 }
