@@ -15,10 +15,10 @@ import jeff.store.mapper.AllianceMapper;
 public class AllianceStoreLogic implements AllianceStore{
 	
 	@Override
-	public Alliance selectAlliance(String companyId) {
+	public Alliance selectAlliance(String comId) {
 		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		AllianceMapper mapper = session.getMapper(AllianceMapper.class);
-		Alliance alliance = mapper.selectAlliance(companyId);
+		Alliance alliance = mapper.selectAlliance(comId);
 		session.close();
 		return alliance;
 	}
@@ -42,10 +42,10 @@ public class AllianceStoreLogic implements AllianceStore{
 	}
 
 	@Override
-	public void deleteAlliance(String companyId) {
+	public void deleteAlliance(String comId) {
 		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		AllianceMapper mapper = session.getMapper(AllianceMapper.class);
-		mapper.deleteAlliance(companyId);
+		mapper.deleteAlliance(comId);
 		session.close();
 	}
 
