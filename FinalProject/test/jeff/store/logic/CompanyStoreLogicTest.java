@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import jeff.domain.Company;
+import jeff.domain.Coupon;
 import jeff.store.CompanyStore;
 
 public class CompanyStoreLogicTest {
@@ -38,12 +39,19 @@ public class CompanyStoreLogicTest {
 //	public void testSelectAllCompany() {
 //		fail("Not yet implemented");
 //	}
-//
+
 //	@Test
 //	public void testSelectCompany() {
-//		fail("Not yet implemented");
+//		Company c = store.selectCompany("ckdgml");
+//		assertNotNull(c);
+//		List<Coupon> list = c.getCouponList();
+//		assertNotNull(list);
+//		
+//		for(Coupon co : list){
+//			System.out.println(co.getCouponContent());
+//		}
 //	}
-//
+
 //	@Test
 //	public void testSelectCompanyByName() {
 //		fail("Not yet implemented");
