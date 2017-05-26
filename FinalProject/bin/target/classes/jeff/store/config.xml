@@ -64,7 +64,7 @@
 		<mapper resource="jeff/store/mapper/UserCouponMapper.xml" />
 		<mapper resource="jeff/store/mapper/UserMapper.xml" />
 	</mappers> 
->>>>>>> 1481de2191b931685db23d51afe76dca3e4b5f65
+>>>>>>> 5887d7a24ff82250c4922494a527e269aed54565
 
 </configuration>
   
