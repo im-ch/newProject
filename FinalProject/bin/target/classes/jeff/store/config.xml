@@ -33,6 +33,7 @@
       </environment>
    </environments>
 
+
     <mappers>
     
       <mapper resource="jeff/store/mapper/AllianceMapper.xml" />
