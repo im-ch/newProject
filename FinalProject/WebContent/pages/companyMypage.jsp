@@ -12,7 +12,7 @@
 </head>
 <body>
 	<p>기업 리스트 뿌려보겠음</p>
-	<form method="GET" action="${ctx }/allianceList">
+	<form method="GET" action="${ctx }/alliance/list.do">
 		<p>gogogogo</p>
 		<button type="submit">확인</button>
 	</form>

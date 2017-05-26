@@ -51,7 +51,7 @@ public class AllianceController {
 		return "/allianceDetail.jsp";
 	}
 
-	@RequestMapping("list")
+	@RequestMapping("list.do")
 	public String findAllianceCompany(Model model, HttpServletRequest req) {
 		System.out.println("Dd");
 		HttpSession session = req.getSession();
