@@ -13,11 +13,9 @@ import jeff.store.mapper.UserCouponMapper;
 @Repository
 public class UserCouponStoreLogic implements UserCouponStore {
 
-	private SqlSession session = JeffSessionFactory.getInstance().getSession();
-
 	@Override
 	public boolean createUserCoupon(String userId, int couponId) {
-
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		UserCouponMapper mapper = session.getMapper(UserCouponMapper.class);
 		boolean b = mapper.createUserCoupon(userId, couponId);
 		session.close();
@@ -26,6 +24,7 @@ public class UserCouponStoreLogic implements UserCouponStore {
 
 	@Override
 	public void deleteUserCoupon(String userId, int couponId) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		UserCouponMapper mapper = session.getMapper(UserCouponMapper.class);
 		mapper.deleteUserCoupon(userId, couponId);
 		session.close();
@@ -34,6 +33,7 @@ public class UserCouponStoreLogic implements UserCouponStore {
 
 	@Override
 	public void useUserCoupon(String userId, int couponId) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		UserCouponMapper mapper = session.getMapper(UserCouponMapper.class);
 		mapper.deleteUserCoupon(userId, couponId);
 		session.close();
@@ -41,6 +41,7 @@ public class UserCouponStoreLogic implements UserCouponStore {
 
 	@Override
 	public List<Integer> selectUserCoupon(String userId) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		UserCouponMapper mapper = session.getMapper(UserCouponMapper.class);
 		List<Integer> list = new ArrayList<>();
 		list = mapper.selectUserCoupon(userId);

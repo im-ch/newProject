@@ -16,6 +16,7 @@ import jeff.domain.Company;
 import jeff.service.CompanyService;
 import jeff.service.InterestingCompanyService;
 
+@RequestMapping(value="interestingCompany")
 @Controller
 public class InterestingCompanyController {
 
@@ -24,38 +25,37 @@ public class InterestingCompanyController {
 	@Autowired
 	private CompanyService companyService;
 
-	@RequestMapping(value = "registerInterestingCompany")
+	@RequestMapping(value = "/register")
 	public String registInterestingCompany(HttpServletRequest req, String comId) {
 
-		HttpSession session = req.getSession(false);
+		HttpSession session = req.getSession();
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
-//		if (session == null || session.getAttribute("userId") == null) {
-//			return "redirect:login";
-//		}
+		if (session == null || session.getAttribute("userId") == null) {
+			return "redirect:login.jsp";
+		}
 
-		map.put("userId", "heehyun");
+		map.put("userId", (String) session.getAttribute("userId"));
 		map.put("comId", comId);
 
 		service.registInterestingCompany(map);
 
-		return "redirect:interestingCompanyList";
+		return "redirect:interestingCompany/list";
 
 	}
 
-	@RequestMapping(value = "interestingCompanyList")
+	@RequestMapping(value = "/list")
 	public String findInterestingCompany(HttpServletRequest req, Model model) {
 
-		HttpSession session = req.getSession(false);
+		HttpSession session = req.getSession();
 
 		String userId = (String) session.getAttribute("userId");
 
-//		if (session == null || session.getAttribute("userId") == null) {
-//			return "redirect:login";
-//		}
+		if (session == null || session.getAttribute("userId") == null) {
+			return "redirect:login.jsp";
+		}
 
-		List<String> comList = service.findInterestingCompany("heehyun");
-		System.out.println(comList.size());
+		List<String> comList = service.findInterestingCompany(userId);
 		List<Company> list = new ArrayList<>();
 
 		for (int i = 0; i < comList.size(); i++) {
@@ -66,15 +66,23 @@ public class InterestingCompanyController {
 		return "interestingCompany.jsp";
 	}
 
-	@RequestMapping(value = "removeInterestingCompany")
+	@RequestMapping(value = "/remove")
 	public String removeInterestingCompany(HttpServletRequest req, String comId) {
-		
-		
-		return null;
-	}
 
-	// findInterestingCompany(req: HttpServletRequest, model : Model) : String
-	// removeInterestingCompany(req: HttpServletRequest, companyId : String) :
-	// String
+		HttpSession session = req.getSession();
+
+		if (session == null || session.getAttribute("userId") == null) {
+			return "redirect:login.jsp";
+		}
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("userId", (String) session.getAttribute("userId"));
+		map.put("comId", comId);
+
+		service.removeInterestingCompany(map);
+
+		return "redirect:interestingCompany/list";
+	}
 
 }
