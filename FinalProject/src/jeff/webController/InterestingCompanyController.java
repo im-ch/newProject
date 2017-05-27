@@ -54,7 +54,6 @@ public class InterestingCompanyController {
 //		if (session == null || session.getAttribute("userId") == null) {
 //			return "redirect:login.jsp";
 //		}
-		
 		System.out.println("¿Ô´Ù°¨");
 		List<String> comList = service.findInterestingCompany("heehyun");
 		System.out.println(comList.size());
@@ -62,10 +61,10 @@ public class InterestingCompanyController {
 
 		for (int i = 0; i < comList.size(); i++) {
 			list.add(companyService.findCompany(comList.get(i)));
+			System.out.println(list.get(i).toString());
 		}
 		model.addAttribute("company", list);
-
-		return "NewFile.jsp";
+		return "/interestingCompany.jsp";
 	}
 
 	@RequestMapping(value = "/remove")
