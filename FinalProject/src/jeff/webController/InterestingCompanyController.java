@@ -11,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import jeff.domain.Company;
 import jeff.service.CompanyService;
 import jeff.service.InterestingCompanyService;
 
-@RequestMapping(value="interestingCompany")
 @Controller
 public class InterestingCompanyController {
 
@@ -44,18 +44,20 @@ public class InterestingCompanyController {
 
 	}
 
-	@RequestMapping(value = "/list")
+	@RequestMapping(value = "/list.do", method=RequestMethod.GET)
 	public String findInterestingCompany(HttpServletRequest req, Model model) {
 
-		HttpSession session = req.getSession();
-
-		String userId = (String) session.getAttribute("userId");
-
-		if (session == null || session.getAttribute("userId") == null) {
-			return "redirect:login.jsp";
-		}
-
-		List<String> comList = service.findInterestingCompany(userId);
+//		HttpSession session = req.getSession();
+//
+//		String userId = (String) session.getAttribute("userId");
+//
+//		if (session == null || session.getAttribute("userId") == null) {
+//			return "redirect:login.jsp";
+//		}
+		
+		System.out.println("¿Ô´Ù°¨");
+		List<String> comList = service.findInterestingCompany("heehyun");
+		System.out.println(comList.size());
 		List<Company> list = new ArrayList<>();
 
 		for (int i = 0; i < comList.size(); i++) {

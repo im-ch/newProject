@@ -166,7 +166,7 @@
                             </span>
                         </span>
                         <a href="gallery-single.htm"><img src="img/gallery/gallery-img-1-3col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">Custom Illustration</a>For an international add campaign.</span>
+                        <span class="project-details"><a href="gallery-single.htm">${company.comId }</a>For an international add campaign.</span>
                     </li>
 
 
