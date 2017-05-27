@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jeff.domain.Company;
 import jeff.service.CompanyService;
 import jeff.service.InterestingCompanyService;
-
+@RequestMapping(value = "interesting")
 @Controller
 public class InterestingCompanyController {
 
@@ -65,7 +65,7 @@ public class InterestingCompanyController {
 		}
 		model.addAttribute("company", list);
 
-		return "interestingCompany.jsp";
+		return "NewFile.jsp";
 	}
 
 	@RequestMapping(value = "/remove")
