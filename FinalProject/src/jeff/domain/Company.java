@@ -1,11 +1,15 @@
 package jeff.domain;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.stereotype.Component;
+
+import jeff.domain.Coupons;
 
 @XmlRootElement(name="company")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -19,9 +23,16 @@ public class Company {
 	private int comPhoneNumber;
 	private String comName;
 	private String location;
-	@XmlElement(name="coupons")
-	private Coupons couponList;
+	@XmlElement(name="coupon")
+	private List<Coupon> couponList;
+	private String category;
 	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public String getOwnerName() {
 		return ownerName;
 	}
@@ -64,10 +75,10 @@ public class Company {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public Coupons getCouponList() {
+	public List<Coupon> getCouponList() {
 		return couponList;
 	}
-	public void setCouponList(Coupons couponList) {
+	public void setCouponList(List<Coupon> couponList) {
 		this.couponList = couponList;
 	}
 	

@@ -1,15 +1,14 @@
 package jeff.store;
 
+import java.util.HashMap;
 import java.util.List;
-
-import jeff.domain.Company;
 
 public interface InterestingCompanyStore {
 
-	void createInterestingCompany(String userId, String companyId);
+	void createInterestingCompany(HashMap<String, Object> map);
 
-	void deleteInterestingCompany(String userId, String companyId);
+	void deleteInterestingCompany(HashMap<String, Object> map);
 
-	List<Company> selectInterestingCompany(String userId);
+	List<String> selectInterestingCompany(String userId);
 
 }

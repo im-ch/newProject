@@ -2,47 +2,70 @@ package jeff.service.logic;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import jeff.domain.Company;
 import jeff.service.CompanyService;
+import jeff.store.CompanyStore;
+import jeff.store.logic.CompanyStoreLogic;
 
+@Service
 public class CompanyServiceLogic implements CompanyService{
+	
+	@Autowired
+	private CompanyStore store;
+	
 
 	@Override
 	public void registCompany(Company company) {
-		// TODO Auto-generated method stub
+		
+		store.createCompany(company);
+		
 		
 	}
 
 	@Override
-	public void removeCompany(String companyId) {
-		// TODO Auto-generated method stub
+	public void removeCompany(String comId) {
+		
+		store.deleteCompany(comId);
 		
 	}
 
 	@Override
 	public void updateCompany(Company company) {
-		// TODO Auto-generated method stub
+		
+		store.modifyCompany(company);
 		
 	}
 
 	@Override
 	public List<Company> findAllCompany() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return store.selectAllCompany();
 	}
 
 	@Override
-	public Company findCompany(String companyId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Company findCompany(String comId) {
+		return store.selectCompany(comId);
 	}
 
 	@Override
 	public boolean login(Company company) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
+	@Override
+	public List<Company> findCompanyByCategory(String category) {
+		return store.selectCompanyByCategory(category);
+	}
+
+	@Override
+	public Company findCompanyByName(String comName) {
+		
+		return store.selectCompanyByName(comName);
+	}
 	
 	
 }
