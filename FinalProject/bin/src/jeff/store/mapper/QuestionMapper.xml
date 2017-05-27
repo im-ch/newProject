@@ -19,6 +19,10 @@
 	<insert id="createQuestion" parameterType="Question">
 =======
 	<insert id="createQuestion" parameterType="Question" >
+<<<<<<< HEAD
+>>>>>>> this
+=======
+>>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
 >>>>>>> this
 	  	<selectKey keyProperty="questionId" resultType="int" order="BEFORE">
 			select question_tb_seq.nextval FROM DUAL
@@ -30,6 +34,10 @@
 
 =======
 	
+<<<<<<< HEAD
+>>>>>>> this
+=======
+>>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
 >>>>>>> this
 	<delete id="deleteQuestion" parameterType="int">
 		DELETE FROM question_tb 

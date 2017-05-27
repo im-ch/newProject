@@ -8,13 +8,13 @@ public interface CompanyMapper {
 	
 	void createCompany(Company company);
 
-	void deleteCompany(String companyId);
+	void deleteCompany(String comId);
 
 	void modifyCompany(Company company);
 
 	List<Company> selectAllCompany();
 	
-	Company selectCompany (String companyId);
+	Company selectCompany (String comId);
 	
 	Company selectCompanyByName(String comName);
 	
