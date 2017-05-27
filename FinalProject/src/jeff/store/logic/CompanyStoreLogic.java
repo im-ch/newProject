@@ -25,11 +25,11 @@ public class CompanyStoreLogic implements CompanyStore {
 	}
 
 	@Override
-	public void deleteCompany(String companyId) {
+	public void deleteCompany(String comId) {
 		SqlSession session = JeffSessionFactory.getInstance().getSession();
 
 		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
-		mapper.deleteCompany(companyId);
+		mapper.deleteCompany(comId);
 
 	}
 
@@ -57,11 +57,11 @@ public class CompanyStoreLogic implements CompanyStore {
 	}
 
 	@Override
-	public Company selectCompany(String companyId) {
+	public Company selectCompany(String comId) {
 		SqlSession session = JeffSessionFactory.getInstance().getSession();
 
 		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
-		Company company = mapper.selectCompany(companyId);
+		Company company = mapper.selectCompany(comId);
 
 		session.close();
 

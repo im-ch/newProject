@@ -26,9 +26,9 @@ public class CompanyServiceLogic implements CompanyService{
 	}
 
 	@Override
-	public void removeCompany(String companyId) {
+	public void removeCompany(String comId) {
 		
-		store.deleteCompany(companyId);
+		store.deleteCompany(comId);
 		
 	}
 
@@ -46,8 +46,8 @@ public class CompanyServiceLogic implements CompanyService{
 	}
 
 	@Override
-	public Company findCompany(String companyId) {
-		return store.selectCompany(companyId);
+	public Company findCompany(String comId) {
+		return store.selectCompany(comId);
 	}
 
 	@Override
@@ -59,6 +59,12 @@ public class CompanyServiceLogic implements CompanyService{
 	@Override
 	public List<Company> findCompanyByCategory(String category) {
 		return store.selectCompanyByCategory(category);
+	}
+
+	@Override
+	public Company findCompanyByName(String comName) {
+		
+		return store.selectCompanyByName(comName);
 	}
 	
 	
