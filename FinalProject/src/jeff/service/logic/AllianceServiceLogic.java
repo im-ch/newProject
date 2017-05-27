@@ -8,21 +8,16 @@ import org.springframework.stereotype.Service;
 import jeff.domain.Alliance;
 import jeff.service.AllianceService;
 import jeff.store.AllianceStore;
-import jeff.store.logic.AllianceStoreLogic;
 
 @Service
-public class AllianceServiceLogic implements AllianceService{
-	
+public class AllianceServiceLogic implements AllianceService {
+
 	@Autowired
 	private AllianceStore store;
-	
-	public AllianceServiceLogic() {
-		store = new AllianceStoreLogic();
-	}
 
 	@Override
-	public Alliance findAlliance(String companyId) {
-		return store.selectAlliance(companyId);
+	public Alliance findAlliance(String comId) {
+		return store.selectAlliance(comId);
 	}
 
 	@Override
@@ -36,15 +31,13 @@ public class AllianceServiceLogic implements AllianceService{
 	}
 
 	@Override
-	public void removeAlliance(String companyId) {
-		store.deleteAlliance(companyId);
+	public void removeAlliance(String comId) {
+		store.deleteAlliance(comId);
 	}
 
 	@Override
 	public void updateAlliance(Alliance alliance) {
 		store.modifyAlliance(alliance);
 	}
-	
-	
 
 }

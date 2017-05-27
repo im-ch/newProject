@@ -21,15 +21,16 @@ public class QuestionStoreLogicTest {
 	}
 	
 
-//	@Test
-//	public void testCreateQuestion() {
-//		Question q = new Question();
-//		q.setContent("III");
-//		q.setTitle("III");
-//		q.setWriterId("IIs");
-//		
-//		store.createQuestion(q);
-//	}
+	@Test
+	public void testCreateQuestion() {
+		Question q = new Question();
+		q.setContent("TTT");
+		q.setTitle("TTT");
+		q.setWriterId("TTT");
+		
+		store.createQuestion(q);
+		System.out.println(q.getQuestionId());
+	}
 
 //	@Test
 //	public void testDeleteQuestion() {
@@ -49,6 +50,7 @@ public class QuestionStoreLogicTest {
 //		Question q = store.selectQuestion(1);
 //		List<Answer> list = q.getAnswerList();
 //		System.out.println(list.get(0).getAnswerId());
+//		System.out.println(list.size());
 //		assertNotNull(list);
 //	}
 

@@ -2,8 +2,6 @@ package jeff.service;
 
 import java.util.List;
 
-import jeff.domain.Coupon;
-
 public interface UserCouponService {
 
 	public boolean registUserCoupon(String userId, int couponId);

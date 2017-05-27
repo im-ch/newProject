@@ -33,7 +33,7 @@ public class CouponServiceLogic implements CouponService {
 	@Override
 	public List<Coupon> findCouponByCompany(String companyId) {
 		List<Coupon> list = couponStore.selectCouponByCompany(companyId);
-		return null;
+		return list;
 	}
 
 	@Override

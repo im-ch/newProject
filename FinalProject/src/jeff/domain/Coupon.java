@@ -17,12 +17,13 @@ public class Coupon {
 	private String couponContent;
 	private int couponId;
 	private Date expiryDate;
-	private Company com;
-	public Company getCom() {
-		return com;
+	private String comId;
+	
+	public String getComId() {
+		return comId;
 	}
-	public void setCom(Company com) {
-		this.com = com;
+	public void setComId(String comId) {
+		this.comId = comId;
 	}
 	public String getCouponName() {
 		return couponName;
