@@ -6,7 +6,7 @@
 <title>Piccolo Theme</title>
 </head>
 <body>
-	<a href="/list.do">확인</a>
+	<a href="http://localhost:8080/FinalProject/list.do">확인</a>
 
 
 </body>
