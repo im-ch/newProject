@@ -23,7 +23,7 @@ public class AllianceController {
 	@Autowired
 	private AllianceService service;
 	
-	@RequestMapping(value = "regist", method = RequestMethod.POST)
+	@RequestMapping(value = "/regist", method = RequestMethod.POST)
 	public String registAlliance(Alliance alliance, HttpServletRequest req) {
 		service.registAlliance(alliance);
 		HttpSession session = req.getSession();
@@ -31,27 +31,27 @@ public class AllianceController {
 		return "redirect:/allianceDetail?comId=" + comId;
 	}
 
-	@RequestMapping(value = "update", method = RequestMethod.POST)
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateAlliance(Alliance alliance) {
 		service.updateAlliance(alliance);
 		String comId = alliance.getCompany().getComId();
 		return "redirect:/allianceDetail?comId=" + comId;
 	}
 
-	@RequestMapping("delete")
+	@RequestMapping("/delete")
 	public String removeAlliance(String comId) {
 		service.removeAlliance(comId);
 		return "/companyMypage.jsp";
 	}
 
-	@RequestMapping("detail")
+	@RequestMapping("/detail")
 	public String findAlliance(String comId, Model model) {
 		Alliance alliance = service.findAlliance(comId);
 		model.addAttribute("alliance", alliance);
 		return "/allianceDetail.jsp";
 	}
 
-	@RequestMapping("/list.do")
+	@RequestMapping("/list")
 	public String findAllianceCompany(Model model, HttpServletRequest req) {
 		System.out.println("Dd");
 		HttpSession session = req.getSession();
@@ -75,10 +75,10 @@ public class AllianceController {
 			throw ex;
 		}
 		model.addAttribute("allianceList", allianceList);
-		return "pages/allianceList.jsp";
+		return "/allianceList.jsp";
 	}
 
-	@RequestMapping(value = "companyDetail")
+	@RequestMapping(value = "/companyDetail")
 	public String detailAllianceCompany(String comId, Model model) {
 		Alliance alliance = service.findAlliance(comId);
 		model.addAttribute("alliance", alliance);
