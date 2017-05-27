@@ -44,7 +44,7 @@ public class InterestingCompanyController {
 
 	}
 
-	@RequestMapping(value = "list.do", method=RequestMethod.GET)
+	@RequestMapping(value = "/list", method=RequestMethod.GET)
 	public String findInterestingCompany(HttpServletRequest req, Model model) {
 
 //		HttpSession session = req.getSession();
