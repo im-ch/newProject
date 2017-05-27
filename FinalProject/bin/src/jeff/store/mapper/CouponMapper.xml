@@ -8,9 +8,13 @@
 		<result column="couponName" property="couponName" />
 		<result column="couponContent" property="couponContent" />
 		<result column="ExpiryDate" property="expiryDate" />
+<<<<<<< HEAD
 		<association property="com" column="comId"
 			select="jeff.store.mapper.CompanyMapper.selectCompany" javaType="Company"
 			jdbcType="VARCHAR" />
+=======
+		<result column="comId" property="comId" />
+>>>>>>> this
 	</resultMap>
 
 	<insert id="createCoupon" parameterType="Coupon">
@@ -21,7 +25,11 @@
 		comId)
 		values
 		(#{couponId}, #{couponName}, #{couponContent},
+<<<<<<< HEAD
 		#{expiryDate}, #{com.comId})
+=======
+		#{expiryDate}, #{comId})
+>>>>>>> this
 	</insert>
 
 	<delete id="deleteCoupon" parameterType="int">
@@ -47,10 +55,16 @@
 
 	<select id="selectCouponByCompany" parameterType="string"
 		resultMap="couponMap">
+<<<<<<< HEAD
 		select couponId, couponName, couponContent, ExpiryDate,
 		comId
 		from coupon_tb
 		where comId=#{com.comId}
+=======
+		select couponId, couponName, couponContent, ExpiryDate, comId
+		from coupon_tb
+		where comId=#{comId}
+>>>>>>> this
 	</select>
 
 	<select id="selectCoupon" parameterType="int" resultMap="couponMap">

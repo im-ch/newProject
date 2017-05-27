@@ -12,14 +12,15 @@ import jeff.domain.Coupon;
 import jeff.store.CompanyStore;
 
 public class CompanyStoreLogicTest {
-	
+
 	private CompanyStore store;
-	
+
 	@Before
 	public void CompanyStoreLogicTest() {
 		store = new CompanyStoreLogic();
 	}
 
+<<<<<<< HEAD
 //	@Test
 //	public void testCreateCompany() {
 //		fail("Not yet implemented");
@@ -61,16 +62,47 @@ public class CompanyStoreLogicTest {
 //	public void testLoginCompany() {
 //		fail("Not yet implemented");
 //	}
+=======
+	// @Test
+	// public void testCreateCompany() {
+	// fail("Not yet implemented");
+	// }
+	//
+	// @Test
+	// public void testDeleteCompany() {
+	// fail("Not yet implemented");
+	// }
+	//
+	// @Test
+	// public void testModifyCompany() {
+	// fail("Not yet implemented");
+	// }
+	//
+	// @Test
+	// public void testSelectAllCompany() {
+	// fail("Not yet implemented");
+	// }
 
-//	@Test
-//	public void testSelectCompanyByCategory() {
-//		List<Company> list = store.selectCompanyByCategory("cafe");
-//		
-//		assertNotNull(list);
-//		
-//		for(Company c : list){
-//			System.out.println(c.toString());
-//		}
-//	}
+	// @Test
+	// public void testSelectCompanyByName() {
+	// fail("Not yet implemented");
+	// }
+	//
+	// @Test
+	// public void testLoginCompany() {
+	// fail("Not yet implemented");
+	// }
+>>>>>>> this
+
+	// @Test
+	// public void testSelectCompanyByCategory() {
+	// List<Company> list = store.selectCompanyByCategory("cafe");
+	//
+	// assertNotNull(list);
+	//
+	// for(Company c : list){
+	// System.out.println(c.toString());
+	// }
+	// }
 
 }
