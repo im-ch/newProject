@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Jeff</title>
+<title>Piccolo Theme</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -176,7 +178,7 @@ $(document).ready(function () {
 									<a href="generic.html">
 										<h2>Restaurant</h2>
 										<div class="content">
-											<p>내 주변 제휴식당</p>
+											<p>ë´ ì£¼ë³ ì í´ìë¹</p>
 										</div>
 									</a>
 								</article>
@@ -187,7 +189,7 @@ $(document).ready(function () {
 									<a href="generic.html">
 										<h2>Cafe</h2>
 										<div class="content">
-											<p>내 주변 제휴카페</p>
+											<p>ë´ ì£¼ë³ ì í´ì¹´í</p>
 										</div>
 									</a>
 								</article>
@@ -198,7 +200,7 @@ $(document).ready(function () {
 									<a href="generic.html">
 										<h2>Clothing Store</h2>
 										<div class="content">
-											<p>내 주변 제휴옷가게</p>
+											<p>ë´ ì£¼ë³ ì í´ì·ê°ê²</p>
 										</div>
 									</a>
 								</article>
@@ -209,7 +211,7 @@ $(document).ready(function () {
 									<a href="generic.html">
 										<h2>Cinema</h2>
 										<div class="content">
-											<p>내 주변 제휴영화관</p>
+											<p>ë´ ì£¼ë³ ì í´ìíê´</p>
 										</div>
 									</a>
 								</article>
@@ -220,7 +222,7 @@ $(document).ready(function () {
 									<a href="generic.html">
 										<h2>Department store</h2>
 										<div class="content">
-											<p>내 주변 제휴백화점</p>
+											<p>ë´ ì£¼ë³ ì í´ë°±íì </p>
 										</div>
 									</a>
 								</article>
@@ -231,7 +233,7 @@ $(document).ready(function () {
 									<a href="generic.html">
 										<h2>Pension</h2>
 										<div class="content">
-											<p>내 주변 제휴펜션</p>
+											<p>ë´ ì£¼ë³ ì í´íì</p>
 										</div>
 									</a>
 								</article>
@@ -312,4 +314,3 @@ $(document).ready(function () {
  
 </body>
 </html>
->>>>>>> 7be6a3e6d578427224217752b32f8bb2ffe64205
