@@ -21,15 +21,16 @@ public class QuestionStoreLogicTest {
 	}
 	
 
-//	@Test
-//	public void testCreateQuestion() {
-//		Question q = new Question();
-//		q.setContent("III");
-//		q.setTitle("III");
-//		q.setWriterId("IIs");
-//		
-//		store.createQuestion(q);
-//	}
+	@Test
+	public void testCreateQuestion() {
+		Question q = new Question();
+		q.setContent("TTT");
+		q.setTitle("TTT");
+		q.setWriterId("TTT");
+		
+		store.createQuestion(q);
+		System.out.println(q.getQuestionId());
+	}
 
 //	@Test
 //	public void testDeleteQuestion() {
