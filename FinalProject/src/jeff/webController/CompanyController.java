@@ -17,6 +17,7 @@ import jeff.domain.Company;
 import jeff.service.CompanyService;
 
 @Controller
+@RequestMapping("company")
 public class CompanyController {
 
 	@Autowired
