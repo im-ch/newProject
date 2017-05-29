@@ -53,7 +53,6 @@ public class AllianceController {
 
 	@RequestMapping("/list")
 	public String findAllianceCompany(Model model, HttpServletRequest req) {
-		System.out.println("Dd");
 		HttpSession session = req.getSession();
 		String comId = (String)session.getAttribute("comId");
 		List<String> list = service.findAllAlliance();
