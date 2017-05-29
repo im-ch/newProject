@@ -36,6 +36,11 @@
 </head>
 <body>
 
+body{background:#ccc}
+.layer{position:absolute;top:0;left:0;width:100%;height:100%;text-align:center}
+.layer .content{display:inline-block;background:#f00;vertical-align:middle}
+.layer .blank{display:inline-block;width:0;height:100%;vertical-align:middle}
+
 	<div class="color-bar-1"></div>
     <div class="color-bar-2 color-bg"></div>
     
@@ -136,6 +141,7 @@
         
       </div><!-- End Header -->
 	
+	<div class="row form-examples">
 		<div>
 	      <h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Login</h1>
 	      <div class="input-prepend">
@@ -145,6 +151,7 @@
 	          <span class="add-on"><i class="icon-lock"></i></span><input class="span2" id="appendedPrependedInput" size="16" type="text" placeholder="Password">
 	      </div>
 	      <button class="btn btn-small btn-inverse" type="button">Login</button>
+	      </div>
 		</div>
 	</div>
 	
