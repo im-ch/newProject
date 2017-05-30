@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Login</title>
+<title>User Join</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -121,22 +121,40 @@
             
         </div>
         
-      </div><!-- End Header -->
+      	</div><!-- End Header -->
+		
+		<h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Join</h1>
+		<br><br>
+		<form action="#" id="contact-form">
+			<div align="center">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-user"></i></span>
+                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="Name">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-italic"></i></span>
+                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="ID">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-lock"></i></span>
+                    <input class="span4" id="prependedInput" size="16" type="password" placeholder="Password">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-lock"></i></span>
+                    <input class="span4" id="prependedInput" size="16" type="password" placeholder="Password Check">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-envelope"></i></span>
+                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="Email Address">
+                </div>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-bell"></i></span>
+                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="Phone Number">
+                </div>
+                <button class="btn btn-large btn-warning" type="button">Join</button>
+              </div>  
+          </form>
 	
-	<div class="row form-examples">
-	      <h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login</h1>
-	      <br><br><br><br><br><br><br>
-	      <div align="center">
-	      <div class="input-prepend">
-	          <span class="add-on"><i class="icon-user"></i></span><input class="span2" id="prependedInput" size="16" type="text" placeholder="Username">
-	      </div>
-	      <div class="input-prepend">
-	          <span class="add-on"><i class="icon-lock"></i></span><input class="span2" id="appendedPrependedInput" size="16" type="password" placeholder="Password">
-	      </div>
-	      	<button class="btn btn-large" type="button">Login</button>&nbsp;&nbsp;
-            <button class="btn btn-large btn-warning" type="button">Join</button>
-	      </div>
-	</div>
 	</div>
 	
 </body>
