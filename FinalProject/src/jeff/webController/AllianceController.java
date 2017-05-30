@@ -28,27 +28,27 @@ public class AllianceController {
 		service.registAlliance(alliance);
 		HttpSession session = req.getSession();
 		String comId = (String) session.getAttribute("comId");
-		return "redirect:/allianceDetail?comId=" + comId;
+		return "redirect:detail?comId=" + comId;
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/updat", method = RequestMethod.POST)
 	public String updateAlliance(Alliance alliance) {
 		service.updateAlliance(alliance);
 		String comId = alliance.getCompany().getComId();
-		return "redirect:/allianceDetail?comId=" + comId;
+		return "redirect:detail.do?comId=" + comId;
 	}
 
 	@RequestMapping("/delete")
 	public String removeAlliance(String comId) {
 		service.removeAlliance(comId);
-		return "/companyMypage.jsp";
+		return "/companyMypage";
 	}
 
 	@RequestMapping("/detail")
 	public String findAlliance(String comId, Model model) {
 		Alliance alliance = service.findAlliance(comId);
 		model.addAttribute("alliance", alliance);
-		return "/allianceDetail.jsp";
+		return "/allianceDetail";
 	}
 
 	@RequestMapping("/list")
@@ -67,21 +67,21 @@ public class AllianceController {
 		}else {
 			YzRuntimeException ex = new YzRuntimeException("제휴제안서가 없습니다.");
 			if(comId == null){
-				ex.setRedirectURL("adminPage.jsp");
+				ex.setRedirectURL("/adminPage");
 			}else{
-				ex.setRedirectURL("main.jsp");
+				ex.setRedirectURL("/main");
 			}
 			throw ex;
 		}
 		model.addAttribute("allianceList", allianceList);
-		return "/allianceList.jsp";
+		return "/main";
 	}
 
 	@RequestMapping(value = "/companyDetail")
 	public String detailAllianceCompany(String comId, Model model) {
 		Alliance alliance = service.findAlliance(comId);
 		model.addAttribute("alliance", alliance);
-		return "/companyDetail.jsp";
+		return "/companyDetail";
 	}
 
 }

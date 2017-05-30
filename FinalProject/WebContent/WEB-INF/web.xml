@@ -27,8 +27,10 @@
    </servlet-mapping>
 	<error-page>
    	 <exception-type>common.exception.YzRuntimeException</exception-type>
-   	 <location>/error.jsp</location>
+   	 <location>/views/error.jsp</location>
 	</error-page>
+	
+	
 	
    <welcome-file-list>
       <welcome-file>main.html</welcome-file>
