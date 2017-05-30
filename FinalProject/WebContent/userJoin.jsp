@@ -152,7 +152,7 @@
                     <input class="span4" id="prependedInput" size="16" type="text" placeholder="Phone Number">
                 </div>
                 <button class="btn btn-large btn-warning" type="button">Join</button>
-              </div>  
+              </div>
           </form>
 	
 	</div>
