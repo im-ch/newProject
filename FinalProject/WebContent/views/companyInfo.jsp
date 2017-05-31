@@ -59,20 +59,53 @@
 
 		<h1 class="title-bg">CompanyInfo</h1>
 		<br>
+		<div class="span12 gallery">
+			<div class="row clearfix">
+				<ul class="gallery-post-grid holder">
+<%-- 					<c:choose> --%>
+<%-- 						<c:when test="${images eq null || empty images }"> --%>
+<!-- 							<tr> -->
+<!-- 								<td colspan="6" align="center"></td> -->
+<!-- 							</tr> -->
+<%-- 						</c:when> --%>
+<%-- 						<c:otherwise> --%>
+<%-- 							<c:forEach items="${images }" var="img" varStatus="sts"> --%>
+<!-- 								<li class="span4 gallery-item"><img -->
+<%-- 									src="${ctx }/resources/img/[경로넣어줌됨]" alt="Gallery"></li> --%>
+<%-- 							</c:forEach> --%>
+<%-- 						</c:otherwise> --%>
+<%-- 					</c:choose> --%>
+					<!-- Gallery Item 1 -->
+					<li class="span4 gallery-item"><img
+						src="${ctx }/resources/img/icon/img1.jpg" alt="Gallery"></li>
+
+					<!-- Gallery Item 2 -->
+					<li class="span4 gallery-item"><img
+						src="${ctx }/resources/img/icon/img2.jpg" alt="Gallery"></li>
+
+					<!-- Gallery Item 3 -->
+					<li class="span4 gallery-item"><img
+						src="${ctx }/resources/img/icon/img3.jpg" alt="Gallery"></li>
+				</ul>
+			</div>
+		</div>
 
 		<ul class="project-info">
-			<li><h3>ID &nbsp; : &nbsp; ${company.comId } </h3></li>
-			<li><h3>Name &nbsp; : &nbsp; ${company.ownerName } </h3></li>
+			<li><h3>ID &nbsp; : &nbsp; ${company.comId }</h3></li>
+			<li><h3>Name &nbsp; : &nbsp; ${company.ownerName }</h3></li>
 			<li><h3>Email &nbsp; : &nbsp; ${company.comEmail }</h3></li>
-			<li><h3>PhoneNumber &nbsp; : &nbsp; ${company.comPhoneNumber } </h3></li>
+			<li><h3>PhoneNumber &nbsp; : &nbsp;
+					${company.comPhoneNumber }</h3></li>
 			<li><h3>Location &nbsp; : &nbsp; ${company.location }</h3></li>
-			<li><h3>Category &nbsp; : &nbsp; ${company.category } </h3></li>			
+			<li><h3>Category &nbsp; : &nbsp; ${company.category }</h3></li>
 		</ul>
-		<br><br>
+		<br> <br>
 		<p class="right">
-			<button class="btn btn-large btn-warning" type="button" onclick="location.href='${ctx}/company/modify=comId?${company.comId };'">Modify</button>
-			<button class="btn btn-large btn-inverse" type="button" onclick="location.href='${ctx}/company/delete=comId?${company.comId };'">Withdraw</button>
-			<br><br><br><br><br>
+			<button class="btn btn-large btn-warning" type="button"
+				onclick="location.href='${ctx}/company/modify=comId?${company.comId };'">Modify</button>
+			<button class="btn btn-large btn-inverse" type="button"
+				onclick="location.href='${ctx}/company/delete=comId?${company.comId };'">Withdraw</button>
+			<br> <br> <br> <br> <br>
 		</p>
 	</div>
 	<!-- End Container -->

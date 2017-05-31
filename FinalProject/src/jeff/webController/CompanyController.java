@@ -17,44 +17,45 @@ import jeff.domain.Company;
 import jeff.service.CompanyService;
 
 @Controller
+@RequestMapping("copany")
 public class CompanyController {
 
 	@Autowired
 	private CompanyService service;
 
-	@RequestMapping(value = "/companyCreate", method = RequestMethod.POST)
+	@RequestMapping(value = "create", method = RequestMethod.POST)
 	public String registCompany(Company company) {
 		service.registCompany(company);
 
-		return "redirect:login.jsp";
+		return "redirect:/login";
 
 	}
 
-	@RequestMapping(value = "/companyModify", method = RequestMethod.GET)
+	@RequestMapping(value = "modify", method = RequestMethod.GET)
 	public String ModifyCompany(String comId, Model model) {
 		Company company = service.findCompany(comId);
 		model.addAttribute("boardDetail", company);
 
-		return "companyInfo.jsp";
+		return "/companyInfo";
 	}
 
-	@RequestMapping(value = "/companyModify", method = RequestMethod.POST)
+	@RequestMapping(value = "modify", method = RequestMethod.POST)
 	public String ModifyCompany(Company company) {
 		service.updateCompany(company);
-		return "redirect:companyDetail?comId=" + company.getComId();
+		return "redirect:detail?comId=" + company.getComId();
 	}
 
-	@RequestMapping("/companyRemove")
+	@RequestMapping("remove")
 	public String RemoveCompany(HttpServletRequest req) {
 
 		HttpSession session = req.getSession();
 		String comId = (String) session.getAttribute("comId");
 		service.removeCompany(comId);
 
-		return "redirect:main.jsp";
+		return "redirect:/main";
 	}
 
-	@RequestMapping(value = "/companyLogin", method = RequestMethod.POST)
+	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String loginCompany(Company company, HttpServletRequest req) {
 
 		Company loginedCompany = service.findCompany(company.getComId());
@@ -63,14 +64,14 @@ public class CompanyController {
 			if (loginedCompany.getComPassword().equals(company.getComPassword())) {
 				HttpSession session = req.getSession();
 				session.setAttribute("comId", company.getComId());
-				return "redirect:main.jsp";
+				return "redirect:/main";
 			} else {
 				HttpSession session = req.getSession(false);
 				session.invalidate();
-				return "login.jsp";
+				return "/login";
 			}
 		} else {
-			return "login.jsp";
+			return "/login";
 		}
 
 	}

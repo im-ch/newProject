@@ -236,6 +236,13 @@ ul.nav li.dropdown:hover ul.dropdown-menu{ display: block; }
 	    white-space:nowrap;
 	    width: 120px;
 	}
+	li.chspan2 {
+	    -o-text-overflow: ellipsis;
+	    text-overflow:    ellipsis;
+	    overflow:hidden;
+	    white-space:nowrap;
+	    width: 60px;
+	}
 }
 
 /* Portrait tablet to landscape */
