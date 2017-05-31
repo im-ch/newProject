@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jeff.domain.ReportReview;
 import jeff.service.ReportReviewService;
-
+@RequestMapping("/reportReview")
 @Controller
-@RequestMapping("/ReportReview")
 public class ReportReviewController {
-
+	
 	@Autowired
 	private ReportReviewService service;
 	
@@ -43,4 +42,5 @@ public class ReportReviewController {
 		service.removeReportReview(reviewId);
 		return "reportReviewList.jsp";
 	}
+
 }
