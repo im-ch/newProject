@@ -184,25 +184,25 @@
         <div class="img"><img src="images/circ_img1.jpg" alt="img"></div>
         <div class="info">
           <h3>소주 1+1</h3>
-          <p>쿠폰받기!</p>
+          <p>쿠폰받기!(~6/2)</p>
         </div></a></div>
         <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
         <div class="img"><img src="images/circ_img2.jpg" alt="img"></div>
         <div class="info">
           <h3>수육1000원 할인</h3>
-          <p>쿠폰받기!</p>
+          <p>쿠폰받기!(~6/2)</p>
         </div></a></div>
         <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
         <div class="img"><img src="images/circ_img3.jpg" alt="img"></div>
         <div class="info">
           <h3>사이다 서비스</h3>
-          <p>쿠폰받기!</p>
+          <p>쿠폰받기!(~6/2)</p>
         </div></a></div>
         <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
         <div class="img"><img src="images/circ_img4.jpg" alt="img"></div>
         <div class="info">
           <h3>밥 한공기 더</h3>
-          <p>쿠폰받기!</p>
+          <p>쿠폰받기!(~6/2)</p>
         </div></a></div>
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

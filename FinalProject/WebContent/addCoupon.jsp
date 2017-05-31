@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>My Coupon</title>
+<title>ADD Coupon</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -12,10 +12,17 @@
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap-responsive.css">
+<link rel="stylesheet" href="css/jquery.lightbox-0.5.css">
 <link rel="stylesheet" href="css/custom-styles.css">
 
-<link rel="stylesheet" href="css/ihover.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/datedropper.css"> 
+
+<!-- Favicons
+================================================== -->
+<link rel="shortcut icon" href="img/favicon.ico">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
 
 <!-- JS
 ================================================== -->
@@ -23,15 +30,21 @@
 <script src="js/bootstrap.js"></script>
 <script src="js/jquery.custom.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script src="js/datedropper.js"></script>
+
+<style>
+#departure {font-size:20px;height:40px;line-height:40px}
+</style>
+
 </head>
 <body>
-
 	<div class="color-bar-1"></div>
     <div class="color-bar-2 color-bg"></div>
     
     <div class="container main-container">
-
-	<div class="row header"><!-- Begin Header -->
+    
+      <div class="row header"><!-- Begin Header -->
       
         <!-- Logo
         ================================================== -->
@@ -45,7 +58,7 @@
         <div class="span7 navigation">
             <div class="navbar hidden-phone">
             
-            <ul class="nav">
+           <ul class="nav">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="index.htm">Home <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -55,7 +68,7 @@
                 </ul>
             </li>
            <li><a href="features.htm">Features</a></li>
-            <li class="dropdown active">
+            <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Pages <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="page-full-width.htm">Full Width</a></li>
@@ -84,12 +97,12 @@
                     <li><a href="blog-single.htm">Blog Single</a></li>
                 </ul>
              </li>
-             <li><a href="page-contact.htm">Contact</a></li>
+             <li class="active"><a href="page-contact.htm">Contact</a></li>
             </ul>
            
             </div>
 
-            <!-- Mobile Nav
+             <!-- Mobile Nav
             ================================================== -->
             <form action="#" id="mobile-nav" class="visible-phone">
                 <div class="mobile-nav-select">
@@ -121,50 +134,43 @@
                 </select>
                 </div>
                 </form>
-            
+
         </div>
         
-      	</div><!-- End Header -->
-		
-		<div>
-    <div class="container" style="margin:0 auto;">
-        <h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My Coupon</h1>
-        <br>
-        <h2><span style="color:red">쿠폰은 모바일에서 사용가능합니다!</span></h2>
-        <br>
-      </div>
-        <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
-        <div class="img"><img src="images/circ_img1.jpg" alt="img"></div>
-        <div class="info">
-          <h3>소주1+1(~6/2)</h3>
-          <p>담소사골순대</p>
-          <button class="btn btn-inverse" type="button">Delete</button>
-        </div></a></div>
-        <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
-        <div class="img"><img src="images/circ_img2.jpg" alt="img"></div>
-        <div class="info">
-          <h3>수육1000원 할인(~6/2)</h3>
-          <p>담소사골순대</p>
-          <button class="btn btn-inverse" type="button">Delete</button>
-        </div></a></div>
-        <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
-        <div class="img"><img src="images/circ_img3.jpg" alt="img"></div>
-        <div class="info">
-          <h3>사이다 서비스(~6/2)</h3>
-          <p>담소사골순대</p>
-          <button class="btn btn-inverse" type="button">Delete</button>
-        </div></a></div>
-        <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
-        <div class="img"><img src="images/circ_img4.jpg" alt="img"></div>
-        <div class="info">
-          <h3>밥 한공기 더(~6/2)</h3>
-          <p>담소사골순대</p>
-          <button class="btn btn-inverse" type="button">Delete</button>
-        </div></a></div>
-    </div>	
+      </div><!-- End Header -->
       
-	
-	</div>
-	
+      <div class="row"><!--Container row-->
+
+        <div class="span8 contact"><!--Begin page content column-->
+
+            <h1>ADD Coupon</h1>
+				<br><br>
+            <div class="alert alert-success">
+                	쿠폰 사용기간 및 상세 내용을 정확하게 입력하세요  <Strong>*입력 실수로 인한 손해는 Jeff에서 보상하지 않습니다.</Strong>
+            </div>
+
+            <form action="#" id="contact-form">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-list-alt"></i></span>
+                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="Coupon Name">
+                </div>
+                
+                <h4>사용기한</h4>
+                <input type="text" id="departure" />
+				<script>$("#departure").dateDropper();</script>
+                
+                <textarea class="span6" placeholder="Coupon Detail"></textarea>
+                <div class="row">
+                    <div class="span2">
+                        <button class="btn btn-large btn-warning" type="button">ADD</button>
+                    </div>
+                </div>
+            </form>
+
+        </div> <!--End page content column-->
+
+
+    </div><!-- End container row -->
+    </div>
 </body>
 </html>
