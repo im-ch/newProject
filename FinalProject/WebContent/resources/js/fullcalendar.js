@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-/**
- * @preserve FullCalendar v1.4.7 http://arshaw.com/fullcalendar/
- * 
- * Use fullcalendar.css for basic styling. For event drag & drop, required
- * jQuery UI draggable. For event resizing, requires jQuery UI resizable.
- * 
- * Copyright (c) 2009 Adam Shaw Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
- * 
- * Date: Mon Jul 5 16:07:40 2010 -0700
- * 
- */
  
 (function($, undefined) {
 
@@ -4212,7 +4198,6 @@ function disableTextSelection(element) {
 
 
 })(jQuery);
-=======
 /*!
  * FullCalendar v3.4.0
  * Docs & License: https://fullcalendar.io/
@@ -19804,4 +19789,3 @@ fcViews.listYear = {
 
 return FC; // export for Node/CommonJS
 });
->>>>>>> cheol
