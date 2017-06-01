@@ -16,6 +16,17 @@
 	</resultMap>
 
 	<insert id="createQuestion" parameterType="Question" >
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> this
+=======
+>>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
+>>>>>>> this
+=======
+>>>>>>> hyun
+>>>>>>> b1445dc3ac962daa49d125e3a58cf382a1677d34
 	  	<selectKey keyProperty="questionId" resultType="int" order="BEFORE">
 			select question_tb_seq.nextval FROM DUAL
 		</selectKey>
@@ -23,6 +34,17 @@
 		VALUES (#{questionId}, #{writerId}, #{title}, #{content}, sysdate)
 	</insert>
 	
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> this
+=======
+>>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
+>>>>>>> this
+=======
+>>>>>>> hyun
+>>>>>>> b1445dc3ac962daa49d125e3a58cf382a1677d34
 	<delete id="deleteQuestion" parameterType="int">
 		DELETE FROM question_tb 
 		WHERE questionId = #{questionId}

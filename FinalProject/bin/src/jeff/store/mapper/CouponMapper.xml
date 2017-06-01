@@ -8,7 +8,32 @@
 		<result column="couponName" property="couponName" />
 		<result column="couponContent" property="couponContent" />
 		<result column="ExpiryDate" property="expiryDate" />
+<<<<<<< HEAD
 		<result column="comId" property="comId" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> this
+		<association property="com" column="comId"
+			select="jeff.store.mapper.CompanyMapper.selectCompany" javaType="Company"
+			jdbcType="VARCHAR" />
+=======
+		<result column="comId" property="comId" />
+<<<<<<< HEAD
+>>>>>>> this
+=======
+>>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
+=======
+		<result column="comId" property="comId" />
+>>>>>>> sangjin
+>>>>>>> this
+=======
+		<result column="comId" property="comId" />
+>>>>>>> hyun
+>>>>>>> b1445dc3ac962daa49d125e3a58cf382a1677d34
 	</resultMap>
 
 	<insert id="createCoupon" parameterType="Coupon">
@@ -19,7 +44,30 @@
 		comId)
 		values
 		(#{couponId}, #{couponName}, #{couponContent},
+<<<<<<< HEAD
 		#{expiryDate}, #{comId})
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+		#{expiryDate}, #{com.comId})
+=======
+		#{expiryDate}, #{comId})
+>>>>>>> this
+=======
+<<<<<<< HEAD
+		#{expiryDate}, #{com.comId})
+=======
+		#{expiryDate}, #{comId})
+>>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
+=======
+		#{expiryDate}, #{comId})
+>>>>>>> sangjin
+>>>>>>> this
+=======
+		#{expiryDate}, #{comId})
+>>>>>>> hyun
+>>>>>>> b1445dc3ac962daa49d125e3a58cf382a1677d34
 	</insert>
 
 	<delete id="deleteCoupon" parameterType="int">
@@ -45,9 +93,44 @@
 
 	<select id="selectCouponByCompany" parameterType="string"
 		resultMap="couponMap">
+<<<<<<< HEAD
 		select couponId, couponName, couponContent, ExpiryDate, comId
 		from coupon_tb
 		where comId=#{comId}
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> this
+		select couponId, couponName, couponContent, ExpiryDate,
+		comId
+		from coupon_tb
+		where comId=#{com.comId}
+=======
+<<<<<<< HEAD
+		select couponId, couponName, couponContent, ExpiryDate, comId
+		from coupon_tb
+		where comId=#{comId}
+>>>>>>> this
+=======
+		select couponId, couponName, couponContent, ExpiryDate, comId
+		from coupon_tb
+		where comId=#{comId}
+>>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
+=======
+		select couponId, couponName, couponContent, ExpiryDate, comId
+		from coupon_tb
+		where comId=#{comId}
+>>>>>>> sangjin
+>>>>>>> this
+=======
+		select couponId, couponName, couponContent, ExpiryDate, comId
+		from coupon_tb
+		where comId=#{comId}
+>>>>>>> hyun
+>>>>>>> b1445dc3ac962daa49d125e3a58cf382a1677d34
 	</select>
 
 	<select id="selectCoupon" parameterType="int" resultMap="couponMap">

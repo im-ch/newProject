@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jeff.domain.CompanySales;
 import jeff.domain.Sales;
 import jeff.service.SalesService;
 import jeff.store.SalesStore;
@@ -33,7 +34,9 @@ public class SalesServiceLogic implements SalesService {
 
 	@Override
 	public List<Sales> findSalesByCompany(String companyId) {
-		return (List<Sales>) store.selectSalesByCompany(companyId);
+		
+		
+		return store.selectSalesByCompany(companyId);
 	}
 
 	@Override
