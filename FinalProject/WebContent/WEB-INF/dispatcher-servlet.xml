@@ -7,7 +7,10 @@
       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
    <context:component-scan base-package="jeff" />
+<<<<<<< HEAD
    
+=======
+>>>>>>> this
    <mvc:annotation-driven />
    <mvc:default-servlet-handler />
    <mvc:resources location="/resources/" mapping="/resources/**" />
@@ -17,5 +20,8 @@
       <property name="prefix" value="/views/" />
       <property name="suffix" value=".jsp" />
    </bean>
+<<<<<<< HEAD
 
+=======
+>>>>>>> this
 </beans>

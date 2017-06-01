@@ -168,6 +168,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<%@ include file="/views/footer.jspf"%>
 		<!-- Scripts -->
 		<script src="${ctx }/js/jquery.min.js"></script>
