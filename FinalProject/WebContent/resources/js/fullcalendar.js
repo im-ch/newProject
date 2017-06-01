@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * @preserve FullCalendar v1.4.7 http://arshaw.com/fullcalendar/
  * 
@@ -4212,7 +4211,6 @@ function disableTextSelection(element) {
 
 
 })(jQuery);
-=======
 /*!
  * FullCalendar v3.4.0
  * Docs & License: https://fullcalendar.io/
@@ -19804,4 +19802,3 @@ fcViews.listYear = {
 
 return FC; // export for Node/CommonJS
 });
->>>>>>> cheol

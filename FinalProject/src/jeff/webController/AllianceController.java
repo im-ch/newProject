@@ -34,33 +34,31 @@ public class AllianceController {
 		String comId = (String) session.getAttribute("comId");
 		alliance.setCompany(companyService.findCompany(comId));
 		service.registAlliance(alliance);
-//		return "redirect:/allianceDetail?comId=test";
-		return "main";
+		return "redirect:/allianceDetail?comId=test";
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String updateAlliance(Alliance alliance) {
 		service.updateAlliance(alliance);
 		String comId = alliance.getCompany().getComId();
-		return "redirect:/allianceDetail?comId=" + comId;
+		return "redirect:detail.do?comId=" + comId;
 	}
 
 	@RequestMapping("delete")
 	public String removeAlliance(String comId) {
 		service.removeAlliance(comId);
-		return "/companyMypage.jsp";
+		return "/companyMypage";
 	}
 
 	@RequestMapping("detail")
 	public String findAlliance(String comId, Model model) {
 		Alliance alliance = service.findAlliance(comId);
 		model.addAttribute("alliance", alliance);
-		return "/allianceDetail.jsp";
+		return "/allianceDetail";
 	}
 
-	@RequestMapping("/list.do")
+	@RequestMapping("list")
 	public String findAllianceCompany(Model model, HttpServletRequest req) {
-		System.out.println("Dd");
 		HttpSession session = req.getSession();
 		String comId = (String)session.getAttribute("comId");
 		List<String> list = service.findAllAlliance();
@@ -75,21 +73,21 @@ public class AllianceController {
 		}else {
 			YzRuntimeException ex = new YzRuntimeException("제휴제안서가 없습니다.");
 			if(comId == null){
-				ex.setRedirectURL("adminPage.jsp");
+				ex.setRedirectURL("/adminPage");
 			}else{
-				ex.setRedirectURL("main.jsp");
+				ex.setRedirectURL("/main");
 			}
 			throw ex;
 		}
 		model.addAttribute("allianceList", allianceList);
-		return "pages/allianceList.jsp";
+		return "/main";
 	}
 
 	@RequestMapping(value = "companyDetail")
 	public String detailAllianceCompany(String comId, Model model) {
 		Alliance alliance = service.findAlliance(comId);
 		model.addAttribute("alliance", alliance);
-		return "/companyDetail.jsp";
+		return "/companyDetail";
 	}
 
 }

@@ -23,36 +23,36 @@ public class QuestionController {
 	@Autowired
 	private QuestionService service;
 	
-	@RequestMapping(value = "regist", method = RequestMethod.POST)
+	@RequestMapping(value = "/regist", method = RequestMethod.POST)
 	public String registQuestion (Question question, HttpServletRequest req){
 		service.registQuestion(question);
-		return "redirect:/findQuestion?questionId=" + question.getQuestionId();
+		return "redirect:find?questionId=" + question.getQuestionId();
 	}
 	
-	@RequestMapping(value = "update", method = RequestMethod.POST)
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateQuestion (Question question){
 		service.updateQuestion(question);
-		return "redirect:/findQuestion?questionId=" + question.getQuestionId();
+		return "redirect:find.do?questionId=" + question.getQuestionId();
 	}
 	
-	@RequestMapping("remove")
+	@RequestMapping("/remove.do")
 	public String removeQuestion (int questionId, HttpServletRequest req){
 		service.removeQuestion(questionId);
-		return "redirect:/findAllQuestion";
+		return "redirect:findAll";
 	}
 	
-	@RequestMapping("find")
+	@RequestMapping("/find")
 	public String findQuestion (int questionId, Model model){
 		Question q = service.findQuestion(questionId);
 		model.addAttribute("question", q);
-		return "questionDetail.jsp";
+		return "/questionDetail";
 	}
 
-	@RequestMapping("findAll")
+	@RequestMapping("/findAll")
 	public String findAllQuestion (Model model){
 		List<Question> list = service.findAllQuestion();
 		model.addAttribute("questionList", list);
-		return "questionList";
+		return "/questionList";
 	}
 	
 	

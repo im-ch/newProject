@@ -48,14 +48,14 @@ public class InterestingCompanyController {
 	@RequestMapping(value = "/list", method=RequestMethod.GET)
 	public String findInterestingCompany(HttpServletRequest req, Model model) {
 
-//		HttpSession session = req.getSession();
-//
-//		String userId = (String) session.getAttribute("userId");
-//
-//		if (session == null || session.getAttribute("userId") == null) {
-//			return "redirect:login.jsp";
-//		}
-		List<String> comList = service.findInterestingCompany("heehyun");
+		HttpSession session = req.getSession();
+
+		String userId = (String) session.getAttribute("userId");
+
+		if (session == null || session.getAttribute("userId") == null) {
+			return "redirect:login.jsp";
+		}
+		List<String> comList = service.findInterestingCompany(userId);
 		List<Company> list = new ArrayList<>();
 
 		for (int i = 0; i < comList.size(); i++) {
