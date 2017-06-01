@@ -1,5 +1,6 @@
 package jeff.webController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import jeff.domain.Company;
 import jeff.domain.User;
+import jeff.service.CompanyService;
 import jeff.service.UserService;
 
 @Controller
@@ -22,6 +25,9 @@ public class UserController {
 
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private CompanyService comService;
 
 	@RequestMapping(value = "/userCreate", method = RequestMethod.POST)
 	public String registUser(User user) {
@@ -89,6 +95,21 @@ public class UserController {
 	public ModelAndView findByUserId(@RequestParam("userId") String userId) {
 		ModelAndView modelAndView = new ModelAndView("userInfo.jsp");
 		modelAndView.addObject("user", service.findUser(userId));
+		return modelAndView;
+	}
+	
+	@RequestMapping("/allUsers")
+	public ModelAndView findAllUsers(){
+		ModelAndView modelAndView = new ModelAndView("/userList");
+		List<User> users = service.findAllUsers();
+		List<Company> companys = comService.findAllCompany();
+		List<Integer> allUsers = new ArrayList<>();
+		allUsers.add(users.size());
+		allUsers.add(companys.size());
+		
+		modelAndView.addObject("allUsers", allUsers);
+		modelAndView.addObject("users", users);
+		modelAndView.addObject("companys", companys);
 		return modelAndView;
 	}
 }
