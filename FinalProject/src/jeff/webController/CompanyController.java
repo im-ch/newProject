@@ -1,5 +1,6 @@
 package jeff.webController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,13 +12,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jeff.domain.Companies;
 import jeff.domain.Company;
 import jeff.service.CompanyService;
 
 @Controller
-@RequestMapping("copany")
+@RequestMapping("company")
 public class CompanyController {
 
 	@Autowired
@@ -27,8 +30,7 @@ public class CompanyController {
 	public String registCompany(Company company) {
 		service.registCompany(company);
 
-		return "redirect:/login";
-
+		return "/login";
 	}
 
 	@RequestMapping(value = "modify", method = RequestMethod.GET)
@@ -76,15 +78,15 @@ public class CompanyController {
 
 	}
 
-	@RequestMapping("/companyLogout")
+	@RequestMapping("logout")
 	public String logoutCompany(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.invalidate();
 
-		return "redirect:main.jsp";
+		return "redirect:main";
 	}
 
-	@RequestMapping("/companyList")
+	@RequestMapping("list")
 	public ModelAndView findAllCompany() {
 
 		List<Company> list = service.findAllCompany();
@@ -94,7 +96,7 @@ public class CompanyController {
 
 	}
 
-	@RequestMapping("/findByComId")
+	@RequestMapping("findByComId")
 	public ModelAndView findByComId(@RequestParam("comId") String comId) {
 		Company company = service.findCompany(comId);
 		ModelAndView modelAndView = new ModelAndView("companyList.jsp");
@@ -103,7 +105,7 @@ public class CompanyController {
 
 	}
 
-	@RequestMapping("/findByCategory")
+	@RequestMapping("findByCategory")
 	public ModelAndView findByCategory(@RequestParam("category") String category) {
 		List<Company> list = service.findCompanyByCategory(category);
 		ModelAndView modelAndView = new ModelAndView("companyList.jsp");
@@ -125,6 +127,25 @@ public class CompanyController {
 		ModelAndView modelAndView = new ModelAndView("companyDetail.jsp");
 		modelAndView.addObject("company", service.findCompany(comId));
 		return modelAndView;
+	}
+	
+	@RequestMapping(value="mapList", produces="application/xml")
+	public @ResponseBody Companies mapToXml(){
+		List<Company> list = new ArrayList<>();
+		Companies companies = new Companies();
+		list = service.findAllCompany();
+		
+		for(Company c : list){
+			String location = c.getLocation();
+			String [] lo = location.split(";");
+			
+			String [] lo2 = lo[1].split("\\(");
+			c.setLocation(lo2[0]);
+		}
+		
+		companies.setCompanies(list);
+		
+		return companies;
 	}
 
 }

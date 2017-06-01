@@ -72,14 +72,26 @@
 					}
 				}).open();
 	}
+</script>
+
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
+<script>
+$(document).ready(function() {
 	
-	$(document).ready(function(){
+	$("#sample6_address2").blur(function(){
+		$("#result").empty();
+		var value1 = $('#sample6_postcode').val();
+		var value2 = $('#sample6_address').val();
+		var value3 = $('#sample6_address2').val();
 		
-		
-		
+		var total = "";
+		total = "<input name='location' id='location' type='hidden' value='" 
+			+ value1 + ';' + value2 + ";" + value3 + "'></input>";
+			
+		$("#result").append(total);
 	});
-	
-	
+});
 </script>
 
 </head>
@@ -94,7 +106,8 @@
 
 		<h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Company Join</h1>
 		<br> <br>
-		<form action="#" id="contact-form" style="margin-right: 100px">
+		<form action="${ctx }/company/create" method="post" id="contact-form"
+			style="margin-right: 100px">
 			<div align="left">
 				<div class="input-prepend">
 					<span class="add-on"><i class="icon-italic"></i></span> <input
@@ -105,6 +118,11 @@
 					<span class="add-on"><i class="icon-user"></i></span> <input
 						name="ownerName" id="ownerName" class="span4" id="prependedInput"
 						size="16" type="text" placeholder="OwnerName">
+				</div>
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-briefcase"></i></span> <input
+						name="comName" id="comName" class="span4" id="prependedInput"
+						size="16" type="text" placeholder="CompanyName">
 				</div>
 				<div class="input-prepend">
 					<span class="add-on"><i class="icon-lock"></i></span> <input
@@ -119,29 +137,28 @@
 				</div>
 				<div class="input-prepend">
 					<span class="add-on"><i class="icon-envelope"></i></span> <input
-						name="str_email01" class="chspan2" id="prependedInput" size="8"
-						type="email" placeholder="Email"> <span class="add-on">@</span>
-					<input type="text" name="str_email02" id="str_email02"
-						style="width: 100px;"> <input type="hidden"
-						name="comEmail">
+						name="comEmail" class="comEmail" id="prependedInput" size="8"
+						type="email" placeholder="Email">
 				</div>
 				<div class="input-prepend">
 					<span class="add-on"><i class="icon-bell"></i></span> <input
-						id="comPhoneNumber" class="span4" id="prependedInput" size="16"
-						type="text" placeholder="Phone Number">
+						name="comPhoneNumber" id="comPhoneNumber" class="span4"
+						id="prependedInput" size="16" type="number"
+						placeholder="Phone Number">
 				</div>
 				<div class="input-prepend">
 					<span class="add-on"><i class="icon-home"></i></span> <input
-						name="location1" id="sample6_postcode" width="1px" type="text"
-						placeholder="우편번호"> &nbsp;&nbsp; <input type="button"
-						class="btn btn-inverse" value="주소검색"
+						class="location1" name="location1" id="sample6_postcode"
+						width="1px" type="text" placeholder="우편번호"> &nbsp;&nbsp; <input
+						type="button" class="btn btn-inverse" value="주소검색"
 						onclick="sample6_execDaumPostcode()" style="margin-left: 10px">
 				</div>
 				<div class="input-prepend">
-					<input name="location1" class="chspan2" id="sample6_address"
+					<input name="location2" class="location2" id="sample6_address"
 						type="text" placeholder="주소"> <input name="location3"
-						class="chspan2" id="sample6_address2" size="20" type="text"
-						placeholder="상세주소"> <input type="hidden" name="loacation">
+						class="location3" id="sample6_address2" size="20" type="text"
+						placeholder="상세주소">
+					<div id="result"></div>
 				</div>
 				<div class="input-prepend">
 					<span class="add-on"><i class="icon-bell"></i></span> <select
@@ -156,7 +173,7 @@
 						<option value="기타">기타</option>
 					</select>
 				</div>
-				<button class="btn btn-large btn-warning" type="submit">Join</button>
+				<button class="btn btn-large btn-warning" type="submit" id="sub">Join</button>
 			</div>
 		</form>
 

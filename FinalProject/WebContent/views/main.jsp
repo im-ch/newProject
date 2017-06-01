@@ -215,6 +215,19 @@
 	<script src="${ctx }/resources/inner/js/skel.min.js"></script>
 	<script src="${ctx }/resources/inner/js/util.js"></script>
 	<script src="${ctx }/resources/inner/js/main.js"></script>
+	
+		<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<%@ include file="/views/footer.jspf"%>
+
+	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+	
 
 
 </body>

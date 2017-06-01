@@ -1,5 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<c:choose>
+   <c:when test="${loginedUser eq null}">
+      <a href="${ctx }/views/login.jsp">로그인</a> | <a href="${ctx }/views/join.jsp">회원가입</a>
+   </c:when>
+   
+   <c:when test="${loginedCompany eq null}">
+      <a href="${ctx }/views/login.jsp">로그인</a> | <a href="${ctx }/views/join.jsp">회원가입</a>
+   </c:when>
+   
+   <c:otherwise>
+   
+   <c:when test = "${loginedComapany}">
+      <b>${loginedCompany.ownerName}</b> 님!! 환영합니다. [<a href="${ctx }/company/companyLogout">로그아웃</a>]
+      </c:when>
+   
+      
+      <c:when test = "${loginedUser}">
+      <b>${loginedUser.name}</b> 님!! 환영합니다. [<a href="${ctx }/user/userLogout">로그아웃</a>]
+      </c:when>
+      
+         
+    </c:otherwise>
+</c:choose>
 
 <div class="row header">
 	<!-- Begin Header -->

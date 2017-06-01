@@ -21,8 +21,6 @@
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="${ctx }/resources/js/bootstrap.js"></script>
 <script src="${ctx }/resources/js/jquery.custom.js"></script>
-<script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
 <meta name="viewport" content="initial-scale=1.0">
 
 <style>
@@ -65,76 +63,51 @@ html, body {
 		<h1 class="title-bg">Map Coupon</h1>
 		<br>
 
+		<div id="floating-panel">
+			<input id="address" type="textbox" value="Sydney, NSW"> <input
+				id="submit" type="button" value="Geocode">
+		</div>
 
 		<div id="map"></div>
 		<script>
 			function initMap() {
 				var map = new google.maps.Map(document.getElementById('map'), {
-					zoom : 13,
+					zoom : 8,
 					center : {
-						lat : 37.52,
-						lng : 127
+						lat : -34.397,
+						lng : 150.644
 					}
 				});
 				var geocoder = new google.maps.Geocoder();
-					
-					$.ajax({
-						url : "${ctx}/company/mapList",
-						type : "get",
-						data : String,
-						contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
-						dataType : "xml",
-						
-						success : function(xml) {
-							var xmlData = $(xml).find("company");
-							var listLength = xmlData.length;
 
-							if (listLength) {
-								var contentStr = "";
-								var title = "";
-								var comId = "";
-								$(xmlData).each(function() {
-			 						contentStr = $(this).find("location").text();
-			 						title = $(this).find("comName").text();
-			 						comId = $(this).find("comId").text();
-			 						
-			 						geocodeAddress(geocoder, map, contentStr, title, comId);
-			 					});
-							}
-						}
-						
-					});
-			}
-
-			function geocodeAddress(geocoder, resultsMap, address, title, comId) {
-				var markerMaxWidth = 250;
-				var contentString = '<div>' +
-				  '<h3>'+title+'</h3>' + '<a href="${ctx}/alliance/companyDetail?comId='+comId+'">홈페이지 바로가기</a>';
-				
-				geocoder.geocode({'address' : address}, function(results, status) {
-					if (status === 'OK') {
-						
-						resultsMap.setCenter(results[0].geometry.location);
-						
-						var marker = new google.maps.Marker({
-							map : resultsMap, position : results[0].geometry.location,
-							title : title,
+				document.getElementById('submit').addEventListener('click',
+						function() {
+							geocodeAddress(geocoder, map);
 						});
-						
-						} else {
-						alert('Geocode was not successful for the following reason: '+ status);
-						}
-					var infowindow = new google.maps.InfoWindow({
-						content: contentString,
-						maxWidth: markerMaxWidth
-					});
-					google.maps.event.addListener(marker,'click',function(){
-						infowindow.open(map,marker);
-					}); 
-				});
 			}
-			
-			
+
+			function geocodeAddress(geocoder, resultsMap) {
+				var address = document.getElementById('address').value;
+				geocoder
+						.geocode(
+								{
+									'address' : address
+								},
+								function(results, status) {
+									if (status === 'OK') {
+										resultsMap
+												.setCenter(results[0].geometry.location);
+										var marker = new google.maps.Marker(
+												{
+													map : resultsMap,
+													position : results[0].geometry.location
+												});
+									} else {
+										alert('Geocode was not successful for the following reason: '
+												+ status);
+									}
+								});
+			}
 		</script>
 		<script async defer
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5q_u7mfoL-N8R1EphJkTMgJbEwFfcSm4&callback=initMap">
