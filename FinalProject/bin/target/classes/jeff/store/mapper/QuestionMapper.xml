@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jeff.store.mapper.QuestionMapper">
+
+	<resultMap type="Question" id="questionMap">
+		<id column="questionId" property="questionId" />
+		<result column="writerId" property="writerId" />
+		<result column="title" property="title" />
+		<result column="content" property="content"/>
+		<result column="regDate" property="regDate"/>
+		<collection column="questionId" property="answerList" javaType="List"
+		select="jeff.store.mapper.AnswerMapper.selectAllAnswer" />
+	</resultMap>
+
+<<<<<<< HEAD
+	<insert id="createQuestion" parameterType="Question">
+=======
+	<insert id="createQuestion" parameterType="Question" >
+>>>>>>> this
+	  	<selectKey keyProperty="questionId" resultType="int" order="BEFORE">
+			select question_tb_seq.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO question_tb(questionId, writerId, title, content, regDate)
+		VALUES (#{questionId}, #{writerId}, #{title}, #{content}, sysdate)
+	</insert>
+<<<<<<< HEAD
+
+=======
+	
+>>>>>>> this
+	<delete id="deleteQuestion" parameterType="int">
+		DELETE FROM question_tb 
+		WHERE questionId = #{questionId}
+	</delete>
+
+	<update id="modifyQuestion" parameterType="Question">
+		UPDATE question_tb 
+		SET content = #{content}, title = #{title}
+		WHERE questionId = #{questionId}
+	</update>
+
+	<select id="selectQuestion" parameterType="int" resultType="Question" resultMap="questionMap">
+		SELECT questionId, writerId, title, content, regDate
+		FROM question_tb 
+		WHERE questionId = #{questionId}
+	</select>
+
+	<select id="selectAllQuestion" resultType="Question" resultMap="questionMap">
+		SELECT questionId, writerId, title, content, regDate
+		FROM question_tb
+	</select>
+
+</mapper>

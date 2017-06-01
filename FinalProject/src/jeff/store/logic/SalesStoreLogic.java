@@ -1,5 +1,6 @@
 package jeff.store.logic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -43,14 +44,14 @@ public class SalesStoreLogic implements SalesStore{
 	}
 
 	@Override
-	public CompanySales selectSalesByCompany(String companyId) {
+	public List<Sales> selectSalesByCompany(String companyId) {
 		SqlSession session = JeffSessionFactory.getInstance().getSession();
-		
+		List<Sales> list = new ArrayList<>();
 		SalesMapper mapper = session.getMapper(SalesMapper.class);
-		CompanySales companySales = mapper.selectSalesByCompany(companyId);
+		list = mapper.selectSalesByCompany(companyId);
 		
 		session.close();
-		return companySales;
+		return list;
 	}
 
 	@Override
