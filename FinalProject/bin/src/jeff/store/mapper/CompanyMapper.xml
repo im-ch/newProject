@@ -14,8 +14,6 @@
   	<result property="location" column="location"/>
   	<result property="comPhoneNumber" column="phoneNumber"/>
   	<result property="category" column="category" />
-  	<collection property="couponList" column="comId" javaType="List"
-			select="jeff.store.mapper.CouponMapper.selectCouponByCompany"/>
   	</resultMap>
   	
   	<insert id="createCompany" parameterType="Company">

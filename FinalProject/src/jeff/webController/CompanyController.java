@@ -1,5 +1,6 @@
 package jeff.webController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,50 +12,52 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jeff.domain.Companies;
 import jeff.domain.Company;
 import jeff.service.CompanyService;
 
 @Controller
+@RequestMapping("company")
 public class CompanyController {
 
 	@Autowired
 	private CompanyService service;
 
-	@RequestMapping(value = "/companyCreate", method = RequestMethod.POST)
+	@RequestMapping(value = "create", method = RequestMethod.POST)
 	public String registCompany(Company company) {
 		service.registCompany(company);
 
-		return "redirect:login.jsp";
-
+		return "/login";
 	}
 
-	@RequestMapping(value = "/companyModify", method = RequestMethod.GET)
+	@RequestMapping(value = "modify", method = RequestMethod.GET)
 	public String ModifyCompany(String comId, Model model) {
 		Company company = service.findCompany(comId);
 		model.addAttribute("boardDetail", company);
 
-		return "companyInfo.jsp";
+		return "/companyInfo";
 	}
 
-	@RequestMapping(value = "/companyModify", method = RequestMethod.POST)
+	@RequestMapping(value = "modify", method = RequestMethod.POST)
 	public String ModifyCompany(Company company) {
 		service.updateCompany(company);
-		return "redirect:companyDetail?comId=" + company.getComId();
+		return "redirect:detail?comId=" + company.getComId();
 	}
 
-	@RequestMapping("/companyRemove")
+	@RequestMapping("remove")
 	public String RemoveCompany(HttpServletRequest req) {
 
 		HttpSession session = req.getSession();
 		String comId = (String) session.getAttribute("comId");
 		service.removeCompany(comId);
 
-		return "redirect:main.jsp";
+		return "redirect:/main";
 	}
 
-	@RequestMapping(value = "/companyLogin", method = RequestMethod.POST)
+	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String loginCompany(Company company, HttpServletRequest req) {
 
 		Company loginedCompany = service.findCompany(company.getComId());
@@ -63,27 +66,27 @@ public class CompanyController {
 			if (loginedCompany.getComPassword().equals(company.getComPassword())) {
 				HttpSession session = req.getSession();
 				session.setAttribute("comId", company.getComId());
-				return "redirect:main.jsp";
+				return "redirect:/main";
 			} else {
 				HttpSession session = req.getSession(false);
 				session.invalidate();
-				return "login.jsp";
+				return "/login";
 			}
 		} else {
-			return "login.jsp";
+			return "/login";
 		}
 
 	}
 
-	@RequestMapping("/companyLogout")
+	@RequestMapping("logout")
 	public String logoutCompany(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.invalidate();
 
-		return "redirect:main.jsp";
+		return "redirect:main";
 	}
 
-	@RequestMapping("/companyList")
+	@RequestMapping("list")
 	public ModelAndView findAllCompany() {
 
 		List<Company> list = service.findAllCompany();
@@ -93,7 +96,7 @@ public class CompanyController {
 
 	}
 
-	@RequestMapping("/findByComId")
+	@RequestMapping("findByComId")
 	public ModelAndView findByComId(@RequestParam("comId") String comId) {
 		Company company = service.findCompany(comId);
 		ModelAndView modelAndView = new ModelAndView("companyList.jsp");
@@ -102,7 +105,7 @@ public class CompanyController {
 
 	}
 
-	@RequestMapping("/findByCategory")
+	@RequestMapping("findByCategory")
 	public ModelAndView findByCategory(@RequestParam("category") String category) {
 		List<Company> list = service.findCompanyByCategory(category);
 		ModelAndView modelAndView = new ModelAndView("companyList.jsp");
@@ -124,6 +127,25 @@ public class CompanyController {
 		ModelAndView modelAndView = new ModelAndView("companyDetail.jsp");
 		modelAndView.addObject("company", service.findCompany(comId));
 		return modelAndView;
+	}
+	
+	@RequestMapping(value="mapList", produces="application/xml")
+	public @ResponseBody Companies mapToXml(){
+		List<Company> list = new ArrayList<>();
+		Companies companies = new Companies();
+		list = service.findAllCompany();
+		
+		for(Company c : list){
+			String location = c.getLocation();
+			String [] lo = location.split(";");
+			
+			String [] lo2 = lo[1].split("\\(");
+			c.setLocation(lo2[0]);
+		}
+		
+		companies.setCompanies(list);
+		
+		return companies;
 	}
 
 }
