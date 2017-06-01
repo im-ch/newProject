@@ -86,7 +86,7 @@ public class CompanyController {
 
 	@RequestMapping("/companyList")
 	public ModelAndView findAllCompany() {
-
+		
 		List<Company> list = service.findAllCompany();
 		ModelAndView modelAndView = new ModelAndView("companyList.jsp");
 		modelAndView.addObject("companyList", list);

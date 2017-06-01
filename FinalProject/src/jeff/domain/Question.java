@@ -19,10 +19,10 @@ public class Question {
 	private int questionId;
 	private String title;
 	private String content;
+	private String category;
 	private Date regDate;
 	@XmlElement(name="answer")
 	private List<Answer> answerList;
-	
 	public String getWriterId() {
 		return writerId;
 	}
@@ -47,6 +47,12 @@ public class Question {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public Date getRegDate() {
 		return regDate;
 	}
@@ -62,8 +68,11 @@ public class Question {
 	@Override
 	public String toString() {
 		return "Question [writerId=" + writerId + ", questionId=" + questionId + ", title=" + title + ", content="
-				+ content + ", regDate=" + regDate + ", answerList=" + answerList + "]";
+				+ content + ", category=" + category + ", regDate=" + regDate + ", answerList=" + answerList + "]";
 	}
+	
+	
+	
 	
 	
 }
