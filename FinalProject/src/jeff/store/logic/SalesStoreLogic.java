@@ -43,14 +43,14 @@ public class SalesStoreLogic implements SalesStore{
 	}
 
 	@Override
-	public CompanySales selectSalesByCompany(String companyId) {
+	public List<Sales> selectSalesByCompany(String companyId) {
 		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		
 		SalesMapper mapper = session.getMapper(SalesMapper.class);
-		CompanySales companySales = mapper.selectSalesByCompany(companyId);
+		List<Sales> list = mapper.selectSalesByCompany(companyId);
 		
 		session.close();
-		return companySales;
+		return list;
 	}
 
 	@Override

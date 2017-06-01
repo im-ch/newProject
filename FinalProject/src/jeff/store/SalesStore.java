@@ -13,7 +13,7 @@ public interface SalesStore {
 
 	void deleteSales(int salesId);
 
-	CompanySales selectSalesByCompany(String companyId);
+	List<Sales> selectSalesByCompany(String companyId);
 
 	Sales selectBySalesId(int saleId);
 
