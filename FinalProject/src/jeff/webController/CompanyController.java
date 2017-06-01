@@ -30,7 +30,7 @@ public class CompanyController {
 	public String registCompany(Company company) {
 		service.registCompany(company);
 
-		return "/login";
+		return "redirect:/views/login.jsp";
 	}
 
 	@RequestMapping(value = "modify", method = RequestMethod.GET)
