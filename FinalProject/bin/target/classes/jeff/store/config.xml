@@ -48,26 +48,7 @@
       <mapper resource="jeff/store/mapper/SalesMapper.xml" />
       <mapper resource="jeff/store/mapper/UserMapper.xml" />
    </mappers> 
-<<<<<<< HEAD
-=======
-=======
-	 <mappers>
 
-		<mapper resource="jeff/store/mapper/AllianceMapper.xml" />
-		<mapper resource="jeff/store/mapper/AnswerMapper.xml" />
-		<mapper resource="jeff/store/mapper/CompanyMapper.xml" />
-		<mapper resource="jeff/store/mapper/CouponMapper.xml" />
-		<mapper resource="jeff/store/mapper/ReportReviewMapper.xml" />
-		<mapper resource="jeff/store/mapper/InterestingCompanyMapper.xml" />
-		<mapper resource="jeff/store/mapper/UserCouponMapper.xml" />
-		<mapper resource="jeff/store/mapper/QuestionMapper.xml" />
-		<mapper resource="jeff/store/mapper/ReviewMapper.xml" />
-		<mapper resource="jeff/store/mapper/SalesMapper.xml" />
-		<mapper resource="jeff/store/mapper/UserCouponMapper.xml" />
-		<mapper resource="jeff/store/mapper/UserMapper.xml" />
-	</mappers> 
->>>>>>> 5887d7a24ff82250c4922494a527e269aed54565
->>>>>>> sangjin
 
 </configuration>
   

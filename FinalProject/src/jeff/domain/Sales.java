@@ -1,5 +1,7 @@
 package jeff.domain;
 
+
+
 import java.sql.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,6 +19,8 @@ public class Sales {
 	private int salesId;
 	private int sales;
 	private Date regDate;
+	private Date startdate;
+	private Date enddate;
 	
 	public String getCompanyId() {
 		return companyId;
@@ -46,6 +50,18 @@ public class Sales {
 	public String toString() {
 		return "Sales [companyId=" + companyId + ", salesId=" + salesId + ", sales=" + sales + ", regDate=" + regDate
 				+ "]";
+	}
+	public Date getStartdate() {
+		return startdate;
+	}
+	public void setStartdate(Date startdate) {
+		this.startdate = startdate;
+	}
+	public Date getEnddate() {
+		return enddate;
+	}
+	public void setEnddate(Date enddate) {
+		this.enddate = enddate;
 	}
 	
 }

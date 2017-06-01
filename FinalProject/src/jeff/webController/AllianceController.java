@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jeff.common.exception.YzRuntimeException;
 import jeff.domain.Alliance;
 import jeff.service.AllianceService;
+import jeff.service.CompanyService;
 
 @Controller
 @RequestMapping("alliance")
@@ -23,12 +24,18 @@ public class AllianceController {
 	@Autowired
 	private AllianceService service;
 	
+	@Autowired
+	private CompanyService companyService;
+	
 	@RequestMapping(value = "regist", method = RequestMethod.POST)
 	public String registAlliance(Alliance alliance, HttpServletRequest req) {
-		service.registAlliance(alliance);
+		
 		HttpSession session = req.getSession();
 		String comId = (String) session.getAttribute("comId");
-		return "redirect:/allianceDetail?comId=" + comId;
+		alliance.setCompany(companyService.findCompany(comId));
+		service.registAlliance(alliance);
+//		return "redirect:/allianceDetail?comId=test";
+		return "main";
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)

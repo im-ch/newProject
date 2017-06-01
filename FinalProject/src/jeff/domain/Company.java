@@ -9,8 +9,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.stereotype.Component;
 
-import jeff.domain.Coupons;
-
 @XmlRootElement(name="company")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Component
@@ -85,7 +83,7 @@ public class Company {
 	public String toString() {
 		return "Company [ownerName=" + ownerName + ", comId=" + comId + ", comPassword=" + comPassword + ", comEmail="
 				+ comEmail + ", comPhoneNumber=" + comPhoneNumber + ", comName=" + comName + ", location=" + location
-				+ ", couponList=" + couponList + ", OpeningTime=" + "]";
+				+ ", couponList=" + couponList + "]";
 	}
 	
 	

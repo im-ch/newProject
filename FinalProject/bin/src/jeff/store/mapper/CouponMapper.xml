@@ -10,15 +10,26 @@
 		<result column="ExpiryDate" property="expiryDate" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> this
 		<association property="com" column="comId"
 			select="jeff.store.mapper.CompanyMapper.selectCompany" javaType="Company"
 			jdbcType="VARCHAR" />
 =======
 		<result column="comId" property="comId" />
+<<<<<<< HEAD
+>>>>>>> this
+=======
 >>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
 =======
 		<result column="comId" property="comId" />
 >>>>>>> sangjin
+>>>>>>> this
+=======
+		<result column="comId" property="comId" />
+>>>>>>> hyun
 	</resultMap>
 
 	<insert id="createCoupon" parameterType="Coupon">
@@ -31,6 +42,13 @@
 		(#{couponId}, #{couponName}, #{couponContent},
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+		#{expiryDate}, #{com.comId})
+=======
+		#{expiryDate}, #{comId})
+>>>>>>> this
+=======
+<<<<<<< HEAD
 		#{expiryDate}, #{com.comId})
 =======
 		#{expiryDate}, #{comId})
@@ -38,6 +56,10 @@
 =======
 		#{expiryDate}, #{comId})
 >>>>>>> sangjin
+>>>>>>> this
+=======
+		#{expiryDate}, #{comId})
+>>>>>>> hyun
 	</insert>
 
 	<delete id="deleteCoupon" parameterType="int">
@@ -65,10 +87,20 @@
 		resultMap="couponMap">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> this
 		select couponId, couponName, couponContent, ExpiryDate,
 		comId
 		from coupon_tb
 		where comId=#{com.comId}
+=======
+<<<<<<< HEAD
+		select couponId, couponName, couponContent, ExpiryDate, comId
+		from coupon_tb
+		where comId=#{comId}
+>>>>>>> this
 =======
 		select couponId, couponName, couponContent, ExpiryDate, comId
 		from coupon_tb
@@ -79,6 +111,12 @@
 		from coupon_tb
 		where comId=#{comId}
 >>>>>>> sangjin
+>>>>>>> this
+=======
+		select couponId, couponName, couponContent, ExpiryDate, comId
+		from coupon_tb
+		where comId=#{comId}
+>>>>>>> hyun
 	</select>
 
 	<select id="selectCoupon" parameterType="int" resultMap="couponMap">
