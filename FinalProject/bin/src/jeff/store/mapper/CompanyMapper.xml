@@ -15,12 +15,17 @@
   	<result property="comPhoneNumber" column="phoneNumber"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> this
   	
   	</resultMap>
   	
   	<insert id="createCompany" parameterType="Company">
   	INSERT INTO company_tb(comId,ownerName,comPassword,email,comName,location,phoneNumber) 
   	VALUES(#{comId},#{ownerName},#{comPassword},#{comEmail,jdbcType=VARCHAR},#{comName},#{location},#{comPhoneNumber})
+=======
+<<<<<<< HEAD
 =======
   	<result property="category" column="category" />
   	</resultMap>
@@ -30,6 +35,7 @@
   	VALUES(#{comId},#{ownerName},#{comPassword},#{comEmail,jdbcType=VARCHAR},#{comName},#{location},#{comPhoneNumber},#{category})
 >>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
 =======
+>>>>>>> this
   	<result property="category" column="category" />
   	<collection property="couponList" column="comId" javaType="List"
 			select="jeff.store.mapper.CouponMapper.selectCouponByCompany"/>
@@ -38,7 +44,11 @@
   	<insert id="createCompany" parameterType="Company">
   	INSERT INTO company_tb(comId,ownerName,comPassword,email,comName,location,phoneNumber, category) 
   	VALUES(#{comId},#{ownerName},#{comPassword},#{comEmail,jdbcType=VARCHAR},#{comName},#{location},#{comPhoneNumber},#{category})
+<<<<<<< HEAD
+>>>>>>> this
+=======
 >>>>>>> sangjin
+>>>>>>> this
    	</insert>
    	
    	<delete id="deleteCompany" parameterType="String">
@@ -54,10 +64,17 @@
   	SET ownerName = #{ownerName},comPassword=#{comPassword}, email = #{comEmail} , comName = #{comName},location = #{location},phoneNumber = #{comPhoneNumber}
 =======
   	SET ownerName = #{ownerName},comPassword=#{comPassword}, email = #{comEmail} , comName = #{comName},location = #{location},phoneNumber = #{comPhoneNumber}, category = #{category}
+>>>>>>> this
+=======
+<<<<<<< HEAD
+  	SET ownerName = #{ownerName},comPassword=#{comPassword}, email = #{comEmail} , comName = #{comName},location = #{location},phoneNumber = #{comPhoneNumber}
+=======
+  	SET ownerName = #{ownerName},comPassword=#{comPassword}, email = #{comEmail} , comName = #{comName},location = #{location},phoneNumber = #{comPhoneNumber}, category = #{category}
 >>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
 =======
   	SET ownerName = #{ownerName},comPassword=#{comPassword}, email = #{comEmail} , comName = #{comName},location = #{location},phoneNumber = #{comPhoneNumber}, category = #{category}
 >>>>>>> sangjin
+>>>>>>> this
   	WHERE comId = #{comId}
    	</update>
   	
@@ -68,10 +85,17 @@
    	SELECT comId, ownerName, comPassword, email, comName, location, phoneNumber 
 =======
    	SELECT comId, ownerName, comPassword, email, comName, location, phoneNumber, category 
+>>>>>>> this
+=======
+<<<<<<< HEAD
+   	SELECT comId, ownerName, comPassword, email, comName, location, phoneNumber 
+=======
+   	SELECT comId, ownerName, comPassword, email, comName, location, phoneNumber, category 
 >>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
 =======
    	SELECT comId, ownerName, comPassword, email, comName, location, phoneNumber, category 
 >>>>>>> sangjin
+>>>>>>> this
    	FROM company_tb 
    	ORDER BY comId ASC
    	</select>
@@ -82,10 +106,17 @@
    	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber 
 =======
    	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
+>>>>>>> this
+=======
+<<<<<<< HEAD
+   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber 
+=======
+   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
 >>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
 =======
    	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
 >>>>>>> sangjin
+>>>>>>> this
    	FROM company_tb 
    	WHERE comId = #{comId}
    	</select>
@@ -93,16 +124,22 @@
    	<select id="selectCompanyByName" resultMap="companyMap">
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> this
    	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber 
    	FROM company_tb 
    	WHERE comName = #{comName}
    	</select>
+=======
+<<<<<<< HEAD
 =======
    	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
    	FROM company_tb 
    	WHERE comName = #{comName}
    	</select>
 =======
+>>>>>>> this
    	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
    	FROM company_tb 
    	WHERE comName = #{comName}
@@ -115,8 +152,12 @@
    	WHERE category = #{category}
    	</select>
 <<<<<<< HEAD
+>>>>>>> this
+=======
+<<<<<<< HEAD
 >>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
 =======
 >>>>>>> sangjin
+>>>>>>> this
    	   	  
   </mapper>
