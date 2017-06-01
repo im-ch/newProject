@@ -29,6 +29,8 @@
 	<div class="color-bar-1"></div>
     <div class="color-bar-2 color-bg"></div>
     
+    <div class="container main-container">
+    
     <%@ include file="/views/header.jspf"%>
 	
 	<div class="row form-examples">
@@ -45,6 +47,7 @@
             <button class="btn btn-large btn-warning" type="button">Join</button>
             <br><br><br><br>
 	      </div>
+	</div>
 	</div>
 	
 	<%@ include file="/views/footer.jspf"%>
