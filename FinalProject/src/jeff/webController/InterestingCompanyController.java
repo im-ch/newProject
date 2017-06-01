@@ -29,11 +29,12 @@ public class InterestingCompanyController {
 	public String registInterestingCompany(HttpServletRequest req, String comId) {
 
 		HttpSession session = req.getSession();
-		HashMap<String, Object> map = new HashMap<String, Object>();
-
+		
 		if (session == null || session.getAttribute("userId") == null) {
 			return "redirect:login.jsp";
 		}
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		map.put("userId", (String) session.getAttribute("userId"));
 		map.put("comId", comId);
@@ -54,17 +55,15 @@ public class InterestingCompanyController {
 //		if (session == null || session.getAttribute("userId") == null) {
 //			return "redirect:login.jsp";
 //		}
-		System.out.println("�Դٰ�");
 		List<String> comList = service.findInterestingCompany("heehyun");
-		System.out.println(comList.size());
 		List<Company> list = new ArrayList<>();
 
 		for (int i = 0; i < comList.size(); i++) {
 			list.add(companyService.findCompany(comList.get(i)));
-			System.out.println(list.get(i).toString());
 		}
+		System.out.println("컨트롤러");
 		model.addAttribute("company", list);
-		return "/interestingCompany.jsp";
+		return "/interestingCompany";
 	}
 
 	@RequestMapping(value = "/remove")

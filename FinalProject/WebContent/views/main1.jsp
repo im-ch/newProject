@@ -7,6 +7,8 @@
 </head>
 <body>
 	<a href="http://localhost:8080/FinalProject/interesting/list">확인</a>
+	
+	<a href="http://localhost:8080/FinalProject/views/salesList.jsp">매출</a>
 
 
 </body>
