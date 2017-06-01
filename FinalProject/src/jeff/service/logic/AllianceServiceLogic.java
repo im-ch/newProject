@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jeff.domain.Alliance;
+import jeff.domain.Company;
 import jeff.service.AllianceService;
 import jeff.store.AllianceStore;
 
@@ -27,6 +28,9 @@ public class AllianceServiceLogic implements AllianceService {
 
 	@Override
 	public void registAlliance(Alliance alliance) {
+		Company company = new Company();
+		company.setComId("test");
+		alliance.setCompany(company);
 		store.createAlliance(alliance);
 	}
 

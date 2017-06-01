@@ -172,7 +172,7 @@ $(document).ready(function () {
         
       </div><!-- End Header -->
       <h3>JEFF 제휴제안서</h3>
-      <form action="${ctx }/aliance/regist" method="post">
+      <form action="${ctx }/alliance/regist" method="post">
 		<table class="table01" width="100%">
           <tbody>
             <tr>
