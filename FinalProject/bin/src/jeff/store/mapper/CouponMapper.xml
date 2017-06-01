@@ -10,6 +10,7 @@
 		<result column="ExpiryDate" property="expiryDate" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> this
@@ -26,6 +27,9 @@
 		<result column="comId" property="comId" />
 >>>>>>> sangjin
 >>>>>>> this
+=======
+		<result column="comId" property="comId" />
+>>>>>>> hyun
 	</resultMap>
 
 	<insert id="createCoupon" parameterType="Coupon">
@@ -36,6 +40,7 @@
 		comId)
 		values
 		(#{couponId}, #{couponName}, #{couponContent},
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 		#{expiryDate}, #{com.comId})
@@ -52,6 +57,9 @@
 		#{expiryDate}, #{comId})
 >>>>>>> sangjin
 >>>>>>> this
+=======
+		#{expiryDate}, #{comId})
+>>>>>>> hyun
 	</insert>
 
 	<delete id="deleteCoupon" parameterType="int">
@@ -79,6 +87,7 @@
 		resultMap="couponMap">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> this
@@ -103,6 +112,11 @@
 		where comId=#{comId}
 >>>>>>> sangjin
 >>>>>>> this
+=======
+		select couponId, couponName, couponContent, ExpiryDate, comId
+		from coupon_tb
+		where comId=#{comId}
+>>>>>>> hyun
 	</select>
 
 	<select id="selectCoupon" parameterType="int" resultMap="couponMap">

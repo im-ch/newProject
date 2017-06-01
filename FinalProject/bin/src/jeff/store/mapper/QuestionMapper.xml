@@ -15,30 +15,30 @@
 		select="jeff.store.mapper.AnswerMapper.selectAllAnswer" />
 	</resultMap>
 
-<<<<<<< HEAD
-	<insert id="createQuestion" parameterType="Question">
-=======
 	<insert id="createQuestion" parameterType="Question" >
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> this
 =======
 >>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
 >>>>>>> this
+=======
+>>>>>>> hyun
 	  	<selectKey keyProperty="questionId" resultType="int" order="BEFORE">
 			select question_tb_seq.nextval FROM DUAL
 		</selectKey>
 		INSERT INTO question_tb(questionId, writerId, title, content, regDate)
 		VALUES (#{questionId}, #{writerId}, #{title}, #{content}, sysdate)
 	</insert>
-<<<<<<< HEAD
-
-=======
 	
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> this
 =======
 >>>>>>> 5ea9a82bf3666b15bae11ae0f6cba340bf758883
 >>>>>>> this
+=======
+>>>>>>> hyun
 	<delete id="deleteQuestion" parameterType="int">
 		DELETE FROM question_tb 
 		WHERE questionId = #{questionId}
