@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="ctx" value="${pageContext.request.contextPath }" />
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,10 +12,10 @@
 <!-- CSS
 ================================================== -->
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap-responsive.css">
-<link rel="stylesheet" href="css/prettyPhoto.css" />
-<link rel="stylesheet" href="css/custom-styles.css">
+<link rel="stylesheet" href="${ctx }/resources/css/bootstrap.css">
+<link rel="stylesheet" href="${ctx }/resources/css/bootstrap-responsive.css">
+<link rel="stylesheet" href="${ctx }/resources/css/prettyPhoto.css" />
+<link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -50,7 +52,7 @@
         <!-- Logo
         ================================================== -->
         <div class="span5 logo">
-        	<a href="index.htm"><img src="img/piccolo-logo.png" alt="" /></a>
+        	<a href="index.htm"><img src="${ctx }/resources/img/piccolo-logo.png" alt="" /></a>
             <h5>Big Things... Small Packages</h5>
         </div>
         
@@ -163,11 +165,11 @@
                     <li  class="span4 gallery-item" data-id="id-1" data-type="illustration">
                         <span class="gallery-hover-3col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
-                                <a href="img/gallery/damso.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                <a href="${ctx }/resources/img/gallery/damso.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
                                 <a href="gallery-single.htm" class="item-details-link"></a>
                             </span>
                         </span>
-                        <a href="gallery-single.htm"><img src="img/gallery/damso.jpg" alt="Gallery"></a>
+                        <a href="gallery-single.htm"><img src="${ctx }/resources/img/gallery/damso.jpg" alt="Gallery"></a>
                         <span class="project-details"><a href="gallery-single.htm">담소사골순대</a>소사골의 소고기 순대국, 올바름에 대해 고민하는 사람들</span>
                     </li>
 
@@ -175,11 +177,11 @@
                     <li class="span4 gallery-item" data-id="id-2" data-type="illustration">
                         <span class="gallery-hover-3col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
-                                <a href="img/gallery/parram.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                <a href="${ctx }/resources/img/gallery/parram.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
                                 <a href="gallery-single.htm" class="item-details-link"></a>
                             </span>
                         </span>
-                        <a href="gallery-single.htm"><img src="img/gallery/parram.jpg" alt="Gallery"></a>
+                        <a href="gallery-single.htm"><img src="${ctx }/resources/img/gallery/parram.jpg" alt="Gallery"></a>
                         <span class="project-details"><a href="gallery-single.htm">팔람까오</a>가산동의 작은 태국 음식점입니다 </span>
                     </li>
 
@@ -191,7 +193,7 @@
                                 <a href="gallery-single.htm" class="item-details-link"></a>
                             </span>
                         </span>
-                        <a href="gallery-single.htm"><img src="img/gallery/6jun.jpg" alt="Gallery"></a>
+                        <a href="gallery-single.htm"><img src="${ctx }/resources/img/gallery/6jun.jpg" alt="Gallery"></a>
                         <span class="project-details"><a href="gallery-single.htm">육전면사무소</a>고기로 만든 전과 생면이 있는 곳</span>
                     </li>
 
@@ -199,7 +201,7 @@
                     <li class="span4 gallery-item" data-id="id-4" data-type="video">
                         <span class="gallery-hover-3col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                <a href="${ctx }/resources/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
                                 <a href="gallery-single.htm" class="item-details-link"></a>
                             </span>
                         </span>
@@ -211,11 +213,11 @@
                     <li class="span4 gallery-item" data-id="id-5" data-type="web illustration">
                         <span class="gallery-hover-3col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                <a href="${ctx }/resources/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
                                 <a href="gallery-single.htm" class="item-details-link"></a>
                             </span>
                         </span>
-                        <a href="gallery-single.htm"><img src="img/gallery/gallery-img-1-3col.jpg" alt="Gallery"></a>
+                        <a href="gallery-single.htm"><img src="${ctx }/resources/img/gallery/gallery-img-1-3col.jpg" alt="Gallery"></a>
                         <span class="project-details"><a href="gallery-single.htm">Icon Design</a>Classic retro style illustration.</span>
                     </li>
 
@@ -223,11 +225,11 @@
                     <li class="span4 gallery-item" data-id="id-6" data-type="illustration design">
                         <span class="gallery-hover-3col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                <a href="${ctx }/resources/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
                                 <a href="gallery-single.htm" class="item-details-link"></a>
                             </span>
                         </span>
-                        <a href="gallery-single.htm"><img src="img/gallery/gallery-img-1-3col.jpg" alt="Gallery"></a>
+                        <a href="gallery-single.htm"><img src="${ctx }/resources/img/gallery/gallery-img-1-3col.jpg" alt="Gallery"></a>
                         <span class="project-details"><a href="gallery-single.htm">Animation Cell</a>Creative storyboard illustration</span>
                     </li>
 
