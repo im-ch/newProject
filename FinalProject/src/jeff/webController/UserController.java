@@ -37,12 +37,8 @@ public class UserController {
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String loginUser(@RequestParam("loginId") String id, @RequestParam("loginPassword")String password, HttpServletRequest req) {
-		System.out.println("dd>");
 		User loginedUser = service.findUser(id);
 		Company loginedCompany = comService.findCompany(id);
-		
-		System.out.println(id);
-		
 		
 		if (loginedUser != null || loginedCompany != null) {
 			if (loginedUser != null && loginedUser.getPassword().equals(password)) {
