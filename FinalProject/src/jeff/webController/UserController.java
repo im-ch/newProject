@@ -63,7 +63,7 @@ public class UserController {
 	public String logoutUser(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.invalidate();
-		return "redirect:/main";
+		return "redirect:/views/main.jsp";
 	}
 	
 	@RequestMapping(value = "modify", method = RequestMethod.GET)
