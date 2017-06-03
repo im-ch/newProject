@@ -7,8 +7,12 @@
 
      <resultMap type="Company" id="companyMap">
      <id property="comId" column="comId"/>
+<<<<<<< HEAD
      
      <result property="ownerName" column="ownerName"/>
+=======
+     <result property="ownerName" column="ownerName" />
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
      <result property="comPassword" column="comPassword"/>
      <result property="comEmail" column="email"/>
      <result property="comName" column="comName"/>

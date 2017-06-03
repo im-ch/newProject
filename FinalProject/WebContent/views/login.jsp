@@ -69,9 +69,11 @@
          </form>
    </div>
    </div>
+
    
    <%@ include file="/views/footer.jspf"%>
 	
+<<<<<<< HEAD
 	<div class="row form-examples">
 	      <h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login</h1>
 	      <br><br><br><br><br>
@@ -92,6 +94,9 @@
 	
 	<%@ include file="/views/footer.jspf"%>
 >>>>>>> eb5fa23617f00ea44ce74c951023ec1af7fb5e90
+=======
+
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
 
    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
    

@@ -107,6 +107,7 @@ C:\Users\kosta\git\newProject\FinalProject\src\jeff\domain\Questions.java
 C:\Users\kosta\git\newProject\FinalProject\src\jeff\service\logic\InterestingCompanyServiceLogic.java
 C:\Users\kosta\git\newProject\FinalProject\src\jeff\store\logic\JeffSessionFactory.java
 C:\Users\kosta\git\newProject\FinalProject\src\jeff\service\logic\CompanyServiceLogic.java
+C:\Users\kosta\git\newProject\FinalProject\src\jeff\webController\CompanyImageController.java
 C:\Users\kosta\git\newProject\FinalProject\src\jeff\store\mapper\AllianceMapper.java
 C:\Users\kosta\git\newProject\FinalProject\src\jeff\service\logic\UserCouponServiceLogic.java
 C:\Users\kosta\git\newProject\FinalProject\src\jeff\service\logic\ReviewServiceLogic.java
@@ -136,6 +137,7 @@ C:\Users\kosta\git\newProject\FinalProject\src\jeff\service\logic\UserServiceLog
 C:\Users\kosta\git\newProject\FinalProject\src\jeff\webController\AnswerController.java
 C:\Users\kosta\git\newProject\FinalProject\src\jeff\webController\ReportReviewController.java
 C:\Users\kosta\git\newProject\FinalProject\src\jeff\store\AnswerStore.java
+C:\Users\kosta\git\newProject\FinalProject\src\jeff\domain\CompanyImage.java
 C:\Users\kosta\git\newProject\FinalProject\src\jeff\domain\CompanySales.java
 C:\Users\kosta\git\newProject\FinalProject\src\jeff\service\logic\QuestionServiceLogic.java
 C:\Users\kosta\git\newProject\FinalProject\src\jeff\webController\QuestionController.java

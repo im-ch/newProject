@@ -17,6 +17,7 @@ public class CouponServiceLogic implements CouponService {
 
 	@Override
 	public void registCoupon(Coupon coupon) {
+		
 		couponStore.createCoupon(coupon);
 	}
 

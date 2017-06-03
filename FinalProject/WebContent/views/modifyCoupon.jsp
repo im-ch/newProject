@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>ADD Coupon</title>
+<title>Modify Coupon</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -67,7 +67,7 @@
 			<div class="span8 contact">
 				<!--Begin page content column-->
 
-				<h1>ADD Coupon</h1>
+				<h1>Modify Coupon</h1>
 				<br>
 				<br>
 				<div class="alert alert-success">
@@ -75,21 +75,24 @@
 						보상하지 않습니다.</Strong>
 				</div>
 
-				<form action="${ctx }/coupon/regist" method="POST">
+				<form action="${ctx }/coupon/modify" method="POST">
+					<input type="hidden" value="${coupon.couponId }" name="couponId"/>
 					<div class="input-prepend">
 						<span class="add-on"><i class="icon-list-alt"></i></span> <input
 							class="span4" id="prependedInput" size="16" type="text"
-							placeholder="Coupon Name" name="couponName">
+							placeholder="Coupon Name" name="couponName"value="${coupon.couponName }">
 					</div>
 
 					<h4>사용기한</h4>
-					<input type="date" id="departure" name="expiryDate" />
-					>
+					<input type="date" id="departure" name="expiryDate"/>
+					<!-- <script>
+						$("#departure").dateDropper();
+					</script> -->
 
-					<textarea class="span6" placeholder="Coupon Detail" name="couponContent"></textarea>
+					<textarea class="span6" placeholder="Coupon Detail" name="couponContent" >${coupon.couponContent }</textarea>
 					<div class="row">
 						<div class="span2">
-							<button class="btn btn-large btn-warning">ADD</button>
+							<button class="btn btn-large btn-warning">Modify</button>
 						</div>
 					</div>
 				</form>

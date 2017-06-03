@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Companies {
 
+<<<<<<< HEAD
 	@XmlElement(name = "company")
 	private List<Company> companies;
 
@@ -25,4 +26,17 @@ public class Companies {
 		this.companies = companies;
 	}
 
+=======
+   @XmlElement(name="company")
+   private List<Company> companies;
+
+   public List<Company> getCompanies() {
+      return companies;
+   }
+
+   public void setCompanies(List<Company> companies) {
+      this.companies = companies;
+   }
+   
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
 }

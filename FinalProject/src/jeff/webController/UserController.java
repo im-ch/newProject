@@ -25,6 +25,7 @@ public class UserController {
 
    @Autowired
    private UserService service;
+<<<<<<< HEAD
 
    @Autowired
    private CompanyService comService;
@@ -42,11 +43,29 @@ public class UserController {
       Company loginedCompany = comService.findCompany(id);
 
 
+=======
+   
+   @Autowired
+   private CompanyService comService;
+
+   @RequestMapping(value="create", method = RequestMethod.POST)
+   public String registUser(User user) {
+      service.registUser(user);
+      return "redirect:/views/login.jsp";
+   }
+
+   @RequestMapping(value = "login", method = RequestMethod.POST)
+   public String loginUser(@RequestParam("loginId") String id, @RequestParam("loginPassword")String password, HttpServletRequest req) {
+      User loginedUser = service.findUser(id);
+      Company loginedCompany = comService.findCompany(id);
+      
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
       if (loginedUser != null || loginedCompany != null) {
          if (loginedUser != null && loginedUser.getPassword().equals(password)) {
             HttpSession session = req.getSession();
             session.setAttribute("userId", id);
             return "redirect:/views/main.jsp";
+<<<<<<< HEAD
          } else if (loginedCompany != null && loginedCompany.getComPassword().equals(password)) {
             HttpSession session = req.getSession();
             session.setAttribute("comId", id);
@@ -61,10 +80,27 @@ public class UserController {
       }
    }
 
+=======
+         }else if (loginedCompany != null && loginedCompany.getComPassword().equals(password)) {
+            HttpSession session = req.getSession();
+            session.setAttribute("comId", id);
+            return "redirect:/views/main.jsp";
+         }else {
+            HttpSession session = req.getSession(false);
+            session.invalidate();
+            return "redirect:/views/login.jsp";
+         }
+      }else{
+         return "redirect:/views/login.jsp";
+      }
+   }
+   
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
    @RequestMapping("logout")
    public String logoutUser(HttpServletRequest req) {
       HttpSession session = req.getSession();
       session.invalidate();
+<<<<<<< HEAD
       return "redirect:/views/main.jsp";
    }
 
@@ -92,32 +128,80 @@ public class UserController {
    }
 
    @RequestMapping("/userList")
+=======
+      return "redirect:/main";
+   }
+   
+   @RequestMapping(value = "modify", method = RequestMethod.GET)
+   public String updateUser(String userId, Model model) {
+      User user = service.findUser(userId);
+      
+      model.addAttribute("userInfo", user);
+      
+      return "/userModifyForm";
+   }
+   
+   @RequestMapping(value = "modify", method = RequestMethod.POST)
+   public String updateUser(User user) {
+      service.updateUser(user);
+      return "redirect:detail?userId=" + user.getUserId();
+   }
+   
+   @RequestMapping("remove")
+   public String removeUser(HttpServletRequest req) {
+      HttpSession session = req.getSession();
+      String userId = (String)session.getAttribute("userId");
+      service.removeUser(userId);
+      return "redirect:/main";
+   }
+   
+   @RequestMapping("list")
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
    public ModelAndView findAllUser() {
       List<User> list = service.findAllUsers();
       ModelAndView modelAndView = new ModelAndView("userList.jsp");
       modelAndView.addObject("userList", list);
       return modelAndView;
    }
+<<<<<<< HEAD
 
    @RequestMapping("/userDetail")
+=======
+   
+   @RequestMapping("detail")
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
    public ModelAndView findByUserId(@RequestParam("userId") String userId) {
       ModelAndView modelAndView = new ModelAndView("userInfo.jsp");
       modelAndView.addObject("user", service.findUser(userId));
       return modelAndView;
    }
+<<<<<<< HEAD
 
    @RequestMapping("/allUsers")
    public ModelAndView findAllUsers() {
+=======
+   
+   @RequestMapping("allUsers")
+   public ModelAndView findAllUsers(){
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
       ModelAndView modelAndView = new ModelAndView("/userList");
       List<User> users = service.findAllUsers();
       List<Company> companys = comService.findAllCompany();
       List<Integer> allUsers = new ArrayList<>();
       allUsers.add(users.size());
       allUsers.add(companys.size());
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
       modelAndView.addObject("allUsers", allUsers);
       modelAndView.addObject("users", users);
       modelAndView.addObject("companys", companys);
       return modelAndView;
    }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
