@@ -2,6 +2,7 @@ package jeff.store.logic;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Before;
@@ -104,5 +105,18 @@ public class CompanyStoreLogicTest {
 	// System.out.println(c.toString());
 	// }
 	// }
+	
+	 @Test
+	 public void selectCompanyByLocation() {
+		 
+		 HashMap<String, Object> map = new HashMap<>();
+		 map.put("location", "서울시 강남구");
+		 map.put("category", "기타");
+		 
+		 List<Company> list = store.selectCompanyByLocation(map);
+		 
+		 assertEquals(2, list.size());
+		 
+	 }
 
 }

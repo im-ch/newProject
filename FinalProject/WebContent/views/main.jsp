@@ -80,6 +80,7 @@
 	<div class="container">
 		
 		<%@ include file="/views/header.jspf"%>
+		<%@ include file="/views/searchHeader.jspf"%>
 
 		<section class="tiles">
 			<article class="style1">

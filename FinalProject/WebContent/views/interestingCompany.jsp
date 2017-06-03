@@ -51,6 +51,24 @@
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery.custom.js"></script>
 
+<script type="text/javascript">
+	function toAjax(comId) {
+		$.ajax({
+			url : "${ctx}/interesting/remove",
+			type : "GET",
+			data : {
+				comId : comId
+			},
+			success : function(data) {
+				alert("삭제되었습니다.");
+				window.location.reload();
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("잠시 후 다시 시도해 주세요");
+			}
+		});
+	}
+</script>
 
 </head>
 
@@ -60,6 +78,7 @@
 
 	<div class="container main-container">
 
+		<%@ include file="/views/header.jspf"%>
 		<div class="row header">
 			<!-- Begin Header -->
 
@@ -196,6 +215,20 @@
 												href="${ctx }/resources/gallery-single.htm"
 												class="item-details-link"></a>
 										</span>
+									</span> <a href="gallery-single.htm"><img
+											src="${ctx }/resources/img/gallery/parram.jpg" alt="Gallery"></a>
+										<span class="project-details"><a
+											href="${ctx }/resources/gallery-single.htm"
+											id="${com.comId }">${com.comId }</a>For an international add
+											campaign.</span> 
+											
+											<!-- ★★★★★★★★★★★★★★★★delete★★★★★★★★★★★★★★★★ --> 
+											<input type="button" id="delete" class="delete"
+										onclick="toAjax('${com.comId}');" name="delete" value="delete">
+										<!-- ★★★★★★★★★★★★★★★★delete★★★★★★★★★★★★★★★★ -->
+
+
+									</li>
 									</span> <a
 										href="gallery-single.htm"><img
 											src="${ctx }/resources/img/gallery/parram.jpg"
@@ -229,6 +262,7 @@
 	</div>
 	<!-- End Container -->
 
+	<%@ include file="/views/footer.jspf"%>
 	<!-- Footer Area
         ================================================== -->
 	<div class="footer-container">
