@@ -25,261 +25,99 @@ public class UserController {
 
    @Autowired
    private UserService service;
-   
+
    @Autowired
    private CompanyService comService;
 
-<<<<<<< HEAD
-   @RequestMapping(value="create", method = RequestMethod.POST)
+   @RequestMapping(value = "/userCreate", method = RequestMethod.POST)
    public String registUser(User user) {
       service.registUser(user);
-      return "redirect:/views/login.jsp";
+      return "login.jsp";
    }
 
    @RequestMapping(value = "login", method = RequestMethod.POST)
-   public String loginUser(@RequestParam("loginId") String id, @RequestParam("loginPassword")String password, HttpServletRequest req) {
+   public String loginUser(@RequestParam("loginId") String id,
+         @RequestParam("loginPassword") String password, HttpServletRequest req) {
       User loginedUser = service.findUser(id);
       Company loginedCompany = comService.findCompany(id);
-      
+
+
       if (loginedUser != null || loginedCompany != null) {
          if (loginedUser != null && loginedUser.getPassword().equals(password)) {
             HttpSession session = req.getSession();
             session.setAttribute("userId", id);
             return "redirect:/views/main.jsp";
-         }else if (loginedCompany != null && loginedCompany.getComPassword().equals(password)) {
+         } else if (loginedCompany != null && loginedCompany.getComPassword().equals(password)) {
             HttpSession session = req.getSession();
             session.setAttribute("comId", id);
             return "redirect:/views/main.jsp";
-         }else {
+         } else {
             HttpSession session = req.getSession(false);
             session.invalidate();
-            return "redirect:/views/login.jsp";
+            return "redirect:/views/main.jsp";
          }
-      }else{
-         return "redirect:/views/login.jsp";
+      } else {
+         return "redirect:/views/main.jsp";
       }
    }
-   
+
    @RequestMapping("logout")
    public String logoutUser(HttpServletRequest req) {
       HttpSession session = req.getSession();
       session.invalidate();
-      return "redirect:/main";
+      return "redirect:/views/main.jsp";
    }
-   
-   @RequestMapping(value = "modify", method = RequestMethod.GET)
+
+   @RequestMapping(value = "/userModify", method = RequestMethod.GET)
    public String updateUser(String userId, Model model) {
       User user = service.findUser(userId);
-      
+
       model.addAttribute("userInfo", user);
-      
-      return "/userModifyForm";
+
+      return "userModifyForm.jsp";
    }
-   
-   @RequestMapping(value = "modify", method = RequestMethod.POST)
+
+   @RequestMapping(value = "/userModify", method = RequestMethod.POST)
    public String updateUser(User user) {
       service.updateUser(user);
-      return "redirect:detail?userId=" + user.getUserId();
+      return "redirect:userDetail?userId=" + user.getUserId();
    }
-   
-   @RequestMapping("remove")
+
+   @RequestMapping("/userRemove")
    public String removeUser(HttpServletRequest req) {
       HttpSession session = req.getSession();
-      String userId = (String)session.getAttribute("userId");
+      String userId = (String) session.getAttribute("userId");
       service.removeUser(userId);
-      return "redirect:/main";
+      return "redirect:main";
    }
-   
-   @RequestMapping("list")
+
+   @RequestMapping("/userList")
    public ModelAndView findAllUser() {
       List<User> list = service.findAllUsers();
       ModelAndView modelAndView = new ModelAndView("userList.jsp");
       modelAndView.addObject("userList", list);
       return modelAndView;
    }
-   
-   @RequestMapping("detail")
+
+   @RequestMapping("/userDetail")
    public ModelAndView findByUserId(@RequestParam("userId") String userId) {
       ModelAndView modelAndView = new ModelAndView("userInfo.jsp");
       modelAndView.addObject("user", service.findUser(userId));
       return modelAndView;
    }
-   
-   @RequestMapping("allUsers")
-   public ModelAndView findAllUsers(){
+
+   @RequestMapping("/allUsers")
+   public ModelAndView findAllUsers() {
       ModelAndView modelAndView = new ModelAndView("/userList");
       List<User> users = service.findAllUsers();
       List<Company> companys = comService.findAllCompany();
       List<Integer> allUsers = new ArrayList<>();
       allUsers.add(users.size());
       allUsers.add(companys.size());
-      
+
       modelAndView.addObject("allUsers", allUsers);
       modelAndView.addObject("users", users);
       modelAndView.addObject("companys", companys);
       return modelAndView;
    }
 }
-=======
-<<<<<<< HEAD
-	@Autowired
-	private CompanyService comService;
-
-	@RequestMapping(value = "/userCreate", method = RequestMethod.POST)
-=======
-	@RequestMapping(value="create", method = RequestMethod.POST)
->>>>>>> eojin
-	public String registUser(User user) {
-		service.registUser(user);
-		return "redirect:/views/login.jsp";
-	}
-
-	@RequestMapping(value = "login", method = RequestMethod.POST)
-<<<<<<< HEAD
-	public String loginUser(@RequestParam("loginId") String id,
-			@RequestParam("loginPassword") String password, HttpServletRequest req) {
-		User loginedUser = service.findUser(id);
-		Company loginedCompany = comService.findCompany(id);
-
-
-=======
-	public String loginUser(@RequestParam("loginId") String id, @RequestParam("loginPassword")String password, HttpServletRequest req) {
-		User loginedUser = service.findUser(id);
-		Company loginedCompany = comService.findCompany(id);
-		
->>>>>>> eojin
-		if (loginedUser != null || loginedCompany != null) {
-			if (loginedUser != null && loginedUser.getPassword().equals(password)) {
-				HttpSession session = req.getSession();
-				session.setAttribute("userId", id);
-				return "redirect:/views/main.jsp";
-<<<<<<< HEAD
-			} else if (loginedCompany != null && loginedCompany.getComPassword().equals(password)) {
-				HttpSession session = req.getSession();
-				session.setAttribute("comId", id);
-				return "redirect:/views/main.jsp";
-			} else {
-				HttpSession session = req.getSession(false);
-				session.invalidate();
-				return "redirect:/views/main.jsp";
-			}
-		} else {
-			return "redirect:/views/main.jsp";
-		}
-	}
-
-=======
-			}else if (loginedCompany != null && loginedCompany.getComPassword().equals(password)) {
-				HttpSession session = req.getSession();
-				session.setAttribute("comId", id);
-				return "redirect:/views/main.jsp";
-			}else {
-				HttpSession session = req.getSession(false);
-				session.invalidate();
-				return "redirect:/views/login.jsp";
-			}
-		}else{
-			return "redirect:/views/login.jsp";
-		}
-	}
-	
->>>>>>> eojin
-	@RequestMapping("logout")
-	public String logoutUser(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-		session.invalidate();
-		return "redirect:/views/main.jsp";
-	}
-<<<<<<< HEAD
-
-	@RequestMapping(value = "/userModify", method = RequestMethod.GET)
-=======
-	
-	@RequestMapping(value = "modify", method = RequestMethod.GET)
->>>>>>> eojin
-	public String updateUser(String userId, Model model) {
-		User user = service.findUser(userId);
-
-		model.addAttribute("userInfo", user);
-<<<<<<< HEAD
-
-		return "userModifyForm.jsp";
-	}
-
-	@RequestMapping(value = "/userModify", method = RequestMethod.POST)
-=======
-		
-		return "/userModifyForm";
-	}
-	
-	@RequestMapping(value = "modify", method = RequestMethod.POST)
->>>>>>> eojin
-	public String updateUser(User user) {
-		service.updateUser(user);
-		return "redirect:detail?userId=" + user.getUserId();
-	}
-<<<<<<< HEAD
-
-	@RequestMapping("/userRemove")
-=======
-	
-	@RequestMapping("remove")
->>>>>>> eojin
-	public String removeUser(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-		String userId = (String) session.getAttribute("userId");
-		service.removeUser(userId);
-		return "redirect:/main";
-	}
-<<<<<<< HEAD
-
-	@RequestMapping("/userList")
-=======
-	
-	@RequestMapping("list")
->>>>>>> eojin
-	public ModelAndView findAllUser() {
-		List<User> list = service.findAllUsers();
-		ModelAndView modelAndView = new ModelAndView("userList.jsp");
-		modelAndView.addObject("userList", list);
-		return modelAndView;
-	}
-<<<<<<< HEAD
-
-	@RequestMapping("/userDetail")
-=======
-	
-	@RequestMapping("detail")
->>>>>>> eojin
-	public ModelAndView findByUserId(@RequestParam("userId") String userId) {
-		ModelAndView modelAndView = new ModelAndView("userInfo.jsp");
-		modelAndView.addObject("user", service.findUser(userId));
-		return modelAndView;
-	}
-<<<<<<< HEAD
-
-	@RequestMapping("/allUsers")
-	public ModelAndView findAllUsers() {
-=======
-	
-	@RequestMapping("allUsers")
-	public ModelAndView findAllUsers(){
->>>>>>> eojin
-		ModelAndView modelAndView = new ModelAndView("/userList");
-		List<User> users = service.findAllUsers();
-		List<Company> companys = comService.findAllCompany();
-		List<Integer> allUsers = new ArrayList<>();
-		allUsers.add(users.size());
-		allUsers.add(companys.size());
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> eojin
-		modelAndView.addObject("allUsers", allUsers);
-		modelAndView.addObject("users", users);
-		modelAndView.addObject("companys", companys);
-		return modelAndView;
-	}
-}
->>>>>>> eb5fa23617f00ea44ce74c951023ec1af7fb5e90
