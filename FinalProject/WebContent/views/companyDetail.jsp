@@ -70,7 +70,6 @@
                     <img src="${ctx }/resources/img/gallery/gallery-img-14-6col.jpg" alt="Image" class="thumbnail">
                 </div>
             </div>
-
         </div> <!--End page content column-->
 
         <!-- Blog Sidebar

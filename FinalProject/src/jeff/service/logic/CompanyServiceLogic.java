@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jeff.domain.Company;
+import jeff.domain.CompanyImage;
 import jeff.service.CompanyService;
 import jeff.store.CompanyStore;
 import jeff.store.logic.CompanyStoreLogic;
@@ -66,6 +67,5 @@ public class CompanyServiceLogic implements CompanyService{
 		
 		return store.selectCompanyByName(comName);
 	}
-	
-	
+
 }

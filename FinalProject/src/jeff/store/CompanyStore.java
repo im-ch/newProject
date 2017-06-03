@@ -3,6 +3,7 @@ package jeff.store;
 import java.util.List;
 
 import jeff.domain.Company;
+import jeff.domain.CompanyImage;
 
 public interface CompanyStore {
 
@@ -21,4 +22,5 @@ public interface CompanyStore {
 	boolean loginCompany (Company company);
 	
 	List<Company> selectCompanyByCategory(String category);
+	
 }

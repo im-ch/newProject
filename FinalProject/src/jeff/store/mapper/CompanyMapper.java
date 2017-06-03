@@ -3,6 +3,7 @@ package jeff.store.mapper;
 import java.util.List;
 
 import jeff.domain.Company;
+import jeff.domain.CompanyImage;
 
 public interface CompanyMapper {
 	
@@ -21,5 +22,6 @@ public interface CompanyMapper {
 	boolean loginCompany (Company company);
 	
 	List<Company> selectCompanyByCategory(String category);
+	
 
 }

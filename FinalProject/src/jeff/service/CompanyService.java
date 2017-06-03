@@ -3,6 +3,7 @@ package jeff.service;
 import java.util.List;
 
 import jeff.domain.Company;
+import jeff.domain.CompanyImage;
 
 public interface CompanyService {
 
@@ -14,4 +15,5 @@ public interface CompanyService {
 	public boolean login(Company company);
 	public List<Company> findCompanyByCategory(String category);
 	public Company findCompanyByName(String comName);
+	
 }
