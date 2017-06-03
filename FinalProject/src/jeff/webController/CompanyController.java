@@ -1,10 +1,14 @@
 package jeff.webController;
 
+<<<<<<< HEAD
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+=======
+import java.util.ArrayList;
+>>>>>>> eojin
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +25,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< HEAD
 import com.google.gson.JsonObject;
 
+=======
+>>>>>>> eojin
 import jeff.domain.Companies;
 import jeff.domain.Company;
 import jeff.service.CompanyService;
@@ -90,7 +97,11 @@ public class CompanyController {
 		HttpSession session = req.getSession();
 		session.invalidate();
 
+<<<<<<< HEAD
 		return "redirect:/views/main.jsp";
+=======
+		return "redirect:main";
+>>>>>>> eojin
 	}
 
 	@RequestMapping("list")
@@ -137,6 +148,7 @@ public class CompanyController {
 	}
 	
 	@RequestMapping(value="mapList", produces="application/xml")
+<<<<<<< HEAD
 	public @ResponseBody Companies mapToXml(HttpServletRequest req){
 		List<Company> list = new ArrayList<>();
 		Companies companies = new Companies();
@@ -150,10 +162,21 @@ public class CompanyController {
 		for(Company c : list){
 			String location2 = c.getLocation();
 			String [] lo = location2.split(";");
+=======
+	public @ResponseBody Companies mapToXml(){
+		List<Company> list = new ArrayList<>();
+		Companies companies = new Companies();
+		list = service.findAllCompany();
+		
+		for(Company c : list){
+			String location = c.getLocation();
+			String [] lo = location.split(";");
+>>>>>>> eojin
 			
 			String [] lo2 = lo[1].split("\\(");
 			c.setLocation(lo2[0]);
 		}
+<<<<<<< HEAD
 		companies.setCompanies(list);
 		return companies;
 	}
@@ -213,6 +236,12 @@ public class CompanyController {
 			String loo = lo[0] + "동";
 			session.setAttribute("location", loo);
 		}
+=======
+		
+		companies.setCompanies(list);
+		
+		return companies;
+>>>>>>> eojin
 	}
 
 //	String 보낼때 문자 깨지는거 -> produces="text/plain;charset=UTF-8"

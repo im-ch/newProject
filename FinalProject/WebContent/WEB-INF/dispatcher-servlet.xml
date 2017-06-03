@@ -23,10 +23,6 @@
 	<mvc:default-servlet-handler />
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 
-
-
-
-
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/views/" />
