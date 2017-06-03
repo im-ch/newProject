@@ -73,10 +73,11 @@ public class SalesController {
 
 		HttpSession session = req.getSession();
 
-		// String comId = (String) session.getAttribute("comId");
-		String comId = "111";
+		String comId = (String) session.getAttribute("comId");
 
 		List<Sales> list = salesService.findSalesByCompany(comId);
+
+
 
 		System.out.println(list.size());
 		System.out.println(list.toString());
@@ -90,7 +91,6 @@ public class SalesController {
 			@ModelAttribute Sales sales) throws Exception {
 		CompanySales companySales = new CompanySales();
 		List<Sales> list = salesService.findSalesByCompany("111");
-	
 		try {
 			companySales.setSalesList(list);
 		} catch (Exception e) {

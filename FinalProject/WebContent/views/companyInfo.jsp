@@ -42,11 +42,35 @@
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="${ctx }/resources/js/bootstrap.js"></script>
 <script src="${ctx }/resources/js/jquery.custom.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- <script type="text/javascript">
+$(function(){
+$('#btn-upload').click(function () {
+	console.log('btn-upload'); 
+	var form = $('uploadForm')[0];
+	var formData = new FormData(form);
+	formData.append("fileObj", $("#fileUpload")[0].files[0]);
+	$.ajax({ 
+		url: "${ctx}/image/regist",
+		data: formData,
+		processData: false,
+		contentType: false,
+		type: 'POST', 
+		success: function(result){
+			alert("업로드 성공!");},
+		error: function (jqXHR) { 
+			console.log('error');
+		}
+	});
+});
+</script> -->
 
 
 </head>
 
 <body>
+<!-- processData: false, 
+		contentType: false, -->
 	<div class="color-bar-1"></div>
 	<div class="color-bar-2 color-bg"></div>
 
@@ -61,22 +85,22 @@
 		<br>
 		<div class="span12 gallery">
 			<div class="row clearfix">
-				<ul class="gallery-post-grid holder">
-<%-- 					<c:choose> --%>
-<%-- 						<c:when test="${images eq null || empty images }"> --%>
-<!-- 							<tr> -->
-<!-- 								<td colspan="6" align="center"></td> -->
-<!-- 							</tr> -->
-<%-- 						</c:when> --%>
-<%-- 						<c:otherwise> --%>
-<%-- 							<c:forEach items="${images }" var="img" varStatus="sts"> --%>
-<!-- 								<li class="span4 gallery-item"><img -->
-<%-- 									src="${ctx }/resources/img/[경로넣어줌됨]" alt="Gallery"></li> --%>
-<%-- 							</c:forEach> --%>
-<%-- 						</c:otherwise> --%>
-<%-- 					</c:choose> --%>
-					<!-- Gallery Item 1 -->
-					<li class="span4 gallery-item"><img
+				<ul id="test" class="gallery-post-grid holder">
+ 					<c:choose> 
+						<c:when test="${images eq null || empty images }"> 
+ 							<tr> 
+								<td colspan="6" align="center"></td> 
+ 							</tr> 
+ 						</c:when> 
+						<c:otherwise> 
+ 							<c:forEach items="${images }" var="img" varStatus="sts"> 
+								<li class="span4 gallery-item"><img
+									src="C:/Image/${img.fileName }" alt="Gallery"></li> 
+ 							</c:forEach> 
+						</c:otherwise> 
+					</c:choose> 
+					<%-- <!-- Gallery Item 1 -->
+					 <li class="span4 gallery-item"><img
 						src="${ctx }/resources/img/icon/img1.jpg" alt="Gallery"></li>
 
 					<!-- Gallery Item 2 -->
@@ -85,7 +109,7 @@
 
 					<!-- Gallery Item 3 -->
 					<li class="span4 gallery-item"><img
-						src="${ctx }/resources/img/icon/img3.jpg" alt="Gallery"></li>
+						src="${ctx }/resources/img/icon/img3.jpg" alt="Gallery"></li> --%>
 				</ul>
 			</div>
 		</div>
@@ -98,7 +122,13 @@
 					${company.comPhoneNumber }</h3></li>
 			<li><h3>Location &nbsp; : &nbsp; ${company.location }</h3></li>
 			<li><h3>Category &nbsp; : &nbsp; ${company.category }</h3></li>
+			<li><h3>ctx &nbsp; : &nbsp; ${ctx}</h3></li>
 		</ul>
+		<form id="uploadForm" action="${ctx }/image/regist" method="post" encType="multipart/form-data">
+		<input type="file" id="fileUpload" name="imageUpload"/>
+		<button type="submit" id="btn-upload">업로드</button>
+		</form>
+		
 		<br> <br>
 		<p class="right">
 			<button class="btn btn-large btn-warning" type="button"

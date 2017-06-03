@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
@@ -12,10 +12,13 @@
 
 <!-- CSS
 ================================================== -->
-<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oswald'
+	rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="${ctx }/resources/css/bootstrap.css">
-<link rel="stylesheet" href="${ctx }/resources/css/bootstrap-responsive.css">
-<link rel="stylesheet" href="${ctx }/resources/css/jquery.lightbox-0.5.css">
+<link rel="stylesheet"
+	href="${ctx }/resources/css/bootstrap-responsive.css">
+<link rel="stylesheet"
+	href="${ctx }/resources/css/jquery.lightbox-0.5.css">
 <link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css">
 <!-- 쿠폰css -->
 <link rel="stylesheet" href="${ctx }/resources/css/ihover.css">
@@ -25,16 +28,39 @@
 <!-- Favicons
 ================================================== -->
 <link rel="shortcut icon" href="${ctx }/resources/img/favicon.ico">
-<link rel="apple-touch-icon" href="${ctx }/resources/img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="${ctx }/resources/img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="${ctx }/resources/img/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon"
+	href="${ctx }/resources/img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72"
+	href="${ctx }/resources/img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114"
+	href="${ctx }/resources/img/apple-touch-icon-114x114.png">
 
 <!-- JS
 ================================================== -->
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="${ctx }/resources/js/bootstrap.js"></script>
 <script src="${ctx }/resources/js/jquery.custom.js"></script>
-
+<script type="text/javascript">
+	function to_ajax(comId) {
+		$.ajax({
+			url : "${ctx}/interesting/register",
+			type : "GET",
+			data : {
+				comId : comId
+			},
+			success : function(data) {
+				if (data == 'true') {
+					alert("즐겨찾기에 추가되었습니다.");
+				} else if (data == 'false') {
+					alert("이미 등록되었습니다.");
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("잠시 후 다시 시도해 주세요");
+			}
+		});
+	}
+</script>
 </head>
 <body>
 	<div class="color-bar-1"></div>
@@ -70,7 +96,6 @@
                     <img src="${ctx }/resources/img/gallery/gallery-img-14-6col.jpg" alt="Image" class="thumbnail">
                 </div>
             </div>
-
         </div> <!--End page content column-->
 
         <!-- Blog Sidebar
@@ -158,8 +183,9 @@
 		</div> 
      
     </div> <!-- End Container -->
-    
-    <!-- Scroll to Top -->  
-    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+	
+	<%@ include file="/views/footer.jspf"%>
+	<!-- Scroll to Top -->
+	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
 </body>
 </html>

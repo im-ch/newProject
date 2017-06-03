@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import jeff.domain.Company;
+import jeff.domain.CompanyImage;
 import jeff.store.CompanyStore;
 import jeff.store.mapper.CompanyMapper;
 

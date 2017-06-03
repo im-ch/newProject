@@ -7,7 +7,6 @@
 
      <resultMap type="Company" id="companyMap">
      <id property="comId" column="comId"/>
-     
      <result property="ownerName" column="ownerName" />
      <result property="comPassword" column="comPassword"/>
      <result property="comEmail" column="email"/>
