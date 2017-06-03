@@ -75,7 +75,7 @@
 						보상하지 않습니다.</Strong>
 				</div>
 
-				<form action="#" id="contact-form">
+				<form action="${ctx }/coupon/regist" method="post">
 					<div class="input-prepend">
 						<span class="add-on"><i class="icon-list-alt"></i></span> <input
 							class="span4" id="prependedInput" size="16" type="text"
