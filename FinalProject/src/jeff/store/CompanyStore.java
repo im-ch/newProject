@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import jeff.domain.Company;
+import jeff.domain.CompanyImage;
 
 public interface CompanyStore {
 

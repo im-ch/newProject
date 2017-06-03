@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -141,11 +143,11 @@
     <!-- Page Content
     ================================================== --> 
     <div class="row">
-
+	
         <!-- Gallery Items
         ================================================== --> 
         <div class="span12 gallery">
-
+	
             <ul id="filterOptions" class="gallery-cats clearfix">
                 <li class="active"><a href="#" class="all">All</a></li> 
                 <li><a href="#" class="illustration">Illustration</a></li>
@@ -190,7 +192,7 @@
     </div><!-- End container row -->
     
     </div> <!-- End Container -->
-
+	<a href="/FinalProject/coupon/findList">가자</a>
     <!-- Footer Area
         ================================================== -->
 	<div class="footer-container"><!-- Begin Footer -->
