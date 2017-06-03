@@ -67,11 +67,7 @@ public class InterestingCompanyController {
 		String userId = (String) session.getAttribute("userId");
 
 		if (session == null || session.getAttribute("userId") == null) {
-<<<<<<< HEAD
-			return "redirect:login.jsp";
-=======
 			return "redirect:login";
->>>>>>> hyun
 		}
 		List<String> comList = service.findInterestingCompany(userId);
 		List<Company> list = new ArrayList<>();
