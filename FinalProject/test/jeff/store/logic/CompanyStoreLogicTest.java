@@ -2,6 +2,7 @@ package jeff.store.logic;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Before;
@@ -20,49 +21,6 @@ public class CompanyStoreLogicTest {
 		store = new CompanyStoreLogic();
 	}
 
-<<<<<<< HEAD
-//	@Test
-//	public void testCreateCompany() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testDeleteCompany() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testModifyCompany() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testSelectAllCompany() {
-//		fail("Not yet implemented");
-//	}
-
-//	@Test
-//	public void testSelectCompany() {
-//		Company c = store.selectCompany("ckdgml");
-//		assertNotNull(c);
-//		List<Coupon> list = c.getCouponList();
-//		assertNotNull(list);
-//		
-//		for(Coupon co : list){
-//			System.out.println(co.getCouponContent());
-//		}
-//	}
-
-//	@Test
-//	public void testSelectCompanyByName() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testLoginCompany() {
-//		fail("Not yet implemented");
-//	}
-=======
 	// @Test
 	// public void testCreateCompany() {
 	// fail("Not yet implemented");
@@ -92,7 +50,6 @@ public class CompanyStoreLogicTest {
 	// public void testLoginCompany() {
 	// fail("Not yet implemented");
 	// }
->>>>>>> this
 
 	// @Test
 	// public void testSelectCompanyByCategory() {
@@ -104,5 +61,18 @@ public class CompanyStoreLogicTest {
 	// System.out.println(c.toString());
 	// }
 	// }
+	
+	 @Test
+	 public void selectCompanyByLocation() {
+		 
+		 HashMap<String, Object> map = new HashMap<>();
+		 map.put("location", "서울시 강남구");
+		 map.put("category", "기타");
+		 
+		 List<Company> list = store.selectCompanyByLocation(map);
+		 
+		 assertEquals(2, list.size());
+		 
+	 }
 
 }

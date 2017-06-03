@@ -1,5 +1,6 @@
 package jeff.service.logic;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,16 @@ public class CompanyServiceLogic implements CompanyService{
 	public Company findCompanyByName(String comName) {
 		
 		return store.selectCompanyByName(comName);
+	}
+
+	@Override
+	public List<Company> findCompanyByLocationAndCompany(HashMap<String, Object> map) {
+		return store.selectCompanyByLocationAndCompany(map);
+	}
+
+	@Override
+	public List<Company> findCompanyByLocation(String location) {
+		return store.selectCompanyByLocation(location);
 	}
 	
 	
