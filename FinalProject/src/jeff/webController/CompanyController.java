@@ -149,6 +149,7 @@ public class CompanyController {
 		for(Company c : list){
 			String location2 = c.getLocation();
 			String [] lo = location2.split(";");
+			c.setLocation(lo[1]);
 		}
 		companies.setCompanies(list);
 		return companies;
@@ -191,7 +192,7 @@ public class CompanyController {
  		return "/recommmendCompanyList";
 	}
 	
-	@RequestMapping(value="saveLocation", produces="application/xml")
+	   @RequestMapping(value="saveLocation", produces="application/xml")
 	   public void saveLocation(HttpServletRequest req, String location){
 	      HttpSession session = req.getSession();
 	      session.removeAttribute("location");
@@ -210,17 +211,17 @@ public class CompanyController {
 	      }
 	   }
 
-//	String 보낼때 문자 깨지는거 -> produces="text/plain;charset=UTF-8"
-	@RequestMapping(value="loadLocation", produces="text/plain;charset=UTF-8")
-	public @ResponseBody String loadLocation(HttpServletRequest req,HttpServletResponse reqs){
-		HttpSession session = req.getSession();
-		String location = (String)session.getAttribute("location");
-		
-		if(location == null || location == ""){
-			location = "서울시 강남구 봉은사로";
-		}
-		session.setAttribute("location", location);
-		return location;
-	}
+	//   String 보낼때 문자 깨지는거 -> produces="text/plain;charset=UTF-8"
+	   @RequestMapping(value="loadLocation", produces="text/plain;charset=UTF-8")
+	   public @ResponseBody String loadLocation(HttpServletRequest req,HttpServletResponse reqs){
+	      HttpSession session = req.getSession();
+	      String location = (String)session.getAttribute("location");
+	      
+	      if(location == null || location == ""){
+	         location = "서울시 강남구 봉은사로";
+	      }
+	      session.setAttribute("location", location);
+	      return location;
+	   }
 	
 }
