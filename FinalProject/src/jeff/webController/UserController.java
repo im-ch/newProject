@@ -23,93 +23,99 @@ import jeff.service.UserService;
 @RequestMapping("user")
 public class UserController {
 
-	@Autowired
-	private UserService service;
-	
-	@Autowired
-	private CompanyService comService;
+   @Autowired
+   private UserService service;
+   
+   @Autowired
+   private CompanyService comService;
 
-	@RequestMapping(value = "/userCreate", method = RequestMethod.POST)
-	public String registUser(User user) {
-		service.registUser(user);
-		return "login.jsp";
-	}
+   @RequestMapping(value="create", method = RequestMethod.POST)
+   public String registUser(User user) {
+      service.registUser(user);
+      return "redirect:/views/login.jsp";
+   }
 
-	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
-	public String loginUser(User user, HttpServletRequest req) {
-		User loginedUser = service.findUser(user.getUserId());
-		if (loginedUser != null) {
-			if (loginedUser.getPassword().equals(user.getPassword())) {
-				HttpSession session = req.getSession();
-				session.setAttribute("userId", user.getUserId());
-				return "redirect:main";
-			} else {
-				HttpSession session = req.getSession(false);
-				session.invalidate();
-				return "login.jsp";
-			}
-		}else{
-			return "login.jsp";
-		}
-	}
-	
-	@RequestMapping("/userLogout")
-	public String logoutUser(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-		session.invalidate();
-		return "redirect:main";
-	}
-	
-	@RequestMapping(value = "/userModify", method = RequestMethod.GET)
-	public String updateUser(String userId, Model model) {
-		User user = service.findUser(userId);
-		
-		model.addAttribute("userInfo", user);
-		
-		return "userModifyForm.jsp";
-	}
-	
-	@RequestMapping(value = "/userModify", method = RequestMethod.POST)
-	public String updateUser(User user) {
-		service.updateUser(user);
-		return "redirect:userDetail?userId=" + user.getUserId();
-	}
-	
-	@RequestMapping("/userRemove")
-	public String removeUser(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-		String userId = (String)session.getAttribute("userId");
-		service.removeUser(userId);
-		return "redirect:main";
-	}
-	
-	@RequestMapping("/userList")
-	public ModelAndView findAllUser() {
-		List<User> list = service.findAllUsers();
-		ModelAndView modelAndView = new ModelAndView("userList.jsp");
-		modelAndView.addObject("userList", list);
-		return modelAndView;
-	}
-	
-	@RequestMapping("/userDetail")
-	public ModelAndView findByUserId(@RequestParam("userId") String userId) {
-		ModelAndView modelAndView = new ModelAndView("userInfo.jsp");
-		modelAndView.addObject("user", service.findUser(userId));
-		return modelAndView;
-	}
-	
-	@RequestMapping("/allUsers")
-	public ModelAndView findAllUsers(){
-		ModelAndView modelAndView = new ModelAndView("/userList");
-		List<User> users = service.findAllUsers();
-		List<Company> companys = comService.findAllCompany();
-		List<Integer> allUsers = new ArrayList<>();
-		allUsers.add(users.size());
-		allUsers.add(companys.size());
-		
-		modelAndView.addObject("allUsers", allUsers);
-		modelAndView.addObject("users", users);
-		modelAndView.addObject("companys", companys);
-		return modelAndView;
-	}
+   @RequestMapping(value = "login", method = RequestMethod.POST)
+   public String loginUser(@RequestParam("loginId") String id, @RequestParam("loginPassword")String password, HttpServletRequest req) {
+      User loginedUser = service.findUser(id);
+      Company loginedCompany = comService.findCompany(id);
+      
+      if (loginedUser != null || loginedCompany != null) {
+         if (loginedUser != null && loginedUser.getPassword().equals(password)) {
+            HttpSession session = req.getSession();
+            session.setAttribute("userId", id);
+            return "redirect:/views/main.jsp";
+         }else if (loginedCompany != null && loginedCompany.getComPassword().equals(password)) {
+            HttpSession session = req.getSession();
+            session.setAttribute("comId", id);
+            return "redirect:/views/main.jsp";
+         }else {
+            HttpSession session = req.getSession(false);
+            session.invalidate();
+            return "redirect:/views/login.jsp";
+         }
+      }else{
+         return "redirect:/views/login.jsp";
+      }
+   }
+   
+   @RequestMapping("logout")
+   public String logoutUser(HttpServletRequest req) {
+      HttpSession session = req.getSession();
+      session.invalidate();
+      return "redirect:/main";
+   }
+   
+   @RequestMapping(value = "modify", method = RequestMethod.GET)
+   public String updateUser(String userId, Model model) {
+      User user = service.findUser(userId);
+      
+      model.addAttribute("userInfo", user);
+      
+      return "/userModifyForm";
+   }
+   
+   @RequestMapping(value = "modify", method = RequestMethod.POST)
+   public String updateUser(User user) {
+      service.updateUser(user);
+      return "redirect:detail?userId=" + user.getUserId();
+   }
+   
+   @RequestMapping("remove")
+   public String removeUser(HttpServletRequest req) {
+      HttpSession session = req.getSession();
+      String userId = (String)session.getAttribute("userId");
+      service.removeUser(userId);
+      return "redirect:/main";
+   }
+   
+   @RequestMapping("list")
+   public ModelAndView findAllUser() {
+      List<User> list = service.findAllUsers();
+      ModelAndView modelAndView = new ModelAndView("userList.jsp");
+      modelAndView.addObject("userList", list);
+      return modelAndView;
+   }
+   
+   @RequestMapping("detail")
+   public ModelAndView findByUserId(@RequestParam("userId") String userId) {
+      ModelAndView modelAndView = new ModelAndView("userInfo.jsp");
+      modelAndView.addObject("user", service.findUser(userId));
+      return modelAndView;
+   }
+   
+   @RequestMapping("allUsers")
+   public ModelAndView findAllUsers(){
+      ModelAndView modelAndView = new ModelAndView("/userList");
+      List<User> users = service.findAllUsers();
+      List<Company> companys = comService.findAllCompany();
+      List<Integer> allUsers = new ArrayList<>();
+      allUsers.add(users.size());
+      allUsers.add(companys.size());
+      
+      modelAndView.addObject("allUsers", allUsers);
+      modelAndView.addObject("users", users);
+      modelAndView.addObject("companys", companys);
+      return modelAndView;
+   }
 }

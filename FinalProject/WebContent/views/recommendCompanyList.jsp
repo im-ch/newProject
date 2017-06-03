@@ -4,15 +4,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> this
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
 
-=======
->>>>>>> 340e6d1cfc27a51eda32f35a728ef5a3c75249e4
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -57,7 +51,6 @@
     
     <div class="container main-container">
     
-<<<<<<< HEAD
       <div class="row header"><!-- Begin Header -->
       
         <!-- Logo
@@ -152,9 +145,7 @@
         </div>
 
       </div><!-- End Header -->
-=======
       <%@ include file="/views/header.jspf"%>
->>>>>>> 340e6d1cfc27a51eda32f35a728ef5a3c75249e4
      
     <!-- Page Content
     ================================================== --> 

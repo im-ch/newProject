@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /**
  * @preserve FullCalendar v1.4.7 http://arshaw.com/fullcalendar/
  * 
@@ -13,7 +11,6 @@
  * Date: Mon Jul 5 16:07:40 2010 -0700
  * 
  */
->>>>>>> this
  
 (function($, undefined) {
 

@@ -65,6 +65,12 @@ public class QuestionServiceLogic implements QuestionService{
 	public Answer findAnswer(int answerId) {
 		return aStore.selectAnswer(answerId);
 	}
+
+	@Override
+	public List<Question> findQuestionByCategoty(String category) {
+		return qStore.selectQuestionByCategory(category);
+	}
+
 	
 	
 

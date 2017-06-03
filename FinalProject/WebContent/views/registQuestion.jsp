@@ -126,7 +126,9 @@
 					</tr>
 					</div>
 					<tr>
+					
 					<div style="float:right">
+					<h5>(카테고리를 입력해주세요.)</h5>
 					<select name="selectBox" style="width:200px" onChange="getSelectValue(this.form);">
 						<option value="">카테고리 선택</option>
 										<option value="1">Cafe</option>
@@ -135,6 +137,7 @@
 										<option value="4">Clothing Store</option>
 										<option value="5">Department store</option>
 										<option value="6">Pension</option>
+										
 								
 							</select>
 							

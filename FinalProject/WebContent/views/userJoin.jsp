@@ -26,50 +26,50 @@
 </head>
 <body>
 
-	<div class="color-bar-1"></div>
+   <div class="color-bar-1"></div>
     <div class="color-bar-2 color-bg"></div>
     
     <div class="container main-container">
 
-	<%@ include file="/views/header.jspf"%>
-		
-		<h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Join</h1>
-		<br><br>
-		<form action="#" id="contact-form">
-			<div align="center">
+   <%@ include file="/views/header.jspf"%>
+      
+      <h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Join</h1>
+      <br><br>
+      <form action="${ctx }/user/create" method="post" id="contact-form">
+         <div align="center">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
-                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="Name">
+                    <input class="span4" name="name" id="name" size="16" type="text" placeholder="Name">
                 </div>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-italic"></i></span>
-                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="ID">
+                    <input class="span4" name="userId" id="userId" size="16" type="text" placeholder="ID">
                 </div>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-lock"></i></span>
-                    <input class="span4" id="prependedInput" size="16" type="password" placeholder="Password">
+                    <input class="span4" name="password" id="password" size="16" type="password" placeholder="Password">
                 </div>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-lock"></i></span>
-                    <input class="span4" id="prependedInput" size="16" type="password" placeholder="Password Check">
+                    <input class="span4" name="passwordCheck" id="passwordCheck" size="16" type="password" placeholder="Password Check">
                 </div>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
-                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="Email Address">
+                    <input class="span4" name="email" id="email" size="16" type="email" placeholder="Email Address">
                 </div>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-bell"></i></span>
-                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="Phone Number">
+                    <input class="span4" name="phoneNumber" id="phoneNumber" size="16" type="text" placeholder="Phone Number">
                 </div>
-                <button class="btn btn-large btn-warning" type="button">Join</button>
+                <button class="btn btn-large btn-warning" type="submit">Join</button>
               </div>
           </form>
-	
-	</div>
-	
-	<%@ include file="/views/footer.jspf"%>
+   
+   </div>
+   
+   <%@ include file="/views/footer.jspf"%>
 
-	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-	
+   <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+   
 </body>
 </html>
