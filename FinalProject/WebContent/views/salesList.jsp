@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Piccolo Theme</title>
+<title>Jeff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -51,8 +51,6 @@
 	src='${ctx }/resources/js/fullcalendar.min.js'></script>
 <script type='text/javascript'>
 	$(document).ready(
-<<<<<<< HEAD
-	
 	function setCalendar(data) {
 		var date = new Date();
 		var d = date.getDate();
@@ -88,47 +86,6 @@
 		});
 		// 달력 완료
 	});
-					url : "${ctx }/sales/calendarDetailAjax" //Request URL
-					,
-
-					dataType : 'json' //전송받을 데이터 타입
-					,
-					contentType : "application/json; charset=UTF-8",
-					error : function(request, status, error) {
-						alert("code : " + request.status + "\r\nmessage : "
-								+ request.reponseText);
-					},
-					success : function(data) {
-						setCalendar(data);
-					}
-				});
-			});
-
-	function setCalendar(data) {
-		var date = new Date();
-		var d = date.getDate();
-		var m = date.getMonth();
-		var y = date.getFullYear();
-		var jsonData = JSON.stringify(data.salesList);
-
-		$('#calendar').fullCalendar.each(function(i, e){
-			editable : false,
-			events : [ 
-				{
-				start : data.salesList[i].regDate,
-				title : '' + data.salesList[i].sales
-				} 
-				]
-
-		});
-		
-	       $(xmlData).each(function() {
-               contentStr = $(this).find("location").text();
-              geocodeAddress(geocoder, map, contentStr);
-            });
-
-		// 달력 완료
-	}
 </script>
 <style type='text/css'>
 body {
@@ -273,7 +230,7 @@ body {
 	<!-- End Container -->
 
 	<%@ include file="/views/footer.jspf"%>
-	
+
 	<!-- Footer Area
         ================================================== -->
 	<div class="footer-container">
