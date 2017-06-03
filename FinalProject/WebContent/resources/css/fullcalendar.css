@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> eojin
 /*
  * FullCalendar v1.4.7 Stylesheet
  *
@@ -200,8 +203,13 @@ table.fc-header {
 .fc-agenda .fc-event-time,
 .fc-event a {
 	border-style: solid; 
+<<<<<<< HEAD
+	border-color: #fd5106;     /* default BORDER color (probably the same as background-color) */
+	background-color: #fd5106; /* default BACKGROUND color */
+=======
 	border-color: #36c;     /* default BORDER color (probably the same as background-color) */
 	background-color: #36c; /* default BACKGROUND color */
+>>>>>>> eojin
 	color: #fff;            /* default TEXT color */
 	}
 	
@@ -532,6 +540,8 @@ table.fc-header {
 	cursor: s-resize;
 	}
 	
+<<<<<<< HEAD
+=======
 	
 =======
 /*!
@@ -1948,3 +1958,4 @@ be a descendant of the grid when it is being dragged.
 	background-color: #eee;
 }
 >>>>>>> cheol
+>>>>>>> eojin

@@ -62,6 +62,7 @@
 
 	<div class="container main-container">
 
+		<%@ include file="/views/header.jspf"%>
 		<div class="row header">
 			<!-- Begin Header -->
 
@@ -200,7 +201,10 @@
 						</div>
 					</section>
 					<button class="btn btn-mini btn-inverse" type="submit">SEND</button>
-					</form>
+				</form>
+
+			</div>
+
 					
 			</div>
 			
@@ -214,9 +218,10 @@
 
 			</div>
 		</div>
-	</div>
 	<!-- End Container -->
 
+	<%@ include file="/views/footer.jspf"%>
+	
 	<!-- Footer Area
         ================================================== -->
 	<div class="footer-container">

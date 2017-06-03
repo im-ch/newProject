@@ -1,5 +1,6 @@
 package jeff.store.logic;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -91,6 +92,28 @@ public class CompanyStoreLogic implements CompanyStore {
 
 		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
 		List<Company> companyList = mapper.selectCompanyByCategory(category);
+		session.close();
+
+		return companyList;
+	}
+
+	@Override
+	public List<Company> selectCompanyByLocationAndCompany(HashMap<String, Object> map) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+
+		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
+		List<Company> companyList = mapper.selectCompanyByLocationAndCompany(map);
+		session.close();
+
+		return companyList;
+	}
+	
+	@Override
+	public List<Company> selectCompanyByLocation(String location) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+
+		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
+		List<Company> companyList = mapper.selectCompanyByLocation(location);
 		session.close();
 
 		return companyList;

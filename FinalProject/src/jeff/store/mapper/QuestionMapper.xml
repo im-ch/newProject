@@ -31,7 +31,7 @@
 
 	<update id="modifyQuestion" parameterType="Question">
 		UPDATE question_tb 
-		SET content = #{content}
+		SET content = #{content}, title = #{title}
 		WHERE questionId = #{questionId}
 	</update>
 
@@ -44,12 +44,6 @@
 	<select id="selectAllQuestion" resultType="Question" resultMap="questionMap">
 		SELECT questionId, writerId, title, content,category,regDate
 		FROM question_tb
-	</select>
-	
-	<select id="selectQuestionByCategory" parameterType="String" resultType="Question" resultMap="questionMap">
-	SELECT questionId, writerId, title, content,category,regDate 
-	FROM question_tb
-	WHERE category = #{category}
 	</select>
 
 </mapper>

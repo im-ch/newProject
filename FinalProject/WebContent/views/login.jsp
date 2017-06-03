@@ -39,6 +39,7 @@
          <form action="${ctx }/user/login" method="post" id="contact-form">
          <div align="center">
          <div class="input-prepend">
+<<<<<<< HEAD
              <span class="add-on"><i class="icon-user"></i></span><input class="span2" name="loginId" id="loginId" size="16" type="text" placeholder="Member id">
          </div>
          <div class="input-prepend">
@@ -53,6 +54,44 @@
    </div>
    
    <%@ include file="/views/footer.jspf"%>
+=======
+             <span class="add-on"><i class="icon-user"></i></span>
+             <input class="span2" name="loginId" id="loginId" size="16" type="text" placeholder="Member id">
+         </div>
+         <div class="input-prepend">
+             <span class="add-on"><i class="icon-lock"></i></span>
+             <input class="span2" name="loginPassword" id="loginPassword" size="16" type="password" placeholder="Password">
+         </div>
+            <button class="btn btn-large" type="submit">Login</button>&nbsp;&nbsp;
+            <button class="btn btn-large btn-warning" type="button" onclick="location.href='join.jsp;'">Join</button>
+            <br><br><br><br>
+         </div>
+         </form>
+   </div>
+   </div>
+   
+   <%@ include file="/views/footer.jspf"%>
+	
+	<div class="row form-examples">
+	      <h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login</h1>
+	      <br><br><br><br><br>
+	      <form action="${ctx }/user/login" method="post" id="contact-form">
+	      <div align="center">
+	      <div class="input-prepend">
+	          <span class="add-on"><i class="icon-user"></i></span><input class="span2" name="loginId" id="loginId" size="16" type="text" placeholder="Member id">
+	      </div>
+	      <div class="input-prepend">
+	          <span class="add-on"><i class="icon-lock"></i></span><input class="span2" name="loginPassword" id="loginPassword" size="16" type="password" placeholder="Password">
+	      </div>
+	      	<button class="btn btn-large" type="submit">Login</button>&nbsp;&nbsp;
+            <button class="btn btn-large btn-warning" type="button" onclick="location.href='join.jsp;'">Join</button>
+            <br><br><br><br>
+	      </div>
+	      </form>
+	</div>
+	
+	<%@ include file="/views/footer.jspf"%>
+>>>>>>> eb5fa23617f00ea44ce74c951023ec1af7fb5e90
 
    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
    

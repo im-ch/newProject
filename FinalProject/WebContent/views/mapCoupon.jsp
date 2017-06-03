@@ -61,12 +61,79 @@ html, body {
 	<div class="container main-container">
 
 		<%@ include file="/views/header.jspf"%>
-
+		<%@ include file="/views/searchHeader.jspf"%>
+		
 		<h1 class="title-bg">Map Coupon</h1>
 		<br>
 
-
 		<div id="map"></div>
+<script>
+         function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+               zoom : 13,
+               center : {
+                  lat : 37.52,
+                  lng : 127
+               }
+            });
+            var geocoder = new google.maps.Geocoder();
+               
+               $.ajax({
+                  url : "${ctx}/company/mapList",
+                  type : "get",
+                  data : String,
+                  contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+                  dataType : "xml",
+                  
+                  success : function(xml) {
+                     var xmlData = $(xml).find("company");
+                     var listLength = xmlData.length;
+
+                     if (listLength) {
+                        var contentStr = "";
+                        var title = "";
+                        var comId = "";
+                        $(xmlData).each(function() {
+                            contentStr = $(this).find("location").text();
+                            title = $(this).find("comName").text();
+                            comId = $(this).find("comId").text();
+                            
+                            geocodeAddress(geocoder, map, contentStr, title, comId);
+                         });
+                     }
+                  }
+                  
+               });
+         }
+
+         function geocodeAddress(geocoder, resultsMap, address, title, comId) {
+            var markerMaxWidth = 250;
+            var contentString = '<div>' +
+              '<h3>'+title+'</h3>' + '<a href="${ctx}/alliance/companyDetail?comId='+comId+'">홈페이지 바로가기</a>';
+            
+            geocoder.geocode({'address' : address}, function(results, status) {
+               if (status === 'OK') {
+                  
+                  resultsMap.setCenter(results[0].geometry.location);
+                  
+                  var marker = new google.maps.Marker({
+                     map : resultsMap, position : results[0].geometry.location,
+                     title : title,
+                  });
+                  
+                  } else {
+                  alert('Geocode was not successful for the following reason: '+ status);
+                  }
+               var infowindow = new google.maps.InfoWindow({
+                  content: contentString,
+                  maxWidth: markerMaxWidth
+               });
+               google.maps.event.addListener(marker,'click',function(){
+                  infowindow.open(map,marker);
+               }); 
+            });
+         }
+      </script>
 		<script>
 			function initMap() {
 				var map = new google.maps.Map(document.getElementById('map'), {
@@ -142,6 +209,9 @@ html, body {
 		</script>
 
 	</div>
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 	<br>
 	<br>

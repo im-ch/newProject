@@ -1,6 +1,9 @@
 package jeff.webController;
 
+<<<<<<< HEAD
+=======
 import java.sql.Date;
+>>>>>>> eojin
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -73,6 +76,12 @@ public class SalesController {
 
 		HttpSession session = req.getSession();
 
+<<<<<<< HEAD
+		String comId = (String) session.getAttribute("comId");
+
+		List<Sales> list = salesService.findSalesByCompany(comId);
+
+=======
 		// String comId = (String) session.getAttribute("comId");
 		String comId = "111";
 
@@ -80,6 +89,7 @@ public class SalesController {
 
 		System.out.println(list.size());
 		System.out.println(list.toString());
+>>>>>>> eojin
 		model.addAttribute("sales", list);
 
 		return "salesList";
@@ -90,7 +100,11 @@ public class SalesController {
 			@ModelAttribute Sales sales) throws Exception {
 		CompanySales companySales = new CompanySales();
 		List<Sales> list = salesService.findSalesByCompany("111");
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> eojin
 		try {
 			companySales.setSalesList(list);
 		} catch (Exception e) {
