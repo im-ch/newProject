@@ -1,9 +1,5 @@
 package jeff.webController;
 
-<<<<<<< HEAD
-=======
-import java.sql.Date;
->>>>>>> eojin
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -31,85 +27,70 @@ import jeff.service.SalesService;
 @Controller
 public class SalesController {
 
-	@Autowired
-	private SalesService salesService;
+   @Autowired
+   private SalesService salesService;
 
-	@RequestMapping(value = "/register", method = { RequestMethod.GET, RequestMethod.POST })
-	public String registSales(HttpServletRequest req, Sales sales) {
-		HttpSession session = req.getSession();
+   @RequestMapping(value = "/register", method = { RequestMethod.GET, RequestMethod.POST })
+   public String registSales(HttpServletRequest req, Sales sales) {
+      HttpSession session = req.getSession();
 
-		// String comId = (String) session.getAttribute("comId");
-		String comId = "111";
-		sales.setCompanyId(comId);
-		salesService.registSales(sales);
+      String comId = (String) session.getAttribute("comId");
+      sales.setCompanyId(comId);
+      salesService.registSales(sales);
 
-		return "redirect:list";
-	}
+      return "redirect:list";
+   }
 
-	@RequestMapping(value = "/remove")
-	public String removeSales(Sales sales) {
+   @RequestMapping(value = "/remove")
+   public String removeSales(Sales sales) {
 
-		salesService.removeSales(sales.getSalesId());
+      salesService.removeSales(sales.getSalesId());
 
-		return "redirect:list";
-	}
+      return "redirect:list";
+   }
 
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String updateSales(Sales sales, Model model) {
+   @RequestMapping(value = "/update", method = RequestMethod.GET)
+   public String updateSales(Sales sales, Model model) {
 
-		sales = salesService.findBySalesId(sales.getSalesId());
+      sales = salesService.findBySalesId(sales.getSalesId());
 
-		model.addAttribute("sales", sales);
+      model.addAttribute("sales", sales);
 
-		return "modifySales";
-	}
+      return "modifySales";
+   }
 
-	public String modifySales(Sales sales) {
+   public String modifySales(Sales sales) {
 
-		salesService.updateSales(sales);
+      salesService.updateSales(sales);
 
-		return "redirect:list";
-	}
+      return "redirect:list";
+   }
 
-	@RequestMapping(value = "/list")
-	public String findAllSales(HttpServletRequest req, Model model) {
+   @RequestMapping(value = "/list")
+   public String findAllSales(HttpServletRequest req, Model model) {
 
-		HttpSession session = req.getSession();
+      HttpSession session = req.getSession();
 
-<<<<<<< HEAD
-		String comId = (String) session.getAttribute("comId");
+      String comId = (String) session.getAttribute("comId");
 
-		List<Sales> list = salesService.findSalesByCompany(comId);
+      List<Sales> list = salesService.findSalesByCompany(comId);
 
-=======
-		// String comId = (String) session.getAttribute("comId");
-		String comId = "111";
+      model.addAttribute("sales", list);
 
-		List<Sales> list = salesService.findSalesByCompany(comId);
+      return "salesList";
+   }
 
-		System.out.println(list.size());
-		System.out.println(list.toString());
->>>>>>> eojin
-		model.addAttribute("sales", list);
+   @RequestMapping(value = "/calendarDetailAjax", produces = "application/json")
+   public @ResponseBody CompanySales calendarDetailAjax(HttpServletRequest request, ModelMap modelMap,
+         @ModelAttribute Sales sales) throws Exception {
+      CompanySales companySales = new CompanySales();
+      List<Sales> list = salesService.findSalesByCompany("111");
 
-		return "salesList";
-	}
-
-	@RequestMapping(value = "/calendarDetailAjax", produces = "application/json")
-	public @ResponseBody CompanySales calendarDetailAjax(HttpServletRequest request, ModelMap modelMap,
-			@ModelAttribute Sales sales) throws Exception {
-		CompanySales companySales = new CompanySales();
-		List<Sales> list = salesService.findSalesByCompany("111");
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> eojin
-		try {
-			companySales.setSalesList(list);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return companySales;
-	}
+      try {
+         companySales.setSalesList(list);
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+      return companySales;
+   }
 }

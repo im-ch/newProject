@@ -2,7 +2,6 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<<<<<<< HEAD
 
 <mapper namespace="jeff.store.mapper.SalesMapper">
 	<resultMap type="Sales" id="SalesMap">
@@ -52,55 +51,4 @@
 		ORDER BY salesId ASC
 	</select>
   
-=======
-  <mapper namespace="jeff.store.mapper.SalesMapper">
-  	<resultMap type="Sales" id="SalesMap">
-  	<id property="salesId" column="salesId"/>
-  	
-  	<result property="companyId" column="comId"/>
-  	<result property="sales" column="daysales"/>
-  	<result property="regDate" column="regdate"/>
-  	 	
-  	</resultMap>
-  	
-  	<insert id="createSales" parameterType="Sales">
-  	<selectKey order="BEFORE" resultType="int" keyProperty="salesId"> 
-  	SELECT companysales_tb_seq.nextval FROM DUAL
-   </selectKey>
-  	INSERT INTO companysales_tb(salesId,comId,daysales,regdate) 
-  	VALUES(#{salesId},#{companyId},#{sales},sysdate)
-  	</insert>
-  	
-  	<delete id="deleteSales" parameterType="int">
-  	DELETE 
-  	FROM companysales_tb 
-  	WHERE salesId = #{salesId}
-  	</delete>
-  	
-  	<update id="modifySales" parameterType="Sales">
-  	UPDATE companysales_tb 
-  	SET comId = #{companyId}, daysales = #{sales} 
-  	WHERE salesId = #{salesId}
-   	</update>
-  
-  	<select id="selectSalesByCompany" parameterType="string" resultMap="SalesMap">
-  	SELECT salesId,comId,daysales,regdate 
-  	FROM companysales_tb 
-  	WHERE comId = #{companyId}
-  	</select>
-  	
-  	<select id="selectBySalesId" resultMap="SalesMap">
-  	SELECT salesId,comId,daysales,regdate
-  	FROM companysales_tb 
-  	WHERE salesId = #{salesId}
-  	</select>
-  	
-  	<select id="selectAllSales" resultMap="SalesMap">
-  	SELECT salesId,comId,daysales,regdate 
-  	FROM companysales_tb 
-  	ORDER BY salesId ASC
-  	</select>
-  
-    
->>>>>>> eb5fa23617f00ea44ce74c951023ec1af7fb5e90
   </mapper>

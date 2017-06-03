@@ -8,24 +8,15 @@
      <resultMap type="Company" id="companyMap">
      <id property="comId" column="comId"/>
      
-<<<<<<< HEAD
-     <result property="ownerName" column="ownerName" />
-=======
      <result property="ownerName" column="ownerName"/>
->>>>>>> eojin
      <result property="comPassword" column="comPassword"/>
      <result property="comEmail" column="email"/>
      <result property="comName" column="comName"/>
      <result property="location" column="location"/>
      <result property="comPhoneNumber" column="phoneNumber"/>
      <result property="category" column="category" />
-<<<<<<< HEAD
      <collection property="couponList" column="comId" javaType="List" notNullColumn=""
          select="jeff.store.mapper.CouponMapper.selectCouponByCompany" />
-=======
-     <collection property="couponList" column="comId" javaType="List"
-         select="jeff.store.mapper.CouponMapper.selectCouponByCompany"/>
->>>>>>> eojin
      </resultMap>
 
   	<insert id="createCompany" parameterType="Company">
