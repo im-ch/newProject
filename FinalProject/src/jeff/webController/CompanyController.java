@@ -164,6 +164,7 @@ public class CompanyController {
       List<Company> list = new ArrayList<>();
       Companies companies = new Companies();
 //      list = service.findAllCompany();
+<<<<<<< HEAD
       
       HttpSession session = req.getSession();
       String location = (String)session.getAttribute("location");
@@ -171,6 +172,15 @@ public class CompanyController {
       map.put("location", location);
       map.put("comName", comName);
       
+=======
+      
+      HttpSession session = req.getSession();
+      String location = (String)session.getAttribute("location");
+      HashMap<String, Object> map = new HashMap<>();
+      map.put("location", location);
+      map.put("comName", comName);
+      
+>>>>>>> sangjin
       list = service.findCompanyByLocationAndCompany(map);
       
       for(Company c : list){
@@ -229,6 +239,7 @@ public class CompanyController {
       return location;
    }
    
+<<<<<<< HEAD
 }
 =======
    
@@ -429,3 +440,6 @@ public class CompanyController {
 	
 }
 >>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
+=======
+}
+>>>>>>> sangjin

@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> sangjin
 
 =======
 >>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
@@ -29,6 +32,9 @@ import jeff.service.InterestingCompanyService;
 public class InterestingCompanyController {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> sangjin
    @Autowired
    private InterestingCompanyService service;
    @Autowired
@@ -101,6 +107,7 @@ public class InterestingCompanyController {
       return "true";
    }
 
+<<<<<<< HEAD
 }
 =======
 	@Autowired
@@ -179,3 +186,6 @@ public class InterestingCompanyController {
 
 }
 >>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
+=======
+}
+>>>>>>> sangjin

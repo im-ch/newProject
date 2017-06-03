@@ -1,9 +1,12 @@
 package jeff.webController;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import java.sql.Date;
 >>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
+=======
+>>>>>>> sangjin
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -76,6 +79,7 @@ public class SalesController {
       HttpSession session = req.getSession();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       String comId = (String) session.getAttribute("comId");
 =======
 		String comId = (String) session.getAttribute("comId");
@@ -127,3 +131,28 @@ public class SalesController {
 	}
 }
 >>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
+=======
+      String comId = (String) session.getAttribute("comId");
+
+      List<Sales> list = salesService.findSalesByCompany(comId);
+
+      model.addAttribute("sales", list);
+
+      return "salesList";
+   }
+
+   @RequestMapping(value = "/calendarDetailAjax", produces = "application/json")
+   public @ResponseBody CompanySales calendarDetailAjax(HttpServletRequest request, ModelMap modelMap,
+         @ModelAttribute Sales sales) throws Exception {
+      CompanySales companySales = new CompanySales();
+      List<Sales> list = salesService.findSalesByCompany("111");
+
+      try {
+         companySales.setSalesList(list);
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+      return companySales;
+   }
+}
+>>>>>>> sangjin

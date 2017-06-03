@@ -51,4 +51,9 @@
 		ORDER BY salesId ASC
 	</select>
   
+<<<<<<< HEAD
+=======
+  
+    
+>>>>>>> sangjin
   </mapper>

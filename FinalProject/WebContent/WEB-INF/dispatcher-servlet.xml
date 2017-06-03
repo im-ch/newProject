@@ -11,12 +11,13 @@
    <mvc:annotation-driven />
    <mvc:default-servlet-handler />
    <mvc:resources location="/resources/" mapping="/resources/**" />
-
+   
    <bean id="viewResolver"
-      class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-      <property name="prefix" value="/views/" />
-      <property name="suffix" value=".jsp" />
-   </bean>
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
 
 	<mvc:annotation-driven>
 		<mvc:message-converters>
@@ -31,6 +32,7 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 	
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 	<mvc:default-servlet-handler />
@@ -49,4 +51,8 @@
 
 
 >>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
+=======
+
+	
+>>>>>>> sangjin
 </beans>
