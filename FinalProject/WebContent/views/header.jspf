@@ -2,23 +2,6 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:choose>
-	<c:when test="${comId ne null}">
-			[<a href="${ctx }/company/logout">로그아웃</a>]
-	    </c:when>
-	<c:when test="${userId ne null}">
-			[<a href="${ctx }/user/logout">로그아웃</a>]
-      </c:when>
-
-	<c:otherwise>
-			<a href="${ctx }/views/login.jsp">로그인</a> | <a
-				href="${ctx }/views/join.jsp">회원가입</a>
-	</c:otherwise>
-   <c:when test="${comId ne null}">
-         [<a href="${ctx }/company/logout">로그아웃</a>]
-       </c:when>
-   <c:when test="${userId ne null}">
-         [<a href="${ctx }/user/logout">로그아웃</a>]
-      </c:when>
 
    <c:when test="${comId ne null}">
          [<a href="${ctx }/company/logout">로그아웃</a>]
@@ -28,8 +11,8 @@
       </c:when>
 
    <c:otherwise>
-         <a href="${ctx }/views/login.jsp">로그인</a> | <a
-            href="${ctx }/views/join.jsp">회원가입</a>
+      <a href="${ctx }/views/login.jsp">로그인</a> | <a
+         href="${ctx }/views/join.jsp">회원가입</a>
    </c:otherwise>
 </c:choose>
 
@@ -49,53 +32,15 @@
    <div class="span7 navigation">
       <div class="navbar hidden-phone">
 
-			<ul class="nav">
-				<li><a href="${ctx }/views/main.jsp">Home</a></li>
-				<li><a href="${ctx }/views/mapCoupon.jsp">Company</a></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="gallery-4col.htm">Q&A <b
-						class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="gallery-3col.htm">자주묻는 질문</a></li>
-						<li><a href="gallery-4col.htm">1:1 질문</a></li>
-					</ul></li>
-				<c:choose>
-					<c:when test="${userId ne null }">
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="blog-style1.htm">My Page <b
-								class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="blog-style1.htm">User Info</a></li>
-								<li><a href="blog-style2.htm">Interesting Company</a></li>
-								<li><a href="blog-style3.htm">My Coupon</a></li>
-							</ul></li>
-					</c:when>
-					<c:when test="${comId ne null }">
-						<li><a href="${ctx }/views/login.jsp">Coupon</a></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="blog-style1.htm">My Page <b
-								class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="blog-style1.htm">Company Info</a></li>
-								<li><a href="blog-style2.htm">Alliance</a></li>
-							</ul></li>
-					</c:when>
-					<c:otherwise>
-						<li><a href="${ctx }/views/login.jsp">Login</a></li>
-					</c:otherwise>
-				</c:choose>
-				
-				<li><a href="${ctx }/views/notice.jsp">Notice</a></li>
-			</ul>
+
          <ul class="nav">
             <li><a href="${ctx }/views/main.jsp">Home</a></li>
             <li><a href="${ctx }/views/mapCoupon.jsp">Company</a></li>
             <li class="dropdown"><a class="dropdown-toggle"
-               data-toggle="dropdown" href="gallery-4col.htm">Q&A<b
+               data-toggle="dropdown" href="gallery-4col.htm">Q&A <b
                   class="caret"></b></a>
                <ul class="dropdown-menu">
                   <li><a href="gallery-3col.htm">자주묻는 질문</a></li>
-                  <li><a href="frequentlyAskedQuestions.jsp">자주묻는 질문</a></li>
                   <li><a href="gallery-4col.htm">1:1 질문</a></li>
                </ul></li>
             <c:choose>
@@ -130,7 +75,7 @@
                   <li><a href="${ctx }/views/login.jsp">Login</a></li>
                </c:otherwise>
             </c:choose>
-            
+
             <li><a href="${ctx }/views/notice.jsp">Notice</a></li>
          </ul>
 
