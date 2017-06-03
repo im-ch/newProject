@@ -11,7 +11,7 @@
 
 	<c:otherwise>
 			<a href="${ctx }/views/login.jsp">로그인</a> | <a
-				href="${ctx }/views/join.jsp">회원가입</a>
+				href="${ctx }/views/welcomeJoin.jsp">회원가입</a>
 	</c:otherwise>
 </c:choose>
 

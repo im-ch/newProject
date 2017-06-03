@@ -35,12 +35,12 @@ public class UserStoreLogicTest {
 //		store.deleteUser("11");
 //	}
 
-//	@Test
-//	public void testModifyUser() {
-//		User u = store.selectUser("11");
-//		u.setPassword("22");
-//		store.modifyUser(u);
-//	}
+	@Test
+	public void testModifyUser() {
+		User u = store.selectUser("eojin");
+		u.setPassword("1234");
+		store.modifyUser(u);
+	}
 
 //	@Test
 //	public void testSelectAllUser() {
