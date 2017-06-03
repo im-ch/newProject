@@ -99,9 +99,9 @@ public class UserController {
       return modelAndView;
    }
 
-   @RequestMapping("/userDetail")
+   @RequestMapping("detail")
    public ModelAndView findByUserId(@RequestParam("userId") String userId) {
-      ModelAndView modelAndView = new ModelAndView("userInfo.jsp");
+      ModelAndView modelAndView = new ModelAndView("userInfo");
       modelAndView.addObject("user", service.findUser(userId));
       return modelAndView;
    }
