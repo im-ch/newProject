@@ -37,8 +37,8 @@
 					data-toggle="dropdown" href="#">Q&A <b
 						class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="gallery-3col.htm">자주묻는 질문</a></li>
-						<li><a href="gallery-4col.htm">1:1 질문</a></li>
+						<li><a href="${ctx }/views/frequentlyAskedQuestions.jsp">자주묻는 질문</a></li>
+						<li><a href="${ctx }/question/findAll">1:1 질문</a></li>
 					</ul></li>
 				<c:choose>
 					<c:when test="${userId ne null }">

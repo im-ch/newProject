@@ -130,6 +130,8 @@ public class CompanyController {
 		Company company = service.findCompany(comId);
 		String [] lo = company.getLocation().split(";");
 		company.setLocation("[" + lo[0] + "] " + lo[1] + " " + lo[2]);
+		
+		modelAndView.addObject("images", imageService.findCompanyImageList(comId));
 		modelAndView.addObject("company", company);
 		return modelAndView;
 	}
