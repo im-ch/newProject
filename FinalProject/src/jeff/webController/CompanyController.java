@@ -1,8 +1,5 @@
 package jeff.webController;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,14 +11,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.google.gson.JsonObject;
 
 import jeff.domain.Companies;
 import jeff.domain.Company;
@@ -105,7 +99,6 @@ public class CompanyController {
 
 	@RequestMapping("findByComId")
 	public ModelAndView findByComId(@RequestParam("comId") String comId) {
-		Company company = service.findCompany(comId);
 		ModelAndView modelAndView = new ModelAndView("/companyList");
 		modelAndView.addObject("companyList", service.findCompany(comId));
 		return modelAndView;
@@ -114,7 +107,6 @@ public class CompanyController {
 
 	@RequestMapping("findByCategory")
 	public ModelAndView findByCategory(@RequestParam("category") String category) {
-		List<Company> list = service.findCompanyByCategory(category);
 		ModelAndView modelAndView = new ModelAndView("/companyList");
 		modelAndView.addObject("companyList", service.findCompanyByCategory(category));
 		return modelAndView;
@@ -162,7 +154,6 @@ public class CompanyController {
 	public @ResponseBody Companies mapXMLByComName(HttpServletRequest req, String comName){
 		List<Company> list = new ArrayList<>();
 		Companies companies = new Companies();
-//		list = service.findAllCompany();
 		
 		HttpSession session = req.getSession();
 		String location = (String)session.getAttribute("location");
