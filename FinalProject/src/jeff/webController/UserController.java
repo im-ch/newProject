@@ -63,7 +63,7 @@ public class UserController {
    public String logoutUser(HttpServletRequest req) {
       HttpSession session = req.getSession();
       session.invalidate();
-      return "redirect:/main";
+      return "redirect:/views/main.jsp";
    }
    
    @RequestMapping(value = "modify", method = RequestMethod.GET)
@@ -86,7 +86,7 @@ public class UserController {
       HttpSession session = req.getSession();
       String userId = (String)session.getAttribute("userId");
       service.removeUser(userId);
-      return "redirect:/main";
+      return "redirect:/views/main.jsp";
    }
    
    @RequestMapping("list")

@@ -18,7 +18,7 @@ public interface CompanyMapper {
 	
 	Company selectCompany (String comId);
 	
-	Company selectCompanyByName(String comName);
+	List<Company> selectCompanyByName(String comName);
 	
 	boolean loginCompany (Company company);
 	

@@ -18,7 +18,7 @@ public interface CompanyStore {
 	
 	Company selectCompany (String companyId);
 	
-	Company selectCompanyByName(String comName);
+	List<Company> selectCompanyByName(String comName);
 	
 	boolean loginCompany (Company company);
 	

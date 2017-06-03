@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +33,9 @@ public class CompanyImageController {
 		CompanyImage companyImage = new CompanyImage();
 		Iterator<String> iterator = mreq.getFileNames();
 		MultipartFile mf = null;
-		companyImage.setComId("111");
+		HttpSession session = mreq.getSession();
+		companyImage.setComId((String)session.getAttribute("comId"));
+		
 		File file = new File(mreq.getContextPath());
 		if(file.exists() == false){
 			file.mkdirs();
@@ -48,10 +52,8 @@ public class CompanyImageController {
 		         try {
 					mf.transferTo(file);
 				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -59,7 +61,7 @@ public class CompanyImageController {
 		}
 		service.insertCompanyImage(companyImage);
           
-          return "redirect:/company/modify";
+          return "redirect:/company/detail";
 	}
 
 }

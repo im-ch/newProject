@@ -15,7 +15,7 @@ public interface CompanyService {
 	public Company findCompany(String companyId);
 	public boolean login(Company company);
 	public List<Company> findCompanyByCategory(String category);
-	public Company findCompanyByName(String comName);
+	public List<Company> findCompanyByName(String comName);
 	public List<Company> findCompanyByLocationAndCompany(HashMap<String, Object> map);
 	public List<Company> findCompanyByLocation(String location);
 }

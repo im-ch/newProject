@@ -55,12 +55,11 @@ public class CompanyController {
 
 	@RequestMapping("remove")
 	public String RemoveCompany(HttpServletRequest req) {
-
 		HttpSession session = req.getSession();
 		String comId = (String) session.getAttribute("comId");
 		service.removeCompany(comId);
 
-		return "redirect:/main";
+		return "redirect:/views/main.jsp";
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
@@ -72,7 +71,7 @@ public class CompanyController {
 			if (loginedCompany.getComPassword().equals(company.getComPassword())) {
 				HttpSession session = req.getSession();
 				session.setAttribute("comId", company.getComId());
-				return "redirect:/main";
+				return "redirect:/views/main.jsp";
 			} else {
 				HttpSession session = req.getSession(false);
 				session.invalidate();
@@ -88,12 +87,11 @@ public class CompanyController {
 		HttpSession session = req.getSession();
 		session.invalidate();
 
-		return "redirect:main";
+		return "redirect:/views/main.jsp";
 	}
 
 	@RequestMapping("list")
 	public ModelAndView findAllCompany() {
-		
 		List<Company> list = service.findAllCompany();
 		ModelAndView modelAndView = new ModelAndView("companyList.jsp");
 		modelAndView.addObject("companyList", list);
@@ -104,7 +102,7 @@ public class CompanyController {
 	@RequestMapping("findByComId")
 	public ModelAndView findByComId(@RequestParam("comId") String comId) {
 		ModelAndView modelAndView = new ModelAndView("/companyList");
-		modelAndView.addObject("companyList", service.findCompany(comId));
+		modelAndView.addObject("company", service.findCompany(comId));
 		return modelAndView;
 
 	}
@@ -117,18 +115,22 @@ public class CompanyController {
 
 	}
 
-	@RequestMapping("/findBycomName")
+	@RequestMapping("findBycomName")
 	public ModelAndView findBycomName(@RequestParam("comName") String comName) {
-		Company company = service.findCompanyByName(comName);
 		ModelAndView modelAndView = new ModelAndView("companyList.jsp");
 		modelAndView.addObject("companyList", service.findCompanyByName(comName));
 		return modelAndView;
 	}
-
-	@RequestMapping("/companyDetail")
-	public ModelAndView showCompanyDetail(@RequestParam("comId") String comId) {
-		ModelAndView modelAndView = new ModelAndView("companyDetail.jsp");
-		modelAndView.addObject("company", service.findCompany(comId));
+// companyInfo뿌리는 메소드
+	@RequestMapping("detail")
+	public ModelAndView showCompanyDetail(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		String comId = (String)session.getAttribute("comId");
+		ModelAndView modelAndView = new ModelAndView("companyInfo");
+		Company company = service.findCompany(comId);
+		String [] lo = company.getLocation().split(";");
+		company.setLocation("[" + lo[0] + "] " + lo[1] + " " + lo[2]);
+		modelAndView.addObject("company", company);
 		return modelAndView;
 	}
 	
@@ -136,7 +138,6 @@ public class CompanyController {
 	public @ResponseBody Companies mapToXml(HttpServletRequest req){
 		List<Company> list = new ArrayList<>();
 		Companies companies = new Companies();
-//		list = service.findAllCompany();
 		
 		HttpSession session = req.getSession();
 		String location = (String)session.getAttribute("location");

@@ -8,7 +8,7 @@
  	
  	<insert id="insertCompanyImage" parameterType="CompanyImage">
  	<selectKey keyProperty="companyImageId" resultType="int" order="BEFORE">
-    		select reportReview_tb_seq.nextval FROM DUAL
+    		select companyImage_tb_seq.nextval FROM DUAL
   		</selectKey>
  		insert into companyImage_tb(companyImageId, comId, fileName, contentType)
  		values(#{companyImageId}, #{comId}, #{fileName}, #{contentType})

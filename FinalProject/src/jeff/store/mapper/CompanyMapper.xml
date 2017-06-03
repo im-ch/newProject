@@ -51,7 +51,7 @@
    	<select id="selectCompanyByName" resultMap="companyMap" parameterType = "String">
    	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
    	FROM company_tb 
-   	WHERE comName = #{comName}
+   	WHERE comName LIKE '%' || #{comName} || '%'
    	</select>
    	
    	<select id="selectCompanyByCategory" resultMap="companyMap" parameterType="String">

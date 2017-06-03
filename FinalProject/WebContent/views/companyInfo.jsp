@@ -122,7 +122,6 @@ $('#btn-upload').click(function () {
 					${company.comPhoneNumber }</h3></li>
 			<li><h3>Location &nbsp; : &nbsp; ${company.location }</h3></li>
 			<li><h3>Category &nbsp; : &nbsp; ${company.category }</h3></li>
-			<li><h3>ctx &nbsp; : &nbsp; ${ctx}</h3></li>
 		</ul>
 		<form id="uploadForm" action="${ctx }/image/regist" method="post" encType="multipart/form-data">
 		<input type="file" id="fileUpload" name="imageUpload"/>
