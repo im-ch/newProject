@@ -26,17 +26,17 @@
 </head>
 <body>
 
-	<div class="color-bar-1"></div>
+   <div class="color-bar-1"></div>
     <div class="color-bar-2 color-bg"></div>
     
     <div class="container main-container">
 
-	<%@ include file="/views/header.jspf"%>
-		
-		<h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Join</h1>
-		<br><br>
-		<form action="${ctx }/user/create" method="post" id="contact-form">
-			<div align="center">
+   <%@ include file="/views/header.jspf"%>
+      
+      <h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Join</h1>
+      <br><br>
+      <form action="${ctx }/user/create" method="post" id="contact-form">
+         <div align="center">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
                     <input class="span4" name="name" id="name" size="16" type="text" placeholder="Name">
@@ -64,12 +64,12 @@
                 <button class="btn btn-large btn-warning" type="submit">Join</button>
               </div>
           </form>
-	
-	</div>
-	
-	<%@ include file="/views/footer.jspf"%>
+   
+   </div>
+   
+   <%@ include file="/views/footer.jspf"%>
 
-	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-	
+   <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+   
 </body>
 </html>

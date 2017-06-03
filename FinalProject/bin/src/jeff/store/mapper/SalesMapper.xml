@@ -33,7 +33,7 @@
   	WHERE salesId = #{salesId}
    	</update>
   
-  	<select id="selectSalesByCompany" resultMap="SalesMap">
+  	<select id="selectSalesByCompany" parameterType="string" resultMap="SalesMap">
   	SELECT salesId,comId,daysales,regdate 
   	FROM companysales_tb 
   	WHERE comId = #{companyId}

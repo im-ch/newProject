@@ -19,6 +19,7 @@
       <typeAlias type="jeff.domain.Review" alias="Review" />
       <typeAlias type="jeff.domain.Sales" alias="Sales" />
       <typeAlias type="jeff.domain.User" alias="User" />
+      <typeAlias type="jeff.domain.CompanyImage" alias="CompanyImage"/>
    </typeAliases>
 
    <environments default="dev">
@@ -47,6 +48,7 @@
       <mapper resource="jeff/store/mapper/ReviewMapper.xml" />
       <mapper resource="jeff/store/mapper/SalesMapper.xml" />
       <mapper resource="jeff/store/mapper/UserMapper.xml" />
+      <mapper resource="jeff/store/mapper/CompanyImageMapper.xml"/>
    </mappers> 
 
 

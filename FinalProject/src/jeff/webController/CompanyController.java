@@ -3,11 +3,9 @@ package jeff.webController;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jeff.domain.Companies;
 import jeff.domain.Company;
+import jeff.domain.CompanyImage;
+import jeff.service.CompanyImageService;
 import jeff.service.CompanyService;
 
 @Controller
@@ -27,6 +27,10 @@ public class CompanyController {
 
    @Autowired
    private CompanyService service;
+   
+   @Autowired
+   private CompanyImageService imageService;
+
 
    @RequestMapping(value = "create", method = RequestMethod.POST)
    public String registCompany(Company company) {
@@ -84,7 +88,7 @@ public class CompanyController {
       HttpSession session = req.getSession();
       session.invalidate();
 
-      return "redirect:/views/main.jsp";
+      return "redirect:main";
    }
 
    @RequestMapping("list")
@@ -99,7 +103,6 @@ public class CompanyController {
 
    @RequestMapping("findByComId")
    public ModelAndView findByComId(@RequestParam("comId") String comId) {
-      Company company = service.findCompany(comId);
       ModelAndView modelAndView = new ModelAndView("/companyList");
       modelAndView.addObject("companyList", service.findCompany(comId));
       return modelAndView;
@@ -108,7 +111,6 @@ public class CompanyController {
 
    @RequestMapping("findByCategory")
    public ModelAndView findByCategory(@RequestParam("category") String category) {
-      List<Company> list = service.findCompanyByCategory(category);
       ModelAndView modelAndView = new ModelAndView("/companyList");
       modelAndView.addObject("companyList", service.findCompanyByCategory(category));
       return modelAndView;
@@ -144,9 +146,6 @@ public class CompanyController {
       for(Company c : list){
          String location2 = c.getLocation();
          String [] lo = location2.split(";");
-         
-         String [] lo2 = lo[1].split("\\(");
-         c.setLocation(lo2[0]);
       }
       companies.setCompanies(list);
       return companies;
@@ -156,7 +155,6 @@ public class CompanyController {
    public @ResponseBody Companies mapXMLByComName(HttpServletRequest req, String comName){
       List<Company> list = new ArrayList<>();
       Companies companies = new Companies();
-//      list = service.findAllCompany();
       
       HttpSession session = req.getSession();
       String location = (String)session.getAttribute("location");
@@ -191,23 +189,23 @@ public class CompanyController {
    }
    
    @RequestMapping(value="saveLocation", produces="application/xml")
-   public void saveLocation(HttpServletRequest req, String location){
-      HttpSession session = req.getSession();
-      session.removeAttribute("location");
-      if(location.contains("로 ")){
-         String [] lo = location.split("로 ");
-         String loo = lo[0] + "로";
-         session.setAttribute("location", loo);
-      }else if (location.contains("길 ")){
-         String [] lo = location.split("길 ");
-         String loo = lo[0] + "길";
-         session.setAttribute("location", loo);
-      }else if (location.contains("동 ")){
-         String [] lo = location.split("동 ");
-         String loo = lo[0] + "동";
-         session.setAttribute("location", loo);
+      public void saveLocation(HttpServletRequest req, String location){
+         HttpSession session = req.getSession();
+         session.removeAttribute("location");
+         if(location.contains("로 ")){
+            String [] lo = location.split("로 ");
+            String loo = lo[0] + "로";
+            session.setAttribute("location", loo);
+         }else if (location.contains("길 ")){
+            String [] lo = location.split("길 ");
+            String loo = lo[0] + "길";
+            session.setAttribute("location", loo);
+         }else if (location.contains("동 ")){
+            String [] lo = location.split("동 ");
+            String loo = lo[0] + "동";
+            session.setAttribute("location", loo);
+         }
       }
-   }
 
 //   String 보낼때 문자 깨지는거 -> produces="text/plain;charset=UTF-8"
    @RequestMapping(value="loadLocation", produces="text/plain;charset=UTF-8")
