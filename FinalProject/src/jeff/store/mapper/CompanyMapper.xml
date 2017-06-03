@@ -7,16 +7,15 @@
 
      <resultMap type="Company" id="companyMap">
      <id property="comId" column="comId"/>
-     
-     <result property="ownerName" column="ownerName"/>
+     <result property="ownerName" column="ownerName" />
      <result property="comPassword" column="comPassword"/>
      <result property="comEmail" column="email"/>
      <result property="comName" column="comName"/>
      <result property="location" column="location"/>
      <result property="comPhoneNumber" column="phoneNumber"/>
      <result property="category" column="category" />
-     <collection property="couponList" column="comId" javaType="List"
-         select="jeff.store.mapper.CouponMapper.selectCouponByCompany"/>
+     <collection property="couponList" column="comId" javaType="List" notNullColumn=""
+         select="jeff.store.mapper.CouponMapper.selectCouponByCompany" />
      </resultMap>
 
   	<insert id="createCompany" parameterType="Company">
@@ -49,7 +48,7 @@
    	WHERE comId = #{comId}
    	</select>
    	
-   	<select id="selectCompanyByName" resultMap="companyMap">
+   	<select id="selectCompanyByName" resultMap="companyMap" parameterType = "String">
    	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
    	FROM company_tb 
    	WHERE comName = #{comName}
@@ -58,7 +57,20 @@
    	<select id="selectCompanyByCategory" resultMap="companyMap" parameterType="String">
    	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
    	FROM company_tb 
-   	WHERE category = #{category}
+   	WHERE category LIKE '%' || #{category} || '%'
    	</select>
-   	   	  
+   	
+ 	<select id="selectCompanyByLocationAndCompany" resultMap="companyMap" parameterType="Hashmap">
+   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
+   	FROM company_tb 
+   	where location LIKE '%' || #{location} || '%' AND comName LIKE '%' || #{comName} || '%' 
+   	</select>
+   	
+ 	<select id="selectCompanyByLocation" resultMap="companyMap" parameterType="String" resultType="Company">
+   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
+   	FROM company_tb 
+   	WHERE location LIKE '%' || #{location} || '%'
+   	</select>
+   	
+
   </mapper>

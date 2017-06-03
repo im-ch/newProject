@@ -51,11 +51,43 @@
 	src='${ctx }/resources/js/fullcalendar.min.js'></script>
 <script type='text/javascript'>
 	$(document).ready(
+<<<<<<< HEAD
+	
+	function setCalendar(data) {
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+
+		$('#calendar').fullCalendar({
+			editable : false,
+
+			events : function(regDate, sales, callback) {
 			function() {
 				$.ajax({
 					displayLoading : true,
 					type : "POST" //"POST", "GET"
 					,
+					url : '${ctx }/sales/calendarDetailAjax' //Request URL
+					,
+					dataType : 'json' //전송받을 데이터 타입
+					,
+					success : function(data) {
+						var events = [];
+						$(data.salesList).each(function(i, e) {
+							events.push({
+								title : '' + data.salesList[i].sales,
+								start : data.salesList[i].regDate
+							});
+						});
+						console.log(events);
+						callback(events);
+					}
+				});
+			}
+		});
+		// 달력 완료
+	});
 					url : "${ctx }/sales/calendarDetailAjax" //Request URL
 					,
 
@@ -119,6 +151,7 @@ body {
 
 	<div class="container main-container">
 
+		<%@ include file="/views/header.jspf"%>
 		<div class="row header">
 			<!-- Begin Header -->
 
@@ -239,6 +272,8 @@ body {
 	</div>
 	<!-- End Container -->
 
+	<%@ include file="/views/footer.jspf"%>
+	
 	<!-- Footer Area
         ================================================== -->
 	<div class="footer-container">

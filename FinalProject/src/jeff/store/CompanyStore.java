@@ -1,5 +1,6 @@
 package jeff.store;
 
+import java.util.HashMap;
 import java.util.List;
 
 import jeff.domain.Company;
@@ -22,5 +23,10 @@ public interface CompanyStore {
 	boolean loginCompany (Company company);
 	
 	List<Company> selectCompanyByCategory(String category);
+	
+	List<Company> selectCompanyByLocationAndCompany(HashMap<String, Object> map);
+
+	List<Company> selectCompanyByLocation(String location);
+	
 	
 }

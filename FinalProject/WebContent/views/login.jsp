@@ -39,10 +39,12 @@
          <form action="${ctx }/user/login" method="post" id="contact-form">
          <div align="center">
          <div class="input-prepend">
-             <span class="add-on"><i class="icon-user"></i></span><input class="span2" name="loginId" id="loginId" size="16" type="text" placeholder="Member id">
+             <span class="add-on"><i class="icon-user"></i></span>
+             <input class="span2" name="loginId" id="loginId" size="16" type="text" placeholder="Member id">
          </div>
          <div class="input-prepend">
-             <span class="add-on"><i class="icon-lock"></i></span><input class="span2" name="loginPassword" id="loginPassword" size="16" type="password" placeholder="Password">
+             <span class="add-on"><i class="icon-lock"></i></span>
+             <input class="span2" name="loginPassword" id="loginPassword" size="16" type="password" placeholder="Password">
          </div>
             <button class="btn btn-large" type="submit">Login</button>&nbsp;&nbsp;
             <button class="btn btn-large btn-warning" type="button" onclick="location.href='join.jsp;'">Join</button>
@@ -51,8 +53,11 @@
          </form>
    </div>
    </div>
+
    
    <%@ include file="/views/footer.jspf"%>
+	
+
 
    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
    
