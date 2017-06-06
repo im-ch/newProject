@@ -26,6 +26,6 @@ public interface CompanyMapper {
 	
 	List<Company> selectCompanyByLocationAndCompany(HashMap<String, Object> map);
 	
-	List<Company> selectCompanyByLocation(String category);
+	List<Company> selectCompanyByLocation(String location);
 
 }

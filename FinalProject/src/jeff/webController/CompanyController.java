@@ -144,15 +144,15 @@ public class CompanyController {
 		
 		HttpSession session = req.getSession();
 		String location = (String)session.getAttribute("location");
-		
 		list = service.findCompanyByLocation(location);
-		
+		System.out.println(list.size());
 		for(Company c : list){
 			String location2 = c.getLocation();
 			String [] lo = location2.split(";");
 			
 			String [] lo2 = lo[1].split("\\(");
 			c.setLocation(lo2[0]);
+			System.out.println(c.getComName());
 		}
 		companies.setCompanies(list);
 		return companies;
