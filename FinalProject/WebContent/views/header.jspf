@@ -42,14 +42,26 @@
 					</ul></li>
 				<c:choose>
 					<c:when test="${userId ne null }">
+						<c:if test="${userId eq 'admin' }" >
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">My Page <b
+							data-toggle="dropdown" href="#">Admin Page<b
 								class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="${ctx }/user/detail">User Info</a></li>
-								<li><a href="blog-style2.htm">Interesting Company</a></li>
-								<li><a href="blog-style3.htm">My Coupon</a></li>
+								<li><a href="${ctx }/company/detail">All User</a></li>
+								<li><a href="${ctx }/reportReview/findList">Reported List</a></li>
+								<li><a href="#">결제내역???</a></li>
 							</ul></li>
+						</c:if>
+						<c:if test="${userId ne 'admin' }">
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="#">My Page <b
+									class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="${ctx }/user/detail">User Info</a></li>
+									<li><a href="blog-style2.htm">Interesting Company</a></li>
+									<li><a href="blog-style3.htm">My Coupon</a></li>
+								</ul></li>
+						</c:if>
 					</c:when>
 					<c:when test="${comId ne null }">
 						<li><a href="#">Coupon</a></li>

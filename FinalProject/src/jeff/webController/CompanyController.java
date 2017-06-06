@@ -140,6 +140,7 @@ public class CompanyController {
 	public @ResponseBody Companies mapToXml(HttpServletRequest req){
 		List<Company> list = new ArrayList<>();
 		Companies companies = new Companies();
+//		list = service.findAllCompany();
 		
 		HttpSession session = req.getSession();
 		String location = (String)session.getAttribute("location");
@@ -149,7 +150,9 @@ public class CompanyController {
 		for(Company c : list){
 			String location2 = c.getLocation();
 			String [] lo = location2.split(";");
-			c.setLocation(lo[1]);
+			
+			String [] lo2 = lo[1].split("\\(");
+			c.setLocation(lo2[0]);
 		}
 		companies.setCompanies(list);
 		return companies;

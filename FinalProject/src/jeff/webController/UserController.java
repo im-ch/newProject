@@ -96,10 +96,10 @@ public class UserController {
       modelAndView.addObject("userList", list);
       return modelAndView;
    }
-   
-   @RequestMapping("detail")
+//   관리자페이지에서 유저목록에서 클릭했을때 유저디테일 뿌려주는 메소드
+   @RequestMapping("findByUserId")
    public ModelAndView findByUserId(@RequestParam("userId") String userId) {
-      ModelAndView modelAndView = new ModelAndView("userInfo.jsp");
+      ModelAndView modelAndView = new ModelAndView("userInfo");
       modelAndView.addObject("user", service.findUser(userId));
       return modelAndView;
    }
@@ -118,4 +118,16 @@ public class UserController {
       modelAndView.addObject("companys", companys);
       return modelAndView;
    }
+   
+// 유저로그인상태에서 userInfo뿌리는 메소드
+	@RequestMapping("detail")
+	public ModelAndView showCompanyDetail(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		String userId = (String)session.getAttribute("userId");
+		ModelAndView modelAndView = new ModelAndView("userInfo");
+		User user = service.findUser(userId);
+		
+		modelAndView.addObject("user", user);
+		return modelAndView;
+	}
 }
