@@ -71,6 +71,19 @@ $(document).ready(function() {
          
    });
    
+//    function nameSearch(){
+//        $.ajax({
+//            url : "${ctx}/company/mapListByComName",
+//            type : "GET",
+//            data : {
+//               location : fullAddr
+//            },
+//            error : function(request, status, error) {
+//                 window.location.reload();
+//            }
+//         });
+//    }
+   
 });
 </script>
 <div class="row header">
@@ -85,7 +98,7 @@ $(document).ready(function() {
             </div>
             <div class="input-append">
                 <input type="text" class="span2 search-query" placeholder="업체명">
-         <button type="submit" class="btn">Search</button>
+         <button type="button" class="btn" onclick="nameSearch()">Search</button>
             </div>
             </form>
         </div>
