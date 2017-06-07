@@ -89,5 +89,14 @@ public class AllianceController {
 		model.addAttribute("alliance", alliance);
 		return "/companyDetail";
 	}
+	
+	@RequestMapping("myDetail")
+	public String findAlliance(HttpServletRequest req, Model model) {
+		HttpSession session = req.getSession();
+		String comId = (String)session.getAttribute("comId");
+		Alliance alliance = service.findAlliance(comId);
+		model.addAttribute("alliance", alliance);
+		return "/allianceDetail";
+	}
 
 }

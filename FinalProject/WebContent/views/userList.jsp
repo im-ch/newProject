@@ -50,7 +50,7 @@
 
 		<%@ include file="/views/header.jspf"%>
 
-		<div class="row">
+		<div class="row" style="margin-left: 40px">
          	   <h1 class="title-bg">Member</h1>
          	   <br>
 			<ul class="nav nav-tabs">
@@ -71,15 +71,16 @@
 							<c:otherwise>
 								<c:forEach items="${users }" var="user" varStatus="sts">
 										<li><img src="${ctx }/resources/img/icon/user.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
-										<span class="user-name">/ ${user.userId }</span>&nbsp;&nbsp;&nbsp; 
-										<span class="user-date">${user.name }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/user/detail?userId=${user.userId}">Info</a>
+										<span class="user-name"> ${user.userId }</span>&nbsp;&nbsp;&nbsp; 
+										<span class="user-date">${user.name }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/user/findUserId?userId=${user.userId}">Info</a>
 										</span></li>
 										<hr>
 								</c:forEach>
 								<c:forEach items="${companys }" var="company" varStatus="sts">
 										<li><img src="${ctx }/resources/img/icon/company.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
-										<span class="user-name">/ ${company.comId }</span>&nbsp;&nbsp;&nbsp; 
-										<span class="user-date">${company.ownerName }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/company/detail?comId=${company.comId}">Info</a>
+										<span class="user-name"> ${company.comId }</span>&nbsp;&nbsp;&nbsp; 
+										<span class="user-date">${company.ownerName }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/company/findByComId?comId=${company.comId}">Info</a>
+										&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/alliance/detail?comId=${company.comId}">Alliance</a>
 										</span></li>
 										<hr>
 								</c:forEach>
@@ -100,8 +101,8 @@
 							<c:otherwise>
 								<c:forEach items="${users }" var="user" varStatus="sts">
 										<li><img src="${ctx }/resources/img/icon/user.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
-										<span class="user-name">/ ${user.userId }</span>&nbsp;&nbsp;&nbsp; 
-										<span class="user-date">${user.name }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/user/detail?userId=${user.userId}">Info</a>
+										<span class="user-name"> ${user.userId }</span>&nbsp;&nbsp;&nbsp; 
+										<span class="user-date">${user.name }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/user/findUserId?userId=${user.userId}">Info</a>
 										</span></li>
 										<hr>
 								</c:forEach>
@@ -120,8 +121,9 @@
 							<c:otherwise>
 								<c:forEach items="${companys }" var="company" varStatus="sts">
 										<li><img src="${ctx }/resources/img/icon/company.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
-										<span class="user-name">/ ${company.comId }</span>&nbsp;&nbsp;&nbsp; 
-										<span class="user-date">${company.ownerName }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/company/detail?comId=${company.comId}">Info</a>
+										<span class="user-name"> ${company.comId }</span>&nbsp;&nbsp;&nbsp; 
+										<span class="user-date">${company.ownerName }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/company/findByComId?comId=${company.comId}">Info</a>
+										&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/alliance/detail?comId=${company.comId}">Alliance</a>
 										</span></li>
 										<hr>
 								</c:forEach>
