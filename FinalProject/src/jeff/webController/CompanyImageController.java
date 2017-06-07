@@ -59,7 +59,7 @@ public class CompanyImageController {
 		}
 		service.insertCompanyImage(companyImage);
           
-          return "redirect:/company/modify";
+          return "redirect:/company/detail";
 	}
 
 }

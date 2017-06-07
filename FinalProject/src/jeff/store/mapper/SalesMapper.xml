@@ -17,7 +17,7 @@
   	SELECT companysales_tb_seq.nextval FROM DUAL
    </selectKey>
   	INSERT INTO companysales_tb(salesId,comId,daysales,regdate) 
-  	VALUES(#{salesId},#{companyId},#{sales},sysdate)
+  	VALUES(#{salesId},#{companyId},#{sales},#{regDate})
   	</insert>
   	
   	<delete id="deleteSales" parameterType="int">
@@ -28,7 +28,7 @@
   	
   	<update id="modifySales" parameterType="Sales">
   	UPDATE companysales_tb 
-  	SET comId = #{companyId}, daysales = #{sales} 
+  	SET comId = #{companyId}, daysales = #{sales}, regdate=#{regDate}
   	WHERE salesId = #{salesId}
    	</update>
   

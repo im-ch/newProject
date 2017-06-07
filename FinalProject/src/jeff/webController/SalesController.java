@@ -1,10 +1,8 @@
 package jeff.webController;
 
-import java.sql.Date;
-import java.util.Calendar;
-import java.util.HashMap;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,12 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import jeff.domain.CompanySales;
 import jeff.domain.Sales;
@@ -78,7 +77,7 @@ public class SalesController {
 		List<Sales> list = salesService.findSalesByCompany(comId);
 
 
-
+		
 		System.out.println(list.size());
 		System.out.println(list.toString());
 		model.addAttribute("sales", list);
@@ -97,5 +96,59 @@ public class SalesController {
 			e.printStackTrace();
 		}
 		return companySales;
+	}
+	
+	@RequestMapping(value="day")
+	@ResponseBody
+	public String ttt(HttpServletRequest req){
+		HttpSession session = req.getSession();
+		
+		if (session == null || session.getAttribute("comId") == null) {
+			return "redirect:login.jsp";
+		}
+		String comId = (String) session.getAttribute("comId");
+		
+		JsonObject data = new JsonObject();
+		JsonObject objCol1 = new JsonObject();
+		JsonObject objCol2 = new JsonObject();
+		JsonArray arrCols = new JsonArray();
+		JsonArray arrRows = new JsonArray();
+		objCol1.addProperty("type", "string");
+		objCol2.addProperty("type", "number");
+		arrCols.add(objCol1);
+		arrCols.add(objCol2);
+		
+		SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");
+		List<Sales> list = salesService.findSalesByCompany(comId);
+		List<Sales> weekList = new ArrayList<>();
+		for(int i = 0 ; i < list.size() ; i++){
+			int today = Integer.parseInt(newFormat.format(list.get(0).getRegDate()).substring(8));
+//			int day = 
+//			if()
+		}
+		for(int i = 0 ; i < 7 ; i++){
+			JsonObject legend = new JsonObject();
+			legend.addProperty("v", "7/" + (i+2));
+			legend.add("f", null);
+			
+			JsonObject value = new JsonObject();
+			value.addProperty("v", 500 + i*100);
+			value.add("f", null);
+			
+			JsonArray cvalArr = new JsonArray();
+			cvalArr.add(legend);
+			cvalArr.add(value);
+			
+			JsonObject cvalObj = new JsonObject();
+			cvalObj.add("c", cvalArr);
+			
+			arrRows.add(cvalObj);
+		}
+
+		data.add("cols", arrCols);
+		data.add("rows", arrRows);
+		String str = data.toString();
+		System.out.println(str);
+		return str;
 	}
 }

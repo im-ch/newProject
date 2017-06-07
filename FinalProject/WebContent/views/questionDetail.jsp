@@ -27,20 +27,20 @@
 
 <!-- Favicons
 ================================================== -->
-<link rel="shortcut icon" href="img/favicon.ico">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="shortcut icon" href="${ctx }/img/favicon.ico">
+<link rel="apple-touch-icon" href="${ctx }/img/apple-touch-icon.png">
 <link rel="apple-touch-icon" sizes="72x72"
-	href="img/apple-touch-icon-72x72.png">
+	href="${ctx }/img/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114"
-	href="img/apple-touch-icon-114x114.png">
+	href="${ctx }/img/apple-touch-icon-114x114.png">
 
 <!-- JS
 ================================================== -->
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/jquery.flexslider.js"></script>
-<script src="js/jquery.custom.js"></script>
+<script src="${ctx }/js/bootstrap.js"></script>
+<script src="${ctx }/js/jquery.prettyPhoto.js"></script>
+<script src="${ctx }/js/jquery.flexslider.js"></script>
+<script src="${ctx }/js/jquery.custom.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 

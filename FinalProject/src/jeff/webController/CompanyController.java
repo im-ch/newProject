@@ -49,7 +49,6 @@ public class CompanyController {
 	public String ModifyCompany(String comId, Model model) {
 		Company company = service.findCompany(comId);
 		model.addAttribute("company", company);
-
 		return "/companyInfo";
 	}
 
@@ -133,12 +132,19 @@ public class CompanyController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/companyDetail")
-	public ModelAndView showCompanyDetail(@RequestParam("comId") String comId) {
-		ModelAndView modelAndView = new ModelAndView("companyDetail.jsp");
-		modelAndView.addObject("company", service.findCompany(comId));
-		return modelAndView;
-	}
+	// companyInfo뿌리는 메소드
+	   @RequestMapping("detail")
+	   public ModelAndView showCompanyDetail(HttpServletRequest req) {
+	      HttpSession session = req.getSession();
+	      String comId = (String)session.getAttribute("comId");
+	      ModelAndView modelAndView = new ModelAndView("companyInfo");
+	      Company company = service.findCompany(comId);
+	      String [] lo = company.getLocation().split(";");
+	      company.setLocation("[" + lo[0] + "] " + lo[1] + " " + lo[2]);
+	      modelAndView.addObject("company", company);
+	      modelAndView.addObject("images", imageService.findCompanyImageList(comId));
+	      return modelAndView;
+	   }
 	
 	@RequestMapping(value="mapList", produces="application/xml")
 	public @ResponseBody Companies mapToXml(HttpServletRequest req){
