@@ -55,23 +55,15 @@
 			<h1 class="title-bg">${user.name } Information Update</h1>
 			<br>
 
-			<form action="#" id="contact-form" style="margin-left: 50px">
-<!-- 				<div class="input-prepend"> -->
-<!-- 					<span class="add-on"><i class="icon-user"></i></span> <input -->
-<!-- 						class="span4" id="prependedInput" size="16" type="text" -->
-<%-- 						placeholder="${user.name }"> --%>
-<!-- 				</div> -->
-<!-- 				<div class="alert alert-success" > -->
-<!--             	    개명으로 이름이 변경된 경우에 한하여 변경이 가능합니다. -->
-<!--           		</div> -->
+			<form action="${ctx }/user/modify" method="POST" id="contact-form" style="margin-left: 50px">
 				<div class="input-prepend">
 					<span class="add-on"><i class="icon-lock"></i></span> <input
-						class="span4" id="prependedInput" size="16" type="password"
+						class="span4" id="password" name="password" size="16" type="password"
 						placeholder="Password">
 				</div>
 				<div class="input-prepend">
 					<span class="add-on"><i class="icon-lock"></i></span> <input
-						class="span4" id="prependedInput" size="16" type="password"
+						class="span4" id="passwordCheck" name="passwordCheck" size="16" type="password"
 						placeholder="Password Check">
 				</div>
 				<div class="alert alert-success" >
@@ -79,13 +71,13 @@
           		</div>
 				<div class="input-prepend">
 					<span class="add-on"><i class="icon-envelope"></i></span> <input
-						class="span4" id="prependedInput" size="16" type="email"
-						placeholder="${user.email }">
+						class="span4" id="email" name="email" size="16" type="email"
+						value="${user.email }">
 				</div>
 				<div class="input-prepend">
 					<span class="add-on"><i class="icon-bell"></i></span> <input
-						class="span4" id="prependedInput" size="16" type="number"
-						placeholder="${user.phoneNumber }">
+						class="span4" id="phoneNumber" name="phoneNumber" size="16" type="number"
+						value="${user.phoneNumber }">
 				</div>
 				
 				<div class="row">

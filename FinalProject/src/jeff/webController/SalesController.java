@@ -2,6 +2,11 @@ package jeff.webController;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.sql.Date;
+
+import java.util.Calendar;
+import java.util.HashMap;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,8 +39,7 @@ public class SalesController {
 	public String registSales(HttpServletRequest req, Sales sales) {
 		HttpSession session = req.getSession();
 
-		// String comId = (String) session.getAttribute("comId");
-		String comId = "111";
+		String comId = (String) session.getAttribute("comId");
 		sales.setCompanyId(comId);
 		salesService.registSales(sales);
 
@@ -71,15 +75,9 @@ public class SalesController {
 	public String findAllSales(HttpServletRequest req, Model model) {
 
 		HttpSession session = req.getSession();
-
 		String comId = (String) session.getAttribute("comId");
-
 		List<Sales> list = salesService.findSalesByCompany(comId);
 
-
-		
-		System.out.println(list.size());
-		System.out.println(list.toString());
 		model.addAttribute("sales", list);
 
 		return "salesList";
@@ -89,7 +87,12 @@ public class SalesController {
 	public @ResponseBody CompanySales calendarDetailAjax(HttpServletRequest request, ModelMap modelMap,
 			@ModelAttribute Sales sales) throws Exception {
 		CompanySales companySales = new CompanySales();
-		List<Sales> list = salesService.findSalesByCompany("111");
+
+		HttpSession session = request.getSession();
+		String comId = (String) session.getAttribute("comId");
+
+		List<Sales> list = salesService.findSalesByCompany(comId);
+
 		try {
 			companySales.setSalesList(list);
 		} catch (Exception e) {
@@ -152,3 +155,4 @@ public class SalesController {
 		return str;
 	}
 }
+

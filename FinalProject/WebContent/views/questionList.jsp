@@ -1,12 +1,14 @@
 <!DOCTYPE html>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Piccolo Theme</title>
+<title>Jeff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -85,16 +87,11 @@
 		<%@ include file="header.jspf"%>
 
 		<!-- End Header -->
-		<br> <br> <br>
-
-
-
-		
 		<br>
-		<h1>QnA</h1>
+		<h1>Q & A</h1>
 		<div style="float: right">
 		
-
+<form action ="${ctx }/question/findCategory" method="post">
 			<form name="form">
 				<select name="selectBox" style="width: 200px"
 					onChange="getSelectValue(this.form);">
@@ -111,10 +108,11 @@
 					<input id="category" type="text" name="category"
 						placeholder="카테고리를 선택하세요"
 						style="width: 65%; display: inline-block;">
-					<button type="submit" class="btn btn-primary">검색</button>
+					<button type="submit" class="btn btn-success">검색</button>
 				</div>
+				</form>
 			</form>
-		</div>
+		
 
 	</div>
 
@@ -138,17 +136,18 @@
 		</thead>
 		<tbody>
 			<c:choose>
-				<c:when test="${questions eq null || empty questions }">
+				<c:when test="${questionList eq null || empty questionList }">
 					<tr>
 						<td colspan="7" align="center">등록된 질문이 없습니다.</td>
 					</tr>
 				</c:when>
 				<c:otherwise>
-					<c:forEach items="${questions }" var="question" varStatus="status">
+					<c:forEach items="${questionList }" var="question" varStatus="status">
 						<fmt:formatDate var="newFormattedDate"
-							value="${question.regDate }" pattern="yyyy-MM-dd HH:mm:ss" />
+							value="${question.regDate }" pattern="yyyy-MM-dd" />
 						<tr>
 							<td>${question.category }</td>
+							
 							<td><a
 								href="${ctx }/question/find?questionId=${question.questionId }">${question.title }</a></td>
 							<td>${question.writerId}</td>
@@ -158,8 +157,6 @@
 				</c:otherwise>
 			</c:choose>
 		</tbody>
-
-
 	</table>
 
 

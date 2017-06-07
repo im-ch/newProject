@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Jeff</title>
+<title>User List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -62,115 +62,71 @@
 			<div class="tab-content">
 				<div class="tab-pane active" id="comments">
 					<ul>
-<%-- 						<c:choose> --%>
-<%-- 							<c:when test="${allUser eq null || empty allUser }"> --%>
-<!-- 								<tr> -->
-<!-- 									<td colspan="6" align="center">가입된 회원이 없습니다.</td> -->
-<!-- 								</tr> -->
-<%-- 							</c:when> --%>
-<%-- 							<c:otherwise> --%>
-<%-- 								<c:forEach items="${users }" var="user" varStatus="sts"> --%>
-<%-- 										<li><img src="${ctx }/resources/img/icon/user.png" alt="Image" />&nbsp;&nbsp;&nbsp;  --%>
-<%-- 										<span class="user-name">/ ${user.userId }</span>&nbsp;&nbsp;&nbsp;  --%>
-<%-- 										<span class="user-date">${user.name }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/user/detail?userId=${user.userId}">Info</a> --%>
-<!-- 										</span></li> -->
-<!-- 										<hr> -->
-<%-- 								</c:forEach> --%>
-<%-- 								<c:forEach items="${companys }" var="company" varStatus="sts"> --%>
-<%-- 										<li><img src="${ctx }/resources/img/icon/company.png" alt="Image" />&nbsp;&nbsp;&nbsp;  --%>
-<%-- 										<span class="user-name">/ ${company.comId }</span>&nbsp;&nbsp;&nbsp;  --%>
-<%-- 										<span class="user-date">${company.ownerName }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/company/detail?comId=${company.comId}">Info</a> --%>
-<!-- 										</span></li> -->
-<!-- 										<hr> -->
-<%-- 								</c:forEach> --%>
-<%-- 							</c:otherwise> --%>
-<%-- 						</c:choose> --%>
-						<li><img src="${ctx }/resources/img/icon/user.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
-						<span class="user-name">eojineojin</span> &nbsp;&nbsp;&nbsp; 
-						<span class="user-date">유어진 &nbsp;&nbsp;|&nbsp;&nbsp; <a href="#">Info</a>
-						</span></li>
-						<hr>
-						<li><img src="${ctx }/resources/img/icon/user.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
-						<span class="user-name">honeyhyun</span> &nbsp;&nbsp;&nbsp; 
-						<span class="user-date">황희현 &nbsp;&nbsp;|&nbsp;&nbsp; <a href="#">Info</a>
-						</span></li>
-						<hr>
-						<li><img src="${ctx }/resources/img/icon/user.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
-						<span class="user-name">mangomango</span> &nbsp;&nbsp;&nbsp; 
-						<span class="user-date">임창희 &nbsp;&nbsp;|&nbsp;&nbsp; <a href="#">Info</a>
-						</span></li>
-						<hr>
+						<c:choose>
+							<c:when test="${allUsers eq null || empty allUsers }">
+								<tr>
+									<td colspan="6" align="center">가입된 회원이 없습니다.</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${users }" var="user" varStatus="sts">
+										<li><img src="${ctx }/resources/img/icon/user.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
+										<span class="user-name">/ ${user.userId }</span>&nbsp;&nbsp;&nbsp; 
+										<span class="user-date">${user.name }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/user/detail?userId=${user.userId}">Info</a>
+										</span></li>
+										<hr>
+								</c:forEach>
+								<c:forEach items="${companys }" var="company" varStatus="sts">
+										<li><img src="${ctx }/resources/img/icon/company.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
+										<span class="user-name">/ ${company.comId }</span>&nbsp;&nbsp;&nbsp; 
+										<span class="user-date">${company.ownerName }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/company/detail?comId=${company.comId}">Info</a>
+										</span></li>
+										<hr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+				
 					</ul>
 
 				</div>
 				<div class="tab-pane" id="tweets">
 					<ul>
-<%-- 						<c:choose> --%>
-<%-- 							<c:when test="${users eq null || empty users }"> --%>
-<!-- 								<tr> -->
-<!-- 									<td colspan="6" align="center">가입된 회원이 없습니다.</td> -->
-<!-- 								</tr> -->
-<%-- 							</c:when> --%>
-<%-- 							<c:otherwise> --%>
-<%-- 								<c:forEach items="${users }" var="user" varStatus="sts"> --%>
-<%-- 										<li><img src="${ctx }/resources/img/icon/user.png" alt="Image" />&nbsp;&nbsp;&nbsp;  --%>
-<%-- 										<span class="user-name">/ ${user.userId }</span>&nbsp;&nbsp;&nbsp;  --%>
-<%-- 										<span class="user-date">${user.name }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/user/detail?userId=${user.userId}">Info</a> --%>
-<!-- 										</span></li> -->
-<!-- 										<hr> -->
-<%-- 								</c:forEach> --%>
-<%-- 							</c:otherwise> --%>
-<%-- 						</c:choose> --%>					
-						<li><img src="${ctx }/resources/img/icon/user.png"
-							alt="Image" /> <span class="comment-name">John Doe</span> <span
-							class="comment-date">March 15, 2015 | <a href="#">Info</a>
-						</span></li>
-						<hr>
-						<li><img src="${ctx }/resources/img/icon/user.png"
-							alt="Image" /> <span class="comment-name">John Doe</span> <span
-							class="comment-date">March 15, 2015 | <a href="#">Info</a>
-						</span></li>
-						<hr>
-						<li><img src="${ctx }/resources/img/icon/user.png"
-							alt="Image" /> <span class="comment-name">John Doe</span> <span
-							class="comment-date">March 15, 2015 | <a href="#">Info</a>
-						</span></li>
-						<hr>
+						<c:choose>
+							<c:when test="${users eq null || empty users }">
+								<tr>
+									<td colspan="6" align="center">가입된 회원이 없습니다.</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${users }" var="user" varStatus="sts">
+										<li><img src="${ctx }/resources/img/icon/user.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
+										<span class="user-name">/ ${user.userId }</span>&nbsp;&nbsp;&nbsp; 
+										<span class="user-date">${user.name }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/user/detail?userId=${user.userId}">Info</a>
+										</span></li>
+										<hr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>					
 					</ul>
 				</div>
 				<div class="tab-pane" id="about">
 					<ul>
-<%-- 						<c:choose> --%>
-<%-- 							<c:when test="${companys eq null || empty companys }"> --%>
-<!-- 								<tr> -->
-<!-- 									<td colspan="6" align="center">가입된 회원이 없습니다.</td> -->
-<!-- 								</tr> -->
-<%-- 							</c:when> --%>
-<%-- 							<c:otherwise> --%>
-<%-- 								<c:forEach items="${companys }" var="company" varStatus="sts"> --%>
-<%-- 										<li><img src="${ctx }/resources/img/icon/company.png" alt="Image" />&nbsp;&nbsp;&nbsp;  --%>
-<%-- 										<span class="user-name">/ ${company.comId }</span>&nbsp;&nbsp;&nbsp;  --%>
-<%-- 										<span class="user-date">${company.ownerName }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/company/detail?comId=${company.comId}">Info</a> --%>
-<!-- 										</span></li> -->
-<!-- 										<hr> -->
-<%-- 								</c:forEach> --%>
-<%-- 							</c:otherwise> --%>
-<%-- 						</c:choose> --%>						
-						<li><img src="${ctx }/resources/img/icon/company.png"
-							alt="Image" /> <span class="comment-name">John Doe</span> <span
-							class="comment-date">March 15, 2015 | <a href="#">Info</a>
-						</span></li>
-						<hr>
-						<li><img src="${ctx }/resources/img/icon/company.png"
-							alt="Image" /> <span class="comment-name">John Doe</span> <span
-							class="comment-date">March 15, 2015 | <a href="#">Info</a>
-						</span></li>
-						<hr>
-						<li><img src="${ctx }/resources/img/icon/company.png"
-							alt="Image" /> <span class="comment-name">John Doe</span> <span
-							class="comment-date">March 15, 2015 | <a href="#">Info</a>
-						</span></li>
-						<hr>
+						<c:choose>
+							<c:when test="${companys eq null || empty companys }">
+								<tr>
+									<td colspan="6" align="center">가입된 회원이 없습니다.</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${companys }" var="company" varStatus="sts">
+										<li><img src="${ctx }/resources/img/icon/company.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
+										<span class="user-name">/ ${company.comId }</span>&nbsp;&nbsp;&nbsp; 
+										<span class="user-date">${company.ownerName }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/company/detail?comId=${company.comId}">Info</a>
+										</span></li>
+										<hr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>						
 					</ul>
 				</div>
 			</div>

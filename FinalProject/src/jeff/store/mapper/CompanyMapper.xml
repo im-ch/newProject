@@ -18,59 +18,59 @@
          select="jeff.store.mapper.CouponMapper.selectCouponByCompany" />
      </resultMap>
 
-  	<insert id="createCompany" parameterType="Company">
-  	INSERT INTO company_tb(comId,ownerName,comPassword,email,comName,location,phoneNumber, category) 
-  	VALUES(#{comId},#{ownerName},#{comPassword},#{comEmail,jdbcType=VARCHAR},#{comName},#{location},#{comPhoneNumber},#{category})
-   	</insert>
-   	
-   	<delete id="deleteCompany" parameterType="String">
-   	DELETE
-   	FROM company_tb
-   	WHERE comId = #{comId}
-  	</delete>
-  	
-  	<update id="modifyCompany" parameterType="Company">
-  	UPDATE company_tb
-  	SET ownerName = #{ownerName},comPassword=#{comPassword}, email = #{comEmail} , comName = #{comName},location = #{location},phoneNumber = #{comPhoneNumber}, category = #{category}
-  	WHERE comId = #{comId}
-   	</update>
-  	
-   	
-   	<select id="selectAllCompany" resultMap="companyMap">
-   	SELECT comId, ownerName, comPassword, email, comName, location, phoneNumber, category 
-   	FROM company_tb 
-   	ORDER BY comId ASC
-   	</select>
-   	
-   	<select id="selectCompany"  resultMap="companyMap">
-   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
-   	FROM company_tb 
-   	WHERE comId = #{comId}
-   	</select>
-   	
-   	<select id="selectCompanyByName" resultMap="companyMap" parameterType = "String">
-   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
-   	FROM company_tb 
-   	WHERE comName = #{comName}
-   	</select>
-   	
-   	<select id="selectCompanyByCategory" resultMap="companyMap" parameterType="String">
-   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
-   	FROM company_tb 
-   	WHERE category LIKE '%' || #{category} || '%'
-   	</select>
-   	
- 	<select id="selectCompanyByLocationAndCompany" resultMap="companyMap" parameterType="Hashmap">
-   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
-   	FROM company_tb 
-   	where location LIKE '%' || #{location} || '%' AND comName LIKE '%' || #{comName} || '%' 
-   	</select>
-   	
- 	<select id="selectCompanyByLocation" resultMap="companyMap" parameterType="String" resultType="Company">
-   	SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
-   	FROM company_tb 
-   	WHERE location LIKE '%' || #{location} || '%'
-   	</select>
-   	
+     <insert id="createCompany" parameterType="Company">
+     INSERT INTO company_tb(comId,ownerName,comPassword,email,comName,location,phoneNumber, category) 
+     VALUES(#{comId},#{ownerName},#{comPassword},#{comEmail,jdbcType=VARCHAR},#{comName},#{location},#{comPhoneNumber},#{category})
+      </insert>
+      
+      <delete id="deleteCompany" parameterType="String">
+      DELETE
+      FROM company_tb
+      WHERE comId = #{comId}
+     </delete>
+     
+     <update id="modifyCompany" parameterType="Company">
+     UPDATE company_tb
+     SET ownerName = #{ownerName},comPassword=#{comPassword}, email = #{comEmail} , comName = #{comName},location = #{location},phoneNumber = #{comPhoneNumber}, category = #{category}
+     WHERE comId = #{comId}
+      </update>
+     
+      
+      <select id="selectAllCompany" resultMap="companyMap">
+      SELECT comId, ownerName, comPassword, email, comName, location, phoneNumber, category 
+      FROM company_tb 
+      ORDER BY comId ASC
+      </select>
+      
+      <select id="selectCompany"  resultMap="companyMap">
+      SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
+      FROM company_tb 
+      WHERE comId = #{comId}
+      </select>
+      
+      <select id="selectCompanyByName" resultMap="companyMap" parameterType = "String">
+      SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
+      FROM company_tb 
+      WHERE comName LIKE '%' || #{comName} || '%'
+      </select>
+      
+      <select id="selectCompanyByCategory" resultMap="companyMap" parameterType="String">
+      SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
+      FROM company_tb 
+      WHERE category LIKE '%' || #{category} || '%'
+      </select>
+      
+    <select id="selectCompanyByLocationAndCompany" resultMap="companyMap" parameterType="Hashmap">
+      SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
+      FROM company_tb 
+      where location LIKE '%' || #{location} || '%' AND comName LIKE '%' || #{comName} || '%' 
+      </select>
+      
+    <select id="selectCompanyByLocation" resultMap="companyMap" parameterType="String" resultType="Company">
+      SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
+      FROM company_tb 
+      WHERE location LIKE '%' || #{location} || '%'
+      </select>
+      
 
   </mapper>

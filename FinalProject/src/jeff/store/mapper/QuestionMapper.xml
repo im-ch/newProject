@@ -31,7 +31,7 @@
 
 	<update id="modifyQuestion" parameterType="Question">
 		UPDATE question_tb 
-		SET content = #{content}, title = #{title}
+		SET content = #{content}
 		WHERE questionId = #{questionId}
 	</update>
 

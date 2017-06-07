@@ -63,22 +63,25 @@ public class UserController {
    public String logoutUser(HttpServletRequest req) {
       HttpSession session = req.getSession();
       session.invalidate();
-      return "redirect:/main";
+      return "redirect:/views/main.jsp";
    }
    
    @RequestMapping(value = "modify", method = RequestMethod.GET)
    public String updateUser(String userId, Model model) {
       User user = service.findUser(userId);
       
-      model.addAttribute("userInfo", user);
+      model.addAttribute("user", user);
       
-      return "/userModifyForm";
+      return "/userModify";
    }
    
    @RequestMapping(value = "modify", method = RequestMethod.POST)
-   public String updateUser(User user) {
+   public String updateUser(User user, HttpServletRequest req) {
+     HttpSession session = req.getSession();
+     String userId = (String)session.getAttribute("userId");
+     user.setUserId(userId);
       service.updateUser(user);
-      return "redirect:detail?userId=" + user.getUserId();
+      return "redirect:detail?userId=" + userId;
    }
    
    @RequestMapping("remove")
@@ -86,20 +89,20 @@ public class UserController {
       HttpSession session = req.getSession();
       String userId = (String)session.getAttribute("userId");
       service.removeUser(userId);
-      return "redirect:/main";
+      return "redirect:/views/main.jsp";
    }
    
    @RequestMapping("list")
    public ModelAndView findAllUser() {
       List<User> list = service.findAllUsers();
-      ModelAndView modelAndView = new ModelAndView("userList.jsp");
+      ModelAndView modelAndView = new ModelAndView("userList");
       modelAndView.addObject("userList", list);
       return modelAndView;
    }
    
    @RequestMapping("detail")
    public ModelAndView findByUserId(@RequestParam("userId") String userId) {
-      ModelAndView modelAndView = new ModelAndView("userInfo.jsp");
+      ModelAndView modelAndView = new ModelAndView("userInfo");
       modelAndView.addObject("user", service.findUser(userId));
       return modelAndView;
    }

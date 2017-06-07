@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Piccolo Theme</title>
+<title>Jeff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -126,7 +126,9 @@
 					</tr>
 					</div>
 					<tr>
+					
 					<div style="float:right">
+					<h5>(카테고리를 입력해주세요.)</h5>
 					<select name="selectBox" style="width:200px" onChange="getSelectValue(this.form);">
 						<option value="">카테고리 선택</option>
 										<option value="1">Cafe</option>
@@ -135,6 +137,7 @@
 										<option value="4">Clothing Store</option>
 										<option value="5">Department store</option>
 										<option value="6">Pension</option>
+										
 								
 							</select>
 							

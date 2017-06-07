@@ -54,4 +54,13 @@ public class QuestionStoreLogic implements QuestionStore {
 		return question;
 	}
 
+	@Override
+	public 	List<Question> selectQuestionByCategory(String category) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+		QuestionMapper mapper = session.getMapper(QuestionMapper.class);
+		List<Question> question = mapper.selectQuestionByCategory(category);
+		session.close();
+		return question;
+	}
+
 }
