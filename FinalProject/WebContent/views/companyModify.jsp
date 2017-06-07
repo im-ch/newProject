@@ -99,14 +99,19 @@
 		<!-- Page Content
     ========================================`========== -->
 
-		<h1 class="title-bg">${user.name }InformationUpdate</h1>
+		<h1 class="title-bg">${company.comName }'s Information Update</h1>
 		<br>
 
-		<form action="#" id="contact-form" style="margin-left: 50px">
+		<form action="${ctx }/company/modify" method="POST" id="contact-form" style="margin-left: 50px">
+			<div class="input-prepend">
+				<span class="add-on"><i class="icon-italic"></i></span> <input
+					name="comName" class="span4" id="prependedInput" size="16"
+					type="text" value="${company.comId }" readonly="readonly">
+			</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-user"></i></span> <input
 					name="comName" class="span4" id="prependedInput" size="16"
-					type="text" placeholder="${company.comName }">
+					type="text" value="${company.ownerName }" readonly="readonly">
 			</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-lock"></i></span> <input
@@ -115,7 +120,7 @@
 			</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-lock"></i></span> <input
-					name="password2" class="span4" id="prependedInput" size="16"
+					name="comPasswordCheck" class="span4" id="prependedInput" size="16"
 					type="password" placeholder="Password Check">
 			</div>
 			<div class="alert alert-success">변경할 비밀번호를 입력하세요.</div>
@@ -135,14 +140,14 @@
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-envelope"></i></span> <input
 					name="comEmail" class="chspan2" id="prependedInput" size="16"
-					type="email" placeholder="${user.email }"> <span
+					type="email" value="${company.comEmail }"> <span
 					class="add-on">@</span> 
 					<input type="text" class="span4" name="str_email02" id="str_email02" style="width:100px;">
 			</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-bell"></i></span> <input
 					name="comPhoneNumber" class="span4" id="prependedInput" size="16"
-					type="number" placeholder="${user.phoneNumber }">
+					type="number" value="${company.comPhoneNumber }">
 			</div>
 
 			<div class="row">

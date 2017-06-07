@@ -108,11 +108,12 @@ $(document).ready(function () {
             </tr>
           </tbody>
         </table>
+        <c:if test="${comId ne null }">
         <div style="float:right; width:30%; height:500px;">
         <Button type="button" onclick="location.href='${ctx}/alliance/modify?comId=${alliance.company.comId }'">수정</Button>
         <Button type="button" onclick="location.href='${ctx}/alliance/delete?comId=${alliance.company.comId }'">삭제</Button>
         </div>
-		
+		</c:if>
 			<br>
 
 	</div>

@@ -45,7 +45,7 @@ public class CompanyController {
       Company company = service.findCompany(comId);
       model.addAttribute("company", company);
 
-      return "/companyInfo";
+      return "/companyModify";
    }
 
    @RequestMapping(value = "modify", method = RequestMethod.POST)
