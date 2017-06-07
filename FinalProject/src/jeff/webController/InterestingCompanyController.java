@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jeff.domain.Company;
+import jeff.domain.CompanyImage;
+import jeff.service.CompanyImageService;
 import jeff.service.CompanyService;
 import jeff.service.InterestingCompanyService;
 
@@ -29,6 +31,8 @@ public class InterestingCompanyController {
    private InterestingCompanyService service;
    @Autowired
    private CompanyService companyService;
+   @Autowired
+   private CompanyImageService imgService;
 
    @RequestMapping(value = "/register")
    public @ResponseBody String registInterestingCompany(HttpServletRequest req, String comId) {
@@ -50,7 +54,6 @@ public class InterestingCompanyController {
             }
          }
       }
-
       map.put("userId", userId);
       map.put("comId", comId);
 
@@ -63,14 +66,13 @@ public class InterestingCompanyController {
    public String findInterestingCompany(HttpServletRequest req, Model model) {
 
       HttpSession session = req.getSession();
-
       String userId = (String) session.getAttribute("userId");
-
       if (session == null || session.getAttribute("userId") == null) {
          return "redirect:login";
       }
       List<String> comList = service.findInterestingCompany(userId);
       List<Company> list = new ArrayList<>();
+      List<CompanyImage> imgList = new ArrayList<>();
 
       for (int i = 0; i < comList.size(); i++) {
          list.add(companyService.findCompany(comList.get(i)));
