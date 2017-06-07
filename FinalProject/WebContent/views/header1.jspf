@@ -69,7 +69,7 @@
 							</c:choose>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="${ctx }/views/questionList.jsp">Q
+						data-toggle="dropdown" href="${ctx }/question/findAll">Q
 							& A </a></li>
 
 					<li><a href="page-contact.htm">Contact</a></li>

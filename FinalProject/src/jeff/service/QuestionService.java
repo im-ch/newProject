@@ -16,4 +16,5 @@ public interface QuestionService {
 	public void removeAnswer(int answerId);
 	public void updateAnswer(Answer answer);
 	public Answer findAnswer(int answerId);
+	public List<Question> findQuestionByCategoty(String category);
 }

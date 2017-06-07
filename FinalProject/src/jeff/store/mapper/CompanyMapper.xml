@@ -7,7 +7,21 @@
 
      <resultMap type="Company" id="companyMap">
      <id property="comId" column="comId"/>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+     
+     <result property="ownerName" column="ownerName"/>
+=======
+=======
+
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
      <result property="ownerName" column="ownerName" />
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
+=======
+     
+     <result property="ownerName" column="ownerName"/>
+>>>>>>> sangjin
      <result property="comPassword" column="comPassword"/>
      <result property="comEmail" column="email"/>
      <result property="comName" column="comName"/>
@@ -16,6 +30,11 @@
      <result property="category" column="category" />
      <collection property="couponList" column="comId" javaType="List" notNullColumn=""
          select="jeff.store.mapper.CouponMapper.selectCouponByCompany" />
+<<<<<<< HEAD
+=======
+     <collection property="couponList" column="comId" javaType="List"
+         select="jeff.store.mapper.CouponMapper.selectCouponByCompany"/>
+>>>>>>> sangjin
      </resultMap>
 
   	<insert id="createCompany" parameterType="Company">

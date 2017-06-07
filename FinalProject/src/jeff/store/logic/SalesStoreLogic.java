@@ -47,7 +47,9 @@ public class SalesStoreLogic implements SalesStore{
 	public List<Sales> selectSalesByCompany(String companyId) {
 		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		SalesMapper mapper = session.getMapper(SalesMapper.class);
+		
 		List<Sales> list = mapper.selectSalesByCompany(companyId);
+		list = mapper.selectSalesByCompany(companyId);
 		
 		session.close();
 		return list;
