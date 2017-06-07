@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,15 +26,15 @@ public class QuestionController {
 	private QuestionService service;
 	
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
-	public String registQuestion (Question question, HttpServletRequest req){
+	public String registQuestion (Question question, Answer answer, HttpServletRequest req){
 		service.registQuestion(question);
-		return "redirect:find?questionId=" + question.getQuestionId();
+		return "redirect:find?questionId=" + question.getQuestionId()+ "&answerId=" + answer.getAnswerId();
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String updateQuestion (Question question){
+	public String updateQuestion (Question question ,Answer answer){
 		service.updateQuestion(question);
-		return "redirect:find?questionId=" + question.getQuestionId();
+		return "redirect:find?questionId=" + question.getQuestionId()+"&answerId=" + answer.getAnswerId();
 	}
 	
 	@RequestMapping("/remove")

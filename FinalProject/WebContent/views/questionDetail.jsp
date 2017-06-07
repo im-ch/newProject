@@ -160,10 +160,10 @@
 <<<<<<< HEAD
 						</div>
 					</div>
-					
-	</c:otherwise>
-	</c:choose>
-					
+
+				</c:otherwise>
+			</c:choose>
+
 		</div>
 	</div>
 
@@ -205,8 +205,7 @@
 	</div>
 
 -->
-
-	 <c:choose>
+	<c:choose>
 		<c:when test="${answers eq null || empty answers }">
 			<tr>
 				<td colspan="6" align="center">등록된 답변이 없습니다.</td>
@@ -316,14 +315,18 @@
 		</div>
 	</div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
+=======
+>>>>>>> sangjin
 	<script src="inner/js/jquery.min.js"></script>
 	<script src="inner/js/skel.min.js"></script>
 	<script src="inner/js/util.js"></script>
 	<script src="inner/js/main.js"></script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 	
 	
@@ -331,5 +334,9 @@
 
 
 >>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
+=======
+
+
+>>>>>>> sangjin
 </body>
 </html>

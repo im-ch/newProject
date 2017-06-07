@@ -4,6 +4,7 @@
 <c:choose>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
    <c:when test="${comId ne null}">
          [<a href="${ctx }/company/logout">로그아웃</a>]
@@ -40,6 +41,8 @@
          [<a href="${ctx }/user/logout">로그아웃</a>]
       </c:when>
 
+=======
+>>>>>>> sangjin
    <c:when test="${comId ne null}">
          [<a href="${ctx }/company/logout">로그아웃</a>]
        </c:when>
@@ -69,6 +72,7 @@
         ================================================== -->
    <div class="span7 navigation">
       <div class="navbar hidden-phone">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -117,6 +121,8 @@
 >>>>>>> sangjin
 =======
 >>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
+=======
+>>>>>>> sangjin
          <ul class="nav">
             <li><a href="${ctx }/views/main.jsp">Home</a></li>
             <li><a href="${ctx }/views/mapCoupon.jsp">Company</a></li>
@@ -127,6 +133,7 @@
 <<<<<<< HEAD
                   <li><a href="gallery-3col.htm">자주묻는 질문</a></li>
                   <li><a href="${ctx }/question/findAll">1:1 질문</a></li>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
                data-toggle="dropdown" href="gallery-4col.htm">Q&A<b
@@ -140,6 +147,8 @@
                   <li><a href="${ctx }/views/frequentlyAskedQuestions.jsp">자주묻는 질문</a></li>
                   <li><a href="gallery-4col.htm">1:1 질문</a></li>
 >>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
+=======
+>>>>>>> sangjin
                </ul></li>
             <c:choose>
                <c:when test="${userId ne null }">
@@ -158,6 +167,7 @@
                </c:when>
                <c:when test="${comId ne null }">
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <li class="dropdown"><a class="dropdown-toggle"
                      data-toggle="dropdown" href="blog-style1.htm">Coupon <b
                         class="caret"></b></a>
@@ -169,6 +179,9 @@
 =======
                   <li><a href="${ctx }/views/login.jsp">Coupon</a></li>
 >>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
+=======
+                  <li><a href="${ctx }/views/login.jsp">Coupon</a></li>
+>>>>>>> sangjin
                   <li class="dropdown"><a class="dropdown-toggle"
                      data-toggle="dropdown" href="blog-style1.htm">My Page <b
                         class="caret"></b></a>
@@ -185,6 +198,7 @@
 
             <li><a href="${ctx }/views/notice.jsp">Notice</a></li>
          </ul>
+<<<<<<< HEAD
 
 =======
 			<ul class="nav">
@@ -232,6 +246,9 @@
 >>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
        
 >>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
+=======
+       
+>>>>>>> sangjin
       </div>
 
    </div>
