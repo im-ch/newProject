@@ -18,7 +18,7 @@ public interface CompanyMapper {
 	
 	Company selectCompany (String comId);
 	
-	Company selectCompanyByName(String comName);
+	List<Company> selectCompanyByName(String comName);
 	
 	boolean loginCompany (Company company);
 	
@@ -26,6 +26,6 @@ public interface CompanyMapper {
 	
 	List<Company> selectCompanyByLocationAndCompany(HashMap<String, Object> map);
 	
-	List<Company> selectCompanyByLocation(String category);
+	List<Company> selectCompanyByLocation(String location);
 
 }

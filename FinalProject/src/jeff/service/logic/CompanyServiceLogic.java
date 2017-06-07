@@ -64,7 +64,7 @@ public class CompanyServiceLogic implements CompanyService{
 	}
 
 	@Override
-	public Company findCompanyByName(String comName) {
+	public List<Company> findCompanyByName(String comName) {
 		
 		return store.selectCompanyByName(comName);
 	}

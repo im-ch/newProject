@@ -71,11 +71,11 @@ public class CompanyStoreLogic implements CompanyStore {
 	}
 
 	@Override
-	public Company selectCompanyByName(String comName) {
+	public List<Company> selectCompanyByName(String comName) {
 		SqlSession session = JeffSessionFactory.getInstance().getSession();
 
 		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
-		Company company = mapper.selectCompanyByName(comName);
+		List<Company> company = mapper.selectCompanyByName(comName);
 
 		session.close();
 

@@ -31,12 +31,12 @@
     
     <div class="container main-container">
 
-   <%@ include file="/views/header.jspf"%>
-      
-      <h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Join</h1>
-      <br><br>
-      <form action="${ctx }/user/create" method="post" id="contact-form">
-         <div align="center">
+	<%@ include file="/views/header.jspf"%>
+		
+		<h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Join</h1>
+		<br><br>
+		<form action="${ctx }/user/create" method="post" id="contact-form">
+			<div align="center">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
                     <input class="span4" name="name" id="name" size="16" type="text" placeholder="Name">

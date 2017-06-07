@@ -16,29 +16,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import jeff.domain.Company;
+import jeff.domain.CompanyImage;
+import jeff.service.CompanyImageService;
 import jeff.service.CompanyService;
 import jeff.service.InterestingCompanyService;
 
 @RequestMapping(value = "interesting")
 @Controller
 public class InterestingCompanyController {
-
    @Autowired
    private InterestingCompanyService service;
    @Autowired
    private CompanyService companyService;
+   @Autowired
+   private CompanyImageService imgService;
 
    @RequestMapping(value = "/register")
    public @ResponseBody String registInterestingCompany(HttpServletRequest req, String comId) {
       System.out.println("controller");
       HttpSession session = req.getSession();
-      
       if (session == null || session.getAttribute("userId") == null) {
          return "redirect:login";
       }
       String userId = (String) session.getAttribute("userId");
-      
       HashMap<String, Object> map = new HashMap<String, Object>();
 
       List<String> list = service.findInterestingCompany(userId);
@@ -50,7 +52,6 @@ public class InterestingCompanyController {
             }
          }
       }
-
       map.put("userId", userId);
       map.put("comId", comId);
 
@@ -58,24 +59,22 @@ public class InterestingCompanyController {
 
       return "true";
    }
-   
-   @RequestMapping(value = "/list", method=RequestMethod.GET)
+
+   @RequestMapping(value = "/list", method = RequestMethod.GET)
    public String findInterestingCompany(HttpServletRequest req, Model model) {
 
-//      HttpSession session = req.getSession();
-//
-//      String userId = (String) session.getAttribute("userId");
-//
-//      if (session == null || session.getAttribute("userId") == null) {
-//         return "redirect:login.jsp";
-//      }
-      List<String> comList = service.findInterestingCompany("heehyun");
+      HttpSession session = req.getSession();
+      String userId = (String) session.getAttribute("userId");
+      if (session == null || session.getAttribute("userId") == null) {
+         return "redirect:login";
+      }
+      List<String> comList = service.findInterestingCompany(userId);
       List<Company> list = new ArrayList<>();
+      List<CompanyImage> imgList = new ArrayList<>();
 
       for (int i = 0; i < comList.size(); i++) {
          list.add(companyService.findCompany(comList.get(i)));
       }
-      System.out.println("컨트롤러");
       model.addAttribute("company", list);
       return "interestingCompany";
    }

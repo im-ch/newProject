@@ -12,7 +12,7 @@ public interface ReviewMapper {
 
 	void deleteReview(int reviewId);
 
-//	Review selectReviewByReviewId(int reviewId);
+	Review selectReviewByReviewId(int reviewId);
 
 
 }
