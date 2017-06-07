@@ -1,6 +1,5 @@
 package jeff.webController;
 
-import java.awt.image.SampleModel;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jeff.domain.Answer;
 import jeff.domain.Question;
 import jeff.service.QuestionService;
 
@@ -53,6 +54,14 @@ public class QuestionController {
 		List<Question> list = service.findAllQuestion();
 		model.addAttribute("questionList", list);
 		return "/questionList";
+	}
+	
+	@RequestMapping(value="findCategory",method=RequestMethod.POST)
+	public String findQuestionByCategory (String category,Model model){
+		List<Question> list = service.findQuestionByCategoty(category);
+		model.addAttribute("questionList",list);
+		return "/questionList";
+		
 	}
 	
 	

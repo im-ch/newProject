@@ -1,10 +1,11 @@
 package jeff.webController;
 
 import java.sql.Date;
+
 import java.util.Calendar;
 import java.util.HashMap;
+
 import java.util.List;
-import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,12 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import jeff.domain.CompanySales;
 import jeff.domain.Sales;
@@ -35,8 +34,7 @@ public class SalesController {
 	public String registSales(HttpServletRequest req, Sales sales) {
 		HttpSession session = req.getSession();
 
-		// String comId = (String) session.getAttribute("comId");
-		String comId = "111";
+		String comId = (String) session.getAttribute("comId");
 		sales.setCompanyId(comId);
 		salesService.registSales(sales);
 
@@ -72,15 +70,9 @@ public class SalesController {
 	public String findAllSales(HttpServletRequest req, Model model) {
 
 		HttpSession session = req.getSession();
-
 		String comId = (String) session.getAttribute("comId");
-
 		List<Sales> list = salesService.findSalesByCompany(comId);
 
-
-
-		System.out.println(list.size());
-		System.out.println(list.toString());
 		model.addAttribute("sales", list);
 
 		return "salesList";
@@ -90,7 +82,12 @@ public class SalesController {
 	public @ResponseBody CompanySales calendarDetailAjax(HttpServletRequest request, ModelMap modelMap,
 			@ModelAttribute Sales sales) throws Exception {
 		CompanySales companySales = new CompanySales();
-		List<Sales> list = salesService.findSalesByCompany("111");
+
+		HttpSession session = request.getSession();
+		String comId = (String) session.getAttribute("comId");
+
+		List<Sales> list = salesService.findSalesByCompany(comId);
+
 		try {
 			companySales.setSalesList(list);
 		} catch (Exception e) {
@@ -98,4 +95,5 @@ public class SalesController {
 		}
 		return companySales;
 	}
+
 }

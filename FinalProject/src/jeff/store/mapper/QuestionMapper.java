@@ -15,5 +15,7 @@ public interface QuestionMapper {
 	Question selectQuestion(int questionId);
 
 	List<Question> selectAllQuestion();
+	
+	List<Question> selectQuestionByCategory(String category);
 
 }

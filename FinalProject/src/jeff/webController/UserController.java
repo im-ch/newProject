@@ -70,15 +70,18 @@ public class UserController {
    public String updateUser(String userId, Model model) {
       User user = service.findUser(userId);
       
-      model.addAttribute("userInfo", user);
+      model.addAttribute("user", user);
       
-      return "/userModifyForm";
+      return "/userModify";
    }
    
    @RequestMapping(value = "modify", method = RequestMethod.POST)
-   public String updateUser(User user) {
+   public String updateUser(User user, HttpServletRequest req) {
+     HttpSession session = req.getSession();
+     String userId = (String)session.getAttribute("userId");
+     user.setUserId(userId);
       service.updateUser(user);
-      return "redirect:detail?userId=" + user.getUserId();
+      return "redirect:detail?userId=" + userId;
    }
    
    @RequestMapping("remove")
@@ -92,12 +95,12 @@ public class UserController {
    @RequestMapping("list")
    public ModelAndView findAllUser() {
       List<User> list = service.findAllUsers();
-      ModelAndView modelAndView = new ModelAndView("userList.jsp");
+      ModelAndView modelAndView = new ModelAndView("userList");
       modelAndView.addObject("userList", list);
       return modelAndView;
    }
-//   관리자페이지에서 유저목록에서 클릭했을때 유저디테일 뿌려주는 메소드
-   @RequestMapping("findByUserId")
+//	관리자가 유저 정보보는 메소드
+   @RequestMapping("findUserId")
    public ModelAndView findByUserId(@RequestParam("userId") String userId) {
       ModelAndView modelAndView = new ModelAndView("userInfo");
       modelAndView.addObject("user", service.findUser(userId));
@@ -118,5 +121,14 @@ public class UserController {
       modelAndView.addObject("companys", companys);
       return modelAndView;
    }
-
+//   유저로그인시 자신의 info보는 메소드
+   @RequestMapping("detail")
+   public ModelAndView findByUserId(HttpServletRequest req) {
+      ModelAndView modelAndView = new ModelAndView("userInfo");
+      HttpSession session = req.getSession();
+      String userId = (String)session.getAttribute("userId");
+      
+      modelAndView.addObject("user", service.findUser(userId));
+      return modelAndView;
+   }
 }

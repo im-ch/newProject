@@ -3,7 +3,6 @@ package jeff.webController;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -66,14 +65,14 @@ public class CouponController {
 		service.removeCoupon(couponId);
 		return "redirect:findList";
 	}
-	//잠시스탑
+	//�옞�떆�뒪�깙
 	@RequestMapping("modify")
 	public String modifyCoupon(int couponId, Model model){
 		
 		Coupon coupon = service.findCoupon(couponId);
 		Date originalInput = coupon.getExpiryDate();
 //		String originalInput = "01/06/2017";
-		//형식 선언
+		//�삎�떇 �꽑�뼵
 		SimpleDateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat  newFormat = new SimpleDateFormat("dd/MM/yyyy");
 		DateFormat test = new SimpleDateFormat("dd/MM/yyyy");
