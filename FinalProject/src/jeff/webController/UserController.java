@@ -99,7 +99,7 @@ public class UserController {
       modelAndView.addObject("userList", list);
       return modelAndView;
    }
-//	관리자가 유저 정보보는 메소드
+//   관리자가 유저 정보보는 메소드
    @RequestMapping("findUserId")
    public ModelAndView findByUserId(@RequestParam("userId") String userId) {
       ModelAndView modelAndView = new ModelAndView("userInfo");
@@ -109,12 +109,14 @@ public class UserController {
    
    @RequestMapping("allUsers")
    public ModelAndView findAllUsers(){
-      ModelAndView modelAndView = new ModelAndView("/userList");
+      ModelAndView modelAndView = new ModelAndView("userList");
       List<User> users = service.findAllUsers();
       List<Company> companys = comService.findAllCompany();
       List<Integer> allUsers = new ArrayList<>();
-      allUsers.add(users.size());
-      allUsers.add(companys.size());
+      
+      if(users.size() > 0 && companys.size() > 0){
+         allUsers.add(1);
+      }
       
       modelAndView.addObject("allUsers", allUsers);
       modelAndView.addObject("users", users);

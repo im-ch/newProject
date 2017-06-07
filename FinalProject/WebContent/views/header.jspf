@@ -47,7 +47,7 @@
                      data-toggle="dropdown" href="#">Admin Page<b
                         class="caret"></b></a>
                      <ul class="dropdown-menu">
-                        <li><a href="${ctx }/company/detail">All User</a></li>
+                        <li><a href="${ctx }/user/allUsers">All User</a></li>
                         <li><a href="${ctx }/reportReview/findList">Reported List</a></li>
                         <li><a href="#">결제내역???</a></li>
                      </ul></li>
@@ -70,7 +70,7 @@
                         class="caret"></b></a>
                      <ul class="dropdown-menu">
                         <li><a href="${ctx }/company/detail">Company Info</a></li>
-                        <li><a href="#">Alliance</a></li>
+                        <li><a href="${ctx }/alliance/detail">Alliance</a></li>
                         <li><a href="#">Sales</a></li>
                      </ul></li>
                </c:when>

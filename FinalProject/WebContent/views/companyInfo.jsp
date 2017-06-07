@@ -122,11 +122,13 @@ $('#btn-upload').click(function () {
 		</form>
 		
 		<br> <br>
-		<p class="right">
-			<button class="btn btn-large btn-warning" type="button"
-				onclick="location.href='${ctx}/company/modify=comId?${company.comId };'">Modify</button>
-			<button class="btn btn-large btn-inverse" type="button"
-				onclick="location.href='${ctx}/company/delete=comId?${company.comId };'">Withdraw</button>
+		<p>
+			<button class="btn btn-large btn-warning" type="button" style="float:left"
+				onclick="location.href='${ctx}/alliance/regist?comId=${company.comId };'">제휴제안서 등록</button>
+			<button class="btn btn-large btn-default" type="button" style="float:right"
+				onclick="location.href='${ctx}/company/delete?comId=${company.comId };'">Withdraw</button>
+			<button class="btn btn-large btn-inverse" type="button" style="float:right;"
+				onclick="location.href='${ctx}/company/modify?comId=${company.comId };'">Modify</button>
 			<br> <br> <br> <br> <br>
 		</p>
 	</div>

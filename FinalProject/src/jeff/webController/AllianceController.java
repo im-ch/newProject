@@ -11,9 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import jeff.common.exception.YzRuntimeException;
 import jeff.domain.Alliance;
+import jeff.domain.Company;
 import jeff.service.AllianceService;
 import jeff.service.CompanyService;
 
@@ -27,35 +30,83 @@ public class AllianceController {
 	@Autowired
 	private CompanyService companyService;
 	
+	@RequestMapping(value = "regist", method = RequestMethod.GET)
+	public String registAlliance(Model model, HttpServletRequest req) {
+		
+		HttpSession session = req.getSession();
+		String comId = (String) session.getAttribute("comId");
+		Company company = companyService.findCompany(comId);
+		
+		String [] lo = company.getLocation().split(";");
+	    company.setLocation("[" + lo[0] + "] " + lo[1] + " " + lo[2]);
+		
+	    model.addAttribute("company", company);
+	    
+		return "/allianceForm";
+	}
+	
 	@RequestMapping(value = "regist", method = RequestMethod.POST)
 	public String registAlliance(Alliance alliance, HttpServletRequest req) {
 		
 		HttpSession session = req.getSession();
 		String comId = (String) session.getAttribute("comId");
-		alliance.setCompany(companyService.findCompany(comId));
+		Company company = companyService.findCompany(comId);
+		alliance.setCompany(company);
 		service.registAlliance(alliance);
-		return "redirect:/allianceDetail?comId=test";
+		System.out.println(alliance.getCompany().getComId());
+		return "redirect:detail?comId=" + comId;
 	}
 
-	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String updateAlliance(Alliance alliance) {
+	@RequestMapping(value = "modify", method = RequestMethod.GET)
+	public String updateAlliance(String comId, Model model) {
+		
+		Alliance alliance = service.findAlliance(comId);
+	    model.addAttribute("alliance", alliance);
+	      
+		return "/allianceModify";
+	}
+	
+	@RequestMapping(value = "modify", method = RequestMethod.POST)
+	public String updateAlliance(Alliance alliance, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+	    String comId = (String)session.getAttribute("comId");
+		alliance.setCompany(companyService.findCompany(comId));
 		service.updateAlliance(alliance);
-		String comId = alliance.getCompany().getComId();
-		return "redirect:detail.do?comId=" + comId;
+		return "redirect:detail?comId=" + comId;
 	}
 
 	@RequestMapping("delete")
-	public String removeAlliance(String comId) {
-		service.removeAlliance(comId);
-		return "/companyMypage";
+	public String removeAlliance(HttpServletRequest req) {
+		 HttpSession session = req.getSession();
+	      String comId = (String) session.getAttribute("comId");
+	      service.removeAlliance(comId);
+
+	      return "redirect:/views/main.jsp";
 	}
 
+	// 기업이 자신의 제휴제안서 볼 때 메소드
 	@RequestMapping("detail")
-	public String findAlliance(String comId, Model model) {
-		Alliance alliance = service.findAlliance(comId);
-		model.addAttribute("alliance", alliance);
-		return "/allianceDetail";
+	public ModelAndView allianceDetail(HttpServletRequest req) {
+	    HttpSession session = req.getSession();
+	    String comId = (String)session.getAttribute("comId");
+	    ModelAndView modelAndView = new ModelAndView("allianceDetail");
+	    Alliance alliance = service.findAlliance(comId);
+	    Company company = alliance.getCompany();
+	    String [] lo = company.getLocation().split(";");
+	    company.setLocation("[" + lo[0] + "] " + lo[1] + " " + lo[2]);
+	    alliance.setCompany(company);
+	    
+	    modelAndView.addObject("alliance", alliance);
+	    return modelAndView;
 	}
+	
+	// 관리자가 기업 제휴제안서 볼 때 메소드
+   @RequestMapping("findComId")
+   public ModelAndView allianceDetail(@RequestParam("comId") String comId) {
+      ModelAndView modelAndView = new ModelAndView("allianceDetail");
+      modelAndView.addObject("alliance", service.findAlliance(comId));
+      return modelAndView;
+   }
 
 	@RequestMapping("list")
 	public String findAllianceCompany(Model model, HttpServletRequest req) {
@@ -89,5 +140,5 @@ public class AllianceController {
 		model.addAttribute("alliance", alliance);
 		return "/companyDetail";
 	}
-
+	
 }

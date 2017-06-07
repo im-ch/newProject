@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Alliance Form</title>
+<title>Jeff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -79,40 +79,39 @@ $(document).ready(function () {
     
 	<%@ include file="/views/header.jspf"%>
         
-      <h3>JEFF 제휴제안서</h3>
-      <form action="${ctx }/alliance/regist" method="post">
+      <h3>${alliance.company.comName }'s 제휴제안서</h3>
 		<table class="table01" width="100%">
           <tbody>
             <tr>
               <th width="150" >기업명<br>(Company Title)</th>
               
               <td colspan="3" id="SUBJ_CD_NM">
-              <input type="text" name="comName" value="${company.comName }" readonly="readonly"/></td> 
+              <input type="text" name="comName" value="${alliance.company.comName }" readonly="readonly"/></td> 
             
             </tr>
             <tr>
               <th>사업자번호<br>(Business Number)</th>
               <td colspan="3" id="FILE_NM">
-              <input type="text" name="businessNumber"/></td>
+              <input type="text" name="businessNumber" value="${alliance.businessNumber }" readonly="readonly"/></td>
             </tr>
             <tr>
               <th>기업위치<br>(Location)</th>
               <td colspan="3"    id="LESS_CD_NM">
-              <input type="text" name="location" value="${company.location }" readonly="readonly"/></td>
+              <input type="text" name="location" value="${alliance.company.location }" readonly="readonly"/></td>
               
             </tr>
             <tr>
               <th>영업시간<br>(Business Time)</th>
-              <td id="SUBJ_LECT"><textarea name="openingHours" cols="40" rows="8"></textarea></td>
+              <td id="SUBJ_LECT"><textarea name="openingHours" cols="40" rows="8" readonly="readonly">${alliance.openingHours }</textarea></td>
                <th>기업설명<br>(Business Detail)</th>
-              <td id="GRAD_SMST_NM"><textarea name="detail" cols="40" rows="8" ></textarea></td>
+              <td id="GRAD_SMST_NM"><textarea name="detail" cols="40" rows="8" readonly="readonly">${alliance.detail }</textarea></td>
             </tr>
           </tbody>
         </table>
         <div style="float:right; width:30%; height:500px;">
-        <Button type="submit">승인</Button>
-        <Button type="reset">취소</Button></div>
-        </form>
+        <Button type="button" onclick="location.href='${ctx}/alliance/modify?comId=${alliance.company.comId }'">수정</Button>
+        <Button type="button" onclick="location.href='${ctx}/alliance/delete?comId=${alliance.company.comId }'">삭제</Button>
+        </div>
 		
 			<br>
 
