@@ -50,10 +50,5 @@
 		FROM companysales_tb
 		ORDER BY salesId ASC
 	</select>
-  
-<<<<<<< HEAD
-=======
-  
-    
->>>>>>> sangjin
+
   </mapper>
