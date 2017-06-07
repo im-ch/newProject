@@ -37,10 +37,10 @@ public class AnswerStoreLogic implements AnswerStore{
 	}
 
 	@Override
-	public Answer selectAnswer(int answerId) {
+	public List<Answer> selectAnswer(int answerId) {
 		SqlSession session = JeffSessionFactory.getInstance().getSession();
 		AnswerMapper mapper = session.getMapper(AnswerMapper.class);
-		Answer answer = mapper.selectAnswer(answerId);
+		List<Answer> answer = mapper.selectAnswer(answerId);
 		session.close();		
 		return answer;
 	}
