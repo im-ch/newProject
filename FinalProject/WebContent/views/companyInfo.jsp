@@ -95,21 +95,14 @@ $('#btn-upload').click(function () {
 						<c:otherwise> 
  							<c:forEach items="${images }" var="img" varStatus="sts"> 
 								<li class="span4 gallery-item"><img
-									src="C:/Image/${img.fileName }" alt="Gallery"></li> 
+									src="C:/Image/${img.fileName }" alt="Gallery">
+								<button class="btn btn-large btn-warning" type="button"
+				onclick="location.href='${ctx}/image/delete?companyImageId=${img.companyImageId}'">Delete</button>	
+									</li> 
  							</c:forEach> 
 						</c:otherwise> 
 					</c:choose> 
-					<%-- <!-- Gallery Item 1 -->
-					 <li class="span4 gallery-item"><img
-						src="${ctx }/resources/img/icon/img1.jpg" alt="Gallery"></li>
 
-					<!-- Gallery Item 2 -->
-					<li class="span4 gallery-item"><img
-						src="${ctx }/resources/img/icon/img2.jpg" alt="Gallery"></li>
-
-					<!-- Gallery Item 3 -->
-					<li class="span4 gallery-item"><img
-						src="${ctx }/resources/img/icon/img3.jpg" alt="Gallery"></li> --%>
 				</ul>
 			</div>
 		</div>

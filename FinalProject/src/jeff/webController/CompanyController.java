@@ -144,15 +144,14 @@ public class CompanyController {
 		
 		HttpSession session = req.getSession();
 		String location = (String)session.getAttribute("location");
-		list = service.findCompanyByLocation(location);
-		System.out.println(list.size());
+		String value [] = location.split("\\s");
+		list = service.findCompanyByLocation(value[1] + " " + value[2]);
 		for(Company c : list){
 			String location2 = c.getLocation();
 			String [] lo = location2.split(";");
 			
 			String [] lo2 = lo[1].split("\\(");
 			c.setLocation(lo2[0]);
-			System.out.println(c.getComName());
 		}
 		companies.setCompanies(list);
 		return companies;
@@ -221,7 +220,7 @@ public class CompanyController {
 	      String location = (String)session.getAttribute("location");
 	      
 	      if(location == null || location == ""){
-	         location = "서울시 강남구 봉은사로";
+	         location = "서울 강남구 봉은사로";
 	      }
 	      session.setAttribute("location", location);
 	      return location;

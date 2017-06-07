@@ -84,7 +84,6 @@
 
 					<h4>사용기한</h4>
 					<input type="date" id="departure" name="expiryDate" />
-					>
 
 					<textarea class="span6" placeholder="Coupon Detail" name="couponContent"></textarea>
 					<div class="row">

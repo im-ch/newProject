@@ -118,16 +118,5 @@ public class UserController {
       modelAndView.addObject("companys", companys);
       return modelAndView;
    }
-   
-// 유저로그인상태에서 userInfo뿌리는 메소드
-	@RequestMapping("detail")
-	public ModelAndView showCompanyDetail(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-		String userId = (String)session.getAttribute("userId");
-		ModelAndView modelAndView = new ModelAndView("userInfo");
-		User user = service.findUser(userId);
-		
-		modelAndView.addObject("user", user);
-		return modelAndView;
-	}
+
 }
