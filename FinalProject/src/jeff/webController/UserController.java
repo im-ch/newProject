@@ -124,12 +124,16 @@ public class UserController {
       session.invalidate();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
       return "redirect:/views/main.jsp";
    }
 
    @RequestMapping(value = "/userModify", method = RequestMethod.GET)
    public String updateUser(String userId, Model model) {
       User user = service.findUser(userId);
+<<<<<<< HEAD
 
       model.addAttribute("userInfo", user);
 
@@ -140,6 +144,21 @@ public class UserController {
    public String updateUser(User user) {
       service.updateUser(user);
       return "redirect:userDetail?userId=" + user.getUserId();
+=======
+      
+      model.addAttribute("user", user);
+      
+      return "/userModify";
+   }
+   
+   @RequestMapping(value = "modify", method = RequestMethod.POST)
+   public String updateUser(User user, HttpServletRequest req) {
+	  HttpSession session = req.getSession();
+	  String userId = (String)session.getAttribute("userId");
+	  user.setUserId(userId);
+      service.updateUser(user);
+      return "redirect:detail?userId=" + userId;
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
    }
 
    @RequestMapping("/userRemove")
@@ -147,6 +166,7 @@ public class UserController {
       HttpSession session = req.getSession();
       String userId = (String) session.getAttribute("userId");
       service.removeUser(userId);
+<<<<<<< HEAD
       return "redirect:main";
    }
 
@@ -171,6 +191,9 @@ public class UserController {
    public String updateUser(User user) {
       service.updateUser(user);
       return "redirect:userDetail?userId=" + user.getUserId();
+=======
+      return "redirect:/views/main.jsp";
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
    }
 
    @RequestMapping("/userRemove")
@@ -190,7 +213,7 @@ public class UserController {
 >>>>>>> sangjin
    public ModelAndView findAllUser() {
       List<User> list = service.findAllUsers();
-      ModelAndView modelAndView = new ModelAndView("userList.jsp");
+      ModelAndView modelAndView = new ModelAndView("userList");
       modelAndView.addObject("userList", list);
       return modelAndView;
    }
@@ -207,7 +230,7 @@ public class UserController {
    @RequestMapping("/userDetail")
 >>>>>>> sangjin
    public ModelAndView findByUserId(@RequestParam("userId") String userId) {
-      ModelAndView modelAndView = new ModelAndView("userInfo.jsp");
+      ModelAndView modelAndView = new ModelAndView("userInfo");
       modelAndView.addObject("user", service.findUser(userId));
       return modelAndView;
    }
@@ -248,6 +271,7 @@ public class UserController {
    }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 }
@@ -255,3 +279,6 @@ public class UserController {
 =======
 }
 >>>>>>> sangjin
+=======
+}
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d

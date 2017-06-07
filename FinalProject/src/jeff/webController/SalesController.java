@@ -2,6 +2,7 @@ package jeff.webController;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import java.sql.Date;
 >>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
@@ -9,8 +10,9 @@ import java.sql.Date;
 >>>>>>> sangjin
 import java.util.Calendar;
 import java.util.HashMap;
+=======
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 import java.util.List;
-import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,12 +21,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import jeff.domain.CompanySales;
 import jeff.domain.Sales;
@@ -41,7 +41,12 @@ public class SalesController {
    public String registSales(HttpServletRequest req, Sales sales) {
       HttpSession session = req.getSession();
 
+<<<<<<< HEAD
       String comId = (String) session.getAttribute("comId");
+=======
+      // String comId = (String) session.getAttribute("comId");
+      String comId = "111";
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
       sales.setCompanyId(comId);
       salesService.registSales(sales);
 
@@ -80,6 +85,7 @@ public class SalesController {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       String comId = (String) session.getAttribute("comId");
 =======
 		String comId = (String) session.getAttribute("comId");
@@ -89,6 +95,11 @@ public class SalesController {
 
 <<<<<<< HEAD
       model.addAttribute("sales", list);
+=======
+      String comId = (String) session.getAttribute("comId");
+
+      List<Sales> list = salesService.findSalesByCompany(comId);
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 
       return "salesList";
    }
@@ -110,13 +121,14 @@ public class SalesController {
 =======
 
 
-		System.out.println(list.size());
-		System.out.println(list.toString());
-		model.addAttribute("sales", list);
+      System.out.println(list.size());
+      System.out.println(list.toString());
+      model.addAttribute("sales", list);
 
-		return "salesList";
-	}
+      return "salesList";
+   }
 
+<<<<<<< HEAD
 	@RequestMapping(value = "/calendarDetailAjax", produces = "application/json")
 	public @ResponseBody CompanySales calendarDetailAjax(HttpServletRequest request, ModelMap modelMap,
 			@ModelAttribute Sales sales) throws Exception {
@@ -141,12 +153,17 @@ public class SalesController {
       return "salesList";
    }
 
+=======
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
    @RequestMapping(value = "/calendarDetailAjax", produces = "application/json")
    public @ResponseBody CompanySales calendarDetailAjax(HttpServletRequest request, ModelMap modelMap,
          @ModelAttribute Sales sales) throws Exception {
       CompanySales companySales = new CompanySales();
       List<Sales> list = salesService.findSalesByCompany("111");
+<<<<<<< HEAD
 
+=======
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
       try {
          companySales.setSalesList(list);
       } catch (Exception e) {
@@ -154,5 +171,9 @@ public class SalesController {
       }
       return companySales;
    }
+<<<<<<< HEAD
 }
 >>>>>>> sangjin
+=======
+}
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d

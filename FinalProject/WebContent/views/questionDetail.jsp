@@ -95,7 +95,11 @@
 
 
 			<c:choose>
+<<<<<<< HEAD
 				<c:when test="${loginedUser = null }">
+=======
+				<c:when test="${loginedUser eq null }">
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 					<h3>로그인을 하세요.</h3>
 				</c:when>
 				<c:otherwise>
@@ -123,9 +127,18 @@
 										<br>
 										<fmt:formatDate var="newFormattedDate"
 											value="${question.regDate }" pattern="yyyy-MM-dd" />
+<<<<<<< HEAD
 											카테고리:<input value="${question.category }" readonly>
 											작성자:<input value="${question.writerId }" readonly>
 											작성날짜:<input value="${newFormattedDate }" readonly>
+=======
+                                 카테고리:<input
+											value="${question.category }" readonly>
+                                 작성자:<input
+											value="${question.writerId }" readonly>
+                                 작성날짜:<input
+											value="${newFormattedDate }" readonly>
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 									</c:otherwise>
 								</c:choose>
 								<br> <br> <br>
@@ -144,6 +157,7 @@
 								</form>
 							</div>
 							<br>
+<<<<<<< HEAD
 						</div>
 					</div>
 					
@@ -224,6 +238,49 @@
 								style="width: 80%; height: 200px; resize: none;">${answer.content }</textarea>
 							<br>
 						</div>
+=======
+						</div>
+					</div>
+
+				</c:otherwise>
+			</c:choose>
+
+		</div>
+	</div>
+
+	<c:choose>
+		<c:when test="${answers eq null || empty answers }">
+			<tr>
+				<td colspan="6" align="center">등록된 답변이 없습니다.</td>
+			</tr>
+
+		</c:when>
+		<c:otherwise>
+
+			<c:forEach items="${answer }" var="answer" varStatus="status">
+
+
+				<p>${answer.content }</p>
+				<div align="right">
+
+					작성자:<input value="${answer.answerId }" readonly><br>
+
+					작성시간:<input value="${answer.regDate }" readonly>
+				</div>
+
+				<form action="${ctx }/answer/modifyAnswer" method="post">
+					<c:if test="${loginedCompany.comId eq answer.writerId }">
+						<input type="hidden" id="answerId" name="answerId"
+							value="${answer.answerId }">
+						<div>
+							<a class="button">수정하기</a> <a
+								href="${ctx }/answer/removeAnswer?answerId=${answer.answerId }&questionId=${answer.questionId }"
+								class="button">답변삭제</a>
+							<textarea id="content" name="content"
+								style="width: 80%; height: 200px; resize: none;">${answer.content }</textarea>
+							<br>
+						</div>
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 						<input type="submit" value="답변수정완료">
 					</c:if>
 				</form>
@@ -243,8 +300,11 @@
 			value="${company.ownerName }">
 		<button type="submit">답변 등록</button>
 	</form>
+<<<<<<< HEAD
 	</c:otherwise>
 	</c:choose>
+=======
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 	<div class="row">
 		<div class="12u">
 			<div id="copyright">
@@ -255,13 +315,21 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 	<script src="inner/js/jquery.min.js"></script>
 	<script src="inner/js/skel.min.js"></script>
 	<script src="inner/js/util.js"></script>
 	<script src="inner/js/main.js"></script>
+<<<<<<< HEAD
 	
 	
+=======
+
+
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 </body>
 </html>

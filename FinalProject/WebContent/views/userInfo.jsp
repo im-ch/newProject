@@ -68,8 +68,8 @@
 		</ul>
 		<br><br>
 		<p class="right">
-			<button class="btn btn-large btn-warning" type="button" onclick="location.href='${ctx}/user/modify=userId?${user.userId };'">Modify</button>
-			<button class="btn btn-large btn-inverse" type="button" onclick="location.href='${ctx}/user/delete=userId?${user.userId };'">Withdraw</button>
+			<button class="btn btn-large btn-warning" type="button" onclick="location.href='${ctx}/user/modify?userId=${user.userId }'">Modify</button>
+			<button class="btn btn-large btn-inverse" type="button" onclick="location.href='${ctx}/user/remove?userId=${user.userId }'">Withdraw</button>
 			<br><br><br><br><br>
 		</p>
 	</div>

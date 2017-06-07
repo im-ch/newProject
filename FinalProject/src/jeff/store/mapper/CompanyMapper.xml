@@ -9,9 +9,13 @@
      <id property="comId" column="comId"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      
      <result property="ownerName" column="ownerName"/>
 =======
+=======
+
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
      <result property="ownerName" column="ownerName" />
 >>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
 =======

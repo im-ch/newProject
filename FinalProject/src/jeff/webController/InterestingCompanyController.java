@@ -33,8 +33,11 @@ public class InterestingCompanyController {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> sangjin
+=======
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
    @Autowired
    private InterestingCompanyService service;
    @Autowired
@@ -44,11 +47,19 @@ public class InterestingCompanyController {
    public @ResponseBody String registInterestingCompany(HttpServletRequest req, String comId) {
       System.out.println("controller");
       HttpSession session = req.getSession();
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
       if (session == null || session.getAttribute("userId") == null) {
          return "redirect:login";
       }
       String userId = (String) session.getAttribute("userId");
+<<<<<<< HEAD
+=======
+      
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
       HashMap<String, Object> map = new HashMap<String, Object>();
 
       List<String> list = service.findInterestingCompany(userId);
@@ -68,6 +79,7 @@ public class InterestingCompanyController {
 
       return "true";
    }
+<<<<<<< HEAD
 
    @RequestMapping(value = "/list", method = RequestMethod.GET)
    public String findInterestingCompany(HttpServletRequest req, Model model) {
@@ -149,43 +161,54 @@ public class InterestingCompanyController {
 	public String findInterestingCompany(HttpServletRequest req, Model model) {
 
 //		HttpSession session = req.getSession();
+=======
+   
+   @RequestMapping(value = "/list", method=RequestMethod.GET)
+   public String findInterestingCompany(HttpServletRequest req, Model model) {
+
+//      HttpSession session = req.getSession();
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 //
-//		String userId = (String) session.getAttribute("userId");
+//      String userId = (String) session.getAttribute("userId");
 //
-//		if (session == null || session.getAttribute("userId") == null) {
-//			return "redirect:login.jsp";
-//		}
-		List<String> comList = service.findInterestingCompany("heehyun");
-		List<Company> list = new ArrayList<>();
+//      if (session == null || session.getAttribute("userId") == null) {
+//         return "redirect:login.jsp";
+//      }
+      List<String> comList = service.findInterestingCompany("heehyun");
+      List<Company> list = new ArrayList<>();
 
-		for (int i = 0; i < comList.size(); i++) {
-			list.add(companyService.findCompany(comList.get(i)));
-		}
-		System.out.println("ì»¨íŠ¸ë¡¤ëŸ¬");
-		model.addAttribute("company", list);
-		return "interestingCompany";
-	}
+      for (int i = 0; i < comList.size(); i++) {
+         list.add(companyService.findCompany(comList.get(i)));
+      }
+      System.out.println("ÄÁÆ®·Ñ·¯");
+      model.addAttribute("company", list);
+      return "interestingCompany";
+   }
 
-	@RequestMapping(value = "/remove")
-	public @ResponseBody String removeInterestingCompany(HttpServletRequest req, String comId) {
-		HttpSession session = req.getSession();
+   @RequestMapping(value = "/remove")
+   public @ResponseBody String removeInterestingCompany(HttpServletRequest req, String comId) {
+      HttpSession session = req.getSession();
 
-		if (session == null || session.getAttribute("userId") == null) {
-			return "redirect:login";
-		}
+      if (session == null || session.getAttribute("userId") == null) {
+         return "redirect:login";
+      }
 
-		HashMap<String, Object> map = new HashMap<String, Object>();
+      HashMap<String, Object> map = new HashMap<String, Object>();
 
-		map.put("userId", (String) session.getAttribute("userId"));
-		map.put("comId", comId);
+      map.put("userId", (String) session.getAttribute("userId"));
+      map.put("comId", comId);
 
-		service.removeInterestingCompany(map);
+      service.removeInterestingCompany(map);
 
-		return "true";
-	}
+      return "true";
+   }
 
+<<<<<<< HEAD
 }
 >>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
 =======
 }
 >>>>>>> sangjin
+=======
+}
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
