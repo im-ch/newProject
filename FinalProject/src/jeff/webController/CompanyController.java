@@ -120,7 +120,7 @@ public class CompanyController {
 
 	@RequestMapping("/findBycomName")
 	public ModelAndView findBycomName(@RequestParam("comName") String comName) {
-		Company company = service.findCompanyByName(comName);
+		List<Company> list = service.findCompanyByName(comName);
 		ModelAndView modelAndView = new ModelAndView("companyList.jsp");
 		modelAndView.addObject("companyList", service.findCompanyByName(comName));
 		return modelAndView;

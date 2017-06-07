@@ -31,27 +31,12 @@
     
     <div class="container main-container">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
-   <%@ include file="/views/header.jspf"%>
-      
-      <h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Join</h1>
-      <br><br>
-      <form action="${ctx }/user/create" method="post" id="contact-form">
-         <div align="center">
-<<<<<<< HEAD
-=======
 	<%@ include file="/views/header.jspf"%>
 		
 		<h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Join</h1>
 		<br><br>
 		<form action="${ctx }/user/create" method="post" id="contact-form">
 			<div align="center">
->>>>>>> eb5fa23617f00ea44ce74c951023ec1af7fb5e90
-=======
->>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
                     <input class="span4" name="name" id="name" size="16" type="text" placeholder="Name">

@@ -66,7 +66,6 @@ html, body {
       <h1 class="title-bg">Map Coupon</h1>
       <br>
 
-
       <div id="map"></div>
 <script>
          function initMap() {

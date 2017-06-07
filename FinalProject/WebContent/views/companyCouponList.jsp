@@ -38,11 +38,20 @@
 	
 	<div>
     <div class="container" style="margin:0 auto;">
-        <h3>담소사골순대's Coupon</h3>
+        <h3>${company.comName }'s CouponList</h3>
       </div>
+      <c:choose>
+      <c:when test="${couponList eq null || empty couponList}">
+		<tr>
+			<td colspan="6" align="center">등록된 쿠폰이 없습니다.</td>
+		</tr>
+      </c:when>
+      <c:otherwise>
       <c:forEach items="${couponList }" var="coupon" varStatus="sts">
-        <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="${ctx }/coupon/modify?couponId=${coupon.couponId}">
-        <div class="img"><img src="${ctx }/resources/images/circ_img${sts.count }.jpg" alt="img"></div>
+        <div class="ih-item circle effect2 left_to_right" style="float:left;">
+        <a href="${ctx }/coupon/modify?couponId=${coupon.couponId}">
+        <div class="img"><img src="${ctx }/resources/images/circ_img1.jpg" alt="img"></div>
+        <!-- 쿠폰이미지 찾아서 넣어야함 -->
         <div class="info">
           <h3>${coupon.couponName }</h3>
           <h4>~${coupon.expiryDate }</h4>
@@ -51,41 +60,11 @@
         </div></a><button class="btn btn-inverse" type="button" 
           onclick="location.href='${ctx}/coupon/remove?couponId=${coupon.couponId }'">Delete</button></div>
         </c:forEach>
-        <%--
-         <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
-        <div class="img"><img src="${ctx }/resources/images/circ_img1.jpg" alt="img"></div>
-        <div class="info">
-          <h3>소주 1+1</h3>
-          <h4>~6/2</h4>
-          <button class="btn" type="button">Edit</button>
-          <button class="btn btn-inverse" type="button">Delete</button>
-        </div></a></div> 
-        <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
-        <div class="img"><img src="${ctx }/resources/images/circ_img2.jpg" alt="img"></div>
-        <div class="info">
-          <h3>수육1000원 할인</h3>
-          <h4>~6/2</h4>
-          <button class="btn" type="button">Edit</button>
-          <button class="btn btn-inverse" type="button">Delete</button>
-        </div></a></div>
-        <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
-        <div class="img"><img src="${ctx }/resources/images/circ_img3.jpg" alt="img"></div>
-        <div class="info">
-          <h3>사이다 서비스</h3>
-          <h4>~6/2</h4>
-          <button class="btn" type="button">Edit</button>
-          <button class="btn btn-inverse" type="button">Delete</button>
-        </div></a></div>
-        <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
-        <div class="img"><img src="${ctx }/resources/images/circ_img4.jpg" alt="img"></div>
-        <div class="info">
-          <h3>밥 한공기 더</h3>
-          <h4>~6/2</h4>
-          <button class="btn" type="button">Edit</button>
-          <button class="btn btn-inverse" type="button">Delete</button>
-        </div></a></div> --%>
+        </c:otherwise>
+        </c:choose>
+
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <p class="lead">쿠폰을 추가하시려면<a href="#" target="_blank">[ADD]</a>를 클릭하세요!</p>
+        <p class="lead">쿠폰을 추가하시려면<a href="${ctx }/views/addCoupon.jsp" target="_blank">[ADD]</a>를 클릭하세요!</p>
         
     </div>	
       

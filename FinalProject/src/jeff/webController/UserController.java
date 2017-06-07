@@ -99,8 +99,8 @@ public class UserController {
       modelAndView.addObject("userList", list);
       return modelAndView;
    }
-   
-   @RequestMapping("detail")
+//	관리자가 유저 정보보는 메소드
+   @RequestMapping("findUserId")
    public ModelAndView findByUserId(@RequestParam("userId") String userId) {
       ModelAndView modelAndView = new ModelAndView("userInfo");
       modelAndView.addObject("user", service.findUser(userId));
@@ -119,6 +119,16 @@ public class UserController {
       modelAndView.addObject("allUsers", allUsers);
       modelAndView.addObject("users", users);
       modelAndView.addObject("companys", companys);
+      return modelAndView;
+   }
+//   유저로그인시 자신의 info보는 메소드
+   @RequestMapping("detail")
+   public ModelAndView findByUserId(HttpServletRequest req) {
+      ModelAndView modelAndView = new ModelAndView("userInfo");
+      HttpSession session = req.getSession();
+      String userId = (String)session.getAttribute("userId");
+      
+      modelAndView.addObject("user", service.findUser(userId));
       return modelAndView;
    }
 }
