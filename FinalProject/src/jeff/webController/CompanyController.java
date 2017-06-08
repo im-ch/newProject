@@ -44,14 +44,25 @@ public class CompanyController {
    public String ModifyCompany(String comId, Model model) {
       Company company = service.findCompany(comId);
       model.addAttribute("company", company);
+      String lo = company.getLocation();
+      
+      String lo1 = lo.split(";")[0];
+      String lo2 = lo.split(";")[1];
+      String lo3 = lo.split(";")[2];
+      model.addAttribute("lo1", lo1);
+      model.addAttribute("lo2", lo2);
+      model.addAttribute("lo3", lo3);
 
       return "/companyModify";
    }
 
    @RequestMapping(value = "modify", method = RequestMethod.POST)
-   public String ModifyCompany(Company company) {
+   public String ModifyCompany(Company company, HttpServletRequest req) {
+	  HttpSession session = req.getSession();
+	  String comId = (String)session.getAttribute("comId");
+	  company.setComId(comId);
       service.updateCompany(company);
-      return "redirect:detail?comId=" + company.getComId();
+      return "redirect:detail?comId=" + comId;
    }
 
    @RequestMapping("remove")
