@@ -64,14 +64,21 @@
                   </c:if>
                </c:when>
                <c:when test="${comId ne null }">
-                  <li><a href="${ctx }/coupon/findList">Coupon</a></li>
+               <li class="dropdown"><a class="dropdown-toggle"
+                        data-toggle="dropdown" href="#">Sales<b
+                           class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                           <li><a href="${ctx }/views/salesList.jsp">Sales List</a></li>
+                           <li><a href="${ctx }/views/salesRegister.jsp">Register Sales</a></li>
+                           <li><a href="#">매출분석내용</a></li>
+                        </ul></li>
                   <li class="dropdown"><a class="dropdown-toggle"
                      data-toggle="dropdown" href="#">My Page <b
                         class="caret"></b></a>
                      <ul class="dropdown-menu">
                         <li><a href="${ctx }/company/detail">Company Info</a></li>
                         <li><a href="#">Alliance</a></li>
-                        <li><a href="#">Sales</a></li>
+                        <li><a href="${ctx }/coupon/findList">Coupon</a></li>
                      </ul></li>
                </c:when>
                <c:otherwise>

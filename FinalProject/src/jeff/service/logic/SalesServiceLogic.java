@@ -20,16 +20,12 @@ public class SalesServiceLogic implements SalesService {
 
 	@Override
 	public void registSales(Sales sales) {
-		Date today = new Date(Calendar.getInstance().getTimeInMillis());
-		sales.setRegDate(today);
 		store.createSales(sales);
 
 	}
 
 	@Override
 	public void updateSales(Sales sales) {
-		Date today = new Date(Calendar.getInstance().getTimeInMillis());
-		sales.setRegDate(today);
 		store.modifySales(sales);
 	}
 
@@ -40,8 +36,6 @@ public class SalesServiceLogic implements SalesService {
 
 	@Override
 	public List<Sales> findSalesByCompany(String companyId) {
-		
-		
 		return store.selectSalesByCompany(companyId);
 	}
 

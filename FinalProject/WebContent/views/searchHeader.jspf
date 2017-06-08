@@ -90,15 +90,15 @@ $(document).ready(function() {
 
    <div class="span7 navigation">
 
-        <div class="span4" style="margin-left:450px">
-            <form class="form-search">
+        <div class="span4" style="margin-left:850px">
+            <form class="form-search" action="${ctx }/company/locationAndComName" method="get">
             <div class="input-append">
                 <input type="text" class="span2 search-query" name="location" id="sample6_address">
             <button type="button" class="btn" onclick="sample6_execDaumPostcode()">주소</button>
             </div>
             <div class="input-append">
-                <input type="text" class="span2 search-query" placeholder="업체명">
-         <button type="button" class="btn" onclick="nameSearch()">Search</button>
+                <input type="text" class="span2 search-query" placeholder="업체명" name="comName">
+ 		        <button type="submit" class="btn">검색</button>
             </div>
             </form>
         </div>

@@ -24,6 +24,7 @@ public class Company {
 	@XmlElement(name="coupon")
 	private List<Coupon> couponList;
 	private String category;
+	private List<CompanyImage> imageList;
 	
 	public String getCategory() {
 		return category;
@@ -78,6 +79,13 @@ public class Company {
 	}
 	public void setCouponList(List<Coupon> couponList) {
 		this.couponList = couponList;
+	}
+	
+	public List<CompanyImage> getImageList() {
+		return imageList;
+	}
+	public void setImageList(List<CompanyImage> imageList) {
+		this.imageList = imageList;
 	}
 	
 	public String toString() {

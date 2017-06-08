@@ -22,7 +22,7 @@ public interface CompanyMapper {
 	
 	boolean loginCompany (Company company);
 	
-	List<Company> selectCompanyByCategory(String category);
+	List<Company> selectCompanyByLocationAndCategory(HashMap<String, Object> map);
 	
 	List<Company> selectCompanyByLocationAndCompany(HashMap<String, Object> map);
 	

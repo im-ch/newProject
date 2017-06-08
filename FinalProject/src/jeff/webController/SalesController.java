@@ -19,6 +19,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonArray;
@@ -36,14 +37,18 @@ public class SalesController {
 	private SalesService salesService;
 
 	@RequestMapping(value = "/register", method = { RequestMethod.GET, RequestMethod.POST })
-	public String registSales(HttpServletRequest req, Sales sales) {
+	public String registSales(HttpServletRequest req, Sales sales, @RequestParam("date") String date) {
 		HttpSession session = req.getSession();
-
+		String [] da = date.split("/");
+		String dateSet = da[2]+"-"+da[0]+"-"+da[1];
+		Date day=java.sql.Date.valueOf(dateSet);
+		
 		String comId = (String) session.getAttribute("comId");
 		sales.setCompanyId(comId);
+		sales.setRegDate(day);
 		salesService.registSales(sales);
 
-		return "redirect:list";
+		return "redirect:/views/salesList.jsp";
 	}
 
 	@RequestMapping(value = "/remove")
@@ -64,11 +69,12 @@ public class SalesController {
 		return "modifySales";
 	}
 
-	public String modifySales(Sales sales) {
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String updateSales(Sales sales) {
 
 		salesService.updateSales(sales);
 
-		return "redirect:list";
+		return "redirect:/views/salesList.jsp";
 	}
 
 	@RequestMapping(value = "/list")

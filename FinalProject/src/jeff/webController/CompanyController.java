@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jeff.domain.Alliance;
 import jeff.domain.Companies;
 import jeff.domain.Company;
 import jeff.domain.CompanyImage;
+import jeff.service.AllianceService;
 import jeff.service.CompanyImageService;
 import jeff.service.CompanyService;
 
@@ -30,6 +32,9 @@ public class CompanyController {
    
    @Autowired
    private CompanyImageService imageService;
+   
+   @Autowired
+   private AllianceService allianceService;
 
 
    @RequestMapping(value = "create", method = RequestMethod.POST)
@@ -107,13 +112,13 @@ public class CompanyController {
 
    }
 
-   @RequestMapping("findByCategory")
-   public ModelAndView findByCategory(@RequestParam("category") String category) {
-      ModelAndView modelAndView = new ModelAndView("/companyList");
-      modelAndView.addObject("companyList", service.findCompanyByCategory(category));
-      return modelAndView;
-
-   }
+//   @RequestMapping("findByCategory")
+//   public ModelAndView findByCategory(@RequestParam("category") String category) {
+//      ModelAndView modelAndView = new ModelAndView("/companyList");
+//      modelAndView.addObject("companyList", service.findCompanyByCategory(category));
+//      return modelAndView;
+//
+//   }
 
    @RequestMapping("findBycomName")
    public ModelAndView findBycomName(@RequestParam("comName") String comName) {
@@ -144,16 +149,8 @@ public class CompanyController {
       
       HttpSession session = req.getSession();
       String location = (String)session.getAttribute("location");
-      String value [] = location.split("\\s");
-      list = service.findCompanyByLocation(value[1] + " " + value[2]);
-      for(Company c : list){
-         String location2 = c.getLocation();
-         String [] lo = location2.split(";");
-         
-         String [] lo2 = lo[1].split("\\(");
-         c.setLocation(lo2[0]);
-      }
-      companies.setCompanies(list);
+
+      companies.setCompanies(locationReplace(list, location));
       return companies;
    }
    
@@ -170,48 +167,60 @@ public class CompanyController {
       
       list = service.findCompanyByLocationAndCompany(map);
       
-      for(Company c : list){
-         String location2 = c.getLocation();
-         String [] lo = location2.split(";");
-         
-         String [] lo2 = lo[1].split("\\(");
-         c.setLocation(lo2[0]);
-      }
-      companies.setCompanies(list);
+      companies.setCompanies(locationReplace(list, location));
       return companies;
    }
    
-   @RequestMapping("locationAndComId")
+   @RequestMapping("locationAndComName")
    public String findByLocation (HttpServletRequest req, @RequestParam("comName") String comName, Model model){
       HttpSession session = req.getSession();
       String location = (String)session.getAttribute("location");
+      String value [] = location.split("\\s");
+      
       HashMap<String, Object> map = new HashMap<>();
+      map.put("location", value[1] + " " + value[2]);
       map.put("comName", comName);
-      map.put("location", location);
       
       List<Company> listCom = service.findCompanyByLocationAndCompany(map);
-      model.addAttribute("companyList", listCom);
-       return "/recommmendCompanyList";
+
+      model.addAttribute("companies", replace(listCom));
+       return "/recommendCompanyList";
    }
    
-      @RequestMapping(value="saveLocation", produces="application/xml")
-      public void saveLocation(HttpServletRequest req, String location){
-         HttpSession session = req.getSession();
-         session.removeAttribute("location");
-         if(location.contains("로 ")){
-            String [] lo = location.split("로 ");
-            String loo = lo[0] + "로";
-            session.setAttribute("location", loo);
-         }else if (location.contains("길 ")){
-            String [] lo = location.split("길 ");
-            String loo = lo[0] + "길";
-            session.setAttribute("location", loo);
-         }else if (location.contains("동 ")){
-            String [] lo = location.split("동 ");
-            String loo = lo[0] + "동";
-            session.setAttribute("location", loo);
-         }
-      }
+   @RequestMapping("locationAndCategory")
+   public String findByCategory (HttpServletRequest req, @RequestParam("category") String category, Model model){
+      HttpSession session = req.getSession();
+      String location = (String)session.getAttribute("location");
+      String value [] = location.split("\\s");
+      
+      HashMap<String, Object> map = new HashMap<>();
+      map.put("location", value[1] + " " + value[2]);
+      map.put("category", category);
+      
+      List<Company> listCom = service.findCompanyByLocationAndCategory(map);
+
+      model.addAttribute("companies", replace(listCom));
+       return "/recommendCompanyList";
+   }
+   
+	@RequestMapping(value="saveLocation", produces="application/xml")
+	public void saveLocation(HttpServletRequest req, String location){
+		HttpSession session = req.getSession();
+		session.removeAttribute("location");
+        if(location.contains("로 ")){
+           String [] lo = location.split("로 ");
+           String loo = lo[0] + "로";
+           session.setAttribute("location", loo);
+        }else if (location.contains("길 ")){
+           String [] lo = location.split("길 ");
+           String loo = lo[0] + "길";
+           session.setAttribute("location", loo);
+        }else if (location.contains("동 ")){
+           String [] lo = location.split("동 ");
+           String loo = lo[0] + "동";
+           session.setAttribute("location", loo);
+        }
+     }
 
    //   String 보낼때 문자 깨지는거 -> produces="text/plain;charset=UTF-8"
       @RequestMapping(value="loadLocation", produces="text/plain;charset=UTF-8")
@@ -224,6 +233,44 @@ public class CompanyController {
          }
          session.setAttribute("location", location);
          return location;
+      }
+      
+      
+      private List<Company> replace(List<Company> companies){
+    	  List<CompanyImage> image = null;
+          
+          for(Company c : companies){
+        	  image = new ArrayList<>();
+        	  if(c.getImageList().size() > 0){
+        		  image.add(c.getImageList().get(0));
+        		  c.setImageList(image);
+        	  }else {
+        		  CompanyImage img = new CompanyImage();
+        		  img.setFileName("noimage.png");
+        		  image.add(img);
+        		  c.setImageList(image);
+        	  }
+        	  Alliance al = allianceService.findAlliance(c.getComId());
+        	  if(al != null){
+        		  c.setOwnerName(al.getDetail());
+        	  }else{
+        		  c.setOwnerName(" ");
+        	  }
+          }
+          return companies;
+      }
+      
+      private List<Company> locationReplace(List<Company> list, String location){
+          String value [] = location.split("\\s");
+          list = service.findCompanyByLocation(value[1] + " " + value[2]);
+          for(Company c : list){
+             String location2 = c.getLocation();
+             String [] lo = location2.split(";");
+             
+             String [] lo2 = lo[1].split("\\(");
+             c.setLocation(lo2[0]);
+          }
+    	  return list;
       }
    
 }
