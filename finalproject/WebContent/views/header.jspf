@@ -1,0 +1,256 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:choose>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+   <c:when test="${comId ne null}">
+         [<a href="${ctx }/company/logout">로그아웃</a>]
+       </c:when>
+   <c:when test="${userId ne null}">
+         [<a href="${ctx }/user/logout">로그아웃</a>]
+      </c:when>
+
+   <c:otherwise>
+      <a href="${ctx }/views/login.jsp">로그인</a> | <a
+         href="${ctx }/views/join.jsp">회원가입</a>
+   </c:otherwise>
+=======
+=======
+>>>>>>> sangjin
+	<c:when test="${comId ne null}">
+			[<a href="${ctx }/company/logout">로그아웃</a>]
+	    </c:when>
+	<c:when test="${userId ne null}">
+			[<a href="${ctx }/user/logout">로그아웃</a>]
+      </c:when>
+
+	<c:otherwise>
+			<a href="${ctx }/views/login.jsp">로그인</a> | <a
+				href="${ctx }/views/welcomeJoin.jsp">회원가입</a>
+	</c:otherwise>
+<<<<<<< HEAD
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
+=======
+   <c:when test="${comId ne null}">
+         [<a href="${ctx }/company/logout">로그아웃</a>]
+       </c:when>
+   <c:when test="${userId ne null}">
+         [<a href="${ctx }/user/logout">로그아웃</a>]
+      </c:when>
+
+=======
+>>>>>>> sangjin
+   <c:when test="${comId ne null}">
+         [<a href="${ctx }/company/logout">로그아웃</a>]
+       </c:when>
+   <c:when test="${userId ne null}">
+         [<a href="${ctx }/user/logout">로그아웃</a>]
+      </c:when>
+
+   <c:otherwise>
+         <a href="${ctx }/views/login.jsp">로그인</a> | <a
+            href="${ctx }/views/join.jsp">회원가입</a>
+   </c:otherwise>
+>>>>>>> sangjin
+</c:choose>
+
+<div class="row header">
+   <!-- Begin Header -->
+
+   <!-- Logo
+        ================================================== -->
+   <div class="span5 logo">
+      <a href="main.jsp"><img src="${ctx }/resources/img/logo3.png"
+         alt="" /></a>
+      <h5>Affiliate Friends</h5>
+   </div>
+
+   <!-- Main Navigation
+        ================================================== -->
+   <div class="span7 navigation">
+      <div class="navbar hidden-phone">
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+
+=======
+
+			<ul class="nav">
+				<li><a href="${ctx }/views/main.jsp">Home</a></li>
+				<li><a href="${ctx }/views/mapCoupon.jsp">Company</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="gallery-4col.htm">Q&A <b
+						class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="gallery-3col.htm">자주묻는 질문</a></li>
+						<li><a href="gallery-4col.htm">1:1 질문</a></li>
+					</ul></li>
+				<c:choose>
+					<c:when test="${userId ne null }">
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="blog-style1.htm">My Page <b
+								class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="blog-style1.htm">User Info</a></li>
+								<li><a href="blog-style2.htm">Interesting Company</a></li>
+								<li><a href="blog-style3.htm">My Coupon</a></li>
+							</ul></li>
+					</c:when>
+					<c:when test="${comId ne null }">
+						<li><a href="${ctx }/views/login.jsp">Coupon</a></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="blog-style1.htm">My Page <b
+								class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="blog-style1.htm">Company Info</a></li>
+								<li><a href="blog-style2.htm">Alliance</a></li>
+							</ul></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${ctx }/views/login.jsp">Login</a></li>
+					</c:otherwise>
+				</c:choose>
+				
+				<li><a href="${ctx }/views/notice.jsp">Notice</a></li>
+			</ul>
+>>>>>>> sangjin
+=======
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
+=======
+>>>>>>> sangjin
+         <ul class="nav">
+            <li><a href="${ctx }/views/main.jsp">Home</a></li>
+            <li><a href="${ctx }/views/mapCoupon.jsp">Company</a></li>
+            <li class="dropdown"><a class="dropdown-toggle"
+               data-toggle="dropdown" href="gallery-4col.htm">Q&A <b
+                  class="caret"></b></a>
+               <ul class="dropdown-menu">
+<<<<<<< HEAD
+                  <li><a href="gallery-3col.htm">자주묻는 질문</a></li>
+                  <li><a href="${ctx }/question/findAll">1:1 질문</a></li>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+               data-toggle="dropdown" href="gallery-4col.htm">Q&A<b
+                  class="caret"></b></a>
+               <ul class="dropdown-menu">
+                  <li><a href="gallery-3col.htm">자주묻는 질문</a></li>
+                  <li><a href="frequentlyAskedQuestions.jsp">자주묻는 질문</a></li>
+                  <li><a href="gallery-4col.htm">1:1 질문</a></li>
+>>>>>>> sangjin
+=======
+                  <li><a href="${ctx }/views/frequentlyAskedQuestions.jsp">자주묻는 질문</a></li>
+                  <li><a href="gallery-4col.htm">1:1 질문</a></li>
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
+=======
+>>>>>>> sangjin
+               </ul></li>
+            <c:choose>
+               <c:when test="${userId ne null }">
+                  <li class="dropdown"><a class="dropdown-toggle"
+                     data-toggle="dropdown" href="blog-style1.htm">My Page <b
+                        class="caret"></b></a>
+                     <ul class="dropdown-menu">
+<<<<<<< HEAD
+                        <li><a href="blog-style1.htm">User Info</a></li>
+=======
+                        <li><a href="${ctx }/user/detail?userId=${userId }">User Info</a></li>
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
+                        <li><a href="blog-style2.htm">Interesting Company</a></li>
+                        <li><a href="blog-style3.htm">My Coupon</a></li>
+                     </ul></li>
+               </c:when>
+               <c:when test="${comId ne null }">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                  <li class="dropdown"><a class="dropdown-toggle"
+                     data-toggle="dropdown" href="blog-style1.htm">Coupon <b
+                        class="caret"></b></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="blog-style1.htm"></a></li>
+                        <li><a href="blog-style2.htm">Blog Style 2</a></li>
+                        <li><a href="blog-single.htm">Blog Single</a></li>
+                     </ul></li>
+=======
+                  <li><a href="${ctx }/views/login.jsp">Coupon</a></li>
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
+=======
+                  <li><a href="${ctx }/views/login.jsp">Coupon</a></li>
+>>>>>>> sangjin
+                  <li class="dropdown"><a class="dropdown-toggle"
+                     data-toggle="dropdown" href="blog-style1.htm">My Page <b
+                        class="caret"></b></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="blog-style1.htm">Company Info</a></li>
+                        <li><a href="blog-style2.htm">Alliance</a></li>
+                     </ul></li>
+               </c:when>
+               <c:otherwise>
+                  <li><a href="${ctx }/views/login.jsp">Login</a></li>
+               </c:otherwise>
+            </c:choose>
+<<<<<<< HEAD
+
+            <li><a href="${ctx }/views/notice.jsp">Notice</a></li>
+         </ul>
+<<<<<<< HEAD
+
+=======
+			<ul class="nav">
+				<li><a href="${ctx }/views/main.jsp">Home</a></li>
+				<li><a href="${ctx }/views/mapCoupon.jsp">Company</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="gallery-4col.htm">Q&A <b
+						class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="gallery-3col.htm">자주묻는 질문</a></li>
+						<li><a href="gallery-4col.htm">1:1 질문</a></li>
+					</ul></li>
+				<c:choose>
+					<c:when test="${userId ne null }">
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="blog-style1.htm">My Page <b
+								class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="blog-style1.htm">User Info</a></li>
+								<li><a href="blog-style2.htm">Interesting Company</a></li>
+								<li><a href="blog-style3.htm">My Coupon</a></li>
+							</ul></li>
+					</c:when>
+					<c:when test="${comId ne null }">
+						<li><a href="${ctx }/views/login.jsp">Coupon</a></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="blog-style1.htm">My Page <b
+								class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="blog-style1.htm">Company Info</a></li>
+								<li><a href="blog-style2.htm">Alliance</a></li>
+							</ul></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${ctx }/views/login.jsp">Login</a></li>
+					</c:otherwise>
+				</c:choose>
+				
+				<li><a href="${ctx }/views/notice.jsp">Notice</a></li>
+			</ul>
+=======
+            
+            <li><a href="${ctx }/views/notice.jsp">Notice</a></li>
+         </ul>
+>>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
+       
+>>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
+=======
+       
+>>>>>>> sangjin
+      </div>
+
+   </div>
+
+</div>
