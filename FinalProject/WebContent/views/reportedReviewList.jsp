@@ -27,7 +27,8 @@
 <!-- Favicons
 ================================================== -->
 <link rel="shortcut icon" href="${ctx }/resources/img/favicon.ico">
-<link rel="apple-touch-icon" href="${ctx }/resources/img/apple-touch-icon.png">
+<link rel="apple-touch-icon"
+	href="${ctx }/resources/img/apple-touch-icon.png">
 <link rel="apple-touch-icon" sizes="72x72"
 	href="${ctx }/resources/img/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114"
@@ -83,108 +84,82 @@
 		<div class="row header">
 			<!-- Begin Header -->
 
-		
+
 			<!-- Main Navigation
         ================================================== -->
-			
-     <div style = "float:right;"><%@ include file="header.jspf"%></div>
-<br><br>
-       
-        <div class="span7 navigation">
-            <div class="navbar hidden-phone">
-            
-            
-          
-        
-      </div>
-		<!-- End Header -->
-		
-     <h1>Reported review</h1>
-     				<div style="float: right">
-									
-							
-						</div>
-					
-					<table class="table table-striped table-bordered table-hover">
-						<colgroup>
-							<col width="100" />
-							<col width="200" />
-							<col width="100" />
-							<col width="200" />
-							<col width="200" />
-							<col width="*" />
-							<col width="100" />
-						</colgroup>
-						<thead>
-							<tr>
-								<td style="float: middle" width="900">내용</td>
-								<td style="float: middle" width="900">이름</td>
-								<td style="float: middle" width="900">작성시간</td>
-							</tr>
-						</thead>
-						<tbody>
+
+			<div style="float: right;"><%@ include file="header.jspf"%></div>
+			<br>
+			<br>
+
+			<div class="span7 navigation">
+				<div class="navbar hidden-phone"></div>
+				<!-- End Header -->
+
+				<h1>Reported review</h1>
+				<div style="float: right"></div>
+
+				<table class="table table-striped table-bordered table-hover">
+					<colgroup>
+						<col width="100" />
+						<col width="200" />
+						<col width="100" />
+						<col width="200" />
+						<col width="200" />
+						<col width="*" />
+						<col width="100" />
+					</colgroup>
+					<thead>
+						<tr>
+							<td style="float: middle" width="900">내용</td>
+							<td style="float: middle" width="900">이름</td>
+							<td style="float: middle" width="900">작성시간</td>
+						</tr>
+					</thead>
+					<tbody>
 						<c:choose>
 							<c:when test="${reportReviews eq null || empty reportReviews }">
-							<tr>
-								<td colspan="7" align="center">신고받은 게시물이 없습니다.</td>
-							</tr>
-							 </c:when>
-							 <c:otherwise> 
-							 	<c:forEach items="${reviews}" var="review" varStatus="status">
-							 	<fmt:formatDate var="newFormattedDate" value="${review.regDate }"
-							 	pattern="yyyy-MM-dd HH:mm:ss"/>
 								<tr>
-									<td><a href="${ctx }/views/find?reviewId=${review.reviewId }">${review.content }</a></td>
-									<td>${review.userId}</td>
-									<td>${newFormattedDate }</td>
+									<td colspan="7" align="center">신고받은 게시물이 없습니다.</td>
 								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${reviews}" var="review" varStatus="status">
+									<fmt:formatDate var="newFormattedDate"
+										value="${review.regDate }" pattern="yyyy-MM-dd HH:mm:ss" />
+									<tr>
+										<td><a
+											href="${ctx }/views/find?reviewId=${review.reviewId }">${review.content }</a></td>
+										<td>${review.userId}</td>
+										<td>${newFormattedDate }</td>
+									</tr>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
-						</tbody>
-						
-									
-					</table>
-					
-					
-					<div align="right">
-					</div>
-		<!-- Features -->
-		<div id="features-wrapper">
-			<div class="container">
-				<div class="row">
-					<div class="4u 12u(medium)"></div>
-				</div>
-			</div>
-		</div>
+					</tbody>
 
-		<div class="row">
-			<div class="12u">
-				<div id="copyright">
-					<ul class="menu">
-						<li>&copy; JavaRoad All rights reserved</li>
-						<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
+
+				</table>
+
+
+				<div align="right"></div>
 			</div>
-		</div>
-		
-		<%@ include file="/views/footer.jspf"%>
-		<!-- Scripts -->
-		<script src="${ctx }/js/jquery.min.js"></script>
-		<script src="${ctx }/js/jquery.dropotron.min.js"></script>
-		<script src="${ctx }/js/skel.min.js"></script>
-		<script src="${ctx }/js/util.js"></script>
-		<script src="${ctx }/js/main.js"></script>
-		
-		
-    
-							
-	<script src="${ctx }/resources/inner/js/jquery.min.js"></script>
-	<script src="${ctx }/resources/inner/js/skel.min.js"></script>
-	<script src="${ctx }/resources/inner/js/util.js"></script>
-	<script src="${ctx }/resources/inner/js/main.js"></script>
-	
- 
+
+
+			<%@ include file="/views/footer.jspf"%>
+			<!-- Scripts -->
+			<script src="${ctx }/js/jquery.min.js"></script>
+			<script src="${ctx }/js/jquery.dropotron.min.js"></script>
+			<script src="${ctx }/js/skel.min.js"></script>
+			<script src="${ctx }/js/util.js"></script>
+			<script src="${ctx }/js/main.js"></script>
+
+
+
+
+			<script src="${ctx }/resources/inner/js/jquery.min.js"></script>
+			<script src="${ctx }/resources/inner/js/skel.min.js"></script>
+			<script src="${ctx }/resources/inner/js/util.js"></script>
+			<script src="${ctx }/resources/inner/js/main.js"></script>
 </body>
 </html>

@@ -1,10 +1,15 @@
 package jeff.webController;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,47 +20,63 @@ import jeff.service.CompanyService;
 import jeff.service.ReviewService;
 
 @Controller
-@RequestMapping("/review")
+@RequestMapping("review")
 public class ReviewController {
 
 	@Autowired
 	private ReviewService service;
-	
+
 	@Autowired
 	private CompanyService companyService;
-	//comId를 히든으로 받아오면 리뷰에 자동으로 넣어진다는 가정
-	@RequestMapping(value="/regist", method=RequestMethod.POST)
-	@ResponseBody
-	public Company registReview(Review review, HttpServletRequest req){
+
+	// comId를 히든으로 받아오면 리뷰에 자동으로 넣어진다는 가정
+	@RequestMapping(value = "/regist", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public @ResponseBody String registReview(Review review, HttpServletRequest req) {
 		HttpSession session = req.getSession(false);
 		String userId = null;
-		if(session != null){
-			userId = (String)session.getAttribute("userId");
+		if (session != null) {
+			userId = (String) session.getAttribute("userId");
 		}
+
+		String content = review.getContent().split("=")[1];
+		try {
+			content = URLDecoder.decode(content, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		review.setContent(content);
+
+		review.setReported(false);
 		review.setUserId(userId);
 		service.registReview(review);
-		Company company = companyService.findCompany(review.getComId());
-		return company;
+		return "regist";
 	}
-	
+
 	@RequestMapping("/remove")
-	@ResponseBody
-	public Company removeReview(int reviewId, String comId){
+	public @ResponseBody String removeReview(int reviewId, String comId) {
 		service.removeReview(reviewId);
-		Company company = companyService.findCompany(comId);
-		return company;
+		return "remove";
 	}
-	@RequestMapping(value="/update", method=RequestMethod.POST)
-	@ResponseBody
-	public Company upateReview(Review review, HttpServletRequest req){
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public @ResponseBody String upateReview(Review review, HttpServletRequest req) {
 		HttpSession session = req.getSession(false);
 		String userId = null;
-		if(session != null){
-			userId = (String)session.getAttribute("userId");
+		if (session != null) {
+			userId = (String) session.getAttribute("userId");
 		}
 		review.setUserId(userId);
 		service.updateReview(review);
-		Company company = companyService.findCompany(review.getComId());
-		return company;
+		return "update";
 	}
+
+	@RequestMapping(value = "find", method = RequestMethod.GET)
+	public String findReviewByReviewId(int reviewId, HttpServletRequest req, Model model) {
+
+		Review review = service.findReviewByReviewId(reviewId);
+		model.addAttribute("review", review);
+		return "report";
+	}
+
 }

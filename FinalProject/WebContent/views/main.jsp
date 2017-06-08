@@ -72,21 +72,19 @@
 
 </head>
 
-<body class="home">
-	<!-- Color Bars (above header)-->
+<body>
 	<div class="color-bar-1"></div>
 	<div class="color-bar-2 color-bg"></div>
 
-	<div class="container">
-		
-		<%@ include file="/views/header.jspf"%>
-		<%@ include file="/views/searchHeader.jspf"%>
+	<div class="container main-container">
 
+			<%@ include file="/views/header.jspf"%>
+			<%@ include file="/views/searchHeader.jspf"%>
 		<section class="tiles">
 			<article class="style1">
 				<span class="image"> <img
 					src="${ctx }/resources/images/1.jpg" alt="" />
-				</span> <a href="generic.html">
+				</span> <a href="${ctx }/alliance/companyDetail?comId=111">
 					<h2>Restaurant</h2>
 					<div class="content">
 						<p>내 주변 제휴식당</p>
@@ -216,8 +214,8 @@
 	<script src="${ctx }/resources/inner/js/skel.min.js"></script>
 	<script src="${ctx }/resources/inner/js/util.js"></script>
 	<script src="${ctx }/resources/inner/js/main.js"></script>
-	
-		<br>
+
+	<br>
 	<br>
 	<br>
 	<br>
@@ -228,7 +226,7 @@
 	<%@ include file="/views/footer.jspf"%>
 
 	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-	
+
 
 </body>
 </html>

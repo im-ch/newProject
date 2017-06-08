@@ -45,6 +45,22 @@ public class ReviewStoreLogic implements ReviewStore{
 		return review;
 	}
 
+	@Override
+	public List<Review> selectAllReview(String comId) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+		ReviewMapper mapper = session.getMapper(ReviewMapper.class);
+		List<Review> list = mapper.selectAllReview(comId);
+		session.close();
+		return list;
+	}
 
+	@Override
+	public void modifyReviewReport(Review review) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+		ReviewMapper mapper = session.getMapper(ReviewMapper.class);
+		mapper.modifyReviewReport(review);
+		session.close();
+		
+	}
 
 }

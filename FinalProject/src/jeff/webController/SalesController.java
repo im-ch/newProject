@@ -42,7 +42,6 @@ public class SalesController {
 		String comId = (String) session.getAttribute("comId");
 		sales.setCompanyId(comId);
 		salesService.registSales(sales);
-
 		return "redirect:list";
 	}
 
@@ -100,17 +99,17 @@ public class SalesController {
 		}
 		return companySales;
 	}
-	
-	@RequestMapping(value="day")
+
+	@RequestMapping(value = "day")
 	@ResponseBody
-	public String ttt(HttpServletRequest req){
+	public String ttt(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		
+
 		if (session == null || session.getAttribute("comId") == null) {
 			return "redirect:login.jsp";
 		}
 		String comId = (String) session.getAttribute("comId");
-		
+
 		JsonObject data = new JsonObject();
 		JsonObject objCol1 = new JsonObject();
 		JsonObject objCol2 = new JsonObject();
@@ -120,31 +119,31 @@ public class SalesController {
 		objCol2.addProperty("type", "number");
 		arrCols.add(objCol1);
 		arrCols.add(objCol2);
-		
+
 		SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");
 		List<Sales> list = salesService.findSalesByCompany(comId);
 		List<Sales> weekList = new ArrayList<>();
-		for(int i = 0 ; i < list.size() ; i++){
+		for (int i = 0; i < list.size(); i++) {
 			int today = Integer.parseInt(newFormat.format(list.get(0).getRegDate()).substring(8));
-//			int day = 
-//			if()
+			// int day =
+			// if()
 		}
-		for(int i = 0 ; i < 7 ; i++){
+		for (int i = 0; i < 7; i++) {
 			JsonObject legend = new JsonObject();
-			legend.addProperty("v", "7/" + (i+2));
+			legend.addProperty("v", "7/" + (i + 2));
 			legend.add("f", null);
-			
+
 			JsonObject value = new JsonObject();
-			value.addProperty("v", 500 + i*100);
+			value.addProperty("v", 500 + i * 100);
 			value.add("f", null);
-			
+
 			JsonArray cvalArr = new JsonArray();
 			cvalArr.add(legend);
 			cvalArr.add(value);
-			
+
 			JsonObject cvalObj = new JsonObject();
 			cvalObj.add("c", cvalArr);
-			
+
 			arrRows.add(cvalObj);
 		}
 
@@ -155,4 +154,3 @@ public class SalesController {
 		return str;
 	}
 }
-

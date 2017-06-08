@@ -61,131 +61,248 @@
 		});
 	}
 </script>
+<script type="text/javascript">
+	function reviewSubmit() {
+		var comId = $("#comId").val();
+		var content = $("#reviewform").serialize();
+		
+		$.ajax({
+			url : "${ctx}/review/regist",
+			type : "POST",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+			data : {
+				comId : comId, content : content
+			},
+			success : function(data) {
+				if(data=='regist'){
+					alert("후기가 등록되었습니다.");
+					 window.location.reload();
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("잠시 후 다시 시도해 주세요");
+			}
+		});
+	}
+</script>
+<script type="text/javascript">
+	function modify() {
+		var comId = $("#comId").val();
+		var content = $("#reviewform").serialize();
+		
+		$.ajax({
+			url : "${ctx}/review/regist",
+			type : "POST",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+			data : {
+				comId : comId, content : content
+			},
+			success : function(data) {
+				if(data=='regist'){
+					alert("후기가 등록되었습니다.");
+					 window.location.reload();
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("잠시 후 다시 시도해 주세요");
+			}
+		});
+	}
+</script>
+
+<script type="text/javascript">
+	function remove(reviewId) {
+		
+		$.ajax({
+			url : "${ctx}/review/remove",
+			type : "GET",
+			data : {
+				reviewId : reviewId
+			},
+			success : function(data) {
+				if(data=='remove'){
+					alert("후기가 삭제되었습니다.");
+					 window.location.reload();
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("잠시 후 다시 시도해 주세요");
+			}
+		});
+	}
+</script>
 </head>
 <body>
 	<div class="color-bar-1"></div>
-    <div class="color-bar-2 color-bg"></div>
-    
-    <div class="container main-container">
-    
-      <%@ include file="/views/header.jspf"%>
-     
-    <!-- Page Content
-    ================================================== --> 
-    <div class="row"><!--Container row-->
+	<div class="color-bar-2 color-bg"></div>
 
-    <!-- Title Header -->
-        <div class="span8"><!--Begin page content column-->
+	<div class="container main-container">
 
-            <h2>담소사골순대</h2>
-            <p class="lead">소사골의 소고기 순대국, 올바름에 대해 고민하는 사람들</p>
+		<%@ include file="/views/header.jspf"%>
 
-            <h5 class="title-bg">Pictures</h5>
+		<!-- Page Content
+    ================================================== -->
+		<div class="row">
+			<!--Container row-->
+			<div class="row">
+				<!-- Title Header -->
+				<div class="span8">
+					<!--Begin page content column-->
 
-            <div class="row">
-                <div class="span2">
-                    <img src="${ctx }/resources/img/gallery/gallery-img-1-6col.jpg" alt="Image" class="thumbnail">
-                </div>
-                <div class="span2">
-                    <img src="${ctx }/resources/img/gallery/gallery-img-1-6col.jpg" alt="Image" class="thumbnail">
-                </div>
-                <div class="span2">
-                    <img src="${ctx }/resources/img/gallery/gallery-img-13-6col.jpg" alt="Image" class="thumbnail">
-                </div>
-                <div class="span2">
-                    <img src="${ctx }/resources/img/gallery/gallery-img-14-6col.jpg" alt="Image" class="thumbnail">
-                </div>
-            </div>
-        </div> <!--End page content column-->
+					<h2>${alliance.company.comName }</h2>
+					<p class="lead">${alliance.detail }</p>
 
-        <!-- Blog Sidebar
-        ================================================== --> 
-        <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
-            
-            <!--Testimonials-->
-            <h5 class="title-bg">Map</h5>
-    		<img src="${ctx }/resources/img/location-map.jpg" alt="map">	
-			&nbsp;
-			<div class="alert alert-success">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>영업시간 : </strong> 오전11시 ~ 익일2시
-            </div>
-        </div><!-- End sidebar column -->
-    </div><!-- End container row -->
-    <div>
-    <div class="container" style="margin:0 auto;">
-        <h3>Coupon</h3>
-      </div>
-        <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
-        <div class="img"><img src="${ctx }/resources/images/circ_img1.jpg" alt="img"></div>
-        <div class="info">
-          <h3>소주 1+1</h3>
-          <p>쿠폰받기!(~6/2)</p>
-        </div></a></div>
-        <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
-        <div class="img"><img src="${ctx }/resources/images/circ_img2.jpg" alt="img"></div>
-        <div class="info">
-          <h3>수육1000원 할인</h3>
-          <p>쿠폰받기!(~6/2)</p>
-        </div></a></div>
-        <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
-        <div class="img"><img src="${ctx }/resources/images/circ_img3.jpg" alt="img"></div>
-        <div class="info">
-          <h3>사이다 서비스</h3>
-          <p>쿠폰받기!(~6/2)</p>
-        </div></a></div>
-        <div class="ih-item circle effect2 left_to_right" style="float:left;"><a href="#">
-        <div class="img"><img src="${ctx }/resources/images/circ_img4.jpg" alt="img"></div>
-        <div class="info">
-          <h3>밥 한공기 더</h3>
-          <p>쿠폰받기!(~6/2)</p>
-        </div></a></div>
-    </div>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div>
-    <section class="comments">
-                <h4 class="title-bg"><a name="comments"></a>Reviews</h4>
-               <ul>
-                    <li>
-                        <img src="${ctx }/resources/img/user-avatar.jpg" alt="Image" />
-                        <span class="comment-name">임창희</span>&nbsp;&nbsp;&nbsp;
-                        <span class="comment-date">2017/05/29 | <a href="#">수정</a>/<a href="#">삭제</a></span>
-                        <div class="comment-content">파워 블로거라서 공짜로 얻어 먹었네요(개이득=9) 블로그에 잘 게시하겠습니닷&nbsp;&nbsp;<a href="#">[신고]</a></div>
-                    </li>
-                    <li>
-                        <img src="${ctx }/resources/img/user-avatar.jpg" alt="Image" />
-                        <span class="comment-name">황희현</span>&nbsp;&nbsp;&nbsp;
-                        <span class="comment-date">2017/05/29 | <a href="#">수정</a>/<a href="#">삭제</a></span>
-                        <div class="comment-content">님들님들 여기 개노맛 가지마셈&nbsp;&nbsp;<a href="#">[신고]</a></div>
-                    </li>
-                    <li>
-                        <img src="${ctx }/resources/img/user-avatar.jpg" alt="Image" />
-                        <span class="comment-name">이연철</span>&nbsp;&nbsp;&nbsp;
-                        <span class="comment-date">2017/05/29 | <a href="#">수정</a>/<a href="#">삭제</a></span>
-                        <div class="comment-content">전 다 필요없고 소주 무한리필이 너무 좋습니다 사랑합니다♡&nbsp;&nbsp;<a href="#">[신고]</a></div>
-                    </li>
-                    
-               </ul>
-            
-                <!-- Comment Form -->
-                <div class="comment-form-container">
-                    <h6>Leave a Review</h6>
-                    <form action="#" id="comment-form">
-                        <textarea class="span6"></textarea>
-                        <div class="row">
-                            <div class="span2">
-                                <input type="submit" class="btn btn-inverse" value="Post My Review">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-        </section><!-- Close comments section-->
-		</div> 
-     
-    </div> <!-- End Container -->
-	
-	<%@ include file="/views/footer.jspf"%>
+					<h5 class="title-bg">Pictures</h5>
+
+					<div class="row">
+						<div class="span2">
+							<img src="${ctx }/resources/img/gallery/gallery-img-1-6col.jpg"
+								alt="Image" class="thumbnail">
+						</div>
+						<div class="span2">
+							<img src="${ctx }/resources/img/gallery/gallery-img-1-6col.jpg"
+								alt="Image" class="thumbnail">
+						</div>
+						<div class="span2">
+							<img src="${ctx }/resources/img/gallery/gallery-img-13-6col.jpg"
+								alt="Image" class="thumbnail">
+						</div>
+						<div class="span2">
+							<img src="${ctx }/resources/img/gallery/gallery-img-14-6col.jpg"
+								alt="Image" class="thumbnail">
+						</div>
+					</div>
+				</div>
+				<!--End page content column-->
+
+				<!-- Blog Sidebar
+        ================================================== -->
+				<div class="span4 sidebar page-sidebar">
+					<!-- Begin sidebar column -->
+
+					<!--Testimonials-->
+					<h5 class="title-bg">Map</h5>
+					<img src="${ctx }/resources/img/location-map.jpg" alt="map">
+					&nbsp;
+					<div class="alert alert-success">
+						<button type="button" class="close" data-dismiss="alert">×</button>
+						<strong>영업시간 : </strong> ${alliance.openingHours }
+					</div>
+					<input type="button" onclick="to_ajax(${alliance.company.comId});"
+						value="interesting" class="btn btn-inverse">
+				</div>
+				<!-- End sidebar column -->
+			</div>
+			<!-- End container row -->
+			<div>
+				<div class="container" style="margin: 0 auto;">
+					<h3>Coupon</h3>
+				</div>
+				<div class="ih-item circle effect2 left_to_right"
+					style="float: left;">
+					<a href="#">
+						<div class="img">
+							<img src="${ctx }/resources/images/circ_img1.jpg" alt="img">
+						</div>
+						<div class="info">
+							<h3>소주 1+1</h3>
+							<p>쿠폰받기!(~6/2)</p>
+						</div>
+					</a>
+				</div>
+				<div class="ih-item circle effect2 left_to_right"
+					style="float: left;">
+					<a href="#">
+						<div class="img">
+							<img src="${ctx }/resources/images/circ_img2.jpg" alt="img">
+						</div>
+						<div class="info">
+							<h3>수육1000원 할인</h3>
+							<p>쿠폰받기!(~6/2)</p>
+						</div>
+					</a>
+				</div>
+				<div class="ih-item circle effect2 left_to_right"
+					style="float: left;">
+					<a href="#">
+						<div class="img">
+							<img src="${ctx }/resources/images/circ_img3.jpg" alt="img">
+						</div>
+						<div class="info">
+							<h3>사이다 서비스</h3>
+							<p>쿠폰받기!(~6/2)</p>
+						</div>
+					</a>
+				</div>
+				<div class="ih-item circle effect2 left_to_right"
+					style="float: left;">
+					<a href="#">
+						<div class="img">
+							<img src="${ctx }/resources/images/circ_img4.jpg" alt="img">
+						</div>
+						<div class="info">
+							<h3>밥 한공기 더</h3>
+							<p>쿠폰받기!(~6/2)</p>
+						</div>
+					</a>
+				</div>
+			</div>
+			<br> <br> <br> <br> <br> <br> <br>
+			<br> <br> <br> <br> <br> <br> <br>
+			<br> <br> <br> <br>
+			<div>
+				<section class="comments">
+					<h4 class="title-bg">
+						<a name="comments"></a>Reviews
+					</h4>
+					<ul>
+						<c:forEach items="${review }" var="review">
+							<li><img src="${ctx }/resources/img/user-avatar.jpg"
+								alt="Image" /> <span class="comment-name">${review.userId }</span>&nbsp;&nbsp;&nbsp;
+								<span class="comment-date">${review.regDate } | <c:if
+										test="${userId eq review.userId }">
+										<a href="#" onclick="modify();">수정</a>/<a
+											onclick="remove(${review.reviewId});">삭제</a>
+									</c:if></span>
+								<div class="comment-content">${review.content }&nbsp;&nbsp;<a
+										href="${ctx }/review/find?reviewId=${review.reviewId}">[신고]</a>
+								</div></li>
+						</c:forEach>
+					</ul>
+
+					<!-- Comment Form -->
+					<div class="comment-form-container">
+						<h6>Leave a Review</h6>
+						<form id="reviewform" method="post">
+							<input type="hidden" value="${alliance.company.comId}" id="comId">
+							<textarea class="span10" name="content"></textarea>
+							<div class="row">
+								<div class="span2">
+									<input type="button" class="btn btn-inverse" value="review"
+										onclick="reviewSubmit();">
+								</div>
+							</div>
+						</form>
+					</div>
+				</section>
+				<!-- Close comments section-->
+			</div>
+
+		</div>
+	</div>
+
+	<div class="footer-container">
+		<!-- Begin Footer -->
+		<div class="container">
+
+			<%@ include file="/views/footer.jspf"%>
+
+		</div>
+	</div>
+	<!-- End Footer -->
+
 	<!-- Scroll to Top -->
 	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+
 </body>
 </html>
