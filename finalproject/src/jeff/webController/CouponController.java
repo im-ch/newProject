@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import jeff.domain.Company;
 import jeff.domain.Coupon;
+import jeff.service.CompanyService;
 import jeff.service.CouponService;
 
 @Controller
@@ -24,6 +27,9 @@ public class CouponController {
 
 	@Autowired
 	private CouponService service;
+	
+	@Autowired
+	private CompanyService companyService;
 	
 	@RequestMapping("find")
 	public ModelAndView FindCoupon(int couponId){
@@ -36,13 +42,13 @@ public class CouponController {
 	
 	@RequestMapping(value="regist", method=RequestMethod.POST)
 	public String registCoupon(Coupon coupon, HttpServletRequest req){
-//		HttpSession session = req.getSession();
+		HttpSession session = req.getSession();
 		
 //		if (session == null || session.getAttribute("comId") == null) {
 //			return "redirect:login.jsp";
 //		}
-//		String comId = (String) session.getAttribute("comId");
-		coupon.setComId("111");
+		String comId = (String) session.getAttribute("comId");
+		coupon.setComId(comId);
 		System.out.println(coupon.getExpiryDate());
 		service.registCoupon(coupon);
 //		return "redirect:~~~~~~~MyPage?comId=" + coupon.getComId();
@@ -93,6 +99,8 @@ public class CouponController {
 		service.updateCoupon(coupon);
 		return "redirect:findList";
 	}
+	
+//	기업회원이 헤더에서 쿠폰리스트 확인
 	@RequestMapping("findList")
 	public String findCouponBycompany(HttpServletRequest req, Model model){
 //		HttpSession session = req.getSession();
@@ -101,9 +109,13 @@ public class CouponController {
 //			return "redirect:login.jsp";
 //		}
 //		String comId = (String) session.getAttribute("comId");
-		List<Coupon> list = service.findCouponByCompany("111");
-		model.addAttribute("couponList", list);
+		HttpSession session = req.getSession();
+		String comId = (String)session.getAttribute("comId");
+		List<Coupon> list = service.findCouponByCompany(comId);
+		Company company = companyService.findCompany(comId);
 		
+		model.addAttribute("company", company);
+		model.addAttribute("couponList", list);
 		return "companyCouponList";
 		
 	}

@@ -1,17 +1,12 @@
 package jeff.webController;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.sql.Date;
->>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
-=======
->>>>>>> sangjin
+
 import java.util.Calendar;
 import java.util.HashMap;
-=======
->>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +19,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import jeff.domain.CompanySales;
 import jeff.domain.Sales;
@@ -34,106 +33,72 @@ import jeff.service.SalesService;
 @Controller
 public class SalesController {
 
-   @Autowired
-   private SalesService salesService;
+	@Autowired
+	private SalesService salesService;
 
-   @RequestMapping(value = "/register", method = { RequestMethod.GET, RequestMethod.POST })
-   public String registSales(HttpServletRequest req, Sales sales) {
-      HttpSession session = req.getSession();
-
-<<<<<<< HEAD
-      String comId = (String) session.getAttribute("comId");
-=======
-      // String comId = (String) session.getAttribute("comId");
-      String comId = "111";
->>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
-      sales.setCompanyId(comId);
-      salesService.registSales(sales);
-
-      return "redirect:list";
-   }
-
-   @RequestMapping(value = "/remove")
-   public String removeSales(Sales sales) {
-
-      salesService.removeSales(sales.getSalesId());
-
-      return "redirect:list";
-   }
-
-   @RequestMapping(value = "/update", method = RequestMethod.GET)
-   public String updateSales(Sales sales, Model model) {
-
-      sales = salesService.findBySalesId(sales.getSalesId());
-
-      model.addAttribute("sales", sales);
-
-      return "modifySales";
-   }
-
-   public String modifySales(Sales sales) {
-
-      salesService.updateSales(sales);
-
-      return "redirect:list";
-   }
-
-   @RequestMapping(value = "/list")
-   public String findAllSales(HttpServletRequest req, Model model) {
-
-      HttpSession session = req.getSession();
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      String comId = (String) session.getAttribute("comId");
-=======
+	@RequestMapping(value = "/register", method = { RequestMethod.GET, RequestMethod.POST })
+	public String registSales(HttpServletRequest req, Sales sales, @RequestParam("date") String date) {
+		HttpSession session = req.getSession();
+		String [] da = date.split("/");
+		String dateSet = da[2]+"-"+da[0]+"-"+da[1];
+		Date day=java.sql.Date.valueOf(dateSet);
+		
 		String comId = (String) session.getAttribute("comId");
->>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
+		sales.setCompanyId(comId);
+		sales.setRegDate(day);
+		salesService.registSales(sales);
 
-      List<Sales> list = salesService.findSalesByCompany(comId);
+		return "redirect:/views/salesList.jsp";
+	}
 
-<<<<<<< HEAD
-      model.addAttribute("sales", list);
-=======
-      String comId = (String) session.getAttribute("comId");
+	@RequestMapping(value = "/remove")
+	public String removeSales(Sales sales) {
 
-      List<Sales> list = salesService.findSalesByCompany(comId);
->>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
+		salesService.removeSales(sales.getSalesId());
 
-      return "salesList";
-   }
+		return "redirect:list";
+	}
 
-   @RequestMapping(value = "/calendarDetailAjax", produces = "application/json")
-   public @ResponseBody CompanySales calendarDetailAjax(HttpServletRequest request, ModelMap modelMap,
-         @ModelAttribute Sales sales) throws Exception {
-      CompanySales companySales = new CompanySales();
-      List<Sales> list = salesService.findSalesByCompany("111");
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String updateSales(Sales sales, Model model) {
 
-      try {
-         companySales.setSalesList(list);
-      } catch (Exception e) {
-         e.printStackTrace();
-      }
-      return companySales;
-   }
-}
-=======
+		sales = salesService.findBySalesId(sales.getSalesId());
 
+		model.addAttribute("sales", sales);
 
-      System.out.println(list.size());
-      System.out.println(list.toString());
-      model.addAttribute("sales", list);
+		return "modifySales";
+	}
 
-      return "salesList";
-   }
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String updateSales(Sales sales) {
 
-<<<<<<< HEAD
+		salesService.updateSales(sales);
+
+		return "redirect:/views/salesList.jsp";
+	}
+
+	@RequestMapping(value = "/list")
+	public String findAllSales(HttpServletRequest req, Model model) {
+
+		HttpSession session = req.getSession();
+		String comId = (String) session.getAttribute("comId");
+		List<Sales> list = salesService.findSalesByCompany(comId);
+
+		model.addAttribute("sales", list);
+
+		return "salesList";
+	}
+
 	@RequestMapping(value = "/calendarDetailAjax", produces = "application/json")
 	public @ResponseBody CompanySales calendarDetailAjax(HttpServletRequest request, ModelMap modelMap,
 			@ModelAttribute Sales sales) throws Exception {
 		CompanySales companySales = new CompanySales();
-		List<Sales> list = salesService.findSalesByCompany("111");
+
+		HttpSession session = request.getSession();
+		String comId = (String) session.getAttribute("comId");
+
+		List<Sales> list = salesService.findSalesByCompany(comId);
+
 		try {
 			companySales.setSalesList(list);
 		} catch (Exception e) {
@@ -141,39 +106,59 @@ public class SalesController {
 		}
 		return companySales;
 	}
+	
+	@RequestMapping(value="day")
+	@ResponseBody
+	public String ttt(HttpServletRequest req){
+		HttpSession session = req.getSession();
+		
+		if (session == null || session.getAttribute("comId") == null) {
+			return "redirect:login.jsp";
+		}
+		String comId = (String) session.getAttribute("comId");
+		
+		JsonObject data = new JsonObject();
+		JsonObject objCol1 = new JsonObject();
+		JsonObject objCol2 = new JsonObject();
+		JsonArray arrCols = new JsonArray();
+		JsonArray arrRows = new JsonArray();
+		objCol1.addProperty("type", "string");
+		objCol2.addProperty("type", "number");
+		arrCols.add(objCol1);
+		arrCols.add(objCol2);
+		
+		SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");
+		List<Sales> list = salesService.findSalesByCompany(comId);
+		List<Sales> weekList = new ArrayList<>();
+		for(int i = 0 ; i < list.size() ; i++){
+			int today = Integer.parseInt(newFormat.format(list.get(0).getRegDate()).substring(8));
+//			int day = 
+//			if()
+		}
+		for(int i = 0 ; i < 7 ; i++){
+			JsonObject legend = new JsonObject();
+			legend.addProperty("v", "7/" + (i+2));
+			legend.add("f", null);
+			
+			JsonObject value = new JsonObject();
+			value.addProperty("v", 500 + i*100);
+			value.add("f", null);
+			
+			JsonArray cvalArr = new JsonArray();
+			cvalArr.add(legend);
+			cvalArr.add(value);
+			
+			JsonObject cvalObj = new JsonObject();
+			cvalObj.add("c", cvalArr);
+			
+			arrRows.add(cvalObj);
+		}
+
+		data.add("cols", arrCols);
+		data.add("rows", arrRows);
+		String str = data.toString();
+		System.out.println(str);
+		return str;
+	}
 }
->>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
-=======
-      String comId = (String) session.getAttribute("comId");
 
-      List<Sales> list = salesService.findSalesByCompany(comId);
-
-      model.addAttribute("sales", list);
-
-      return "salesList";
-   }
-
-=======
->>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
-   @RequestMapping(value = "/calendarDetailAjax", produces = "application/json")
-   public @ResponseBody CompanySales calendarDetailAjax(HttpServletRequest request, ModelMap modelMap,
-         @ModelAttribute Sales sales) throws Exception {
-      CompanySales companySales = new CompanySales();
-      List<Sales> list = salesService.findSalesByCompany("111");
-<<<<<<< HEAD
-
-=======
->>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
-      try {
-         companySales.setSalesList(list);
-      } catch (Exception e) {
-         e.printStackTrace();
-      }
-      return companySales;
-   }
-<<<<<<< HEAD
-}
->>>>>>> sangjin
-=======
-}
->>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d

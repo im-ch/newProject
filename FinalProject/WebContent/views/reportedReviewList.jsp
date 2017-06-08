@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Piccolo Theme</title>
+<title>Jeff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -26,20 +26,20 @@
 
 <!-- Favicons
 ================================================== -->
-<link rel="shortcut icon" href="img/favicon.ico">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="shortcut icon" href="${ctx }/resources/img/favicon.ico">
+<link rel="apple-touch-icon" href="${ctx }/resources/img/apple-touch-icon.png">
 <link rel="apple-touch-icon" sizes="72x72"
-	href="img/apple-touch-icon-72x72.png">
+	href="${ctx }/resources/img/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114"
-	href="img/apple-touch-icon-114x114.png">
+	href="${ctx }/resources/img/apple-touch-icon-114x114.png">
 
 <!-- JS
 ================================================== -->
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/jquery.flexslider.js"></script>
-<script src="js/jquery.custom.js"></script>
+<script src="${ctx }/resources/js/bootstrap.js"></script>
+<script src="${ctx }/resources/js/jquery.prettyPhoto.js"></script>
+<script src="${ctx }/resources/js/jquery.flexslider.js"></script>
+<script src="${ctx }/resources/js/jquery.custom.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -180,10 +180,10 @@
 		
     
 							
-	<script src="inner/js/jquery.min.js"></script>
-	<script src="inner/js/skel.min.js"></script>
-	<script src="inner/js/util.js"></script>
-	<script src="inner/js/main.js"></script>
+	<script src="${ctx }/resources/inner/js/jquery.min.js"></script>
+	<script src="${ctx }/resources/inner/js/skel.min.js"></script>
+	<script src="${ctx }/resources/inner/js/util.js"></script>
+	<script src="${ctx }/resources/inner/js/main.js"></script>
 	
  
 </body>

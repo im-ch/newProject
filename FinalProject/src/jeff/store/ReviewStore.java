@@ -11,7 +11,7 @@ public interface ReviewStore {
 
 	void deleteReview(int reviewId);
 
-//	Review selectReviewByReviewId(int reviewId);
+	Review selectReviewByReviewId(int reviewId);
 
 
 }

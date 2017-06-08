@@ -18,14 +18,14 @@ public interface CompanyMapper {
 	
 	Company selectCompany (String comId);
 	
-	Company selectCompanyByName(String comName);
+	List<Company> selectCompanyByName(String comName);
 	
 	boolean loginCompany (Company company);
 	
-	List<Company> selectCompanyByCategory(String category);
+	List<Company> selectCompanyByLocationAndCategory(HashMap<String, Object> map);
 	
 	List<Company> selectCompanyByLocationAndCompany(HashMap<String, Object> map);
 	
-	List<Company> selectCompanyByLocation(String category);
+	List<Company> selectCompanyByLocation(String location);
 
 }

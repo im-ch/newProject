@@ -3,6 +3,7 @@ package jeff.webController;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,39 +26,49 @@ public class QuestionController {
 	@Autowired
 	private QuestionService service;
 	
+<<<<<<< HEAD
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
 	public String registQuestion (Question question, Answer answer, HttpServletRequest req){
+=======
+	@RequestMapping(value = "regist", method = RequestMethod.POST)
+	public String registQuestion (Question question, HttpServletRequest req){
+>>>>>>> 81a3714ecc5b056939227882b4bcd70ce577aacd
 		service.registQuestion(question);
 		return "redirect:find?questionId=" + question.getQuestionId()+ "&answerId=" + answer.getAnswerId();
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateQuestion (Question question ,Answer answer){
+=======
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String updateQuestion (Question question){
+>>>>>>> 81a3714ecc5b056939227882b4bcd70ce577aacd
 		service.updateQuestion(question);
 		return "redirect:find?questionId=" + question.getQuestionId()+"&answerId=" + answer.getAnswerId();
 	}
 	
-	@RequestMapping("/remove")
+	@RequestMapping("remove")
 	public String removeQuestion (int questionId, HttpServletRequest req){
 		service.removeQuestion(questionId);
 		return "redirect:findAll";
 	}
 	
-	@RequestMapping("/find")
-	public String findQuestion (int questionId, Model model ){
+	@RequestMapping("find")
+	public String findQuestion (int questionId, Model model){
 		Question q = service.findQuestion(questionId);
 		model.addAttribute("question", q);
 		return "/questionDetail";
 	}
 
-	@RequestMapping("/findAll")
+	@RequestMapping("findAll")
 	public String findAllQuestion (Model model){
 		List<Question> list = service.findAllQuestion();
 		model.addAttribute("questionList", list);
 		return "/questionList";
 	}
 	
-	@RequestMapping(value="/findCategory",method=RequestMethod.POST)
+	@RequestMapping(value="findCategory",method=RequestMethod.POST)
 	public String findQuestionByCategory (String category,Model model){
 		List<Question> list = service.findQuestionByCategoty(category);
 		model.addAttribute("questionList",list);

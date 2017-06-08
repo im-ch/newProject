@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Piccolo Theme</title>
+<title>Jeff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -86,7 +86,7 @@
 			<article class="style1">
 				<span class="image"> <img
 					src="${ctx }/resources/images/1.jpg" alt="" />
-				</span> <a href="generic.html">
+				</span> <a href="${ctx }/company/locationAndCategory?category=Restaurant">
 					<h2>Restaurant</h2>
 					<div class="content">
 						<p>내 주변 제휴식당</p>
@@ -96,7 +96,7 @@
 			<article class="style2">
 				<span class="image"> <img
 					src="${ctx }/resources/images/2.jpg" alt="" />
-				</span> <a href="generic.html">
+				</span> <a href="${ctx }/company/locationAndCategory?category=Cafe">
 					<h2>Cafe</h2>
 					<div class="content">
 						<p>내 주변 제휴카페</p>
@@ -106,7 +106,7 @@
 			<article class="style3">
 				<span class="image"> <img
 					src="${ctx }/resources/images/3.jpg" alt="" />
-				</span> <a href="generic.html">
+				</span> <a href="${ctx }/company/locationAndCategory?category=Clothing">
 					<h2>Clothing Store</h2>
 					<div class="content">
 						<p>내 주변 제휴옷가게</p>
@@ -116,7 +116,7 @@
 			<article class="style4">
 				<span class="image"> <img
 					src="${ctx }/resources/images/4.jpg" alt="" />
-				</span> <a href="generic.html">
+				</span> <a href="${ctx }/company/locationAndCategory?category=Cinema">
 					<h2>Cinema</h2>
 					<div class="content">
 						<p>내 주변 제휴영화관</p>
@@ -126,7 +126,7 @@
 			<article class="style5">
 				<span class="image"> <img
 					src="${ctx }/resources/images/5.jpg" alt="" />
-				</span> <a href="generic.html">
+				</span> <a href="${ctx }/company/locationAndCategory?category=Department">
 					<h2>Department store</h2>
 					<div class="content">
 						<p>내 주변 제휴백화점</p>
@@ -136,7 +136,7 @@
 			<article class="style6">
 				<span class="image"> <img
 					src="${ctx }/resources/images/6.jpg" alt="" />
-				</span> <a href="generic.html">
+				</span> <a href="${ctx }/company/locationAndCategory?category=Pension">
 					<h2>Pension</h2>
 					<div class="content">
 						<p>내 주변 제휴펜션</p>

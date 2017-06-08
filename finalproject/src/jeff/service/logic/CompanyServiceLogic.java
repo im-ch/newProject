@@ -59,12 +59,12 @@ public class CompanyServiceLogic implements CompanyService{
 	}
 
 	@Override
-	public List<Company> findCompanyByCategory(String category) {
-		return store.selectCompanyByCategory(category);
+	public List<Company> findCompanyByLocationAndCategory(HashMap<String, Object> map) {
+		return store.selectCompanyByLocationAndCategory(map);
 	}
 
 	@Override
-	public Company findCompanyByName(String comName) {
+	public List<Company> findCompanyByName(String comName) {
 		
 		return store.selectCompanyByName(comName);
 	}

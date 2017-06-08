@@ -32,13 +32,11 @@
 		SET content = #{content}
 		WHERE reviewId = #{reviewId}
 	</update>
-	
 
-<!-- 
 	<select id="selectReviewByReviewId" parameterType="int" resultMap="reviewMap" resultType="Review">
 		SELECT reviewId, userId, comId, content, regDate, reported
 		FROM review_tb
 		WHERE reviewId = #{reviewId}
 	</select>
-	 -->
+	
   </mapper>

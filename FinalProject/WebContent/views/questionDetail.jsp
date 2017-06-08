@@ -27,20 +27,20 @@
 
 <!-- Favicons
 ================================================== -->
-<link rel="shortcut icon" href="img/favicon.ico">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="shortcut icon" href="${ctx }/img/favicon.ico">
+<link rel="apple-touch-icon" href="${ctx }/img/apple-touch-icon.png">
 <link rel="apple-touch-icon" sizes="72x72"
-	href="img/apple-touch-icon-72x72.png">
+	href="${ctx }/img/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114"
-	href="img/apple-touch-icon-114x114.png">
+	href="${ctx }/img/apple-touch-icon-114x114.png">
 
 <!-- JS
 ================================================== -->
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/jquery.flexslider.js"></script>
-<script src="js/jquery.custom.js"></script>
+<script src="${ctx }/js/bootstrap.js"></script>
+<script src="${ctx }/js/jquery.prettyPhoto.js"></script>
+<script src="${ctx }/js/jquery.flexslider.js"></script>
+<script src="${ctx }/js/jquery.custom.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -95,11 +95,7 @@
 
 
 			<c:choose>
-<<<<<<< HEAD
 				<c:when test="${loginedUser = null }">
-=======
-				<c:when test="${loginedUser eq null }">
->>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 					<h3>로그인을 하세요.</h3>
 				</c:when>
 				<c:otherwise>
@@ -127,18 +123,12 @@
 										<br>
 										<fmt:formatDate var="newFormattedDate"
 											value="${question.regDate }" pattern="yyyy-MM-dd" />
-<<<<<<< HEAD
-											카테고리:<input value="${question.category }" readonly>
-											작성자:<input value="${question.writerId }" readonly>
-											작성날짜:<input value="${newFormattedDate }" readonly>
-=======
                                  카테고리:<input
 											value="${question.category }" readonly>
                                  작성자:<input
 											value="${question.writerId }" readonly>
                                  작성날짜:<input
 											value="${newFormattedDate }" readonly>
->>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 									</c:otherwise>
 								</c:choose>
 								<br> <br> <br>
@@ -157,7 +147,6 @@
 								</form>
 							</div>
 							<br>
-<<<<<<< HEAD
 						</div>
 					</div>
 
@@ -169,42 +158,43 @@
 
 
 	<!--  <div id=answerArea">
-						<c:choose>
-							<c:when test="${loginedCompany==null }">
-							</c:when>
-							<c:otherwise> -->
+                  <c:choose>
+                     <c:when test="${loginedCompany==null }">
+                     </c:when>
+                     <c:otherwise> -->
 
 	<!--  <div id="answerArea">
 
-		<c:forEach var="answer" items="${answer.content }">
-			<table class="table" style="font-size: 13px; padding: 20px;">
-				<tr>
-					<td><strong>${answer.writerId }</strong></td>
-					<td class="text-right"><a class="glyphicon glyphicon-trash"
-						href="javascript:removeComment(${answer.answerId});"></a></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<p class="txt">${answer.content }</p>
-					</td>
-				</tr>
-			</table>
-		</c:forEach>
-	</div>
-	<div class="panel-footer">
-		<div class="write_area">
-			<form onsubmit="registComment(); return false;">
-				<div>
-					<input type="hidden" id="questinId" value="${question.questionId}">
-					<textarea class="input_write_comment" id="answer"
-						placeholder="댓글쓰기"></textarea>
-					<input type="submit" class="comment_submit" value="전송">
-				</div>
-			</form>
-		</div>
-	</div>
+      <c:forEach var="answer" items="${answer.content }">
+         <table class="table" style="font-size: 13px; padding: 20px;">
+            <tr>
+               <td><strong>${answer.writerId }</strong></td>
+               <td class="text-right"><a class="glyphicon glyphicon-trash"
+                  href="javascript:removeComment(${answer.answerId});"></a></td>
+            </tr>
+            <tr>
+               <td colspan="2">
+                  <p class="txt">${answer.content }</p>
+               </td>
+            </tr>
+         </table>
+      </c:forEach>
+   </div>
+   <div class="panel-footer">
+      <div class="write_area">
+         <form onsubmit="registComment(); return false;">
+            <div>
+               <input type="hidden" id="questinId" value="${question.questionId}">
+               <textarea class="input_write_comment" id="answer"
+                  placeholder="댓글쓰기"></textarea>
+               <input type="submit" class="comment_submit" value="전송">
+            </div>
+         </form>
+      </div>
+   </div>
 
 -->
+<<<<<<< HEAD
 	<c:choose>
 		<c:when test="${answers eq null || empty answers }">
 			<tr>
@@ -247,6 +237,8 @@
 		</div>
 	</div>
 
+=======
+>>>>>>> 81a3714ecc5b056939227882b4bcd70ce577aacd
 	<c:choose>
 		<c:when test="${answers eq null || empty answers }">
 			<tr>
@@ -279,7 +271,6 @@
 								style="width: 80%; height: 200px; resize: none;">${answer.content }</textarea>
 							<br>
 						</div>
->>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 						<input type="submit" value="답변수정완료">
 					</c:if>
 				</form>
@@ -299,11 +290,8 @@
 			value="${company.ownerName }">
 		<button type="submit">답변 등록</button>
 	</form>
-<<<<<<< HEAD
 	</c:otherwise>
 	</c:choose>
-=======
->>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 	<div class="row">
 		<div class="12u">
 			<div id="copyright">
@@ -316,18 +304,22 @@
 	</div>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> f19ae54054c9610a9539ae011508ff1e94bbe72d
 =======
 >>>>>>> sangjin
+=======
+>>>>>>> 81a3714ecc5b056939227882b4bcd70ce577aacd
 	<script src="inner/js/jquery.min.js"></script>
 	<script src="inner/js/skel.min.js"></script>
 	<script src="inner/js/util.js"></script>
 	<script src="inner/js/main.js"></script>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	
 =======
@@ -338,5 +330,9 @@
 
 
 >>>>>>> sangjin
+=======
+
+
+>>>>>>> 81a3714ecc5b056939227882b4bcd70ce577aacd
 </body>
 </html>

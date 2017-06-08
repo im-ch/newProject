@@ -1,5 +1,7 @@
 package jeff.service.logic;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +36,6 @@ public class SalesServiceLogic implements SalesService {
 
 	@Override
 	public List<Sales> findSalesByCompany(String companyId) {
-		
-		
 		return store.selectSalesByCompany(companyId);
 	}
 

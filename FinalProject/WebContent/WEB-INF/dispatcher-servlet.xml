@@ -6,19 +6,7 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
-   <context:component-scan base-package="jeff" />
-   
-   <mvc:annotation-driven />
-   <mvc:default-servlet-handler />
-   <mvc:resources location="/resources/" mapping="/resources/**" />
-   
-   <bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/views/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
-
-
+	<context:component-scan base-package="jeff" />
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<!-- @ResponseBody로 String 처리할때 한글처리 -->
@@ -32,11 +20,9 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 	<mvc:default-servlet-handler />
 	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:resources mapping="/img/**" location="/img/" />
 
    <bean id="viewResolver"
       class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -50,9 +36,4 @@
     </bean>
 
 
->>>>>>> 75fdce9e41d3aad4ce7e48897fa9e0db704c7903
-=======
-
-	
->>>>>>> sangjin
 </beans>

@@ -38,9 +38,9 @@ public class ReviewServiceLogic implements ReviewService{
 
 	
 
-//	@Override
-//	public Review findReviewByReviewId(int reviewId) {
-//		return store.selectReviewByReviewId(reviewId);
-//	}
+	@Override
+	public Review findReviewByReviewId(int reviewId) {
+		return store.selectReviewByReviewId(reviewId);
+	}
 	
 }
