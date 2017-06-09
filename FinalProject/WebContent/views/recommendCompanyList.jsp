@@ -68,6 +68,7 @@
                 <li><a href="#" class="Department">Department store</a></li>
                 <li><a href="#" class="기타">기타</a></li>
             </ul>
+            
             <div class="row clearfix">
                 <ul class="gallery-post-grid holder">
 				

@@ -13,13 +13,13 @@
 ================================================== -->
 <link href='http://fonts.googleapis.com/css?family=Oswald'
 	rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="${ctx }/resources/css/bootstrap.css">
+<link rel="stylesheet" href="${ctx }/resources/css/bootstrap.css?ver=10">
 <link rel="stylesheet"
 	href="${ctx }/resources/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="${ctx }/resources/css/prettyPhoto.css" />
 <link rel="stylesheet" href="${ctx }/resources/css/flexslider.css" />
-<link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css">
-<link rel="stylesheet" href="${ctx }/resources/inner/css/main.css" />
+<link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css?ver=13">
+<link rel="stylesheet" href="${ctx }/resources/inner/css/main.css?ver=403" />
 
 
 <!-- Favicons

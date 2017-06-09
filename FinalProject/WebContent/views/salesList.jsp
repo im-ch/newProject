@@ -20,7 +20,7 @@
 	href="${ctx }/resources/css/bootstrap-responsive.css">
 <link rel="stylesheet"
 	href="${ctx }/resources/css/jquery.lightbox-0.5.css">
-<link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css">
+<link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css?ver=2">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -89,8 +89,8 @@
 </script>
 <style type='text/css'>
 body {
-	margin-top: 40px;
-	text-align: center;
+	
+	
 	font-size: 14px;
 	font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
 }
