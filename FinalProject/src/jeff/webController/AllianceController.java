@@ -14,9 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jeff.common.exception.YzRuntimeException;
 import jeff.domain.Alliance;
+import jeff.domain.CompanyImage;
+import jeff.domain.Coupon;
 import jeff.domain.Review;
 import jeff.service.AllianceService;
+import jeff.service.CompanyImageService;
 import jeff.service.CompanyService;
+import jeff.service.CouponService;
 import jeff.service.ReviewService;
 
 @Controller
@@ -30,7 +34,13 @@ public class AllianceController {
 	private CompanyService companyService;
 
 	@Autowired
+	private CompanyImageService imgService;
+
+	@Autowired
 	private ReviewService reviewService;
+
+	@Autowired
+	private CouponService couponService;
 
 	@RequestMapping(value = "regist", method = RequestMethod.POST)
 	public String registAlliance(Alliance alliance, HttpServletRequest req) {
@@ -91,11 +101,19 @@ public class AllianceController {
 
 	@RequestMapping(value = "companyDetail")
 	public String detailAllianceCompany(String comId, Model model, HttpServletRequest req) {
-	
+
 		Alliance alliance = service.findAlliance(comId);
 		List<Review> review = reviewService.findAllReview(comId);
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
+		List<CompanyImage> img = imgService.findCompanyImageList(comId);
+		
+		couponService.removeExprCoupon();
+		
+		List<Coupon> couponList = couponService.findCouponByCompany(comId);
+		
+		model.addAttribute("coupon", couponList);
+		model.addAttribute("img", img);
 		model.addAttribute("userId", userId);
 		model.addAttribute("alliance", alliance);
 		model.addAttribute("review", review);

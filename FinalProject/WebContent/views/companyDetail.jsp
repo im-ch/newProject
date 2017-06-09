@@ -80,28 +80,46 @@
 				}
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert("잠시 후 다시 시도해 주세요");
+				alert("로그인 후 이용하실 수 있는 서비스 입니다.");
 			}
 		});
 	}
 </script>
 <script type="text/javascript">
-	function modify() {
-		var comId = $("#comId").val();
-		var content = $("#reviewform").serialize();
-		
+function modifyForm(reviewId){
+	console.log(reviewId);
+	        var str;
+			var data = $("#content"+reviewId).text();
+			 var form = $('<form></form>');
+			    form.attr('action', 'modify(reviewId);');
+			    form.attr('method', 'post');
+			    form.appendTo($("#modify1"+reviewId));
+			    var idx = $("<textarea class='span10' id='mcontent'>"+ data +"</textarea>");
+			    var btn = $("<input type='button' class='btn btn-inverse' value='수정' onclick='modify("+reviewId+");'>")
+			    form.append(idx);
+			    form.append(btn);
+		}
+</script>
+
+
+<script type="text/javascript">
+	function modify(reviewId) {
+		var str = $("#mcontent").val();
+		console.log(str);
+		var content = str.trim();
+		console.log(content);
 		$.ajax({
-			url : "${ctx}/review/regist",
+			url : "${ctx}/review/update",
 			type : "POST",
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
 			data : {
-				comId : comId, content : content
+				reviewId : reviewId, content : content
 			},
 			success : function(data) {
-				if(data=='regist'){
-					alert("후기가 등록되었습니다.");
+				if(data=='update'){
+					alert("후기가 수정되었습니다.");
 					 window.location.reload();
-				}
+					 }
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				alert("잠시 후 다시 시도해 주세요");
@@ -131,14 +149,39 @@
 		});
 	}
 </script>
+
+<script type="text/javascript">
+	function coupon(couponId) {
+		$.ajax({
+			url : "${ctx}/userCoupon/register",
+			type : "GET",
+			data : {
+				couponId : couponId
+			},
+			success : function(data) {
+				if (data == 'true') {
+					alert("쿠폰이 발급되었습니다.");
+				} else if (data == 'false') {
+					alert("이미 발급된 쿠폰입니다.");
+				} else if (data == 'login'){
+					alert("로그인 후 이용하실 수 있습니다.")
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("잠시 후 다시 시도해 주세요");
+			}
+		});
+	}
+</script>
 </head>
 <body>
 	<div class="color-bar-1"></div>
 	<div class="color-bar-2 color-bg"></div>
 
 	<div class="container main-container">
-
-		<%@ include file="/views/header.jspf"%>
+		<header>
+			<%@ include file="/views/header.jspf"%>
+		</header>
 
 		<!-- Page Content
     ================================================== -->
@@ -155,22 +198,22 @@
 					<h5 class="title-bg">Pictures</h5>
 
 					<div class="row">
-						<div class="span2">
-							<img src="${ctx }/resources/img/gallery/gallery-img-1-6col.jpg"
-								alt="Image" class="thumbnail">
-						</div>
-						<div class="span2">
-							<img src="${ctx }/resources/img/gallery/gallery-img-1-6col.jpg"
-								alt="Image" class="thumbnail">
-						</div>
-						<div class="span2">
-							<img src="${ctx }/resources/img/gallery/gallery-img-13-6col.jpg"
-								alt="Image" class="thumbnail">
-						</div>
-						<div class="span2">
-							<img src="${ctx }/resources/img/gallery/gallery-img-14-6col.jpg"
-								alt="Image" class="thumbnail">
-						</div>
+						<c:choose>
+							<c:when test="${images eq null || empty images }">
+								<tr>
+									<td colspan="6" align="center">등록된 기업 이미지가 없습니다.</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${img }" var="img">
+									<div class="span2">
+										<img src="C:/Image/${img.fileName }" alt="Image"
+											class="thumbnail">
+									</div>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+
 					</div>
 				</div>
 				<!--End page content column-->
@@ -198,54 +241,20 @@
 				<div class="container" style="margin: 0 auto;">
 					<h3>Coupon</h3>
 				</div>
+				<c:forEach items="${coupon }" var="coupon">
 				<div class="ih-item circle effect2 left_to_right"
 					style="float: left;">
-					<a href="#">
+					<a onclick="coupon(${coupon.couponId});">
 						<div class="img">
 							<img src="${ctx }/resources/images/circ_img1.jpg" alt="img">
 						</div>
 						<div class="info">
-							<h3>소주 1+1</h3>
-							<p>쿠폰받기!(~6/2)</p>
+							<h3>${coupon.couponName }</h3>
+							<p>${coupon.expiryDate }</p>
 						</div>
 					</a>
 				</div>
-				<div class="ih-item circle effect2 left_to_right"
-					style="float: left;">
-					<a href="#">
-						<div class="img">
-							<img src="${ctx }/resources/images/circ_img2.jpg" alt="img">
-						</div>
-						<div class="info">
-							<h3>수육1000원 할인</h3>
-							<p>쿠폰받기!(~6/2)</p>
-						</div>
-					</a>
-				</div>
-				<div class="ih-item circle effect2 left_to_right"
-					style="float: left;">
-					<a href="#">
-						<div class="img">
-							<img src="${ctx }/resources/images/circ_img3.jpg" alt="img">
-						</div>
-						<div class="info">
-							<h3>사이다 서비스</h3>
-							<p>쿠폰받기!(~6/2)</p>
-						</div>
-					</a>
-				</div>
-				<div class="ih-item circle effect2 left_to_right"
-					style="float: left;">
-					<a href="#">
-						<div class="img">
-							<img src="${ctx }/resources/images/circ_img4.jpg" alt="img">
-						</div>
-						<div class="info">
-							<h3>밥 한공기 더</h3>
-							<p>쿠폰받기!(~6/2)</p>
-						</div>
-					</a>
-				</div>
+				</c:forEach>
 			</div>
 			<br> <br> <br> <br> <br> <br> <br>
 			<br> <br> <br> <br> <br> <br> <br>
@@ -261,21 +270,30 @@
 								alt="Image" /> <span class="comment-name">${review.userId }</span>&nbsp;&nbsp;&nbsp;
 								<span class="comment-date">${review.regDate } | <c:if
 										test="${userId eq review.userId }">
-										<a href="#" onclick="modify();">수정</a>/<a
+										<a onclick="modifyForm(${review.reviewId});">수정</a>/<a
 											onclick="remove(${review.reviewId});">삭제</a>
 									</c:if></span>
-								<div class="comment-content">${review.content }&nbsp;&nbsp;<a
-										href="${ctx }/review/find?reviewId=${review.reviewId}">[신고]</a>
-								</div></li>
+								<div class="comment-content" id="content${review.reviewId}">${review.content }&nbsp;&nbsp;
+								</div> <c:if
+										test="${userId eq review.userId }"><a href="${ctx }/review/find?reviewId=${review.reviewId}">[신고]</a></c:if></li>
+							<div id="modify1${review.reviewId}"></div>
 						</c:forEach>
 					</ul>
+
 
 					<!-- Comment Form -->
 					<div class="comment-form-container">
 						<h6>Leave a Review</h6>
 						<form id="reviewform" method="post">
 							<input type="hidden" value="${alliance.company.comId}" id="comId">
-							<textarea class="span10" name="content"></textarea>
+							<c:choose>
+								<c:when test="${userId ne null }">
+									<textarea class="span10" name="content" id="content1"></textarea>
+								</c:when>
+								<c:otherwise>
+									<p>로그인 한 회원만 후기를 작성할 수 있습니다.</p>
+								</c:otherwise>
+							</c:choose>
 							<div class="row">
 								<div class="span2">
 									<input type="button" class="btn btn-inverse" value="review"

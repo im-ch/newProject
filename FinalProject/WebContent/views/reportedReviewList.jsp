@@ -3,13 +3,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Jeff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 
 <!-- CSS
 ================================================== -->
@@ -41,6 +40,21 @@
 <script src="${ctx }/resources/js/jquery.prettyPhoto.js"></script>
 <script src="${ctx }/resources/js/jquery.flexslider.js"></script>
 <script src="${ctx }/resources/js/jquery.custom.js"></script>
+
+<script src="${ctx }/js/jquery.min.js"></script>
+<script src="${ctx }/js/jquery.dropotron.min.js"></script>
+<script src="${ctx }/js/skel.min.js"></script>
+<script src="${ctx }/js/util.js"></script>
+<script src="${ctx }/js/main.js"></script>
+
+
+
+
+<script src="${ctx }/resources/inner/js/jquery.min.js"></script>
+<script src="${ctx }/resources/inner/js/skel.min.js"></script>
+<script src="${ctx }/resources/inner/js/util.js"></script>
+<script src="${ctx }/resources/inner/js/main.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -74,92 +88,97 @@
 
 </head>
 
-<body class="home">
+<body>
+
+
 	<!-- Color Bars (above header)-->
 	<div class="color-bar-1"></div>
 	<div class="color-bar-2 color-bg"></div>
 
-	<div class="container">
+	<div class="container main-container">
 
 		<div class="row header">
-			<!-- Begin Header -->
 
+			<div style="float: right;">
+				<header>
+					<%@ include file="header.jspf"%>
+				</header>
+			</div>
+			<br> <br>
+		</div>
+		<div class="span7 navigation">
 
-			<!-- Main Navigation
-        ================================================== -->
-
-			<div style="float: right;"><%@ include file="header.jspf"%></div>
-			<br>
-			<br>
-
-			<div class="span7 navigation">
-				<div class="navbar hidden-phone"></div>
-				<!-- End Header -->
-
-				<h1>Reported review</h1>
-				<div style="float: right"></div>
-
-				<table class="table table-striped table-bordered table-hover">
+			<h1>Reported review</h1>
+			<div class="chart">
+				<table>
 					<colgroup>
-						<col width="100" />
+					<colgroup>
+
 						<col width="200" />
 						<col width="100" />
+						<col width="150" />
+						<col width="150" />
+						<col width="150" />
+						<col width="300" />
 						<col width="200" />
-						<col width="200" />
-						<col width="*" />
-						<col width="100" />
+
 					</colgroup>
-					<thead>
-						<tr>
-							<td style="float: middle" width="900">내용</td>
-							<td style="float: middle" width="900">이름</td>
-							<td style="float: middle" width="900">작성시간</td>
-						</tr>
-					</thead>
-					<tbody>
-						<c:choose>
-							<c:when test="${reportReviews eq null || empty reportReviews }">
+					<tr>
+						<th>No</th>
+						<th>Image</th>
+						<th colspan="1">Content</th>
+						<th colspan="1"></th>
+						<th>UserId</th>
+						<th>Date</th>
+						<th>Conduct</th>
+					</tr>
+					<c:choose>
+						<c:when test="${reviews eq null || empty reviews }">
+							<tr>
+								<td colspan="6" align="center">신고된 게시물이 없습니다.</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${reviews}" var="review" varStatus="sts">
+								<fmt:formatDate var="newFormattedDate"
+									value="${review.regDate }" pattern="yyyy-MM-dd " />
 								<tr>
-									<td colspan="7" align="center">신고받은 게시물이 없습니다.</td>
+									<td class="ranking"><span class="1">${sts.count }</span></td>
+
+									<td class="albumimg"><img src="이미지 " alt="sample">
+									<td class="subject" align="center" width="2000px">
+										<p title="${review.content }">
+										<div class="span8">
+											<a href="${ctx }/views/find?reviewId=${review.reviewId }">${review.content }</a>
+										</div>
+										</p>
+									</td>
+									<td class="subject" align="center"></td>
+									<td class="production">
+										<p class="pro" title="nickName">${review.userId}</p>
+									</td>
+
+									<td class="share">${newFormattedDate }</td>
+									<td class="play">
+										<div tabindex="0" class="chart_play">
+
+											<a
+												href="${ctx }/reportReview/remove?reviewId=${review.reviewId}">[보류]</a>
+											<a
+												href="${ctx }/reportReview/remove?reviewId=${review.reviewId}">[삭제]</a>
+										</div>
+									</td>
 								</tr>
-							</c:when>
-							<c:otherwise>
-								<c:forEach items="${reviews}" var="review" varStatus="status">
-									<fmt:formatDate var="newFormattedDate"
-										value="${review.regDate }" pattern="yyyy-MM-dd HH:mm:ss" />
-									<tr>
-										<td><a
-											href="${ctx }/views/find?reviewId=${review.reviewId }">${review.content }</a></td>
-										<td>${review.userId}</td>
-										<td>${newFormattedDate }</td>
-									</tr>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-					</tbody>
-
-
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</table>
-
-
-				<div align="right"></div>
 			</div>
 
 
-			<%@ include file="/views/footer.jspf"%>
-			<!-- Scripts -->
-			<script src="${ctx }/js/jquery.min.js"></script>
-			<script src="${ctx }/js/jquery.dropotron.min.js"></script>
-			<script src="${ctx }/js/skel.min.js"></script>
-			<script src="${ctx }/js/util.js"></script>
-			<script src="${ctx }/js/main.js"></script>
+		</div>
+	</div>
 
-
-
-
-			<script src="${ctx }/resources/inner/js/jquery.min.js"></script>
-			<script src="${ctx }/resources/inner/js/skel.min.js"></script>
-			<script src="${ctx }/resources/inner/js/util.js"></script>
-			<script src="${ctx }/resources/inner/js/main.js"></script>
+	<%@ include file="/views/footer.jspf"%>
 </body>
 </html>

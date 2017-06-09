@@ -66,7 +66,7 @@ public class ReportReviewController {
 	@RequestMapping(value = "/remove")
 	public String removeReportReview(int reviewId) {
 		service.removeReportReview(reviewId);
-		return "findList";
+		return "redirect:/reportReview/findList";
 	}
 
 }
