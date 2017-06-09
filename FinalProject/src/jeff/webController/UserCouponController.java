@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jeff.domain.Coupon;
@@ -25,27 +26,26 @@ public class UserCouponController {
 	private CouponService couponService;
 
 	@RequestMapping(value = "/register")
-	public String registCoupon(HttpServletRequest req, int couponId) {
+	public @ResponseBody String registCoupon(HttpServletRequest req, int couponId) {
 
 		HttpSession session = req.getSession();
 
 		if (session == null || session.getAttribute("userId") == null) {
-			return "redirect:login.jsp";
+			return "login";
 		}
 
 		String userId = (String) session.getAttribute("userId");
-
+		
 		List<Integer> list = userCouponService.findUserCoupons(userId);
 
 		for (int i = 0; i < list.size(); i++) {
 			if (couponId == list.get(i)) {
-				System.out.println("이미 등록된 쿠폰입니다.");
-				return "alliance/companyDetail";
+				return "false";
 			}
 		}
 
 		userCouponService.registUserCoupon(userId, couponId);
-		return "redirect:userCoupon/myCoupons";
+		return "true";
 
 	}
 

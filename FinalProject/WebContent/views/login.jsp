@@ -45,7 +45,7 @@
              <span class="add-on"><i class="icon-lock"></i></span><input class="span2" name="loginPassword" id="loginPassword" size="16" type="password" placeholder="Password">
          </div>
             <button class="btn btn-large" type="submit">Login</button>&nbsp;&nbsp;
-            <button class="btn btn-large btn-warning" type="button" onclick="location.href='join.jsp;'">Join</button>
+            <button class="btn btn-large btn-warning" type="button" onclick="location.href='welcomeJoin.jsp'">Join</button>
             <br><br><br><br>
          </div>
          </form>

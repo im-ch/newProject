@@ -18,10 +18,10 @@ public class AnswerController {
 	@Autowired
 	private QuestionService service;
 	
-	@RequestMapping(value = "/registAnswer", method = RequestMethod.POST)
+	@RequestMapping(value = "registAnswer", method = RequestMethod.POST)
 	public String registAnswer(Answer answer) {
 		service.registAnswer(answer);
-		return "redirect:questionDetail?QuestionId=" + answer.getQuestionId();
+		return "redirect:/question/find?questionId=" + answer.getQuestionId();
 	}
 	
 	@RequestMapping("/removeAnswer")

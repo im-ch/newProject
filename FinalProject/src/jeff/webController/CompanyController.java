@@ -112,14 +112,6 @@ public class CompanyController {
 
    }
 
-//   @RequestMapping("findByCategory")
-//   public ModelAndView findByCategory(@RequestParam("category") String category) {
-//      ModelAndView modelAndView = new ModelAndView("/companyList");
-//      modelAndView.addObject("companyList", service.findCompanyByCategory(category));
-//      return modelAndView;
-//
-//   }
-
    @RequestMapping("findBycomName")
    public ModelAndView findBycomName(@RequestParam("comName") String comName) {
       ModelAndView modelAndView = new ModelAndView("companyList.jsp");

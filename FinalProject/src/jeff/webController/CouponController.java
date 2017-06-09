@@ -14,12 +14,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jeff.domain.Company;
 import jeff.domain.Coupon;
 import jeff.service.CompanyService;
 import jeff.service.CouponService;
+import jeff.service.UserCouponService;
 
 @Controller
 @RequestMapping("coupon")
@@ -30,7 +32,7 @@ public class CouponController {
 	
 	@Autowired
 	private CompanyService companyService;
-	
+
 	@RequestMapping("find")
 	public ModelAndView FindCoupon(int couponId){
 		Coupon coupon = service.findCoupon(couponId);
@@ -44,14 +46,14 @@ public class CouponController {
 	public String registCoupon(Coupon coupon, HttpServletRequest req){
 		HttpSession session = req.getSession();
 		
-//		if (session == null || session.getAttribute("comId") == null) {
-//			return "redirect:login.jsp";
-//		}
+		if (session == null || session.getAttribute("comId") == null) {
+			return "login";
+		}
 		String comId = (String) session.getAttribute("comId");
 		coupon.setComId(comId);
-		System.out.println(coupon.getExpiryDate());
 		service.registCoupon(coupon);
-//		return "redirect:~~~~~~~MyPage?comId=" + coupon.getComId();
+
+		
 		return "redirect:findList";
 	}
 	

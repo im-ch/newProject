@@ -42,146 +42,53 @@
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="${ctx }/resources/js/bootstrap.js"></script>
 <script src="${ctx }/resources/js/jquery.custom.js"></script>
-
+<script type='text/javascript'>
+	function reviewSubmit() {
+		alert("신고가 완료되었습니다.");
+	}
+</script>
 </head>
 
 <body>
+
 	<div class="color-bar-1"></div>
 	<div class="color-bar-2 color-bg"></div>
 
 	<div class="container main-container">
 
-		<div class="row header">
-			<!-- Begin Header -->
-
-			<!-- Logo
+		<%@ include file="/views/header.jspf"%>
+	<!-- Post Comments
         ================================================== -->
-			<div class="span5 logo">
-				<a href="index.htm"><img
-					src="${ctx }/resources/img/piccolo-logo.png" alt="" /></a>
-				<h5>Big Things... Small Packages</h5>
-			</div>
-
-			<!-- Main Navigation
-        ================================================== -->
-			<div class="span7 navigation">
-				<div class="navbar hidden-phone">
-
-					<ul class="nav">
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="index.htm">Home <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="index.htm">Full Page</a></li>
-								<li><a href="index-gallery.htm">Gallery Only</a></li>
-								<li><a href="index-slider.htm">Slider Only</a></li>
-							</ul></li>
-						<li><a href="features.htm">Features</a></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="page-full-width.htm">Pages <b
-								class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="page-full-width.htm">Full Width</a></li>
-								<li><a href="page-right-sidebar.htm">Right Sidebar</a></li>
-								<li><a href="page-left-sidebar.htm">Left Sidebar</a></li>
-								<li><a href="page-double-sidebar.htm">Double Sidebar</a></li>
-							</ul></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="gallery-4col.htm">Gallery <b
-								class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="gallery-3col.htm">Gallery 3 Column</a></li>
-								<li><a href="gallery-4col.htm">Gallery 4 Column</a></li>
-								<li><a href="gallery-6col.htm">Gallery 6 Column</a></li>
-								<li><a href="gallery-4col-circle.htm">Gallery 4 Round</a></li>
-								<li><a href="gallery-single.htm">Gallery Single</a></li>
-							</ul></li>
-						<li class="dropdown active"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="blog-style1.htm">Blog <b
-								class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="blog-style1.htm">Blog Style 1</a></li>
-								<li><a href="blog-style2.htm">Blog Style 2</a></li>
-								<li><a href="blog-style3.htm">Blog Style 3</a></li>
-								<li><a href="blog-style4.htm">Blog Style 4</a></li>
-								<li><a href="blog-single.htm">Blog Single</a></li>
-							</ul></li>
-						<li><a href="page-contact.htm">Contact</a></li>
-					</ul>
-
+	<section class="comments">
+		<h1 class="title-bg">
+			<a name="comments"></a>REPORT REVIEW
+		</h1>
+		<ul>
+			<li><img src="${ctx }/resources/img/user-avatar.jpg" alt="Image" />
+				<span class="comment-name">${review.userId }</span>&nbsp;&nbsp;&nbsp;
+				<span class="comment-date">${review.regDate } </span>
+				<div class="comment-content">${review.content }&nbsp;&nbsp;</div></li>
+		</ul>
+		<!-- Comment Form -->
+		<div class="comment-form-container">
+			<h3>신고 사유를 작성해주세요. (허위 신고시 제재가 가해질 수 있습니다.)</h3>
+			<form action="${ctx }/reportReview/regist" id="report" method="post">
+				<input type="hidden" value="${review.comId }" name="comId">
+				<input type="hidden" value="${review.reviewId }" name="reviewId">
+				<textarea class="span10" name="reportReason"></textarea>
+				<div class="row">
+					<div class="span1">
+						<input type="submit" class="btn btn-inverse" value="REPORT"
+							onclick="complete();">
+					</div>
+					<div class="span3">
+						<input type="button" class="btn btn-inverse" value="CANCEL">
+					</div>
 				</div>
-
-				<!-- Mobile Nav
-            ================================================== -->
-				<form action="#" id="mobile-nav" class="visible-phone">
-					<div class="mobile-nav-select">
-						<select
-							onchange="window.open(this.options[this.selectedIndex].value,'_top')">
-							<option value="">Navigate...</option>
-							<option value="index.htm">Home</option>
-							<option value="index.htm">- Full Page</option>
-							<option value="index-gallery.htm">- Gallery Only</option>
-							<option value="index-slider.htm">- Slider Only</option>
-							<option value="features.htm">Features</option>
-							<option value="page-full-width.htm">Pages</option>
-							<option value="page-full-width.htm">- Full Width</option>
-							<option value="page-right-sidebar.htm">- Right Sidebar</option>
-							<option value="page-left-sidebar.htm">- Left Sidebar</option>
-							<option value="page-double-sidebar.htm">- Double Sidebar</option>
-							<option value="gallery-4col.htm">Gallery</option>
-							<option value="gallery-3col.htm">- 3 Column</option>
-							<option value="gallery-4col.htm">- 4 Column</option>
-							<option value="gallery-6col.htm">- 6 Column</option>
-							<option value="gallery-4col-circle.htm">- Gallery 4 Col
-								Round</option>
-							<option value="gallery-single.htm">- Gallery Single</option>
-							<option value="blog-style1.htm">Blog</option>
-							<option value="blog-style1.htm">- Blog Style 1</option>
-							<option value="blog-style2.htm">- Blog Style 2</option>
-							<option value="blog-style3.htm">- Blog Style 3</option>
-							<option value="blog-style4.htm">- Blog Style 4</option>
-							<option value="blog-single.htm">- Blog Single</option>
-							<option value="page-contact.htm">Contact</option>
-						</select>
-					</div>
-				</form>
-
-			</div>
-
+			</form>
 		</div>
-		<!-- End Header -->
-
-
-		<!-- Post Comments
-        ================================================== -->
-		<section class="comments">
-			<h1 class="title-bg">
-				<a name="comments"></a>REPORT REVIEW
-			</h1>
-				<ul>
-					<li><img src="${ctx }/resources/img/user-avatar.jpg" alt="Image" /> <span
-						class="comment-name">황희현</span>&nbsp;&nbsp;&nbsp; <span
-						class="comment-date">2017/05/29 </span>
-						<div class="comment-content">
-							님들님들 여기 개노맛 가지마셈&nbsp;&nbsp;
-						</div></li>
-				</ul>
-			<!-- Comment Form -->
-			<div class="comment-form-container">
-				<h3>신고 사유를 작성해주세요. (허위 신고시 제재가 가해질 수 있습니다.)</h3>
-				<form action="#" id="comment-form">
-					<textarea class="span10"></textarea>
-					<div class="row">
-						<div class="span1">
-							<input type="submit" class="btn btn-inverse" value="REPORT">
-						</div>
-						<div class="span3">
-							<input type="button" class="btn btn-inverse" value="CANCEL">
-						</div>
-					</div>
-				</form>
-			</div>
-		</section>
-		<!-- Close comments section-->
+	</section>
+	<!-- Close comments section-->
 
 	</div>
 	<!--Close container row-->
@@ -194,8 +101,7 @@
 			<div class="row footer-row">
 				<div class="span3 footer-col">
 					<h5>About Us</h5>
-					<img src="img/piccolo-footer-logo.png" alt="Piccolo" /><br />
-					<br />
+					<img src="img/piccolo-footer-logo.png" alt="Piccolo" /><br /> <br />
 					<address>
 						<strong>Design Team</strong><br /> 123 Main St, Suite 500<br />
 						New York, NY 12345<br />

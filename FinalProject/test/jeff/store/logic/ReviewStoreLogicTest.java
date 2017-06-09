@@ -49,9 +49,9 @@ public class ReviewStoreLogicTest {
 //	}
 
 //	@Test
-//	public void testSelectReviewByCompany() {
-//		List<Review> list = store.selectReviewByCompany("11");
-//		assertEquals(2, list.size());
+//	public void testSelectAllReview() {
+//		List<Review> list = store.selectReviewByCompany("111");
+//		assertEquals(3, list.size());
 //	}
 
 }

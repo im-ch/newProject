@@ -157,45 +157,8 @@
 	</div>
 
 
-	<!--  <div id=answerArea">
-                  <c:choose>
-                     <c:when test="${loginedCompany==null }">
-                     </c:when>
-                     <c:otherwise> -->
-
-	<!--  <div id="answerArea">
-
-      <c:forEach var="answer" items="${answer.content }">
-         <table class="table" style="font-size: 13px; padding: 20px;">
-            <tr>
-               <td><strong>${answer.writerId }</strong></td>
-               <td class="text-right"><a class="glyphicon glyphicon-trash"
-                  href="javascript:removeComment(${answer.answerId});"></a></td>
-            </tr>
-            <tr>
-               <td colspan="2">
-                  <p class="txt">${answer.content }</p>
-               </td>
-            </tr>
-         </table>
-      </c:forEach>
-   </div>
-   <div class="panel-footer">
-      <div class="write_area">
-         <form onsubmit="registComment(); return false;">
-            <div>
-               <input type="hidden" id="questinId" value="${question.questionId}">
-               <textarea class="input_write_comment" id="answer"
-                  placeholder="댓글쓰기"></textarea>
-               <input type="submit" class="comment_submit" value="전송">
-            </div>
-         </form>
-      </div>
-   </div>
-
--->
 	<c:choose>
-		<c:when test="${answers eq null || empty answers }">
+		<c:when test="${question.answerList eq null || empty question.answerList }">
 			<tr>
 				<td colspan="6" align="center">등록된 답변이 없습니다.</td>
 			</tr>
@@ -203,7 +166,7 @@
 		</c:when>
 		<c:otherwise>
 
-			<c:forEach items="${answer }" var="answer" varStatus="status">
+			<c:forEach items="${question.answerList }" var="answer" varStatus="status">
 
 
 				<p>${answer.content }</p>
@@ -215,7 +178,7 @@
 				</div>
 
 				<form action="${ctx }/answer/modifyAnswer" method="post">
-					<c:if test="${loginedCompany.comId eq answer.writerId }">
+					<c:if test="${loginedCompany.comId eq question.writerId }">
 						<input type="hidden" id="answerId" name="answerId"
 							value="${answer.answerId }">
 						<div>
@@ -240,13 +203,9 @@
 			id="content" name="content"></textarea>
 		<br> <input type="hidden" id="questionId" name="questionId"
 			value="${question.questionId }"> <input type="hidden"
-			id="comId" name="comId" value="${company.comId }"> <input
-			type="hidden" id="ownerName" name="ownerName"
-			value="${company.ownerName }">
+			id="writerId" name="writerId" value="${question.writerId}"> 
 		<button type="submit">답변 등록</button>
 	</form>
-	</c:otherwise>
-	</c:choose>
 	<div class="row">
 		<div class="12u">
 			<div id="copyright">

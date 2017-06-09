@@ -5,7 +5,7 @@ import java.util.List;
 import jeff.domain.Review;
 
 public interface ReviewMapper {
-	
+
 	void createReview(Review review);
 
 	void modifyReview(Review review);
@@ -14,5 +14,8 @@ public interface ReviewMapper {
 
 	Review selectReviewByReviewId(int reviewId);
 
+	List<Review> selectAllReview(String comId);
+	
+	void modifyReviewReport(Review review);
 
 }

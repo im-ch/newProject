@@ -1,5 +1,6 @@
 package jeff.store;
 
+import java.util.List;
 
 import jeff.domain.Review;
 
@@ -13,5 +14,7 @@ public interface ReviewStore {
 
 	Review selectReviewByReviewId(int reviewId);
 
-
+	List<Review> selectAllReview(String comId);
+	
+	void modifyReviewReport(Review review);
 }

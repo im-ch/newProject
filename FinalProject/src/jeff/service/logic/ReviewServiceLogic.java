@@ -12,8 +12,8 @@ import jeff.service.ReviewService;
 import jeff.store.ReviewStore;
 
 @Service
-public class ReviewServiceLogic implements ReviewService{
-	
+public class ReviewServiceLogic implements ReviewService {
+
 	@Autowired
 	private ReviewStore store;
 
@@ -21,6 +21,7 @@ public class ReviewServiceLogic implements ReviewService{
 	public void registReview(Review review) {
 		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		review.setRegDate(today);
+		
 		store.createReview(review);
 	}
 
@@ -36,11 +37,19 @@ public class ReviewServiceLogic implements ReviewService{
 		store.modifyReview(review);
 	}
 
-	
-
 	@Override
 	public Review findReviewByReviewId(int reviewId) {
 		return store.selectReviewByReviewId(reviewId);
 	}
-	
+
+	@Override
+	public List<Review> findAllReview(String comId) {
+		return store.selectAllReview(comId);
+	}
+
+	@Override
+	public void updateReviewReport(Review review) {
+		store.modifyReviewReport(review);
+	}
+
 }
