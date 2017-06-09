@@ -7,7 +7,14 @@ import jeff.domain.Review;
 public interface ReviewService {
 
 	public void registReview(Review review);
+
 	public void removeReview(int reviewId);
+
 	public void updateReview(Review review);
+
 	public Review findReviewByReviewId(int reviewId);
+
+	List<Review> findAllReview(String comId);
+	
+	void updateReviewReport(Review review);
 }

@@ -35,7 +35,6 @@ public class InterestingCompanyController {
 
    @RequestMapping(value = "/register")
    public @ResponseBody String registInterestingCompany(HttpServletRequest req, String comId) {
-      System.out.println("controller");
       HttpSession session = req.getSession();
       if (session == null || session.getAttribute("userId") == null) {
          return "redirect:login";
@@ -44,7 +43,6 @@ public class InterestingCompanyController {
       HashMap<String, Object> map = new HashMap<String, Object>();
 
       List<String> list = service.findInterestingCompany(userId);
-      System.out.println(list.size());
       if (list != null || list.size() > 0) {
          for (int i = 0; i < list.size(); i++) {
             if (list.get(i).equals(comId)) {

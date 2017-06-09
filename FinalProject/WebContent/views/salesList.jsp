@@ -171,7 +171,6 @@ function drawBasic() {
 								start : data.salesList[i].regDate
 							});
 						});
-						console.log(events);
 						callback(events);
 					}
 				});
