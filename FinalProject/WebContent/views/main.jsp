@@ -83,130 +83,95 @@
 		<section class="tiles">
 			<article class="style1">
 				<span class="image"> <img
-					src="${ctx }/resources/images/1.jpg" alt="" />
+					src="${ctx }/resources/images/restaurant.jpg" alt="" />
 				</span> <a href="${ctx }/company/locationAndCategory?category=Restaurant">
 					<h2>Restaurant</h2>
 					<div class="content">
-						<p>내 주변 제휴식당</p>
+						<p>주변 제휴식당!</p>
 					</div>
 				</a>
 			</article>
 			<article class="style2">
 				<span class="image"> <img
-					src="${ctx }/resources/images/2.jpg" alt="" />
+					src="${ctx }/resources/images/cafe.jpg" alt="" />
 				</span> <a href="${ctx }/company/locationAndCategory?category=Cafe">
 					<h2>Cafe</h2>
 					<div class="content">
-						<p>내 주변 제휴카페</p>
+						<p>주변 제휴카페!</p>
 					</div>
 				</a>
 			</article>
 			<article class="style3">
 				<span class="image"> <img
-					src="${ctx }/resources/images/3.jpg" alt="" />
+					src="${ctx }/resources/images/clothing.jpg" alt="" />
 				</span> <a href="${ctx }/company/locationAndCategory?category=Clothing">
 					<h2>Clothing Store</h2>
 					<div class="content">
-						<p>내 주변 제휴옷가게</p>
+						<p>주변 제휴 옷가게!</p>
 					</div>
 				</a>
 			</article>
 			<article class="style4">
 				<span class="image"> <img
-					src="${ctx }/resources/images/4.jpg" alt="" />
-				</span> <a href="${ctx }/company/locationAndCategory?category=Cinema">
-					<h2>Cinema</h2>
+					src="${ctx }/resources/images/bar.jpg" alt="" />
+				</span> <a href="${ctx }/company/locationAndCategory?category=Bar">
+					<h2>Bar</h2>
 					<div class="content">
-						<p>내 주변 제휴영화관</p>
+						<p>주변 제휴술집!</p>
 					</div>
 				</a>
 			</article>
 			<article class="style5">
 				<span class="image"> <img
-					src="${ctx }/resources/images/5.jpg" alt="" />
-				</span> <a href="${ctx }/company/locationAndCategory?category=Department">
-					<h2>Department store</h2>
+					src="${ctx }/resources/images/play.jpg" alt="" />
+				</span> <a href="${ctx }/company/locationAndCategory?category=Play">
+					<h2>Play</h2>
 					<div class="content">
-						<p>내 주변 제휴백화점</p>
+						<p>주변 놀거리!</p>
 					</div>
 				</a>
 			</article>
 			<article class="style6">
 				<span class="image"> <img
-					src="${ctx }/resources/images/6.jpg" alt="" />
-				</span> <a href="${ctx }/company/locationAndCategory?category=Pension">
-					<h2>Pension</h2>
+					src="${ctx }/resources/images/theater.jpg" alt="" />
+				</span> <a href="${ctx }/company/locationAndCategory?category=Theater">
+					<h2>Theater</h2>
 					<div class="content">
-						<p>내 주변 제휴펜션</p>
+						<p>주변 극장!</p>
 					</div>
 				</a>
 			</article>
 			<article class="style2">
 				<span class="image"> <img
-					src="${ctx }/resources/images/pic07.jpg" alt="" />
-				</span> <a href="generic.html">
-					<h2>Ipsum</h2>
+					src="${ctx }/resources/images/beauty.jpg" alt="" />
+				</span> <a href="${ctx }/company/locationAndCategory?category=Beauty">
+					<h2>Beauty</h2>
 					<div class="content">
-						<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-							veroeros et feugiat.</p>
+						<p>주변 뷰티 샵!</p>
 					</div>
 				</a>
 			</article>
 			<article class="style3">
 				<span class="image"> <img
-					src="${ctx }/resources/images/pic08.jpg" alt="" />
-				</span> <a href="generic.html">
-					<h2>Dolor</h2>
+					src="${ctx }/resources/images/pension.jpg" alt="" />
+				</span> <a href="${ctx }/company/locationAndCategory?category=Pension">
+					<h2>Pension</h2>
 					<div class="content">
-						<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-							veroeros et feugiat.</p>
+						<p>주변 숙박업소!</p>
 					</div>
 				</a>
 			</article>
 			<article class="style1">
 				<span class="image"> <img
-					src="${ctx }/resources/images/pic09.jpg" alt="" />
-				</span> <a href="generic.html">
-					<h2>Nullam</h2>
+					src="${ctx }/resources/images/etc.jpg" alt="" />
+				</span> <a href="${ctx }/company/locationAndCategory?category=etc">
+					<h2>etc</h2>
 					<div class="content">
-						<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-							veroeros et feugiat.</p>
+						<p>기타 업체</p>
 					</div>
 				</a>
 			</article>
-			<article class="style5">
-				<span class="image"> <img
-					src="${ctx }/resources/images/pic10.jpg" alt="" />
-				</span> <a href="generic.html">
-					<h2>Ultricies</h2>
-					<div class="content">
-						<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-							veroeros et feugiat.</p>
-					</div>
-				</a>
-			</article>
-			<article class="style6">
-				<span class="image"> <img
-					src="${ctx }/resources/images/pic11.jpg" alt="" />
-				</span> <a href="generic.html">
-					<h2>Dictum</h2>
-					<div class="content">
-						<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-							veroeros et feugiat.</p>
-					</div>
-				</a>
-			</article>
-			<article class="style4">
-				<span class="image"> <img
-					src="${ctx }/resources/images/pic12.jpg" alt="" />
-				</span> <a href="generic.html">
-					<h2>Pretium</h2>
-					<div class="content">
-						<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-							veroeros et feugiat.</p>
-					</div>
-				</a>
-			</article>
+			
 		</section>
 	</div>
 
@@ -215,13 +180,8 @@
 	<script src="${ctx }/resources/inner/js/util.js"></script>
 	<script src="${ctx }/resources/inner/js/main.js"></script>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br>
 
 	<%@ include file="/views/footer.jspf"%>
 

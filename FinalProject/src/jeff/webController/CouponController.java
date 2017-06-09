@@ -8,20 +8,19 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jeff.domain.Company;
 import jeff.domain.Coupon;
 import jeff.service.CompanyService;
 import jeff.service.CouponService;
-import jeff.service.UserCouponService;
 
 @Controller
 @RequestMapping("coupon")
@@ -94,10 +93,18 @@ public class CouponController {
 		model.addAttribute("coupon", coupon);
 		return "modifyCoupon";
 	}
+	
+//	@RequestMapping(value="modify", method=RequestMethod.POST)
+//	public String modifyCoupon(Coupon coupon){
+//		System.out.println(coupon.getExpiryDate());
+//		System.out.println(coupon.getCouponId());
+//		service.updateCoupon(coupon);
+//		return "redirect:findList";
+//	}
+	
 	@RequestMapping(value="modify", method=RequestMethod.POST)
 	public String modifyCoupon(Coupon coupon){
-		System.out.println(coupon.getExpiryDate());
-		System.out.println(coupon.getCouponId());
+		
 		service.updateCoupon(coupon);
 		return "redirect:findList";
 	}

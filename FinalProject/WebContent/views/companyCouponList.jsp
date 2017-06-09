@@ -50,7 +50,7 @@
       <c:forEach items="${couponList }" var="coupon" varStatus="sts">
         <div class="ih-item circle effect2 left_to_right" style="float:left;">
         <a href="${ctx }/coupon/modify?couponId=${coupon.couponId}">
-        <div class="img"><img src="${ctx }/resources/images/circ_img1.jpg" alt="img"></div>
+        <div class="img"><img src="${ctx }/resources/images/coupon3.jpg" alt="img"></div>
         <!-- 쿠폰이미지 찾아서 넣어야함 -->
         <div class="info">
           <h3>${coupon.couponName }</h3>

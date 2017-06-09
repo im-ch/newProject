@@ -246,7 +246,7 @@ function modifyForm(reviewId){
                style="float: left;">
                <a onclick="coupon(${coupon.couponId});">
                   <div class="img">
-                     <img src="${ctx }/resources/images/circ_img1.jpg" alt="img">
+                     <img src="${ctx }/resources/images/coupon.jpg" alt="img">
                   </div>
                   <div class="info">
                      <h3>${coupon.couponName }</h3>
