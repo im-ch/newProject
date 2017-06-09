@@ -113,8 +113,10 @@ public class UserController {
       List<User> users = service.findAllUsers();
       List<Company> companys = comService.findAllCompany();
       List<Integer> allUsers = new ArrayList<>();
-      allUsers.add(users.size());
-      allUsers.add(companys.size());
+      
+      if(users.size() > 0 && companys.size() > 0){
+    	  allUsers.add(1);
+      }
       
       modelAndView.addObject("allUsers", allUsers);
       modelAndView.addObject("users", users);

@@ -88,11 +88,11 @@ public class CompanyStoreLogic implements CompanyStore {
 	}
 
 	@Override
-	public List<Company> selectCompanyByCategory(String category) {
+	public List<Company> selectCompanyByLocationAndCategory(HashMap<String, Object> map) {
 		SqlSession session = JeffSessionFactory.getInstance().getSession();
 
 		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
-		List<Company> companyList = mapper.selectCompanyByCategory(category);
+		List<Company> companyList = mapper.selectCompanyByLocationAndCategory(map);
 		session.close();
 
 		return companyList;

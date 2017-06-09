@@ -5,6 +5,11 @@ html, body {
  }
 body {background: #f9f9f9 url(../img/page-bg-1.jpg);}
 
+
+a{
+	text-decoration: blink;
+}
+
 .main-container {
 	height:auto; 
 	height: 100%;
@@ -42,7 +47,9 @@ h5.title-bg button {
 }
 
 /***** Links *****/
-a, a:hover { color:#d8450b; }
+.out, .out :hover { color:#d8450b; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+	 font-size: 12px; line-height: 18px; font-weight: normal; }
+	 
 
 /***** Misc *****/
 i {margin-right: 3px;}

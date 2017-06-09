@@ -49,6 +49,7 @@
     <div class="container main-container">
     
       <%@ include file="/views/header.jspf"%>
+      <%@ include file="/views/searchHeader.jspf"%>
      
     <!-- Page Content
     ================================================== --> 
@@ -60,99 +61,47 @@
 
             <ul id="filterOptions" class="gallery-cats clearfix">
                 <li class="active"><a href="#" class="all">All</a></li> 
-                <li><a href="#" class="illustration">Restaurant</a></li>
-                <li><a href="#" class="design">Cafe</a></li>
-                <li><a href="#" class="video">Bar</a></li>
-                <li><a href="#" class="web">Clothing Store</a></li>
+                <li><a href="#" class="Restaurant">Restaurant</a></li>
+                <li><a href="#" class="Cafe">Cafe</a></li>
+                <li><a href="#" class="Cinema">Cinema</a></li>
+                <li><a href="#" class="Clothing">Clothing Store</a></li>
+                <li><a href="#" class="Department">Department store</a></li>
+                <li><a href="#" class="기타">기타</a></li>
             </ul>
-
+            
             <div class="row clearfix">
                 <ul class="gallery-post-grid holder">
+				
+				<c:choose>
+					<c:when test="${companies eq null || empty companies }">
+						<tr>
+							<td colspan="6" align="center">등록된 기업이 없습니다.</td>
+						</tr>
+					</c:when>
+					
+					<c:otherwise>
+						<c:forEach items="${companies }" var="company" varStatus="sts">
+		                    <li class="span4 gallery-item" data-id="id-${sts.count }" data-type="${company.category }">
+		                        <span class="gallery-hover-3col hidden-phone hidden-tablet">
+		                            <span class="gallery-icons">
+		                            	<c:forEach items="${company.imageList }" var="image">
+		                                <a href="/img/${image.fileName}" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+		                                </c:forEach>
+		                                <a href="${ctx }/alliance/companyDetail?comId=${company.comId}" class="item-details-link"></a>
+		                            </span>
+		                        </span>
+		                        <a href="${ctx }/alliance/companyDetail?comId=${company.comId}">
+		                        <c:forEach items="${company.imageList }" var="image">
+		                        <img src="/img/${image.fileName}" alt="Gallery">
+		                        </c:forEach>
+		                        </a>
+		                        <span class="project-details"><a href="${ctx }/alliance/companyDetail?comId=${company.comId}">${company.comName }</a>${company.ownerName }</span>
+		                    </li>
+	                    </c:forEach>
+                    </c:otherwise>
+                   
+                </c:choose>
 
-                    <!-- Gallery Item 1 -->
-                    <li  class="span4 gallery-item" data-id="id-1" data-type="illustration">
-                        <span class="gallery-hover-3col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="${ctx }/resources/img/gallery/damso.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="${ctx }/resources/img/gallery/damso.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">담소사골순대</a>소사골의 소고기 순대국, 올바름에 대해 고민하는 사람들</span>
-                    </li>
-
-                    <!-- Gallery Item 2 -->
-                    <li class="span4 gallery-item" data-id="id-2" data-type="illustration">
-                        <span class="gallery-hover-3col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="${ctx }/resources/img/gallery/parram.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="${ctx }/resources/img/gallery/parram.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">팔람까오</a>가산동의 작은 태국 음식점입니다 </span>
-                    </li>
-
-                    <!-- Gallery Item 3 -->
-                    <li class="span4 gallery-item" data-id="id-3" data-type="web">
-                        <span class="gallery-hover-3col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="${ctx }/resources/img/gallery/6jun.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="${ctx }/resources/img/gallery/6jun.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">육전면사무소</a>고기로 만든 전과 생면이 있는 곳</span>
-                    </li>
-
-                    <!-- Gallery Item 4 -->
-                    <li class="span4 gallery-item" data-id="id-4" data-type="video">
-                        <span class="gallery-hover-3col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="${ctx }/resources/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                       <a href="gallery-single.htm"><img src="${ctx }/resources/img/gallery/gallery-img-1-3col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">Custom Illustration</a>For an international add campaign.</span>
-                    </li>
-
-                    <!-- Gallery Item 5 -->
-                    <li class="span4 gallery-item" data-id="id-5" data-type="web illustration">
-                        <span class="gallery-hover-3col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="${ctx }/resources/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="${ctx }/resources/img/gallery/gallery-img-1-3col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">Icon Design</a>Classic retro style illustration.</span>
-                    </li>
-
-                    <!-- Gallery Item 6 -->
-                    <li class="span4 gallery-item" data-id="id-6" data-type="illustration design">
-                        <span class="gallery-hover-3col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="${ctx }/resources/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="${ctx }/resources/img/gallery/gallery-img-1-3col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">Animation Cell</a>Creative storyboard illustration</span>
-                    </li>
-
-                </ul>
-            </div>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <ul>
-                <li class="active"><a href="#">Prev</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">Next</a></li>
                 </ul>
             </div>
 

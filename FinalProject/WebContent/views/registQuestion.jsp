@@ -109,10 +109,16 @@
 			<h1>New Question</h1>
 			
 			<form action="${ctx }/question/regist" method="post" >
+				<c:choose>
+				<c:when test="${comId eq null || empty comId }">
 				  <input type="hidden" id="writerId" name="writerId"
-				 value="${loginedUser.userId eq question.writerId}">
-				<input type="hidden" id="name" name="name"
-				 value="${loginedUser.name}">
+				 value="${userId}">
+				 </c:when>
+				 <c:otherwise>
+				 	<input type="hidden" id="writerId" name="writerId"
+				 value="${comId}">
+				 </c:otherwise>
+				 </c:choose>
 				<table border="1">
 					<tr>
 					<th>제목</th>
@@ -131,12 +137,12 @@
 					<h5>(카테고리를 입력해주세요.)</h5>
 					<select name="selectBox" style="width:200px" onChange="getSelectValue(this.form);">
 						<option value="">카테고리 선택</option>
-										<option value="1">Cafe</option>
-										<option value="2">Restaurant</option>
-										<option value="3">Cinema</option>
-										<option value="4">Clothing Store</option>
-										<option value="5">Department store</option>
-										<option value="6">Pension</option>
+										<option value="Cafe">Cafe</option>
+										<option value="Restaurant">Restaurant</option>
+										<option value="Cinema">Cinema</option>
+										<option value="Clothing">Clothing Store</option>
+										<option value="Department">Department store</option>
+										<option value="Pension">Pension</option>
 										
 								
 							</select>

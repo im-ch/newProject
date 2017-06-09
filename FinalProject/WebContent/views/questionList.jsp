@@ -91,7 +91,7 @@
 		<h1>Q & A</h1>
 		<div style="float: right">
 		
-	<form action ="${ctx }/question/findCategory" method="post">
+<form action ="${ctx }/question/findCategory" method="post">
 				<select name="selectBox" style="width: 200px"
 					onChange="getSelectValue(this.form);">
 					<option value="">카테고리</option>
@@ -109,8 +109,7 @@
 						style="width: 65%; display: inline-block;">
 					<button type="submit" class="btn btn-success">검색</button>
 				</div>
-				</form>
-		
+			</form>
 
 	</div>
 
@@ -171,17 +170,12 @@
 			</div>
 		</div>
 	</div>
+	<br> <br> <br> <br> <br>
+	<!-- End Container -->
+	<%@ include file="/views/footer.jspf"%>
 
-	<div class="row">
-		<div class="12u">
-			<div id="copyright">
-				<ul class="menu">
-					<li>&copy; JavaRoad All rights reserved</li>
-					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	<!-- Scroll to Top -->
+	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
 
 	<!-- Scripts -->
 	<script src="${ctx }/js/jquery.min.js"></script>

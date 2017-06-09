@@ -6,22 +6,23 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
-   <context:component-scan base-package="jeff" />
-   <mvc:annotation-driven>
-      <mvc:message-converters>
-         <!-- @ResponseBody로 String 처리할때 한글처리 -->
-         <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-            <property name="supportedMediaTypes">
-               <list>
-                  <value>text/html;charset=UTF-8</value>
-               </list>
-            </property>
-         </bean>
-      </mvc:message-converters>
-   </mvc:annotation-driven>
-   
-   <mvc:default-servlet-handler />
-   <mvc:resources location="/resources/" mapping="/resources/**" />
+	<context:component-scan base-package="jeff" />
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<!-- @ResponseBody로 String 처리할때 한글처리 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<mvc:default-servlet-handler />
+	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:resources mapping="/img/**" location="/img/" />
 
    <bean id="viewResolver"
       class="org.springframework.web.servlet.view.InternalResourceViewResolver">

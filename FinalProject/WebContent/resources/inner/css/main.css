@@ -8,6 +8,7 @@
 */
 
 /* Reset */
+	.out, .out :hover { color:#d8450b; }
 
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
@@ -1644,7 +1645,6 @@
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 16pt;
 		font-weight: 300;
-		line-height: 1.75;
 	}
 
 		@media screen and (max-width: 1680px) {
@@ -1670,7 +1670,7 @@
 		transition: border-bottom-color 0.2s ease, color 0.2s ease;
 		text-decoration: none;
 		color: #585858;
-		border-bottom: dotted 1px rgba(88, 88, 88, 0.5);
+		/* border-bottom: dotted 1px rgba(88, 88, 88, 0.5); */
 	}
 
 		a:hover {
@@ -2721,7 +2721,7 @@
 					width: 100%;
 					max-height: 0;
 					line-height: 1.5;
-					margin-top: 0.35em;
+					/* margin-top: 0.35em; */
 					opacity: 0;
 				}
 
@@ -3354,3 +3354,5 @@
 			}
 
 		}
+		
+		

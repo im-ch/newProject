@@ -13,13 +13,13 @@
 ================================================== -->
 <link href='http://fonts.googleapis.com/css?family=Oswald'
 	rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="${ctx }/resources/css/bootstrap.css">
+<link rel="stylesheet" href="${ctx }/resources/css/bootstrap.css?ver=10">
 <link rel="stylesheet"
 	href="${ctx }/resources/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="${ctx }/resources/css/prettyPhoto.css" />
 <link rel="stylesheet" href="${ctx }/resources/css/flexslider.css" />
-<link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css">
-<link rel="stylesheet" href="${ctx }/resources/inner/css/main.css" />
+<link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css?ver=13">
+<link rel="stylesheet" href="${ctx }/resources/inner/css/main.css?ver=403" />
 
 
 <!-- Favicons
@@ -84,7 +84,7 @@
 			<article class="style1">
 				<span class="image"> <img
 					src="${ctx }/resources/images/1.jpg" alt="" />
-				</span> <a href="${ctx }/alliance/companyDetail?comId=damso">
+				</span> <a href="${ctx }/company/locationAndCategory?category=Restaurant">
 					<h2>Restaurant</h2>
 					<div class="content">
 						<p>내 주변 제휴식당</p>
@@ -94,7 +94,7 @@
 			<article class="style2">
 				<span class="image"> <img
 					src="${ctx }/resources/images/2.jpg" alt="" />
-				</span> <a href="generic.html">
+				</span> <a href="${ctx }/company/locationAndCategory?category=Cafe">
 					<h2>Cafe</h2>
 					<div class="content">
 						<p>내 주변 제휴카페</p>
@@ -104,7 +104,7 @@
 			<article class="style3">
 				<span class="image"> <img
 					src="${ctx }/resources/images/3.jpg" alt="" />
-				</span> <a href="generic.html">
+				</span> <a href="${ctx }/company/locationAndCategory?category=Clothing">
 					<h2>Clothing Store</h2>
 					<div class="content">
 						<p>내 주변 제휴옷가게</p>
@@ -114,7 +114,7 @@
 			<article class="style4">
 				<span class="image"> <img
 					src="${ctx }/resources/images/4.jpg" alt="" />
-				</span> <a href="generic.html">
+				</span> <a href="${ctx }/company/locationAndCategory?category=Cinema">
 					<h2>Cinema</h2>
 					<div class="content">
 						<p>내 주변 제휴영화관</p>
@@ -124,7 +124,7 @@
 			<article class="style5">
 				<span class="image"> <img
 					src="${ctx }/resources/images/5.jpg" alt="" />
-				</span> <a href="generic.html">
+				</span> <a href="${ctx }/company/locationAndCategory?category=Department">
 					<h2>Department store</h2>
 					<div class="content">
 						<p>내 주변 제휴백화점</p>
@@ -134,7 +134,7 @@
 			<article class="style6">
 				<span class="image"> <img
 					src="${ctx }/resources/images/6.jpg" alt="" />
-				</span> <a href="generic.html">
+				</span> <a href="${ctx }/company/locationAndCategory?category=Pension">
 					<h2>Pension</h2>
 					<div class="content">
 						<p>내 주변 제휴펜션</p>

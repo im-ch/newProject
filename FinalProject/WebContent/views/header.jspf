@@ -3,15 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:choose>
    <c:when test="${comId ne null}">
-         [<a href="${ctx }/company/logout">로그아웃</a>]
+         [<a href="${ctx }/company/logout" class="out">로그아웃</a>]
        </c:when>
    <c:when test="${userId ne null}">
-         [<a href="${ctx }/user/logout">로그아웃</a>]
+         [<a href="${ctx }/user/logout" class="out" >로그아웃</a>]
       </c:when>
 
    <c:otherwise>
-         <a href="${ctx }/views/login.jsp">로그인</a> | <a
-            href="${ctx }/views/welcomeJoin.jsp">회원가입</a>
+         <a href="${ctx }/views/login.jsp" class="out" >로그인</a> | <a
+            href="${ctx }/views/welcomeJoin.jsp" class="out">회원가입</a>
    </c:otherwise>
 </c:choose>
 
@@ -47,7 +47,7 @@
                      data-toggle="dropdown" href="#">Admin Page<b
                         class="caret"></b></a>
                      <ul class="dropdown-menu">
-                        <li><a href="${ctx }/company/detail">All User</a></li>
+                        <li><a href="${ctx }/user/allUsers">All User</a></li>
                         <li><a href="${ctx }/reportReview/findList">Reported List</a></li>
                         <li><a href="#">결제내역???</a></li>
                      </ul></li>
@@ -64,14 +64,21 @@
                   </c:if>
                </c:when>
                <c:when test="${comId ne null }">
-                  <li><a href="${ctx }/coupon/findList">Coupon</a></li>
+               <li class="dropdown"><a class="dropdown-toggle"
+                        data-toggle="dropdown" href="#">Sales<b
+                           class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                           <li><a href="${ctx }/views/salesList.jsp">Sales List</a></li>
+                           <li><a href="${ctx }/views/salesRegister.jsp">Register Sales</a></li>
+                           <li><a href="#">매출분석내용</a></li>
+                        </ul></li>
                   <li class="dropdown"><a class="dropdown-toggle"
                      data-toggle="dropdown" href="#">My Page <b
                         class="caret"></b></a>
                      <ul class="dropdown-menu">
                         <li><a href="${ctx }/company/detail">Company Info</a></li>
-                        <li><a href="#">Alliance</a></li>
-                        <li><a href="${ctx }/views/salesList.jsp">Sales</a></li>
+                        <li><a href="${ctx }/alliance/detail">Alliance</a></li>
+                        <li><a href="${ctx }/coupon/findList">Coupon</a></li>
                      </ul></li>
                </c:when>
                <c:otherwise>

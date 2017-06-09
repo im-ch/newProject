@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Piccolo Theme</title>
+<title>Jeff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -20,7 +20,7 @@
 	href="${ctx }/resources/css/bootstrap-responsive.css">
 <link rel="stylesheet"
 	href="${ctx }/resources/css/jquery.lightbox-0.5.css">
-<link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css">
+<link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css?ver=2">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -181,8 +181,8 @@ function drawBasic() {
 </script>
 <style type='text/css'>
 body {
-	margin-top: 40px;
-	text-align: center;
+	
+	
 	font-size: 14px;
 	font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
 }
@@ -202,7 +202,6 @@ body {
 	<div class="container main-container">
 
 		<%@ include file="/views/header.jspf"%>
-		<br> <br> <br>
 
 		<!-- Blog Content
     ================================================== -->
