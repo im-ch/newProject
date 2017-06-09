@@ -71,7 +71,7 @@
                      <ul class="dropdown-menu">
                         <li><a href="${ctx }/company/detail">Company Info</a></li>
                         <li><a href="#">Alliance</a></li>
-                        <li><a href="#">Sales</a></li>
+                        <li><a href="${ctx }/views/salesList.jsp">Sales</a></li>
                      </ul></li>
                </c:when>
                <c:otherwise>

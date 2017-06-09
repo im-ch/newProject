@@ -91,8 +91,7 @@
 		<h1>Q & A</h1>
 		<div style="float: right">
 		
-<form action ="${ctx }/question/findCategory" method="post">
-			<form name="form">
+	<form action ="${ctx }/question/findCategory" method="post">
 				<select name="selectBox" style="width: 200px"
 					onChange="getSelectValue(this.form);">
 					<option value="">카테고리</option>
@@ -111,7 +110,6 @@
 					<button type="submit" class="btn btn-success">검색</button>
 				</div>
 				</form>
-			</form>
 		
 
 	</div>

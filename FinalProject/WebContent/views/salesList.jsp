@@ -49,9 +49,102 @@
 	src='${ctx }/resources/js/jquery-ui-custom.js'></script>
 <script type='text/javascript'
 	src='${ctx }/resources/js/fullcalendar.min.js'></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type='text/javascript'>
-	$(document).ready(
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+	  
+	  var jsonData = 
+		  $.ajax({
+	      url: "${ctx}/sales/day",
+	      dataType: "json",
+	      async : false
+	      }).responseText;
+	  var resultData = 
+		  $.ajax({
+	      url: "${ctx}/sales/week",
+	      dataType: "json",
+	      async : false
+	      }).responseText; 
+	  
+      var data = new google.visualization.DataTable(jsonData);
+      var dataMonth = new google.visualization.DataTable(resultData);
+      /*
+       data.addColumn('timeofday', 'Time of Day');
+      data.addColumn('number', 'Motivation Level');
+  	
+  	
+		data.addRows([
+      	
+		   [{v: [8, 0, 0], f: '8 am'}, 1000],
+		   [{v: [9, 0, 0], f: '9 am'}, 2000],
+		   [{v: [10, 0, 0], f: '10 am'}, 5000],
+       
+  	]); */
+      /* var options = {
+        title: 'Sales amount of the Day',
+        hAxis: {
+          title: 'Time of Day',
+          format: 'h:mm a',
+          viewWindow: {
+            min: [7, 50, 0],
+            max: [17, 60, 0]
+          }
+  		
+        },
+        vAxis: {
+          title: '일매출 : 원',
+        }
+        
+      }; */
+      var options = {
+    	        title: "Density of Precious Metals, in g/cm^3",
+    	        width: 800,
+    	        height: 500,
+    	        bar: {groupWidth: "95%"},
+    	        legend: { position: "none" },
+    	      };
+      var weekOptions = {
+  	        title: "Density of Precious Metals, in g/cm^3",
+  	        width: 800,
+  	        height: 500,
+  	      	bar: {groupWidth: "20%"},
+  	        legend: { position: "none" },
+  	      };
+  	/*  var weekOptions = {
+  	        title: 'Sales amount of the Week',
+  	        hAxis: {
+  	          title: 'Time of Week',
+  	          format: 'h:mm a',
+  	          viewWindow: {
+  	            min: [7, 50, 0],
+  	            max: [10, 60, 0]
+  	          },
+  	        bar: {groupWidth: "95%"},
+  	  		
+  	        },
+  	        vAxis: {
+  	          title: '월매출 : 원',
+  	        }
+  	        
+  	        
+  	      }; */
+
+      var chart = new google.visualization.ColumnChart(
+        document.getElementById('chart_div'));
 	
+      chart.draw(data, options);
+      
+      var chartMonth = new google.visualization.ColumnChart(
+      	document.getElementById('chart_month'));
+      chartMonth.draw(dataMonth, weekOptions);
+}
+	$(document).ready(
+			 
+			
+			      
 	function setCalendar(data) {
 		var date = new Date();
 		var d = date.getDate();
@@ -121,7 +214,8 @@ body {
         ================================================== -->
 			<div class="span8 blog">
 				<section class="comments">
-
+					<div id="chart_div" style="width:400;;height:300"></div>
+					<div id="chart_month"></div>
 					<div id='calendar'></div>
 
 				</section>

@@ -1,12 +1,11 @@
 package jeff.webController;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.sql.Date;
-
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -103,7 +102,7 @@ public class SalesController {
 	
 	@RequestMapping(value="day")
 	@ResponseBody
-	public String ttt(HttpServletRequest req){
+	public String dayChart(HttpServletRequest req){
 		HttpSession session = req.getSession();
 		
 		if (session == null || session.getAttribute("comId") == null) {
@@ -123,19 +122,23 @@ public class SalesController {
 		
 		SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");
 		List<Sales> list = salesService.findSalesByCompany(comId);
-		List<Sales> weekList = new ArrayList<>();
+		List<Sales> dayList = new ArrayList<>();
 		for(int i = 0 ; i < list.size() ; i++){
-			int today = Integer.parseInt(newFormat.format(list.get(0).getRegDate()).substring(8));
-//			int day = 
-//			if()
+			Date today = new Date(Calendar.getInstance().getTimeInMillis());
+			Date compare1 = list.get(i).getRegDate();
+			dayList.add(list.get(i));
+			if(dayList.size() == 7){
+				break;
+			}
 		}
-		for(int i = 0 ; i < 7 ; i++){
+		int size = dayList.size();
+		for(int i = size - 1 ; i >= 0 ; i--){
 			JsonObject legend = new JsonObject();
-			legend.addProperty("v", "7/" + (i+2));
+			legend.addProperty("v", newFormat.format(dayList.get(i).getRegDate()));
 			legend.add("f", null);
 			
 			JsonObject value = new JsonObject();
-			value.addProperty("v", 500 + i*100);
+			value.addProperty("v", dayList.get(i).getSales());
 			value.add("f", null);
 			
 			JsonArray cvalArr = new JsonArray();
@@ -151,7 +154,74 @@ public class SalesController {
 		data.add("cols", arrCols);
 		data.add("rows", arrRows);
 		String str = data.toString();
-		System.out.println(str);
+		return str;
+	}
+	@RequestMapping(value="week")
+	@ResponseBody
+	public String weekChart(HttpServletRequest req){
+		HttpSession session = req.getSession();
+		
+		if (session == null || session.getAttribute("comId") == null) {
+			return "redirect:login.jsp";
+		}
+		String comId = (String) session.getAttribute("comId");
+		
+		JsonObject data = new JsonObject();
+		JsonObject objCol1 = new JsonObject();
+		JsonObject objCol2 = new JsonObject();
+		JsonArray arrCols = new JsonArray();
+		JsonArray arrRows = new JsonArray();
+		objCol1.addProperty("type", "string");
+		objCol2.addProperty("type", "number");
+		arrCols.add(objCol1);
+		arrCols.add(objCol2);
+		GregorianCalendar toda = new GregorianCalendar ( );
+		SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");
+		List<Sales> list = salesService.findSalesByCompany(comId);
+		System.out.println(list.size());
+		List<Sales> weekList = new ArrayList<>();
+		int total = 0;
+		int count = 0;
+		for(int i = 0 ; i < list.size() ; i++){
+			Date today = new Date(Calendar.getInstance().getTimeInMillis());
+			Date compare1 = list.get(i).getRegDate();
+			toda.setTime(compare1);
+			int dayGab = today.compareTo(compare1);
+			count ++;
+			total += list.get(i).getSales();
+			if(count % toda.getActualMaximum(toda.DAY_OF_MONTH) == 0){
+				Sales sales = list.get(i);
+				sales.setSales(total);
+				weekList.add(sales);
+				total = 0;
+			}
+			if(weekList.size() == 3){
+				break;
+			}
+		}
+		int size = weekList.size();
+		for(int i = size-1 ; i >= 0 ; i--){
+			JsonObject legend = new JsonObject();
+			legend.addProperty("v", newFormat.format(weekList.get(i).getRegDate()).substring(0, 7));
+			legend.add("f", null);
+			
+			JsonObject value = new JsonObject();
+			value.addProperty("v", weekList.get(i).getSales());
+			value.add("f", null);
+			
+			JsonArray cvalArr = new JsonArray();
+			cvalArr.add(legend);
+			cvalArr.add(value);
+			
+			JsonObject cvalObj = new JsonObject();
+			cvalObj.add("c", cvalArr);
+			
+			arrRows.add(cvalObj);
+		}
+
+		data.add("cols", arrCols);
+		data.add("rows", arrRows);
+		String str = data.toString();
 		return str;
 	}
 }
