@@ -85,6 +85,25 @@
 				}).open();
 	}
 </script>
+<script type="text/javascript"
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
+<script>
+$(document).ready(function() {
+   
+   $("#sample6_address2").blur(function(){
+      $("#result").empty();
+      var value1 = $('#sample6_postcode').val();
+      var value2 = $('#sample6_address').val();
+      var value3 = $('#sample6_address2').val();
+      
+      var total = "";
+      total = "<input name='location' id='location' type='hidden' value='" 
+         + value1 + ';' + value2 + ";" + value3 + "'></input>";
+         
+      $("#result").append(total);
+   });
+});
+</script>
 
 </head>
 
@@ -105,12 +124,12 @@
 		<form action="${ctx }/company/modify" method="POST" id="contact-form" style="margin-left: 50px">
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-italic"></i></span> <input
-					name="comName" class="span4" id="prependedInput" size="16"
+					name="comId" class="span4" id="prependedInput" size="16"
 					type="text" value="${company.comId }" readonly="readonly">
 			</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-user"></i></span> <input
-					name="comName" class="span4" id="prependedInput" size="16"
+					name="ownerName" class="span4" id="prependedInput" size="16"
 					type="text" value="${company.ownerName }" readonly="readonly">
 			</div>
 			<div class="input-prepend">
@@ -139,10 +158,8 @@
 			</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-envelope"></i></span> <input
-					name="comEmail" class="chspan2" id="prependedInput" size="16"
-					type="email" value="${company.comEmail }"> <span
-					class="add-on">@</span> 
-					<input type="text" class="span4" name="str_email02" id="str_email02" style="width:100px;">
+                  name="comEmail" class="comEmail" id="prependedInput" size="8"
+                  type="email" placeholder="Email" value="${company.comEmail }">
 			</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-bell"></i></span> <input
@@ -155,6 +172,8 @@
 					<input type="submit" class="btn btn-inverse" value="Update">
 				</div>
 			</div>
+			<input type="hidden" value="${company.comName }" name="comName">
+			<input type="hidden" value="${company.category }" name="category">
 		</form>
 
 	</div>

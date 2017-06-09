@@ -28,9 +28,6 @@ public class AllianceServiceLogic implements AllianceService {
 
 	@Override
 	public void registAlliance(Alliance alliance) {
-		Company company = new Company();
-		company.setComId("test");
-		alliance.setCompany(company);
 		store.createAlliance(alliance);
 	}
 

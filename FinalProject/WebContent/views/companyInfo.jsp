@@ -95,7 +95,7 @@ $('#btn-upload').click(function () {
 						<c:otherwise> 
  							<c:forEach items="${images }" var="img" varStatus="sts"> 
 								<li class="span4 gallery-item"><img
-									src="C:/Image/${img.fileName }" alt="Gallery">
+									src="/img/${img.fileName }" alt="Gallery">
 								<button class="btn btn-large btn-warning" type="button"
 				onclick="location.href='${ctx}/image/delete?companyImageId=${img.companyImageId}'">Delete</button>	
 									</li> 

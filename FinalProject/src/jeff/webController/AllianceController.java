@@ -62,13 +62,11 @@ public class AllianceController {
 
 	@RequestMapping(value = "regist", method = RequestMethod.POST)
 	public String registAlliance(Alliance alliance, HttpServletRequest req) {
-
 		HttpSession session = req.getSession();
 		String comId = (String) session.getAttribute("comId");
 		Company company = companyService.findCompany(comId);
 		alliance.setCompany(company);
 		service.registAlliance(alliance);
-		System.out.println(alliance.getCompany().getComId());
 		return "redirect:detail?comId=" + comId;
 	}
 
@@ -119,7 +117,12 @@ public class AllianceController {
 	@RequestMapping("findComId")
 	public ModelAndView allianceDetail(@RequestParam("comId") String comId) {
 		ModelAndView modelAndView = new ModelAndView("allianceDetail");
-		modelAndView.addObject("alliance", service.findAlliance(comId));
+		Alliance alliance = service.findAlliance(comId);
+		Company company = alliance.getCompany();
+		String[] lo = company.getLocation().split(";");
+		company.setLocation("[" + lo[0] + "] " + lo[1] + " " + lo[2]);
+		alliance.setCompany(company);
+		modelAndView.addObject("alliance", alliance);
 		return modelAndView;
 	}
 
@@ -143,5 +146,6 @@ public class AllianceController {
 		model.addAttribute("review", review);
 		return "companyDetail";
 	}
+	
 
 }

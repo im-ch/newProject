@@ -50,23 +50,18 @@ public class CompanyController {
       model.addAttribute("company", company);
       String lo = company.getLocation();
       
-      String lo1 = lo.split(";")[0];
-      String lo2 = lo.split(";")[1];
-      String lo3 = lo.split(";")[2];
-      model.addAttribute("lo1", lo1);
-      model.addAttribute("lo2", lo2);
-      model.addAttribute("lo3", lo3);
+      String [] lo1 = lo.split(";");
+      model.addAttribute("lo1", lo1[0]);
+      model.addAttribute("lo2", lo1[1]);
+      model.addAttribute("lo3", lo1[2]);
 
       return "/companyModify";
    }
 
    @RequestMapping(value = "modify", method = RequestMethod.POST)
-   public String ModifyCompany(Company company, HttpServletRequest req) {
-     HttpSession session = req.getSession();
-     String comId = (String)session.getAttribute("comId");
-     company.setComId(comId);
+   public String ModifyCompany(Company company) {
       service.updateCompany(company);
-      return "redirect:detail?comId=" + comId;
+      return "redirect:detail?comId=" + company.getComId();
    }
 
    @RequestMapping("remove")
