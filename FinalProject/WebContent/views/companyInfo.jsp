@@ -95,7 +95,7 @@ $('#btn-upload').click(function () {
 						<c:otherwise> 
  							<c:forEach items="${images }" var="img" varStatus="sts"> 
 								<li class="span4 gallery-item"><img
-									src="/img/${img.fileName }" alt="Gallery">
+									src="C:/Image/${img.fileName }" alt="Gallery">
 								<button class="btn btn-large btn-warning" type="button"
 				onclick="location.href='${ctx}/image/delete?companyImageId=${img.companyImageId}'">Delete</button>	
 									</li> 
@@ -122,11 +122,13 @@ $('#btn-upload').click(function () {
 		</form>
 		
 		<br> <br>
-		<p class="right">
-			<button class="btn btn-large btn-warning" type="button"
-				onclick="location.href='${ctx}/company/modify=comId?${company.comId };'">Modify</button>
-			<button class="btn btn-large btn-inverse" type="button"
-				onclick="location.href='${ctx}/company/delete=comId?${company.comId };'">Withdraw</button>
+		<p>
+			<button class="btn btn-large btn-warning" type="button" style="float:left"
+				onclick="location.href='${ctx}/alliance/regist?comId=${company.comId }'">제휴제안서 등록</button>
+			<button class="btn btn-large btn-default" type="button" style="float:right"
+				onclick="location.href='${ctx}/company/delete?comId=${company.comId }'">Withdraw</button>
+			<button class="btn btn-large btn-inverse" type="button" style="float:right;"
+				onclick="location.href='${ctx}/company/modify?comId=${company.comId }'">Modify</button>
 			<br> <br> <br> <br> <br>
 		</p>
 	</div>

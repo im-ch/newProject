@@ -167,12 +167,10 @@ $(document).ready(function() {
                   <option value="Cafe">Cafe</option>
                   <option value="Restaurant">Restaurant</option>
                   <option value="Clothing">Clothing</option>
-                  <option value="Theater">Theater</option>
-                  <option value="Bar">Bar</option>
-                  <option value="Beauty">Beauty</option>
-                  <option value="Play">Play</option>
-                  <option value="Pension">Pension</option>
-                  <option value="etc">기타</option>
+                  <option value="Cinema">Cinema</option>
+                  <option value="Department">Department</option>
+                  <option value="Ipsum">Ipsum</option>
+                  <option value="기타">기타</option>
                </select>
             </div>
             <button class="btn btn-large btn-warning" type="submit" id="sub">Join</button>

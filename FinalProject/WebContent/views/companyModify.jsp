@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Jeff</title>
+<title>Company Modify</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -99,14 +99,19 @@
 		<!-- Page Content
     ========================================`========== -->
 
-		<h1 class="title-bg">${user.name }InformationUpdate</h1>
+		<h1 class="title-bg">${company.comName }'s Information Update</h1>
 		<br>
 
-		<form action="#" id="contact-form" style="margin-left: 50px">
+		<form action="${ctx }/company/modify" method="POST" id="contact-form" style="margin-left: 50px">
+			<div class="input-prepend">
+				<span class="add-on"><i class="icon-italic"></i></span> <input
+					name="comName" class="span4" id="prependedInput" size="16"
+					type="text" value="${company.comId }" readonly="readonly">
+			</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-user"></i></span> <input
 					name="comName" class="span4" id="prependedInput" size="16"
-					type="text" placeholder="${company.comName }">
+					type="text" value="${company.ownerName }" readonly="readonly">
 			</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-lock"></i></span> <input
@@ -115,34 +120,34 @@
 			</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-lock"></i></span> <input
-					name="password2" class="span4" id="prependedInput" size="16"
+					name="comPasswordCheck" class="span4" id="prependedInput" size="16"
 					type="password" placeholder="Password Check">
 			</div>
 			<div class="alert alert-success">변경할 비밀번호를 입력하세요.</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-home"></i></span> <input
 					name="location1" id="sample6_postcode" width="1px" type="text"
-					placeholder="우편번호"> &nbsp;&nbsp; <input type="button"
+					value="${lo1 }"> &nbsp;&nbsp; <input type="button"
 					class="btn btn-inverse" value="주소검색"
 					onclick="sample6_execDaumPostcode()" style="margin-left: 10px">
 			</div>
 			<div class="input-prepend">
 				<input name="location1" class="span4" id="sample6_address"
-					type="text" placeholder="주소" style="margin-left: 30px"> <input
+					type="text" value="${lo2 }" style="margin-left: 30px"> <input
 					name="location3" class="span4" id="sample6_address2" size="20"
-					type="text" placeholder="상세주소">
+					type="text" value="${lo3 }">
 			</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-envelope"></i></span> <input
 					name="comEmail" class="chspan2" id="prependedInput" size="16"
-					type="email" placeholder="${user.email }"> <span
+					type="email" value="${company.comEmail }"> <span
 					class="add-on">@</span> 
 					<input type="text" class="span4" name="str_email02" id="str_email02" style="width:100px;">
 			</div>
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-bell"></i></span> <input
 					name="comPhoneNumber" class="span4" id="prependedInput" size="16"
-					type="number" placeholder="${user.phoneNumber }">
+					type="number" value="${company.comPhoneNumber }">
 			</div>
 
 			<div class="row">
