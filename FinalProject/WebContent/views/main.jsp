@@ -84,7 +84,7 @@
 			<article class="style1">
 				<span class="image"> <img
 					src="${ctx }/resources/images/1.jpg" alt="" />
-				</span> <a href="${ctx }/alliance/companyDetail?comId=111">
+				</span> <a href="${ctx }/alliance/companyDetail?comId=damso">
 					<h2>Restaurant</h2>
 					<div class="content">
 						<p>내 주변 제휴식당</p>
