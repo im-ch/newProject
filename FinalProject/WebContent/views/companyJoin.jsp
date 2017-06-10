@@ -169,7 +169,7 @@ $(document).ready(function() {
                   <option value="Clothing">Clothing</option>
                   <option value="Cinema">Cinema</option>
                   <option value="Department">Department</option>
-                  <option value="Pension">Pension</option>
+                  <option value="Ipsum">Ipsum</option>
                   <option value="기타">기타</option>
                </select>
             </div>

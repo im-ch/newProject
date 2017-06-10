@@ -48,8 +48,14 @@ public class CompanyController {
    public String ModifyCompany(String comId, Model model) {
       Company company = service.findCompany(comId);
       model.addAttribute("company", company);
+      String lo = company.getLocation();
+      
+      String [] lo1 = lo.split(";");
+      model.addAttribute("lo1", lo1[0]);
+      model.addAttribute("lo2", lo1[1]);
+      model.addAttribute("lo3", lo1[2]);
 
-      return "/companyInfo";
+      return "/companyModify";
    }
 
    @RequestMapping(value = "modify", method = RequestMethod.POST)
@@ -111,14 +117,6 @@ public class CompanyController {
       return modelAndView;
 
    }
-
-//   @RequestMapping("findByCategory")
-//   public ModelAndView findByCategory(@RequestParam("category") String category) {
-//      ModelAndView modelAndView = new ModelAndView("/companyList");
-//      modelAndView.addObject("companyList", service.findCompanyByCategory(category));
-//      return modelAndView;
-//
-//   }
 
    @RequestMapping("findBycomName")
    public ModelAndView findBycomName(@RequestParam("comName") String comName) {

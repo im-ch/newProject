@@ -19,9 +19,6 @@
   	</select>
   	
   	<insert id="createReportReview" parameterType="ReportReview">
-  		<selectKey keyProperty="reviewId" resultType="int" order="BEFORE">
-    		select reportReview_tb_seq.nextval FROM DUAL
-  		</selectKey>
   		insert into reportReview_tb(reviewId, reportReason)
   		values
   		(#{reviewId}, #{reportReason})

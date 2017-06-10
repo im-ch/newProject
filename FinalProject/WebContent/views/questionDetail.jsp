@@ -157,6 +157,7 @@
 	</div>
 
 
+<<<<<<< HEAD
 	<!--  <div id=answerArea">
                   <c:choose>
                      <c:when test="${loginedCompany==null }">
@@ -239,8 +240,10 @@
 
 =======
 >>>>>>> 81a3714ecc5b056939227882b4bcd70ce577aacd
+=======
+>>>>>>> 87b74b5a74fa1527b6df2a82a2cea6049e3dc333
 	<c:choose>
-		<c:when test="${answers eq null || empty answers }">
+		<c:when test="${question.answerList eq null || empty question.answerList }">
 			<tr>
 				<td colspan="6" align="center">등록된 답변이 없습니다.</td>
 			</tr>
@@ -248,7 +251,7 @@
 		</c:when>
 		<c:otherwise>
 
-			<c:forEach items="${answer }" var="answer" varStatus="status">
+			<c:forEach items="${question.answerList }" var="answer" varStatus="status">
 
 
 				<p>${answer.content }</p>
@@ -260,7 +263,7 @@
 				</div>
 
 				<form action="${ctx }/answer/modifyAnswer" method="post">
-					<c:if test="${loginedCompany.comId eq answer.writerId }">
+					<c:if test="${loginedCompany.comId eq question.writerId }">
 						<input type="hidden" id="answerId" name="answerId"
 							value="${answer.answerId }">
 						<div>
@@ -285,13 +288,9 @@
 			id="content" name="content"></textarea>
 		<br> <input type="hidden" id="questionId" name="questionId"
 			value="${question.questionId }"> <input type="hidden"
-			id="comId" name="comId" value="${company.comId }"> <input
-			type="hidden" id="ownerName" name="ownerName"
-			value="${company.ownerName }">
+			id="writerId" name="writerId" value="${question.writerId}"> 
 		<button type="submit">답변 등록</button>
 	</form>
-	</c:otherwise>
-	</c:choose>
 	<div class="row">
 		<div class="12u">
 			<div id="copyright">

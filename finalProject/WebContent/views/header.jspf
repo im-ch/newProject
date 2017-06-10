@@ -47,15 +47,15 @@
 =======
 >>>>>>> 81a3714ecc5b056939227882b4bcd70ce577aacd
    <c:when test="${comId ne null}">
-         [<a href="${ctx }/company/logout">로그아웃</a>]
+         [<a href="${ctx }/company/logout" class="out">로그아웃</a>]
        </c:when>
    <c:when test="${userId ne null}">
-         [<a href="${ctx }/user/logout">로그아웃</a>]
+         [<a href="${ctx }/user/logout" class="out" >로그아웃</a>]
       </c:when>
 
    <c:otherwise>
-         <a href="${ctx }/views/login.jsp">로그인</a> | <a
-            href="${ctx }/views/welcomeJoin.jsp">회원가입</a>
+         <a href="${ctx }/views/login.jsp" class="out" >로그인</a> | <a
+            href="${ctx }/views/welcomeJoin.jsp" class="out">회원가입</a>
    </c:otherwise>
 </c:choose>
 
@@ -178,8 +178,8 @@
                            class="caret"></b></a>
                         <ul class="dropdown-menu">
                            <li><a href="${ctx }/user/detail">User Info</a></li>
-                           <li><a href="blog-style2.htm">Interesting Company</a></li>
-                           <li><a href="blog-style3.htm">My Coupon</a></li>
+                           <li><a href="${ctx }/interesting/list">Interesting Company</a></li>
+                           <li><a href="${ctx }/userCoupon/myCoupons">My Coupon</a></li>
                         </ul></li>
                   </c:if>
                </c:when>
@@ -220,7 +220,7 @@
                         <li><a href="blog-style2.htm">Alliance</a></li>
 =======
                         <li><a href="${ctx }/company/detail">Company Info</a></li>
-                        <li><a href="#">Alliance</a></li>
+                        <li><a href="${ctx }/alliance/detail">Alliance</a></li>
                         <li><a href="${ctx }/coupon/findList">Coupon</a></li>
 >>>>>>> 81a3714ecc5b056939227882b4bcd70ce577aacd
                      </ul></li>
