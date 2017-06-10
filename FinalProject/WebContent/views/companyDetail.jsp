@@ -191,7 +191,7 @@ function modifyForm(reviewId){
             <!-- Title Header -->
             <div class="span8">
                <!--Begin page content column-->
-
+				<input type="hidden" value="${alliance.company.comId}" id="hiddenId">
                <h2>${alliance.company.comName }</h2>
                <p class="lead">${alliance.detail }</p>
 
@@ -205,7 +205,7 @@ function modifyForm(reviewId){
                         </tr>
                      </c:when>
                      <c:otherwise>
-                        <c:forEach items="${img }" var="img">
+                        <c:forEach items="${images }" var="img">
                            <div class="span2">
                               <img src="/img/${img.fileName }" alt="Image"
                                  class="thumbnail">
@@ -225,7 +225,7 @@ function modifyForm(reviewId){
 
                <!--Testimonials-->
                <h5 class="title-bg">Map</h5>
-               <img src="${ctx }/resources/img/location-map.jpg" alt="map">
+               <div id="map" class="span4" style="height: 300px"></div>
                &nbsp;
                <div class="alert alert-success">
                   <button type="button" class="close" data-dismiss="alert">×</button>
@@ -321,6 +321,80 @@ function modifyForm(reviewId){
 
    <!-- Scroll to Top -->
    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+   
+   <script>
+         function initMap() {
+        	var comId = $("#hiddenId").val();
+            var map = new google.maps.Map(document.getElementById('map'), {
+               zoom : 13,
+               center : {
+                  lat : 37.52,
+                  lng : 127
+               }
+            });
+            var geocoder = new google.maps.Geocoder();
+               
+               $.ajax({
+                  url : "${ctx}/company/findDetailMap?comId="+comId,
+                  type : "get",
+                  data : String,
+                  contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+                  dataType : "xml",
+                  
+                  success : function(xml) {
+                     var xmlData = $(xml).find("company");
+                     var listLength = xmlData.length;
+
+                     if (listLength) {
+                        var contentStr = "";
+                        var title = "";
+                        var comId = "";
+                        $(xmlData).each(function() {
+                            contentStr = $(this).find("location").text();
+                            title = $(this).find("comName").text();
+                            comId = $(this).find("comId").text();
+                            
+                            geocodeAddress(geocoder, map, contentStr, title, comId);
+                         });
+                     }
+                  }
+                  
+               });
+         }
+
+         function geocodeAddress(geocoder, resultsMap, address, title, comId) {
+            var markerMaxWidth = 250;
+            var contentString = '<div>' +
+              '<h3>'+title+'</h3>' + '<a href="${ctx}/alliance/companyDetail?comId='+comId+'">홈페이지 바로가기</a>';
+            
+            geocoder.geocode({'address' : address}, function(results, status) {
+               if (status === 'OK') {
+                  
+                  resultsMap.setCenter(results[0].geometry.location);
+                  
+                  var marker = new google.maps.Marker({
+                     map : resultsMap, position : results[0].geometry.location,
+                     title : title,
+                  });
+                  
+                  } else {
+                  alert('Geocode was not successful for the following reason: '+ status);
+                  }
+               var infowindow = new google.maps.InfoWindow({
+                  content: contentString,
+                  maxWidth: markerMaxWidth
+               });
+               google.maps.event.addListener(marker,'click',function(){
+                  infowindow.open(map,marker);
+               }); 
+            });
+         }
+      </script>
+
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5q_u7mfoL-N8R1EphJkTMgJbEwFfcSm4&callback=initMap">
+			
+		</script>
 
 </body>
 </html>

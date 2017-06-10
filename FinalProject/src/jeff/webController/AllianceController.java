@@ -140,7 +140,7 @@ public class AllianceController {
 		List<Coupon> couponList = couponService.findCouponByCompany(comId);
 
 		model.addAttribute("coupon", couponList);
-		model.addAttribute("img", img);
+		model.addAttribute("images", img);
 		model.addAttribute("userId", userId);
 		model.addAttribute("alliance", alliance);
 		model.addAttribute("review", review);

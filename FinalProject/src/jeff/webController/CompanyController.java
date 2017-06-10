@@ -147,7 +147,7 @@ public class CompanyController {
       
       HttpSession session = req.getSession();
       String location = (String)session.getAttribute("location");
-
+      
       companies.setCompanies(locationReplace(list, location));
       return companies;
    }
@@ -173,10 +173,9 @@ public class CompanyController {
    public String findByLocation (HttpServletRequest req, @RequestParam("comName") String comName, Model model){
       HttpSession session = req.getSession();
       String location = (String)session.getAttribute("location");
-      String value [] = location.split("\\s");
       
       HashMap<String, Object> map = new HashMap<>();
-      map.put("location", value[1] + " " + value[2]);
+      map.put("location", location);
       map.put("comName", comName);
       
       List<Company> listCom = service.findCompanyByLocationAndCompany(map);
@@ -189,10 +188,9 @@ public class CompanyController {
    public String findByCategory (HttpServletRequest req, @RequestParam("category") String category, Model model){
       HttpSession session = req.getSession();
       String location = (String)session.getAttribute("location");
-      String value [] = location.split("\\s");
       
       HashMap<String, Object> map = new HashMap<>();
-      map.put("location", value[1] + " " + value[2]);
+      map.put("location", location);
       map.put("category", category);
       
       List<Company> listCom = service.findCompanyByLocationAndCategory(map);
@@ -205,19 +203,33 @@ public class CompanyController {
 	public void saveLocation(HttpServletRequest req, String location){
 		HttpSession session = req.getSession();
 		session.removeAttribute("location");
-        if(location.contains("로 ")){
-           String [] lo = location.split("로 ");
-           String loo = lo[0] + "로";
-           session.setAttribute("location", loo);
-        }else if (location.contains("길 ")){
-           String [] lo = location.split("길 ");
-           String loo = lo[0] + "길";
-           session.setAttribute("location", loo);
-        }else if (location.contains("동 ")){
-           String [] lo = location.split("동 ");
-           String loo = lo[0] + "동";
-           session.setAttribute("location", loo);
-        }
+		if(location.contains("구 ")){
+	           String [] lo = location.split("구 ");
+	           String loo = lo[0] + "구";
+	           session.setAttribute("location", loo);
+	        }else if(location.contains("시 ")){
+		           String [] lo = location.split("시 ");
+		           String loo = lo[0] + "시";
+		           session.setAttribute("location", loo);
+		        }else if(location.contains("군 ")){
+			           String [] lo = location.split("군 ");
+			           String loo = lo[0] + "군";
+			           session.setAttribute("location", loo);
+			        }
+//		동단위로 찾는거
+//        if(location.contains("로 ")){
+//           String [] lo = location.split("로 ");
+//           String loo = lo[0] + "로";
+//           session.setAttribute("location", loo);
+//        }else if (location.contains("길 ")){
+//           String [] lo = location.split("길 ");
+//           String loo = lo[0] + "길";
+//           session.setAttribute("location", loo);
+//        }else if (location.contains("동 ")){
+//           String [] lo = location.split("동 ");
+//           String loo = lo[0] + "동";
+//           session.setAttribute("location", loo);
+//        }
      }
 
    //   String 보낼때 문자 깨지는거 -> produces="text/plain;charset=UTF-8"
@@ -227,12 +239,23 @@ public class CompanyController {
          String location = (String)session.getAttribute("location");
          
          if(location == null || location == ""){
-            location = "서울 강남구 봉은사로";
+            location = "서울 강남구";
          }
          session.setAttribute("location", location);
          return location;
       }
       
+//      companyDetail에 map뿌리는 메소드
+      @RequestMapping(value="findDetailMap", produces="application/xml")
+      public @ResponseBody Company findDetailMap(@RequestParam("comId") String comId) {
+         Company company = service.findCompany(comId);
+         String location2 = company.getLocation();
+         String [] lo = location2.split(";");
+         String [] lo2 = lo[1].split("\\(");
+         company.setLocation(lo2[0]);
+         return company;
+
+      }
       
       private List<Company> replace(List<Company> companies){
     	  List<CompanyImage> image = null;
@@ -260,13 +283,15 @@ public class CompanyController {
       
       private List<Company> locationReplace(List<Company> list, String location){
           String value [] = location.split("\\s");
-          list = service.findCompanyByLocation(value[1] + " " + value[2]);
+          list = service.findCompanyByLocation(value[0] + " " + value[1]);
           for(Company c : list){
              String location2 = c.getLocation();
              String [] lo = location2.split(";");
              
              String [] lo2 = lo[1].split("\\(");
              c.setLocation(lo2[0]);
+             c.setCouponList(null);
+             c.setImageList(null);
           }
     	  return list;
       }
