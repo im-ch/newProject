@@ -58,8 +58,8 @@
                            class="caret"></b></a>
                         <ul class="dropdown-menu">
                            <li><a href="${ctx }/user/detail">User Info</a></li>
-                           <li><a href="blog-style2.htm">Interesting Company</a></li>
-                           <li><a href="blog-style3.htm">My Coupon</a></li>
+                           <li><a href="${ctx }/interesting/list">Interesting Company</a></li>
+                           <li><a href="${ctx }/userCoupon/myCoupons">My Coupon</a></li>
                         </ul></li>
                   </c:if>
                </c:when>

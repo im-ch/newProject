@@ -35,9 +35,10 @@ public class InterestingCompanyController {
 
    @RequestMapping(value = "/register")
    public @ResponseBody String registInterestingCompany(HttpServletRequest req, String comId) {
+	   
       HttpSession session = req.getSession();
       if (session == null || session.getAttribute("userId") == null) {
-         return "redirect:login";
+         return "login";
       }
       String userId = (String) session.getAttribute("userId");
       HashMap<String, Object> map = new HashMap<String, Object>();
@@ -50,6 +51,7 @@ public class InterestingCompanyController {
             }
          }
       }
+      
       map.put("userId", userId);
       map.put("comId", comId);
 

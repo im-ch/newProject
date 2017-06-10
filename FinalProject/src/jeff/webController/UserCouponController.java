@@ -59,7 +59,7 @@ public class UserCouponController {
 
 	@RequestMapping(value = "/myCoupons")
 	public String findCouponByUser(HttpServletRequest req, Model model) {
-
+		System.out.println("컨");
 		HttpSession session = req.getSession();
 
 		if (session == null || session.getAttribute("userId") == null) {
@@ -68,14 +68,15 @@ public class UserCouponController {
 		String userId = (String) session.getAttribute("userId");
 		List<Integer> list = userCouponService.findUserCoupons(userId);
 		List<Coupon> coupons = new ArrayList<>();
-
+		System.out.println(list.size());
 		for (int i = 0; i < list.size(); i++) {
 			coupons.add(couponService.findCoupon(list.get(i)));
 		}
-
+		
+		System.out.println(coupons.size());
 		model.addAttribute("coupon", coupons);
 
-		return "userMycoupon.jsp";
+		return "userCouponList";
 	}
 
 	@RequestMapping(value = "/remove")

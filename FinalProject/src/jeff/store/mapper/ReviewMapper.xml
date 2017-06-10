@@ -48,10 +48,15 @@
 	</select>
 
 	<select id="selectAllReview" parameterType="string" resultMap="reviewMap">
+		
+		
 		SELECT reviewId, userId, comId, content, regDate, reported
 		FROM
 		review_tb
+		<![CDATA[
 		WHERE comId = #{comId}
+		 ]]>
+		ORDER BY regDate asc
 	</select>
 
 

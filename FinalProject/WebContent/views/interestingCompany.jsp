@@ -90,8 +90,8 @@
 
 				<ul id="filterOptions" class="gallery-cats clearfix">
 					<li class="active"><a href="#" class="all">All</a></li>
-					<li><a href="#" class="123">Illustration</a></li>
-					<li><a href="#" class="456">Design</a></li>
+					<li><a href="#" class="Restaurant">Illustration</a></li>
+					<li><a href="#" class="Pension">Design</a></li>
 					<li><a href="#" class="789">Video</a></li>
 					<li><a href="#" class="web">Web</a></li>
 				</ul>
@@ -115,7 +115,7 @@
 												href="${ctx }/resources/gallery-single.htm"
 												class="item-details-link"></a>
 										</span>
-									</span> <a href="gallery-single.htm"><img
+									</span> <a href="${ctx }/alliance/companyDetail?comId=${com.comId}"><img
 											src="${ctx }/resources/img/gallery/parram.jpg" alt="Gallery"></a>
 										<span class="project-details"><a
 											href="${ctx }/resources/gallery-single.htm"
@@ -129,10 +129,7 @@
 
 
 									</li>
-									</span> <a href="gallery-single.htm">
-									<img src="${ctx }/resources/img/gallery/parram.jpg" alt="Gallery"></a> 
-									<span class="project-details"><a href="${ctx }/resources/gallery-single.htm">${com.comId }</a>
-									For an international add campaign.</span></li>
+									
 								</ul>
 							</c:forEach>
 						</c:otherwise>

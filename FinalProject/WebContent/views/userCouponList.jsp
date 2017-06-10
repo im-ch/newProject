@@ -33,72 +33,40 @@
 
 	<div class="color-bar-1"></div>
 	<div class="color-bar-2 color-bg"></div>
-	
+
 	<div class="container main-container">
 
-	<%@ include file="/views/header.jspf"%>
+		<%@ include file="/views/header.jspf"%>
 
-	<div>
-		<div class="container" style="margin: 0 auto;">
-			<h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My Coupon</h1>
-			<br>
-			<h2>
-				<span style="color: red">쿠폰은 모바일에서 사용가능합니다!</span>
-			</h2>
-			<br>
-		</div>
-		<div class="ih-item circle effect2 left_to_right" style="float: left;">
-			<a href="#">
-				<div class="img">
-					<img src="${ctx }/resources/images/circ_img1.jpg" alt="img">
-				</div>
-				<div class="info">
-					<h3>소주1+1(~6/2)</h3>
-					<p>담소사골순대</p>
+		<div>
+			<div class="container" style="margin: 0 auto;">
+				<h1 class="title-bg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My Coupon</h1>
+				<br>
+				<h2>
+					<span style="color: red">쿠폰은 모바일에서만 사용가능합니다!</span>
+				</h2>
+				<br>
+			</div>
+			<c:forEach items="${coupon }" var="coupon">
+				<div class="ih-item circle effect2 left_to_right"
+					style="float: left;">
+					<a href="#">
+						<div class="img">
+							<img src="${ctx }/resources/images/coupon.jpg" alt="img">
+						</div>
+						<div class="info">
+							<h3>${coupon.couponName }</h3>
+							<p>${coupon.expiryDate }</p>
+						</div>
+					</a>
 					<button class="btn btn-inverse" type="button">Delete</button>
 				</div>
-			</a>
+			</c:forEach>
+
 		</div>
-		<div class="ih-item circle effect2 left_to_right" style="float: left;">
-			<a href="#">
-				<div class="img">
-					<img src="${ctx }/resources/images/circ_img2.jpg" alt="img">
-				</div>
-				<div class="info">
-					<h3>수육1000원 할인(~6/2)</h3>
-					<p>담소사골순대</p>
-					<button class="btn btn-inverse" type="button">Delete</button>
-				</div>
-			</a>
-		</div>
-		<div class="ih-item circle effect2 left_to_right" style="float: left;">
-			<a href="#">
-				<div class="img">
-					<img src="${ctx }/resources/images/circ_img3.jpg" alt="img">
-				</div>
-				<div class="info">
-					<h3>사이다 서비스(~6/2)</h3>
-					<p>담소사골순대</p>
-					<button class="btn btn-inverse" type="button">Delete</button>
-				</div>
-			</a>
-		</div>
-		<div class="ih-item circle effect2 left_to_right" style="float: left;">
-			<a href="#">
-				<div class="img">
-					<img src="${ctx }/resources/images/circ_img4.jpg" alt="img">
-				</div>
-				<div class="info">
-					<h3>밥 한공기 더(~6/2)</h3>
-					<p>담소사골순대</p>
-					<button class="btn btn-inverse" type="button">Delete</button>
-				</div>
-			</a>
-		</div>
-	</div>
 	</div>
 
 	<%@ include file="/views/footer.jspf"%>
-	
+
 </body>
 </html>
