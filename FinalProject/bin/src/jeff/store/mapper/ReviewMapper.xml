@@ -2,43 +2,65 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="jeff.store.mapper.ReviewMapper">
-  
-  	<resultMap type="Review" id="reviewMap">
-		<id column="reviewId" property="reviewId" />	
+
+<mapper namespace="jeff.store.mapper.ReviewMapper">
+
+	<resultMap type="Review" id="reviewMap">
+		<id column="reviewId" property="reviewId" />
 		<result column="regDate" property="regDate" />
-		<result column="reported" property="reported" javaType="Boolean" jdbcType="VARCHAR"/>
+		<result column="reported" property="reported" javaType="Boolean"
+			jdbcType="VARCHAR" />
 		<result column="content" property="content" />
 		<result property="comId" column="comId" />
-		<result property="userId" column="userId"/>
+		<result property="userId" column="userId" />
 	</resultMap>
-  
-  	<insert id="createReview" parameterType="Review">
-  		<selectKey keyProperty="reviewId" resultType="int" order="BEFORE">
-         select review_tb_seq.nextval FROM DUAL
-      	</selectKey>
-		INSERT INTO review_tb (reviewId, userId, comId, content, regDate, reported)
-		VALUES (#{reviewId}, #{userId}, #{comId}, #{content}, sysdate, #{reported})
+
+
+	<insert id="createReview" parameterType="Review">
+		<selectKey keyProperty="reviewId" resultType="int" order="BEFORE">
+			select review_tb_seq.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO review_tb (reviewId, userId, comId, content, regDate,
+		reported)
+		VALUES (#{reviewId}, #{userId}, #{comId}, #{content},
+		sysdate, (${reported=="0"?"'N'":"'Y'"}))
 	</insert>
 
 	<delete id="deleteReview" parameterType="int">
 		DELETE review_tb
-		WHERE reviewId = #{reviewId}
+		WHERE
+		reviewId = #{reviewId}
 	</delete>
 
 	<update id="modifyReview" parameterType="Review">
 		UPDATE review_tb
-		SET content = #{content}
+		SET
+		content = #{content}
 		WHERE reviewId = #{reviewId}
 	</update>
-	
 
-<!-- 
-	<select id="selectReviewByReviewId" parameterType="int" resultMap="reviewMap" resultType="Review">
-		SELECT reviewId, userId, comId, content, regDate, reported
+	<select id="selectReviewByReviewId" parameterType="int"
+		resultMap="reviewMap" resultType="Review">
+		SELECT reviewId, userId, comId,
+		content, regDate, reported
 		FROM review_tb
 		WHERE reviewId = #{reviewId}
 	</select>
-	 -->
-  </mapper>
+
+	<select id="selectAllReview" parameterType="string" resultMap="reviewMap">
+		SELECT reviewId, userId, comId, content, regDate, reported
+		FROM
+		review_tb
+		WHERE comId = #{comId}
+	</select>
+
+
+	<update id="modifyReviewReport" parameterType="int">
+		UPDATE review_tb
+		SET
+		reported = ${reported=='0'?"'N'":"'Y'"}
+		WHERE reviewId = #{reviewId}
+	</update>
+
+
+</mapper>

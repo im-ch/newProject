@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
@@ -12,24 +12,18 @@
 
 <!-- CSS
 ================================================== -->
-<link href='http://fonts.googleapis.com/css?family=Oswald'
-	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="${ctx }/resources/css/bootstrap.css">
-<link rel="stylesheet"
-	href="${ctx }/resources/css/bootstrap-responsive.css">
-<link rel="stylesheet"
-	href="${ctx }/resources/css/jquery.lightbox-0.5.css">
+<link rel="stylesheet" href="${ctx }/resources/css/bootstrap-responsive.css">
+<link rel="stylesheet" href="${ctx }/resources/css/jquery.lightbox-0.5.css">
 <link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css">
 
 <!-- Favicons
 ================================================== -->
 <link rel="shortcut icon" href="img/favicon.ico">
-<link rel="apple-touch-icon"
-	href="${ctx }/resources/img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72"
-	href="${ctx }/resources/img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114"
-	href="${ctx }/resources/img/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" href="${ctx }/resources/img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="${ctx }/resources/img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="${ctx }/resources/img/apple-touch-icon-114x114.png">
 
 <!-- JS
 ================================================== -->
@@ -43,8 +37,6 @@
 
 	}
 </script>
-
-
 
 </head>
 
