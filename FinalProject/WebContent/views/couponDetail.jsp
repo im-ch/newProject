@@ -48,7 +48,7 @@
                 <h3 class="title-bg"><a href="blog-single.htm">&nbsp;&nbsp;&nbsp;소주 1+1</a></h3>
                 <div class="post-summary">
                     <img src="${ctx }/resources/img/logo3.png" alt="">
-                    <p>느르르르르르르르를르른디테일 ㅏㅇ나ㅓ나얼나ㅣ어라ㅣㄴ어라ㅣㅓ니아ㅓㄻ랴ㅑㄷㅈ리댜ㅜㅑㅣㅈ두ㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄴㅇㄹ</p>
+                    <p>본 쿠폰은 1인 1메뉴를 주문 했을 시 사용 가능합니다. [사용불가능 지점 : 가산디지털단지점, 보라매점, 개봉점, 이수역점]</p>
                     <div class="post-summary-footer">
                         <button class="btn btn-small btn-inverse" type="button">Exit</button>
                         <ul class="post-data">

@@ -246,7 +246,7 @@ function modifyForm(reviewId){
                style="float: left;">
                <a onclick="coupon(${coupon.couponId});">
                   <div class="img">
-                     <img src="${ctx }/resources/images/coupon.jpg" alt="img">
+                     <img src="${ctx }/resources/images/coupon2.jpg" alt="img">
                   </div>
                   <div class="info">
                      <h3>${coupon.couponName }</h3>
@@ -312,8 +312,6 @@ function modifyForm(reviewId){
    <div class="footer-container">
       <!-- Begin Footer -->
       <div class="container">
-
-         <%@ include file="/views/footer.jspf"%>
 
       </div>
    </div>
