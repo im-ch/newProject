@@ -28,6 +28,36 @@
 <script src="${ctx }/resources/js/bootstrap.js"></script>
 <script src="${ctx }/resources/js/jquery.custom.js"></script>
 
+<script type="text/javascript">
+   function remove(couponId) {
+      
+      $.ajax({
+         url : "${ctx}/userCoupon/remove",
+         type : "GET",
+         data : {
+        	 couponId : couponId
+         },
+         success : function(data) {
+            if(data=='remove'){
+               alert("쿠폰이 삭제되었습니다.");
+                window.location.reload();
+            }
+         },
+         error : function(jqXHR, textStatus, errorThrown) {
+            alert("잠시 후 다시 시도해 주세요");
+         }
+      });
+   }
+</script>
+<script type="text/javascript">
+function couponDetail(couponId) {
+			var url = "${ctx}/userCoupon/detailCoupon?couponId="+couponId; 
+			var option = "width=370, height=360, resizable=no, status=no;"; 
+			window.open(url, "", option);
+
+		}
+	</script>
+
 </head>
 <body>
 
@@ -50,7 +80,7 @@
 			<c:forEach items="${coupon }" var="coupon">
 				<div class="ih-item circle effect2 left_to_right"
 					style="float: left;">
-					<a href="#">
+					<a onclick="couponDetail(${coupon.couponId});">
 						<div class="img">
 							<img src="${ctx }/resources/images/coupon.jpg" alt="img">
 						</div>
@@ -59,7 +89,8 @@
 							<p>${coupon.expiryDate }</p>
 						</div>
 					</a>
-					<button class="btn btn-inverse" type="button">Delete</button>
+					<button class="btn btn-inverse" type="button"
+						onclick="remove(${coupon.couponId});">Delete</button>
 				</div>
 			</c:forEach>
 

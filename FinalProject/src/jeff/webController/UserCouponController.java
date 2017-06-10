@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jeff.domain.Company;
 import jeff.domain.Coupon;
+import jeff.service.CompanyService;
 import jeff.service.CouponService;
 import jeff.service.UserCouponService;
 
@@ -24,6 +26,9 @@ public class UserCouponController {
 
 	@Autowired
 	private CouponService couponService;
+	
+	@Autowired
+	private CompanyService companyService;
 
 	@RequestMapping(value = "/register")
 	public @ResponseBody String registCoupon(HttpServletRequest req, int couponId) {
@@ -51,8 +56,10 @@ public class UserCouponController {
 
 	@RequestMapping(value = "/detailCoupon")
 	public ModelAndView findCouponByCouponId(int couponId) {
-		ModelAndView modelAndView = new ModelAndView("couponDetail.jsp");
+		ModelAndView modelAndView = new ModelAndView("couponDetail");
 		Coupon coupon = couponService.findCoupon(couponId);
+		Company company = companyService.findCompany(coupon.getComId());
+		modelAndView.addObject("company", company);
 		modelAndView.addObject("coupon", coupon);
 		return modelAndView;
 	}
@@ -68,25 +75,23 @@ public class UserCouponController {
 		String userId = (String) session.getAttribute("userId");
 		List<Integer> list = userCouponService.findUserCoupons(userId);
 		List<Coupon> coupons = new ArrayList<>();
-		System.out.println(list.size());
 		for (int i = 0; i < list.size(); i++) {
 			coupons.add(couponService.findCoupon(list.get(i)));
 		}
 		
-		System.out.println(coupons.size());
 		model.addAttribute("coupon", coupons);
 
 		return "userCouponList";
 	}
 
 	@RequestMapping(value = "/remove")
-	public String removeCoupon(HttpServletRequest req, int couponId) {
+	public @ResponseBody String removeCoupon(HttpServletRequest req, int couponId) {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
 
 		userCouponService.removeUserCoupon(userId, couponId);
 
-		return "redirect:userCoupon/myCoupons";
+		return "remove";
 	}
 
 	@RequestMapping(value = "/use")
