@@ -1,0 +1,96 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:choose>
+   <c:when test="${comId ne null}">
+         [<a href="${ctx }/company/logout" class="out">로그아웃</a>]
+       </c:when>
+   <c:when test="${userId ne null}">
+         [<a href="${ctx }/user/logout" class="out" >로그아웃</a>]
+      </c:when>
+
+   <c:otherwise>
+         <a href="${ctx }/views/login.jsp" class="out" >로그인</a> | <a
+            href="${ctx }/views/welcomeJoin.jsp" class="out">회원가입</a>
+   </c:otherwise>
+</c:choose>
+
+<div class="row header">
+   <!-- Begin Header -->
+
+   <!-- Logo
+        ================================================== -->
+   <div class="span5 logo">
+      <a href="${ctx }/views/main.jsp"><img src="${ctx }/resources/img/logo3.png"
+         alt="" /></a>
+      <h5>Affiliate Friends</h5>
+   </div>
+
+   <!-- Main Navigation
+        ================================================== -->
+   <div class="span7 navigation">
+      <div class="navbar hidden-phone">
+         <ul class="nav">
+            <li><a href="${ctx }/views/main.jsp">Home</a></li>
+            <li><a href="${ctx }/views/mapCoupon.jsp">Company</a></li>
+            <li class="dropdown"><a class="dropdown-toggle"
+               data-toggle="dropdown" href="#">Q&A <b
+                  class="caret"></b></a>
+               <ul class="dropdown-menu">
+                  <li><a href="${ctx }/views/frequentlyAskedQuestions.jsp">자주묻는 질문</a></li>
+                  <li><a href="${ctx }/question/findAll">1:1 질문</a></li>
+               </ul></li>
+            <c:choose>
+               <c:when test="${userId ne null }">
+                  <c:if test="${userId eq 'admin' }" >
+                  <li class="dropdown"><a class="dropdown-toggle"
+                     data-toggle="dropdown" href="#">Admin Page<b
+                        class="caret"></b></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="${ctx }/user/allUsers">All User</a></li>
+                        <li><a href="${ctx }/reportReview/findList">Reported List</a></li>
+                        <li><a href="#">결제내역???</a></li>
+                     </ul></li>
+                  </c:if>
+                  <c:if test="${userId ne 'admin' }">
+                     <li class="dropdown"><a class="dropdown-toggle"
+                        data-toggle="dropdown" href="#">My Page <b
+                           class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                           <li><a href="${ctx }/user/detail">User Info</a></li>
+                           <li><a href="blog-style2.htm">Interesting Company</a></li>
+                           <li><a href="blog-style3.htm">My Coupon</a></li>
+                        </ul></li>
+                  </c:if>
+               </c:when>
+               <c:when test="${comId ne null }">
+               <li class="dropdown"><a class="dropdown-toggle"
+                        data-toggle="dropdown" href="#">Sales<b
+                           class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                           <li><a href="${ctx }/views/salesList.jsp">Sales List</a></li>
+                           <li><a href="${ctx }/views/salesRegister.jsp">Register Sales</a></li>
+                           <li><a href="#">매출분석내용</a></li>
+                        </ul></li>
+                  <li class="dropdown"><a class="dropdown-toggle"
+                     data-toggle="dropdown" href="#">My Page <b
+                        class="caret"></b></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="${ctx }/company/detail">Company Info</a></li>
+                        <li><a href="${ctx }/alliance/detail">Alliance</a></li>
+                        <li><a href="${ctx }/coupon/findList">Coupon</a></li>
+                     </ul></li>
+               </c:when>
+               <c:otherwise>
+                  <li><a href="${ctx }/views/login.jsp">Login</a></li>
+               </c:otherwise>
+            </c:choose>
+            
+            <li><a href="${ctx }/views/notice.jsp">Notice</a></li>
+         </ul>
+       
+      </div>
+
+   </div>
+
+</div>
