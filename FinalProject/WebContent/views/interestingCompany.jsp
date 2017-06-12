@@ -119,7 +119,7 @@
 												class="item-zoom-link lightbox"
 												data-rel="prettyPhoto"></a> 
 												</c:forEach>
-												<a href="${ctx }/resources/gallery-single.htm"
+												<a href="${ctx }/alliance/companyDetail?comId=${com.comId}"
 												class="item-details-link"></a>
 										</span>
 									</span> <a href="${ctx }/alliance/companyDetail?comId=${com.comId}">

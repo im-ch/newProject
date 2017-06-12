@@ -53,7 +53,6 @@ function couponDetail(couponId) {
 			var url = "${ctx}/userCoupon/detailCoupon?couponId="+couponId; 
 			var option = "width=370, height=360, resizable=no, status=no;"; 
 			window.open(url, "", option);
-
 		}
 	</script>
 
@@ -81,7 +80,7 @@ function couponDetail(couponId) {
 					style="float: left;">
 					<a onclick="couponDetail(${coupon.couponId});">
 						<div class="img">
-							<img src="${ctx }/resources/images/coupon.jpg" alt="img">
+							<img src="${ctx }/resources/images/coupon2.jpg" alt="img">
 						</div>
 						<div class="info">
 							<h3>${coupon.couponName }</h3>

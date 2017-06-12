@@ -70,7 +70,7 @@
                         <ul class="dropdown-menu">
                            <li><a href="${ctx }/views/salesList.jsp">Sales List</a></li>
                            <li><a href="${ctx }/views/salesRegister.jsp">Register Sales</a></li>
-                           <li><a href="${ctx }/views/salesChart.jsp">매출분석내용</a></li>
+                           <li><a href="${ctx }/views/salesChart.jsp">Sale Analysis</a></li>
                         </ul></li>
                   <li class="dropdown"><a class="dropdown-toggle"
                      data-toggle="dropdown" href="blog-style1.htm">My Page <b

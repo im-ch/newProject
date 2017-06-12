@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,126 +11,132 @@
 <title>Jeff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <!-- CSS
 ================================================== -->
-<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oswald'
+	rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="${ctx }/resources/css/bootstrap.css">
-<link rel="stylesheet" href="${ctx }/resources/css/bootstrap-responsive.css">
+<link rel="stylesheet"
+	href="${ctx }/resources/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="${ctx }/resources/css/prettyPhoto.css" />
 <link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <link rel="stylesheet" href="css/style-ie.css"/>
-<![endif]--> 
+<![endif]-->
 
 <!-- Favicons
 ================================================== -->
 <link rel="shortcut icon" href="${ctx }/resources/img/favicon.ico">
-<link rel="apple-touch-icon" href="${ctx }/resources/img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="${ctx }/resources/img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="${ctx }/resources/img/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon"
+	href="${ctx }/resources/img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72"
+	href="${ctx }/resources/img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114"
+	href="${ctx }/resources/img/apple-touch-icon-114x114.png">
 
 <!-- JS
 ================================================== -->
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="${ctx }/resources/js/jquery.easing.1.3.js"></script>
-<script src="${ctx }/resources/js/bootstrap.js"></script>
-<script src="${ctx }/resources/js/jquery.prettyPhoto.js"></script>
-<script src="${ctx }/resources/js/jquery.quicksand.js"></script>
-<script src="${ctx }/resources/js/jquery.custom.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery.prettyPhoto.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery.quicksand.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery.custom.js"></script>
 
 
 </head>
 
 <body>
 	<div class="color-bar-1"></div>
-    <div class="color-bar-2 color-bg"></div>
-    
-    <div class="container main-container">
-    
-      <%@ include file="/views/header.jspf"%>
-      <%@ include file="/views/searchHeader.jspf"%>
-     
-    <!-- Page Content
-    ================================================== --> 
-    <div class="row">
+	<div class="color-bar-2 color-bg"></div>
 
-        <!-- Gallery Items
-        ================================================== --> 
-        <div class="span12 gallery">
+	<div class="container main-container">
 
-            <ul id="filterOptions" class="gallery-cats clearfix">
-                <li class="active"><a href="#" class="all">All</a></li> 
-                <li><a href="#" class="Restaurant">Restaurant</a></li>
-                <li><a href="#" class="Cafe">Cafe</a></li>
-                <li><a href="#" class="Theater">Theater</a></li>
-                <li><a href="#" class="Clothing">Clothing Store</a></li>
-                <li><a href="#" class="Bar">Bar</a></li>
-                <li><a href="#" class="Play">Play</a></li>
-                <li><a href="#" class="Beauty">Beauty</a></li>
-                <li><a href="#" class="Pension">Pension</a></li>
-                <li><a href="#" class="etc">기타</a></li>
-            </ul>
-            <div class="row clearfix">
-				<c:choose>
-					<c:when test="${companies eq null || empty companies }">
-						<tr>
-							<td colspan="6" align="center">등록된 기업이 없습니다.</td>
-						</tr>
-					</c:when>
-					
-					<c:otherwise>
-						<ul class="gallery-post-grid holder">
-						<c:forEach items="${companies }" var="company" varStatus="sts">
-		                    <li class="span4 gallery-item" data-id="id-${sts.count }" data-type="${company.category }">
-		                        <span class="gallery-hover-3col hidden-phone hidden-tablet">
-		                            <span class="gallery-icons">
-		                            	<c:forEach items="${company.imageList }" var="image">
-		                                <a href="/img/${image.fileName}"class="item-zoom-link lightbox" data-rel="prettyPhoto"></a>
-		                                </c:forEach>
-		                                <a href="${ctx }/resources/gallery-single.htm" class="item-details-link"></a>
-		                            </span>
-		                        </span>
-		                        <a href="${ctx }/alliance/companyDetail?comId=${company.comId}">
-		                        <c:forEach items="${company.imageList }" var="image">
-		                        <img src="/img/${image.fileName}" alt="Gallery">
-		                        </c:forEach>
-		                        </a>
-		                        <span class="project-details"><a href="${ctx }/alliance/companyDetail?comId=${company.comId}">${company.comName }</a>${company.ownerName }</span>
-		                    </li>
-	                    </c:forEach>
-	                    </ul>
-                    </c:otherwise>
-                   
-                </c:choose>
+		<%@ include file="/views/header.jspf"%>
 
-            </div>
+		<!-- Page Content
+    ================================================== -->
+		<div class="row">
 
-				<!-- Pagination -->
-				<div class="pagination">
-					<ul>
-						<li class="active"><a href="#">Prev</a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">Next</a></li>
-					</ul>
+			<!-- Gallery Items
+        ================================================== -->
+			<div class="span12 gallery">
+
+				<ul id="filterOptions" class="gallery-cats clearfix">
+					<li class="active"><a href="#" class="all">All</a></li>
+                	<li><a href="#" class="Restaurant">Restaurant</a></li>
+                	<li><a href="#" class="Cafe">Cafe</a></li>
+                	<li><a href="#" class="Theater">Theater</a></li>
+                	<li><a href="#" class="Clothing">Clothing Store</a></li>
+                	<li><a href="#" class="Bar">Bar</a></li>
+                	<li><a href="#" class="Play">Play</a></li>
+               		<li><a href="#" class="Beauty">Beauty</a></li>
+                	<li><a href="#" class="Pension">Pension</a></li>
+                	<li><a href="#" class="etc">기타</a></li>
+				</ul>
+
+				<div class="row clearfix">
+					<c:choose>
+
+						<c:when test="${companies eq null || empty companies}">
+							<h1>등록된 기업이 없습니다.</h1>
+						</c:when>
+						<c:otherwise>
+								<ul class="gallery-post-grid holder">
+								<c:forEach items="${companies }" var="com" varStatus="sts">
+									<li class="span4 gallery-item" data-id="id-${sts.count }"
+										data-type="${com.category }"><span
+										class="gallery-hover-3col hidden-phone hidden-tablet">
+											<span class="gallery-icons"> 
+											<c:forEach items="${com.imageList }" var="image">
+											<a href="/img/${image.fileName }"
+												class="item-zoom-link lightbox"
+												data-rel="prettyPhoto"></a> 
+												</c:forEach>
+												<a href="${ctx }/alliance/companyDetail?comId=${com.comId}"
+												class="item-details-link"></a>
+										</span>
+									</span> <a href="${ctx }/alliance/companyDetail?comId=${com.comId}">
+									<c:forEach items="${com.imageList }" var="image">
+									<img src="/img/${image.fileName }" alt="Gallery">
+									</c:forEach>
+									</a>
+										<span class="project-details"><a
+											href="${ctx }/resources/gallery-single.htm"
+											id="${com.comId }">${com.comId }</a>${com.ownerName }
+										</span> 
+											
+
+									</li>
+									</c:forEach>
+								</ul>
+						</c:otherwise>
+					</c:choose>
 				</div>
 
 			</div>
 			<!-- End gallery list-->
 
-    </div><!-- End container row -->
-    
-    </div> <!-- End Container -->
+		</div>
+		<!-- End container row -->
 
-    <!-- Footer Area
-        ================================================== -->
+	</div>
+	<!-- End Container -->
+
 	<%@ include file="/views/footer.jspf"%>
+	
+	<!-- End Footer -->
 
+	<!-- Scroll to Top -->
 	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-    
+
 </body>
 </html>

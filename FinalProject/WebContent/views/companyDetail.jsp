@@ -226,7 +226,7 @@ function modifyForm(reviewId){
 
                <!--Testimonials-->
                <h5 class="title-bg">Map</h5>
-               <div id="map" class="span4" style="height: 300px"></div>
+               <div id="map" style="height: 300px"></div>
                &nbsp;
                <div class="alert alert-success">
                   <button type="button" class="close" data-dismiss="alert">×</button>
@@ -290,7 +290,7 @@ function modifyForm(reviewId){
                   <form id="reviewform" method="post">
                      <input type="hidden" value="${alliance.company.comId}" id="comId">
                      <c:choose>
-                        <c:when test="${userId ne null }">
+                        <c:when test="${userId ne null}">
                            <textarea class="span10" name="content" id="content1"></textarea>
                            <input type="button" class="btn btn-inverse" value="review"
                               onclick="reviewSubmit();">
@@ -313,15 +313,7 @@ function modifyForm(reviewId){
       </div>
    </div>
 
-   <div class="footer-container">
-      <!-- Begin Footer -->
-      <div class="container">
-
          <%@ include file="/views/footer.jspf"%>
-
-      </div>
-   </div>
-   <!-- End Footer -->
 
    <!-- Scroll to Top -->
    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>

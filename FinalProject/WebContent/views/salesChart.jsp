@@ -99,14 +99,14 @@ function drawBasic() {
         
       }; */
       var options = {
-    	        title: "Density of Precious Metals, in g/cm^3",
+    	        title: "Daily Sales",
     	        width: 800,
     	        height: 500,
     	        bar: {groupWidth: "95%"},
     	        legend: { position: "none" },
     	      };
       var weekOptions = {
-  	        title: "Density of Precious Metals, in g/cm^3",
+  	        title: "Monthly Sales",
   	        width: 800,
   	        height: 500,
   	      	bar: {groupWidth: "20%"},
