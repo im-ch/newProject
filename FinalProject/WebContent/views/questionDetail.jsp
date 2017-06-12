@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Jeff</title>
+<title>Piccolo Theme</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -123,28 +123,45 @@
 										<br>
 										<fmt:formatDate var="newFormattedDate"
 											value="${question.regDate }" pattern="yyyy-MM-dd" />
+                                 
+                  
+                                 
+                                 
                                  카테고리:<input
 											value="${question.category }" readonly>
-                                 작성자:<input
-											value="${question.writerId }" readonly>
-                                 작성날짜:<input
-											value="${newFormattedDate }" readonly>
+
+										<input type="hidden" id="userId" name="userId"
+											value="${question.writerId }">
+										<input type="hidden" id="comId" name="comId"
+											value="${question.writerId }">
+                                 
+                                 
+                                 작성자:<input value="${question.writerId}"
+											readonly>
+                                 
+                                 
+                                 날짜:<input value="${newFormattedDate }"
+											readonly>
 									</c:otherwise>
 								</c:choose>
+
 								<br> <br> <br>
+								<c:if test="${anyBody ne null }">
+									<c:if test="${anyBody eq question.writerId}">
+										<form
+											action="${ctx }/question/update?questionId=${question.questionId}"
+											method="post">
+											<input type="hidden" id="questionId" name="questionId"
+												value="${question.questionId }">
+											<div>
+												<input class="btn btn-success" type="submit" value="수정하기">
+											</div>
 
-								<form
-									action="${ctx }/question/update?questionId=${question.questionId}"
-									method="post">
-									<input type="hidden" id="questionId" name="questionId"
-										value="${question.questionId }">
-									<div>
-										<input class="btn btn-success" type="submit" value="수정하기">
-									</div>
-
-									<textarea id="content" name="content"
-										style="width: 80%; height: 150px; resize: none;">${question.content }</textarea>
-								</form>
+											<textarea id="content" name="content"
+												style="width: 80%; height: 150px; resize: none;">${question.content }</textarea>
+										</form>
+									</c:if>
+								</c:if>
 							</div>
 							<br>
 						</div>
@@ -155,8 +172,11 @@
 
 		</div>
 	</div>
+
+
 	<c:choose>
-		<c:when test="${question.answerList eq null || empty question.answerList }">
+		<c:when
+			test="${question.answerList eq null || empty question.answerList }">
 			<tr>
 				<td colspan="6" align="center">등록된 답변이 없습니다.</td>
 			</tr>
@@ -164,49 +184,72 @@
 		</c:when>
 		<c:otherwise>
 
-			<c:forEach items="${question.answerList }" var="answer" varStatus="status">
-
+			<c:forEach items="${question.answerList }" var="answer"
+				varStatus="status">
 
 				<p>${answer.content }</p>
 				<div align="right">
 
-					작성자:<input value="${answer.answerId }" readonly><br>
 
-					작성시간:<input value="${answer.regDate }" readonly>
+					작성자:<input value="${'admin'}" readonly><br> 작성시간:<input
+						value="${answer.regDate }" readonly>
 				</div>
 
-				<form action="${ctx }/answer/modifyAnswer" method="post">
-					<c:if test="${loginedCompany.comId eq question.writerId }">
-						<input type="hidden" id="answerId" name="answerId"
-							value="${answer.answerId }">
-						<div>
-							<a class="button">수정하기</a> <a
-								href="${ctx }/answer/removeAnswer?answerId=${answer.answerId }&questionId=${answer.questionId }"
-								class="button">답변삭제</a>
-							<textarea id="content" name="content"
-								style="width: 80%; height: 200px; resize: none;">${answer.content }</textarea>
-							<br>
-						</div>
-						<input type="submit" value="답변수정완료">
-					</c:if>
-				</form>
 
+				<c:if test="${userId eq 'admin' }">
+					<form action="${ctx }/answer/modifyAnswer" method="post">
+						<input type="hidden" id="answerId" name="answerId"
+							value="${answer.answerId }"> <input type="hidden"
+							id="questionId" name="questionId" value="${answer.questionId }">
+
+						<input class="btn btn-success" type="submit" value="수정하기">
+
+						<a
+							href="${ctx }/answer/removeAnswer?answerId=${answer.answerId }&questionId=${answer.questionId }"
+							class="button">답변삭제</a>
+						<textarea id="content" name="content"
+							style="width: 80%; height: 80px; resize: none;">${answer.content }</textarea>
+						<br>
+					</form>
+				</c:if>
 				<hr>
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>
 	<hr>
-	<form action="${ctx }/answer/registAnswer" method="post">
-		<textarea style="width: 80%; height: 200px; resize: none;"
-			id="content" name="content"></textarea>
-		<br> <input type="hidden" id="questionId" name="questionId"
-			value="${question.questionId }"> <input type="hidden"
-			id="writerId" name="writerId" value="${question.writerId}"> 
-		<button type="submit">답변 등록</button>
-	</form>
+
+
+	<c:choose>
+		<c:when test="${userId ne null}">
+			<c:if test="${userId eq 'admin' }">
+
+				<form action="${ctx }/answer/registAnswer" method="post">
+					<textarea style="width: 80%; height: 200px; resize: none;"
+						id="content" name="content"></textarea>
+					<br> <input type="hidden" id="questionId" name="questionId"
+						value="${question.questionId }"> <input type="hidden"
+						id="writerId" name="writerId" value="${question.writerId}">
+					<button type="submit">답변 등록</button>
+				</form>
+			</c:if>
+		</c:when>
+
+	</c:choose>
+	<div class="row">
+		<div class="12u">
+			<div id="copyright">
+				<ul class="menu">
+					<li>&copy; JavaRoad All rights reserved</li>
+					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<script src="inner/js/jquery.min.js"></script>
 	<script src="inner/js/skel.min.js"></script>
 	<script src="inner/js/util.js"></script>
 	<script src="inner/js/main.js"></script>
+
+
 </body>
 </html>

@@ -85,7 +85,7 @@ public class UserCouponController {
 	}
 
 	@RequestMapping(value = "/remove")
-	public String removeCoupon(HttpServletRequest req, int couponId) {
+	public @ResponseBody String removeCoupon(HttpServletRequest req, int couponId) {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
 

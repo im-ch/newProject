@@ -62,7 +62,8 @@
                         </div>
                     </div>
                 </div>
-
+				
+				
                  <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
@@ -111,6 +112,19 @@
                     <div id="collapseSix" class="accordion-body collapse">
                         <div class="accordion-inner">
                         	JEFF에서는 관리자가 제휴제안서를 따로 확인하여 검토하는 절차는 없습니다. 제휴 제안서를 등록하시면 자동으로 제휴가 맺어지며, 양식에 맞게만 작성하시면 따로 문제가 생기지 않습니다.
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSeven">
+                        	모르고 직원확인을 눌러버렸더니 쿠폰이 비활성화가 되었어요. 재발급은 안되나요?
+                        </a>
+                    </div>
+                    <div id="collapseSeven" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                        	따로 확인이 어려운 부분이라 재발급이 어렵습니다. 죄송합니다. 
                         </div>
                     </div>
                 </div>

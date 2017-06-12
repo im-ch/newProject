@@ -17,33 +17,33 @@ import jeff.service.QuestionService;
 public class AnswerController {
 
 
-	@Autowired
-	private QuestionService service;
-	
-	@RequestMapping(value = "registAnswer", method = RequestMethod.POST)
-	public String registAnswer(Answer answer) {
-		service.registAnswer(answer);
-		return "redirect:/question/find?questionId=" + answer.getQuestionId();
-	}
-	
-	@RequestMapping("removeAnswer")
-	public String removeAnswer(int answerId) {
-		service.removeAnswer(answerId);
-		List<Answer> a = service.findAnswer(answerId);
-		return "redirect:questionDetail?QuestionId=" + a.get(answerId);
-	}
-	
-	@RequestMapping(value = "modifyAnswer", method = RequestMethod.GET)
-	public String updateAnswer(Model model, int answerId) {
-		List<Answer> answer = service.findAnswer(answerId);
-		model.addAttribute("answer", answer);
-		model.addAttribute("modifyForm", "modify");
-		return "redirect:questionDetail?QuestionId=" + answer.get(answerId);
-	}
-	
-	@RequestMapping(value = "/modifyAnswer", method = RequestMethod.POST)
-	public String updateAnswer(Answer answer) {
-		service.updateAnswer(answer);
-		return "redirect:questionDetail?QuestionId=" + answer.getQuestionId();
-	}
+   @Autowired
+   private QuestionService service;
+   
+   @RequestMapping(value = "registAnswer", method = RequestMethod.POST)
+   public String registAnswer(Answer answer) {
+      service.registAnswer(answer);
+      return "redirect:/question/find?questionId=" + answer.getQuestionId();
+   }
+   
+
+   @RequestMapping("removeAnswer")
+   public String removeAnswer(int answerId, int questionId) {
+      service.removeAnswer(answerId);
+      return "redirect:/question/find?questionId=" + questionId;
+   }
+   
+   @RequestMapping(value = "modifyAnswer", method = RequestMethod.GET)
+   public String updateAnswer(Model model, int answerId) {
+      List<Answer> answer = service.findAnswer(answerId);
+      model.addAttribute("answer", answer);
+      model.addAttribute("modifyForm", "modify");
+      return "redirect:questionDetail?QuestionId=" + answer.get(answerId);
+   }
+   
+   @RequestMapping(value = "/modifyAnswer", method = RequestMethod.POST)
+   public String updateAnswer(Answer answer) {
+      service.updateAnswer(answer);
+      return "redirect:/question/find?questionId=" + answer.getQuestionId();
+   }
 }

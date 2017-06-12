@@ -48,13 +48,13 @@ public class ReportReviewController {
 	@RequestMapping(value="/regist", method=RequestMethod.POST)
 	public String registReportReview(ReportReview reportReview, String comId){
 		service.registReportReview(reportReview);
-		return "redirect:/company/detail?comId=" + comId;
+		return "redirect:/alliance/companyDetail?comId=" + comId;
 	}
-	
+
 	@RequestMapping(value="/remove")
 	public String removeReportReview(int reviewId){
 		service.removeReportReview(reviewId);
-		return "reportReview/findList";
+		return "redirect:findList";
 	}
 
 }

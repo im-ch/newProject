@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jeff.domain.Question;
 import jeff.service.CompanyService;
 import jeff.service.QuestionService;
+import jeff.service.UserService;
 
 @Controller
 @RequestMapping("question")
@@ -21,9 +22,10 @@ public class QuestionController {
    
    @Autowired
    private QuestionService service;
-   
    @Autowired
    private CompanyService comService;
+   @Autowired
+   private UserService userService;
    
    @RequestMapping(value ="regist", method = RequestMethod.POST)
    public String registQuestion (Question question, HttpServletRequest req){
@@ -48,14 +50,19 @@ public class QuestionController {
       Question q = service.findQuestion(questionId);
       HttpSession session = req.getSession();
       String comId = null;
-      if(session != null || session.getAttribute("comId") != null){
+      String userId = null;
+      if(session.getAttribute("comId") != null){
          comId = (String)session.getAttribute("comId");
+         model.addAttribute("anyBody",comId);
+
+      }else if(session.getAttribute("userId") != null){
+         userId = (String)session.getAttribute("userId");
+         model.addAttribute("anyBody", userId);
       }else{
-         return "redirect:findAll";
+         return "/questionDetail";
       }
-      
       model.addAttribute("question", q);
-      model.addAttribute("loginedCompany",comService.findCompany(comId));
+            
       return "/questionDetail";
    }
 

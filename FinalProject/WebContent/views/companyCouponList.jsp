@@ -50,11 +50,7 @@
       <c:forEach items="${couponList }" var="coupon" varStatus="sts">
         <div class="ih-item circle effect2 left_to_right" style="float:left;">
         <a href="${ctx }/coupon/modify?couponId=${coupon.couponId}">
-<<<<<<< HEAD
-        <div class="img"><img src="${ctx }/resources/images/circ_img1.jpg" alt="img"></div>
-=======
         <div class="img"><img src="${ctx }/resources/images/coupon2.jpg" alt="img"></div>
->>>>>>> 30bac0c35d1ea81b7e6b1d92f08402c9d9f7acf9
         <!-- 쿠폰이미지 찾아서 넣어야함 -->
         <div class="info">
           <h3>${coupon.couponName }</h3>
@@ -74,10 +70,6 @@
       
 	</div>
 	
-	<%@ include file="/views/footer.jspf"%>
-    
-    <!-- Scroll to Top -->  
-    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
 	
 </body>
 </html>
