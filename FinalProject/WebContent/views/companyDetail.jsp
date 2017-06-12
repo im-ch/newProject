@@ -202,9 +202,7 @@ function modifyForm(reviewId){
                <div class="row">
                   <c:choose>
                      <c:when test="${images eq null || empty images }">
-                        <tr>
-                           <td colspan="6" align="center">등록된 기업 이미지가 없습니다.</td>
-                        </tr>
+                           <h3 style="margin-left: 30px">등록된 기업 이미지가 없습니다.</h3>
                      </c:when>
                      <c:otherwise>
                         <c:forEach items="${images }" var="img">
@@ -234,9 +232,11 @@ function modifyForm(reviewId){
                <div class="alert alert-info">
                   <strong>전화번호 : </strong>  0${alliance.company.comPhoneNumber }
                </div>
+               <c:if test="${userId ne null }">
                <input type="button" style="width:100%;"
                   onclick="interesting('${alliance.company.comId}');"
                   value="관심기업 추가" class="btn btn-large btn-warning">
+               </c:if>
             </div>
             <!-- End sidebar column -->
          </div>
@@ -315,19 +315,6 @@ function modifyForm(reviewId){
       </div>
    </div>
 
-   <div class="footer-container">
-      <!-- Begin Footer -->
-      <div class="container">
-
-         <%@ include file="/views/footer.jspf"%>
-
-      </div>
-   </div>
-   <!-- End Footer -->
-
-   <!-- Scroll to Top -->
-   <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-   
    <script>
          function initMap() {
         	var comId = $("#hiddenId").val();

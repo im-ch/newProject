@@ -72,8 +72,12 @@ public class AllianceController {
 	public String updateAlliance(String comId, Model model) {
 
 		Alliance alliance = service.findAlliance(comId);
-		model.addAttribute("alliance", alliance);
+		Company company = alliance.getCompany();
 
+		String[] lo = company.getLocation().split(";");
+		company.setLocation("[" + lo[0] + "] " + lo[1] + " " + lo[2]);
+		alliance.setCompany(company);
+		model.addAttribute("alliance", alliance);
 		return "/allianceModify";
 	}
 
