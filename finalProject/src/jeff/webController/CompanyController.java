@@ -147,7 +147,6 @@ public class CompanyController {
       
       HttpSession session = req.getSession();
       String location = (String)session.getAttribute("location");
-      
       companies.setCompanies(locationReplace(list, location));
       return companies;
    }

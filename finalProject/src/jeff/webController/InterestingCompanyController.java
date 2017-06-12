@@ -35,9 +35,10 @@ public class InterestingCompanyController {
 
    @RequestMapping(value = "/register")
    public @ResponseBody String registInterestingCompany(HttpServletRequest req, String comId) {
+	   
       HttpSession session = req.getSession();
       if (session == null || session.getAttribute("userId") == null) {
-         return "redirect:login";
+         return "login";
       }
       String userId = (String) session.getAttribute("userId");
       HashMap<String, Object> map = new HashMap<String, Object>();
@@ -68,11 +69,24 @@ public class InterestingCompanyController {
       }
       List<String> comList = service.findInterestingCompany(userId);
       List<Company> list = new ArrayList<>();
-      List<CompanyImage> imgList = new ArrayList<>();
+      List<CompanyImage> image = new ArrayList<>();
 
       for (int i = 0; i < comList.size(); i++) {
          list.add(companyService.findCompany(comList.get(i)));
       }
+      for(Company c : list){
+    	  image = new ArrayList<>();
+    	  if(c.getImageList().size() > 0){
+    		  image.add(c.getImageList().get(0));
+    		  c.setImageList(image);
+    	  }else {
+    		  CompanyImage img = new CompanyImage();
+    		  img.setFileName("noimage.png");
+    		  image.add(img);
+    		  c.setImageList(image);
+    	  }
+      }
+      
       model.addAttribute("company", list);
       return "interestingCompany";
    }

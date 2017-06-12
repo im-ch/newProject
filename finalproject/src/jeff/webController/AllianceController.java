@@ -1,6 +1,5 @@
 package jeff.webController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import jeff.common.exception.YzRuntimeException;
 import jeff.domain.Alliance;
 import jeff.domain.Company;
 import jeff.domain.CompanyImage;

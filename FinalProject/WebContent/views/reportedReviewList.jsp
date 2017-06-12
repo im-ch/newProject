@@ -106,78 +106,59 @@
 			</div>
 			<br> <br>
 		</div>
-		<div class="span7 navigation">
-
 			<h1>Reported review</h1>
 			<div class="chart">
-				<table>
+				<table class="table table-striped table-bordered table-hover">
 					<colgroup>
-					<colgroup>
-
-						<col width="200" />
 						<col width="100" />
-						<col width="150" />
-						<col width="150" />
-						<col width="150" />
-						<col width="300" />
-						<col width="200" />
-
+						<col width="1000" />
+						<col width="600" />
+						<col width="600" />
+						<col width="600" />
 					</colgroup>
-					<tr>
-						<th>No</th>
-						<th>Image</th>
-						<th colspan="1">Content</th>
-						<th colspan="1"></th>
-						<th>UserId</th>
-						<th>Date</th>
-						<th>Conduct</th>
-					</tr>
-					<c:choose>
-						<c:when test="${reviews eq null || empty reviews }">
-							<tr>
-								<td colspan="6" align="center">신고된 게시물이 없습니다.</td>
-							</tr>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${reviews}" var="review" varStatus="sts">
-								<fmt:formatDate var="newFormattedDate"
-									value="${review.regDate }" pattern="yyyy-MM-dd " />
+					<thead>
+						<tr>
+							<td style="float: middle" width="100">NO</td>
+							<td style="float: middle" width="2000">Content</td>
+							<td style="float: middle" width="300">UserId</td>
+							<td style="float: middle" width="300">Date</td>
+							<td style="float: middle" width="300">Conduct</td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:choose>
+							<c:when test="${reviews eq null || empty reviews }">
 								<tr>
-									<td class="ranking"><span class="1">${sts.count }</span></td>
-
-									<td class="albumimg"><img src="이미지 " alt="sample">
-									<td class="subject" align="center" width="2000px">
-										<p title="${review.content }">
-										<div class="span8">
-											<a href="${ctx }/views/find?reviewId=${review.reviewId }">${review.content }</a>
-										</div>
-										</p>
-									</td>
-									<td class="subject" align="center"></td>
-									<td class="production">
-										<p class="pro" title="nickName">${review.userId}</p>
-									</td>
-
-									<td class="share">${newFormattedDate }</td>
-									<td class="play">
-										<div tabindex="0" class="chart_play">
-
-											<a
-												href="${ctx }/reportReview/remove?reviewId=${review.reviewId}">[보류]</a>
-											<a
-												href="${ctx }/reportReview/remove?reviewId=${review.reviewId}">[삭제]</a>
-										</div>
-									</td>
+									<td colspan="7" align="center">신고된 게시물이 없습니다.</td>
 								</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${reviews }" var="review" varStatus="status">
+									<fmt:formatDate var="newFormattedDate"
+										value="${review.regDate }" pattern="yyyy-MM-dd" />
+									<tr>
+										<td>${status.count }</td>
+										<td>${review.content }</td>
+										<td>${review.userId}</td>
+										<td>${newFormattedDate }</td>
+
+										<td><a
+											href="${ctx }/reportReview/remove?reviewId=${review.reviewId}">[보류]</a>
+											<a
+											href="${ctx }/reportReview/remove?reviewId=${review.reviewId}">[삭제]</a></td>
+
+
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
 				</table>
+
 			</div>
 
 
 		</div>
-	</div>
 
 	<%@ include file="/views/footer.jspf"%>
 </body>

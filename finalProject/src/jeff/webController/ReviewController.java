@@ -36,13 +36,19 @@ public class ReviewController {
 		String userId = null;
 		if (session != null) {
 			userId = (String) session.getAttribute("userId");
+		} else{
+			return "login";
 		}
-
+		
+		if(review.getContent().equals("content=")){
+			return "null";
+		}
+		
 		String content = review.getContent().split("=")[1];
+		
 		try {
 			content = URLDecoder.decode(content, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		review.setContent(content);

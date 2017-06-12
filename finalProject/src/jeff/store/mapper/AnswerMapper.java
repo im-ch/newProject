@@ -12,7 +12,7 @@ public interface AnswerMapper {
 
 	void modifyAnswer(Answer answer);
 
-	Answer selectAnswer(int answerId);
+	List<Answer> selectAnswer(int answerId);
 
 	List<Answer> selectAllAnswer(int questionId);
 

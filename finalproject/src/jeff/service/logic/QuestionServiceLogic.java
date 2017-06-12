@@ -62,8 +62,8 @@ public class QuestionServiceLogic implements QuestionService{
 	}
 
 	@Override
-	public Answer findAnswer(int answerId) {
-		return aStore.selectAnswer(answerId);
+	public List<Answer> findAnswer(int answerId) {
+		return  aStore.selectAnswer(answerId);
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package jeff.webController;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,19 +26,19 @@ public class AnswerController {
 		return "redirect:/question/find?questionId=" + answer.getQuestionId();
 	}
 	
-	@RequestMapping("/removeAnswer")
+	@RequestMapping("removeAnswer")
 	public String removeAnswer(int answerId) {
 		service.removeAnswer(answerId);
-		Answer a = service.findAnswer(answerId);
-		return "redirect:questionDetail?QuestionId=" + a.getQuestionId();
+		List<Answer> a = service.findAnswer(answerId);
+		return "redirect:questionDetail?QuestionId=" + a.get(answerId);
 	}
 	
-	@RequestMapping(value = "/modifyAnswer", method = RequestMethod.GET)
+	@RequestMapping(value = "modifyAnswer", method = RequestMethod.GET)
 	public String updateAnswer(Model model, int answerId) {
-		Answer answer = service.findAnswer(answerId);
+		List<Answer> answer = service.findAnswer(answerId);
 		model.addAttribute("answer", answer);
 		model.addAttribute("modifyForm", "modify");
-		return "redirect:questionDetail?QuestionId=" + answer.getQuestionId();
+		return "redirect:questionDetail?QuestionId=" + answer.get(answerId);
 	}
 	
 	@RequestMapping(value = "/modifyAnswer", method = RequestMethod.POST)

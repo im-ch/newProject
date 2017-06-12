@@ -5,7 +5,6 @@ import java.util.List;
 import jeff.domain.Review;
 
 public interface ReviewMapper {
-
 	void createReview(Review review);
 
 	void modifyReview(Review review);

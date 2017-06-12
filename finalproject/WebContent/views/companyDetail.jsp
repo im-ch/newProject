@@ -41,7 +41,7 @@
 <script src="${ctx }/resources/js/bootstrap.js"></script>
 <script src="${ctx }/resources/js/jquery.custom.js"></script>
 <script type="text/javascript">
-   function to_ajax(comId) {
+   function interesting(comId) {
       $.ajax({
          url : "${ctx}/interesting/register",
          type : "GET",
@@ -53,6 +53,8 @@
                alert("즐겨찾기에 추가되었습니다.");
             } else if (data == 'false') {
                alert("이미 등록되었습니다.");
+            } else if (data == 'login'){
+               alert("로그인 후 이용하실 수 있습니다.");
             }
          },
          error : function(jqXHR, textStatus, errorThrown) {
@@ -65,7 +67,6 @@
    function reviewSubmit() {
       var comId = $("#comId").val();
       var content = $("#reviewform").serialize();
-      
       $.ajax({
          url : "${ctx}/review/regist",
          type : "POST",
@@ -77,17 +78,18 @@
             if(data=='regist'){
                alert("후기가 등록되었습니다.");
                 window.location.reload();
+            }else if (data == 'null'){
+               alert("내용을 입력해주세요.");
             }
          },
          error : function(jqXHR, textStatus, errorThrown) {
-            alert("로그인 후 이용하실 수 있는 서비스 입니다.");
+            alert("잠시 후 다시 시도해 주세요.");
          }
       });
    }
 </script>
 <script type="text/javascript">
 function modifyForm(reviewId){
-   console.log(reviewId);
            var str;
          var data = $("#content"+reviewId).text();
           var form = $('<form></form>');
@@ -95,7 +97,7 @@ function modifyForm(reviewId){
              form.attr('method', 'post');
              form.appendTo($("#modify1"+reviewId));
              var idx = $("<textarea class='span10' id='mcontent'>"+ data +"</textarea>");
-             var btn = $("<input type='button' class='btn btn-inverse' value='수정' onclick='modify("+reviewId+");'>")
+             var btn = $("<input type='button' class='btn btn-inverse' value='수정' onclick='modify("+reviewId+");'>");
              form.append(idx);
              form.append(btn);
       }
@@ -207,8 +209,7 @@ function modifyForm(reviewId){
                      <c:otherwise>
                         <c:forEach items="${images }" var="img">
                            <div class="span2">
-                              <img src="/img/${img.fileName }" alt="Image"
-                                 class="thumbnail">
+                              <img src="/img/${img.fileName }" alt="Image" class="thumbnail">
                            </div>
                         </c:forEach>
                      </c:otherwise>
@@ -231,8 +232,9 @@ function modifyForm(reviewId){
                   <button type="button" class="close" data-dismiss="alert">×</button>
                   <strong>영업시간 : </strong> ${alliance.openingHours }
                </div>
-               <input type="button" onclick="to_ajax(${alliance.company.comId});"
-                  value="interesting" class="btn btn-inverse">
+               <input type="button"
+                  onclick="interesting('${alliance.company.comId}');"
+                  value="관심기업 추가" class="btn btn-inverse">
             </div>
             <!-- End sidebar column -->
          </div>
@@ -242,18 +244,18 @@ function modifyForm(reviewId){
                <h3>Coupon</h3>
             </div>
             <c:forEach items="${coupon }" var="coupon">
-            <div class="ih-item circle effect2 left_to_right"
-               style="float: left;">
-               <a onclick="coupon(${coupon.couponId});">
-                  <div class="img">
-                     <img src="${ctx }/resources/images/circ_img1.jpg" alt="img">
-                  </div>
-                  <div class="info">
-                     <h3>${coupon.couponName }</h3>
-                     <p>${coupon.expiryDate }</p>
-                  </div>
-               </a>
-            </div>
+               <div class="ih-item circle effect2 left_to_right"
+                  style="float: left;">
+                  <a onclick="coupon(${coupon.couponId});">
+                     <div class="img">
+                        <img src="${ctx }/resources/images/coupon2.jpg" alt="img">
+                     </div>
+                     <div class="info">
+                        <h3>${coupon.couponName }</h3>
+                        <p>${coupon.expiryDate }</p>
+                     </div>
+                  </a>
+               </div>
             </c:forEach>
          </div>
          <br> <br> <br> <br> <br> <br> <br>
@@ -274,8 +276,9 @@ function modifyForm(reviewId){
                                  onclick="remove(${review.reviewId});">삭제</a>
                            </c:if></span>
                         <div class="comment-content" id="content${review.reviewId}">${review.content }&nbsp;&nbsp;
-                        </div> <c:if
-                              test="${userId eq review.userId }"><a href="${ctx }/review/find?reviewId=${review.reviewId}">[신고]</a></c:if></li>
+                        </div> <c:if test="${userId ne review.userId && userId ne null}">
+                           <a href="${ctx }/review/find?reviewId=${review.reviewId}">[신고]</a>
+                        </c:if></li>
                      <div id="modify1${review.reviewId}"></div>
                   </c:forEach>
                </ul>
@@ -289,6 +292,8 @@ function modifyForm(reviewId){
                      <c:choose>
                         <c:when test="${userId ne null }">
                            <textarea class="span10" name="content" id="content1"></textarea>
+                           <input type="button" class="btn btn-inverse" value="review"
+                              onclick="reviewSubmit();">
                         </c:when>
                         <c:otherwise>
                            <p>로그인 한 회원만 후기를 작성할 수 있습니다.</p>
@@ -296,8 +301,7 @@ function modifyForm(reviewId){
                      </c:choose>
                      <div class="row">
                         <div class="span2">
-                           <input type="button" class="btn btn-inverse" value="review"
-                              onclick="reviewSubmit();">
+                           
                         </div>
                      </div>
                   </form>
@@ -395,6 +399,13 @@ function modifyForm(reviewId){
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5q_u7mfoL-N8R1EphJkTMgJbEwFfcSm4&callback=initMap">
 			
 		</script>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
 
 </body>
 </html>

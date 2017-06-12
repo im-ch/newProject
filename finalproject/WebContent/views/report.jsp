@@ -43,7 +43,7 @@
 <script src="${ctx }/resources/js/bootstrap.js"></script>
 <script src="${ctx }/resources/js/jquery.custom.js"></script>
 <script type='text/javascript'>
-	function reviewSubmit() {
+	function complete() {
 		alert("신고가 완료되었습니다.");
 	}
 </script>

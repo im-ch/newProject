@@ -69,7 +69,6 @@ html, body {
         ================================================== --> 
         <div class="span4 sidebar">
 
-
             <!--Popular Posts-->
             <ul class="popular-posts">
               <div id="result">
@@ -150,10 +149,15 @@ html, body {
                   content: contentString,
                   maxWidth: markerMaxWidth
                });
-               
    			var listId = "#" + comId;
    			var list = $(listId);
    			
+   			$(listId).mouseover(function(){
+   				infowindow.open(map,marker);
+   			}).mouseleave(function(){
+   				infowindow.close(map,marker);
+   			});
+   				
                google.maps.event.addListener(marker,'mouseover',function(){
                   infowindow.open(map,marker);
                });

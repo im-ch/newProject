@@ -13,60 +13,48 @@ import jeff.domain.ReportReview;
 import jeff.domain.Review;
 import jeff.service.ReportReviewService;
 import jeff.service.ReviewService;
-
 @RequestMapping("reportReview")
 @Controller
 public class ReportReviewController {
-
+	
 	@Autowired
 	private ReportReviewService service;
-
+	
 	@Autowired
 	private ReviewService reviewService;
-
-	@RequestMapping(value = "find")
-	public String findReportReview(int reviewId, Model model) {
+	
+	@RequestMapping(value="find")
+	public String findReportReview(int reviewId, Model model){
 		ReportReview reportReview = service.findReportReview(reviewId);
 		model.addAttribute("reportReview", reportReview);
-		return "report";
+		return "reportReview.jsp";
 	}
-
-	@RequestMapping(value = "findList")
-	public String findAllReportReviews(Model model) {
+	
+	@RequestMapping(value="findList")
+	public String findAllReportReviews(Model model){
 		List<ReportReview> list = service.findAllReportReviews();
 		List<Review> reviewList = new ArrayList<>();
-
-		for (ReportReview r : list) {
+		
+		for(ReportReview r : list){
 			Review review = reviewService.findReviewByReviewId(r.getReviewId());
 			reviewList.add(review);
 		}
-
+		
 		model.addAttribute("reviews", reviewList);
 		model.addAttribute("reportReviewList", list);
 		return "reportedReviewList";
 	}
-
-	@RequestMapping(value = "regist", method = RequestMethod.POST)
-	public String registReportReview(ReportReview reportReview, String comId) {
-
-		if (service.findReportReview(reportReview.getReviewId()) != null) {
-			return "redirect:/alliance/companyDetail?comId=" + comId;
-		} else {
-
-			service.registReportReview(reportReview);
-
-			Review review = reviewService.findReviewByReviewId(reportReview.getReviewId());
-			review.setReported(true);
-			reviewService.updateReviewReport(review);
-			
-			return "redirect:/alliance/companyDetail?comId=" + comId;
-		}
+	
+	@RequestMapping(value="/regist", method=RequestMethod.POST)
+	public String registReportReview(ReportReview reportReview, String comId){
+		service.registReportReview(reportReview);
+		return "redirect:/company/detail?comId=" + comId;
 	}
-
-	@RequestMapping(value = "/remove")
-	public String removeReportReview(int reviewId) {
+	
+	@RequestMapping(value="/remove")
+	public String removeReportReview(int reviewId){
 		service.removeReportReview(reviewId);
-		return "redirect:/reportReview/findList";
+		return "reportReview/findList";
 	}
 
 }

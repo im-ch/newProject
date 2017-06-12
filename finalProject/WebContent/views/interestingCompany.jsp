@@ -90,10 +90,15 @@
 
 				<ul id="filterOptions" class="gallery-cats clearfix">
 					<li class="active"><a href="#" class="all">All</a></li>
-					<li><a href="#" class="123">Illustration</a></li>
-					<li><a href="#" class="456">Design</a></li>
-					<li><a href="#" class="789">Video</a></li>
-					<li><a href="#" class="web">Web</a></li>
+                	<li><a href="#" class="Restaurant">Restaurant</a></li>
+                	<li><a href="#" class="Cafe">Cafe</a></li>
+                	<li><a href="#" class="Theater">Theater</a></li>
+                	<li><a href="#" class="Clothing">Clothing Store</a></li>
+                	<li><a href="#" class="Bar">Bar</a></li>
+                	<li><a href="#" class="Play">Play</a></li>
+               		<li><a href="#" class="Beauty">Beauty</a></li>
+                	<li><a href="#" class="Pension">Pension</a></li>
+                	<li><a href="#" class="etc">기타</a></li>
 				</ul>
 
 				<div class="row clearfix">
@@ -103,24 +108,29 @@
 							<h1>즐겨찾기 목록이 비어있습니다.</h1>
 						</c:when>
 						<c:otherwise>
-							<c:forEach items="${company }" var="com">
 								<ul class="gallery-post-grid holder">
-									<li class="span4 gallery-item" data-id="${com.comId }"
+								<c:forEach items="${company }" var="com" varStatus="sts">
+									<li class="span4 gallery-item" data-id="id-${sts.count }"
 										data-type="${com.category }"><span
 										class="gallery-hover-3col hidden-phone hidden-tablet">
-											<span class="gallery-icons"> <a
-												href="${ctx }/resources/img/gallery/parram.jpg"
-												class="item-zoom-link lightbox" title="Custom Illustration"
-												data-rel="prettyPhoto"></a> <a
-												href="${ctx }/resources/gallery-single.htm"
+											<span class="gallery-icons"> 
+											<c:forEach items="${com.imageList }" var="image">
+											<a href="/img/${image.fileName }"
+												class="item-zoom-link lightbox"
+												data-rel="prettyPhoto"></a> 
+												</c:forEach>
+												<a href="${ctx }/resources/gallery-single.htm"
 												class="item-details-link"></a>
 										</span>
-									</span> <a href="gallery-single.htm"><img
-											src="${ctx }/resources/img/gallery/parram.jpg" alt="Gallery"></a>
+									</span> <a href="${ctx }/alliance/companyDetail?comId=${com.comId}">
+									<c:forEach items="${com.imageList }" var="image">
+									<img src="/img/${image.fileName }" alt="Gallery">
+									</c:forEach>
+									</a>
 										<span class="project-details"><a
 											href="${ctx }/resources/gallery-single.htm"
-											id="${com.comId }">${com.comId }</a>For an international add
-											campaign.</span> 
+											id="${com.comId }">${com.comId }</a>
+										</span> 
 											
 											<!-- ★★★★★★★★★★★★★★★★delete★★★★★★★★★★★★★★★★ --> 
 											<input type="button" id="delete" class="delete"
@@ -129,12 +139,8 @@
 
 
 									</li>
-									</span> <a href="gallery-single.htm">
-									<img src="${ctx }/resources/img/gallery/parram.jpg" alt="Gallery"></a> 
-									<span class="project-details"><a href="${ctx }/resources/gallery-single.htm">${com.comId }</a>
-									For an international add campaign.</span></li>
+									</c:forEach>
 								</ul>
-							</c:forEach>
 						</c:otherwise>
 					</c:choose>
 				</div>

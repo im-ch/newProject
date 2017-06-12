@@ -53,7 +53,6 @@
 <script type='text/javascript'>
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawBasic);
-
 function drawBasic() {
 	  
 	  var jsonData = 
@@ -131,7 +130,6 @@ function drawBasic() {
   	        
   	        
   	      }; */
-
       var chart = new google.visualization.ColumnChart(
         document.getElementById('chart_div'));
 	
@@ -150,10 +148,8 @@ function drawBasic() {
 		var d = date.getDate();
 		var m = date.getMonth();
 		var y = date.getFullYear();
-
 		$('#calendar').fullCalendar({
 			editable : false,
-
 			events : function(regDate, sales, callback) {
 				$.ajax({
 					displayLoading : true,
@@ -186,7 +182,6 @@ body {
 	font-size: 14px;
 	font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
 }
-
 #calendar {
 	width: 900px;
 	margin: 0 auto;

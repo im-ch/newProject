@@ -63,15 +63,15 @@
                 <li class="active"><a href="#" class="all">All</a></li> 
                 <li><a href="#" class="Restaurant">Restaurant</a></li>
                 <li><a href="#" class="Cafe">Cafe</a></li>
-                <li><a href="#" class="Cinema">Cinema</a></li>
+                <li><a href="#" class="Theater">Theater</a></li>
                 <li><a href="#" class="Clothing">Clothing Store</a></li>
-                <li><a href="#" class="Department">Department store</a></li>
-                <li><a href="#" class="기타">기타</a></li>
+                <li><a href="#" class="Bar">Bar</a></li>
+                <li><a href="#" class="Play">Play</a></li>
+                <li><a href="#" class="Beauty">Beauty</a></li>
+                <li><a href="#" class="Pension">Pension</a></li>
+                <li><a href="#" class="etc">기타</a></li>
             </ul>
-            
             <div class="row clearfix">
-                <ul class="gallery-post-grid holder">
-				
 				<c:choose>
 					<c:when test="${companies eq null || empty companies }">
 						<tr>
@@ -80,14 +80,15 @@
 					</c:when>
 					
 					<c:otherwise>
+						<ul class="gallery-post-grid holder">
 						<c:forEach items="${companies }" var="company" varStatus="sts">
 		                    <li class="span4 gallery-item" data-id="id-${sts.count }" data-type="${company.category }">
 		                        <span class="gallery-hover-3col hidden-phone hidden-tablet">
 		                            <span class="gallery-icons">
 		                            	<c:forEach items="${company.imageList }" var="image">
-		                                <a href="/img/${image.fileName}" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+		                                <a href="/img/${image.fileName}"class="item-zoom-link lightbox" data-rel="prettyPhoto"></a>
 		                                </c:forEach>
-		                                <a href="${ctx }/alliance/companyDetail?comId=${company.comId}" class="item-details-link"></a>
+		                                <a href="${ctx }/resources/gallery-single.htm" class="item-details-link"></a>
 		                            </span>
 		                        </span>
 		                        <a href="${ctx }/alliance/companyDetail?comId=${company.comId}">
@@ -98,14 +99,27 @@
 		                        <span class="project-details"><a href="${ctx }/alliance/companyDetail?comId=${company.comId}">${company.comName }</a>${company.ownerName }</span>
 		                    </li>
 	                    </c:forEach>
+	                    </ul>
                     </c:otherwise>
                    
                 </c:choose>
 
-                </ul>
             </div>
 
-        </div><!-- End gallery list-->
+				<!-- Pagination -->
+				<div class="pagination">
+					<ul>
+						<li class="active"><a href="#">Prev</a></li>
+						<li class="active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">Next</a></li>
+					</ul>
+				</div>
+
+			</div>
+			<!-- End gallery list-->
 
     </div><!-- End container row -->
     

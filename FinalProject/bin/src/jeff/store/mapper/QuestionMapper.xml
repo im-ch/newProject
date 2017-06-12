@@ -31,12 +31,12 @@
 
 	<update id="modifyQuestion" parameterType="Question">
 		UPDATE question_tb 
-		SET content = #{content}, title = #{title}
+		SET content = #{content}
 		WHERE questionId = #{questionId}
 	</update>
 
 	<select id="selectQuestion" parameterType="int" resultType="Question" resultMap="questionMap">
-		SELECT questionId, writerId, title, content,category,regDate
+		SELECT questionId, writerId, title, content,category,regDate 
 		FROM question_tb 
 		WHERE questionId = #{questionId}
 	</select>

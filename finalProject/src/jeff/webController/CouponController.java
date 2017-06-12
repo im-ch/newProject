@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +38,7 @@ public class CouponController {
 	public ModelAndView FindCoupon(int couponId){
 		Coupon coupon = service.findCoupon(couponId);
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("couponDetail.jsp");
+		modelAndView.setViewName("couponDetail");
 		modelAndView.addObject("coupon", coupon);
 		return modelAndView;
 	}
@@ -94,10 +95,18 @@ public class CouponController {
 		model.addAttribute("coupon", coupon);
 		return "modifyCoupon";
 	}
+	
+//	@RequestMapping(value="modify", method=RequestMethod.POST)
+//	public String modifyCoupon(Coupon coupon){
+//		System.out.println(coupon.getExpiryDate());
+//		System.out.println(coupon.getCouponId());
+//		service.updateCoupon(coupon);
+//		return "redirect:findList";
+//	}
+	
 	@RequestMapping(value="modify", method=RequestMethod.POST)
 	public String modifyCoupon(Coupon coupon){
-		System.out.println(coupon.getExpiryDate());
-		System.out.println(coupon.getCouponId());
+		
 		service.updateCoupon(coupon);
 		return "redirect:findList";
 	}

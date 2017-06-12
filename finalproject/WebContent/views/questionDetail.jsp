@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Piccolo Theme</title>
+<title>Jeff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -155,8 +155,6 @@
 
 		</div>
 	</div>
-
-
 	<c:choose>
 		<c:when test="${question.answerList eq null || empty question.answerList }">
 			<tr>
@@ -206,21 +204,9 @@
 			id="writerId" name="writerId" value="${question.writerId}"> 
 		<button type="submit">답변 등록</button>
 	</form>
-	<div class="row">
-		<div class="12u">
-			<div id="copyright">
-				<ul class="menu">
-					<li>&copy; JavaRoad All rights reserved</li>
-					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
 	<script src="inner/js/jquery.min.js"></script>
 	<script src="inner/js/skel.min.js"></script>
 	<script src="inner/js/util.js"></script>
 	<script src="inner/js/main.js"></script>
-
-
 </body>
 </html>
