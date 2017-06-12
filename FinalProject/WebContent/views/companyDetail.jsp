@@ -227,14 +227,16 @@ function modifyForm(reviewId){
                <!--Testimonials-->
                <h5 class="title-bg">Map</h5>
                <div id="map" style="height: 300px"></div>
-               &nbsp;
+               &nbsp;&nbsp;&nbsp;
                <div class="alert alert-success">
-                  <button type="button" class="close" data-dismiss="alert">×</button>
                   <strong>영업시간 : </strong> ${alliance.openingHours }
                </div>
-               <input type="button"
+               <div class="alert alert-info">
+                  <strong>전화번호 : </strong>  0${alliance.company.comPhoneNumber }
+               </div>
+               <input type="button" style="width:100%;"
                   onclick="interesting('${alliance.company.comId}');"
-                  value="관심기업 추가" class="btn btn-inverse">
+                  value="관심기업 추가" class="btn btn-large btn-warning">
             </div>
             <!-- End sidebar column -->
          </div>
@@ -290,7 +292,7 @@ function modifyForm(reviewId){
                   <form id="reviewform" method="post">
                      <input type="hidden" value="${alliance.company.comId}" id="comId">
                      <c:choose>
-                        <c:when test="${userId ne null}">
+                        <c:when test="${userId ne null }">
                            <textarea class="span10" name="content" id="content1"></textarea>
                            <input type="button" class="btn btn-inverse" value="review"
                               onclick="reviewSubmit();">
@@ -313,6 +315,19 @@ function modifyForm(reviewId){
       </div>
    </div>
 
+   <div class="footer-container">
+      <!-- Begin Footer -->
+      <div class="container">
+
+         <%@ include file="/views/footer.jspf"%>
+
+      </div>
+   </div>
+   <!-- End Footer -->
+
+   <!-- Scroll to Top -->
+   <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+   
    <script>
          function initMap() {
         	var comId = $("#hiddenId").val();

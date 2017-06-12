@@ -134,20 +134,18 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${reviews }" var="review" varStatus="status">
+								
 									<fmt:formatDate var="newFormattedDate"
 										value="${review.regDate }" pattern="yyyy-MM-dd" />
 									<tr>
 										<td>${status.count }</td>
-										<td>${review.content }</td>
+										<td><a href="${ctx }/reportReview/detail?reviewId=${review.reviewId}">${review.content }</a></td>
 										<td>${review.userId}</td>
 										<td>${newFormattedDate }</td>
-
 										<td><a
 											href="${ctx }/reportReview/remove?reviewId=${review.reviewId}">[보류]</a>
 											<a
 											href="${ctx }/reportReview/remove?reviewId=${review.reviewId}">[삭제]</a></td>
-
-
 									</tr>
 								</c:forEach>
 							</c:otherwise>
@@ -160,5 +158,6 @@
 
 		</div>
 
+	<%@ include file="/views/footer.jspf"%>
 </body>
 </html>

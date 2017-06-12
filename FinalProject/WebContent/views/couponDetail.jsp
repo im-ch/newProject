@@ -57,15 +57,16 @@
 					<div class="post-summary">
 						<img src="${ctx }/resources/img/logo3.png" alt="">
 						<p>${coupon.couponContent }</p>
-						<input class="btn btn-small btn-inverse" type="button"
-							onclick="exit();" value="Exit"/>
 						<ul class="post-data">
 							<li><i class="icon-calendar"></i>${coupon.expiryDate }</li>
 							<li><i class="icon-user"></i>${company.comName }</li>
 						</ul>
+						<ul class="post-data"><li><i class="icon-map-marker"></i>${company.location }</li></ul>
 					</div>
+					
 				</article>
-
+				<input class="btn btn-small btn-inverse" type="button" style="margin-left:192px" 
+							onclick="exit();" value="Exit"/>
 			</div>
 
 		</div>
