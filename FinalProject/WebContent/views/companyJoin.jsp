@@ -194,11 +194,6 @@ $(document).ready(function() {
    <br>
    <br>
    <br>
-   <!-- End Container -->
-   <%@ include file="/views/footer.jspf"%>
-
-   <!-- Scroll to Top -->
-   <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
 
 </body>
 </html>

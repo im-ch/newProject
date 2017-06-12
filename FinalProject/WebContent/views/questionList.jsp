@@ -171,11 +171,6 @@
 		</div>
 	</div>
 	<br> <br> <br> <br> <br>
-	<!-- End Container -->
-	<%@ include file="/views/footer.jspf"%>
-
-	<!-- Scroll to Top -->
-	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
 
 	<!-- Scripts -->
 	<script src="${ctx }/js/jquery.min.js"></script>

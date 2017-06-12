@@ -16,45 +16,45 @@ import jeff.service.ReviewService;
 @RequestMapping("reportReview")
 @Controller
 public class ReportReviewController {
-   
-   @Autowired
-   private ReportReviewService service;
-   
-   @Autowired
-   private ReviewService reviewService;
-   
-   @RequestMapping(value="find")
-   public String findReportReview(int reviewId, Model model){
-      ReportReview reportReview = service.findReportReview(reviewId);
-      model.addAttribute("reportReview", reportReview);
-      return "reportReview.jsp";
-   }
-   
-   @RequestMapping(value="findList")
-   public String findAllReportReviews(Model model){
-      List<ReportReview> list = service.findAllReportReviews();
-      List<Review> reviewList = new ArrayList<>();
-      
-      for(ReportReview r : list){
-         Review review = reviewService.findReviewByReviewId(r.getReviewId());
-         reviewList.add(review);
-      }
-      
-      model.addAttribute("reviews", reviewList);
-      model.addAttribute("reportReviewList", list);
-      return "reportedReviewList";
-   }
-   
-   @RequestMapping(value="/regist", method=RequestMethod.POST)
-   public String registReportReview(ReportReview reportReview, String comId){
-      service.registReportReview(reportReview);
-      return "redirect:/alliance/companyDetail?comId=" + comId;
-   }
 
-   @RequestMapping(value="/remove")
-   public String removeReportReview(int reviewId){
-      service.removeReportReview(reviewId);
-      return "redirect:findList";
-   }
+	@Autowired
+	private ReportReviewService service;
+	
+	@Autowired
+	private ReviewService reviewService;
+	
+	@RequestMapping(value="find")
+	public String findReportReview(int reviewId, Model model){
+		ReportReview reportReview = service.findReportReview(reviewId);
+		model.addAttribute("reportReview", reportReview);
+		return "reportReview.jsp";
+	}
+	
+	@RequestMapping(value="findList")
+	public String findAllReportReviews(Model model){
+		List<ReportReview> list = service.findAllReportReviews();
+		List<Review> reviewList = new ArrayList<>();
+		
+		for(ReportReview r : list){
+			Review review = reviewService.findReviewByReviewId(r.getReviewId());
+			reviewList.add(review);
+		}
+		
+		model.addAttribute("reviews", reviewList);
+		model.addAttribute("reportReviewList", list);
+		return "reportedReviewList";
+	}
+	
+	@RequestMapping(value="/regist", method=RequestMethod.POST)
+	public String registReportReview(ReportReview reportReview, String comId){
+		service.registReportReview(reportReview);
+		return "redirect:/alliance/companyDetail?comId=" + comId;
+	}
+
+	@RequestMapping(value="/remove")
+	public String removeReportReview(int reviewId){
+		service.removeReportReview(reviewId);
+		return "redirect:findList";
+	}
 
 }

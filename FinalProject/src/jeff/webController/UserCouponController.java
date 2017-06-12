@@ -21,86 +21,86 @@ import jeff.service.UserCouponService;
 @Controller
 public class UserCouponController {
 
-   @Autowired
-   private UserCouponService userCouponService;
+	@Autowired
+	private UserCouponService userCouponService;
 
-   @Autowired
-   private CouponService couponService;
-   
-   @Autowired
-   private CompanyService companyService;
+	@Autowired
+	private CouponService couponService;
+	
+	@Autowired
+	private CompanyService companyService;
 
-   @RequestMapping(value = "/register")
-   public @ResponseBody String registCoupon(HttpServletRequest req, int couponId) {
+	@RequestMapping(value = "/register")
+	public @ResponseBody String registCoupon(HttpServletRequest req, int couponId) {
 
-      HttpSession session = req.getSession();
+		HttpSession session = req.getSession();
 
-      if (session == null || session.getAttribute("userId") == null) {
-         return "login";
-      }
+		if (session == null || session.getAttribute("userId") == null) {
+			return "login";
+		}
 
-      String userId = (String) session.getAttribute("userId");
-      
-      List<Integer> list = userCouponService.findUserCoupons(userId);
+		String userId = (String) session.getAttribute("userId");
+		
+		List<Integer> list = userCouponService.findUserCoupons(userId);
 
-      for (int i = 0; i < list.size(); i++) {
-         if (couponId == list.get(i)) {
-            return "false";
-         }
-      }
+		for (int i = 0; i < list.size(); i++) {
+			if (couponId == list.get(i)) {
+				return "false";
+			}
+		}
 
-      userCouponService.registUserCoupon(userId, couponId);
-      return "true";
+		userCouponService.registUserCoupon(userId, couponId);
+		return "true";
 
-   }
+	}
 
-   @RequestMapping(value = "/detailCoupon")
-   public ModelAndView findCouponByCouponId(int couponId) {
-      ModelAndView modelAndView = new ModelAndView("couponDetail");
-      Coupon coupon = couponService.findCoupon(couponId);
-      Company company = companyService.findCompany(coupon.getComId());
-      modelAndView.addObject("company", company);
-      modelAndView.addObject("coupon", coupon);
-      return modelAndView;
-   }
+	@RequestMapping(value = "/detailCoupon")
+	public ModelAndView findCouponByCouponId(int couponId) {
+		ModelAndView modelAndView = new ModelAndView("couponDetail");
+		Coupon coupon = couponService.findCoupon(couponId);
+		Company company = companyService.findCompany(coupon.getComId());
+		modelAndView.addObject("company", company);
+		modelAndView.addObject("coupon", coupon);
+		return modelAndView;
+	}
 
-   @RequestMapping(value = "/myCoupons")
-   public String findCouponByUser(HttpServletRequest req, Model model) {
-      HttpSession session = req.getSession();
+	@RequestMapping(value = "/myCoupons")
+	public String findCouponByUser(HttpServletRequest req, Model model) {
+		HttpSession session = req.getSession();
 
-      if (session == null || session.getAttribute("userId") == null) {
-         return "redirect:/views/login.jsp";
-      }
-      String userId = (String) session.getAttribute("userId");
-      List<Integer> list = userCouponService.findUserCoupons(userId);
-      List<Coupon> coupons = new ArrayList<>();
+		if (session == null || session.getAttribute("userId") == null) {
+			return "redirect:/views/login.jsp";
+		}
+		String userId = (String) session.getAttribute("userId");
+		List<Integer> list = userCouponService.findUserCoupons(userId);
+		List<Coupon> coupons = new ArrayList<>();
 
-      for (int i = 0; i < list.size(); i++) {
-         coupons.add(couponService.findCoupon(list.get(i)));
-      }
+		for (int i = 0; i < list.size(); i++) {
+			coupons.add(couponService.findCoupon(list.get(i)));
+		}
 
-      model.addAttribute("coupon", coupons);
+		model.addAttribute("coupon", coupons);
 
-      return "/userCouponList";
-   }
+		return "/userCouponList";
+	}
 
-   @RequestMapping(value = "/remove")
-   public @ResponseBody String removeCoupon(HttpServletRequest req, int couponId) {
-      HttpSession session = req.getSession();
-      String userId = (String) session.getAttribute("userId");
+	@RequestMapping(value = "/remove")
+	public @ResponseBody String removeCoupon(HttpServletRequest req, int couponId) {
+		HttpSession session = req.getSession();
+		String userId = (String) session.getAttribute("userId");
 
-      userCouponService.removeUserCoupon(userId, couponId);
-      return "remove";
-   }
+		userCouponService.removeUserCoupon(userId, couponId);
+		return "remove";
+	}
 
-   @RequestMapping(value = "/use")
-   public String useCoupon(HttpServletRequest req, int couponId) {
-      HttpSession session = req.getSession();
-      String userId = (String) session.getAttribute("userId");
-      
-      userCouponService.useUserCoupon(userId, couponId);
-      
-      return "redirect:userCoupon/myCoupons";
-   }
+	@RequestMapping(value = "/use")
+	public String useCoupon(HttpServletRequest req, int couponId) {
+		HttpSession session = req.getSession();
+		String userId = (String) session.getAttribute("userId");
+		
+		userCouponService.useUserCoupon(userId, couponId);
+		
+		return "redirect:userCoupon/myCoupons";
+	}
 
 }

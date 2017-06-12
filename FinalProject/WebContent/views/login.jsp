@@ -52,9 +52,5 @@
    </div>
    </div>
    
-   <%@ include file="/views/footer.jspf"%>
-
-   <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-   
 </body>
 </html>

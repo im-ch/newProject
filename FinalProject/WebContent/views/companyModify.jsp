@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Company Modify</title>
+<title>Jeff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -178,11 +178,6 @@ $(document).ready(function() {
 
 	</div>
 	<!-- End Container -->
-
-	<%@ include file="/views/footer.jspf"%>
-
-	<!-- Scroll to Top -->
-	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
 
 </body>
 </html>

@@ -95,7 +95,6 @@ function couponDetail(couponId) {
 		</div>
 	</div>
 
-	<%@ include file="/views/footer.jspf"%>
 
 </body>
 </html>

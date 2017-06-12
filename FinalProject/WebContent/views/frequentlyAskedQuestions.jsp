@@ -62,7 +62,8 @@
                         </div>
                     </div>
                 </div>
-
+				
+				
                  <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
@@ -114,15 +115,24 @@
                         </div>
                     </div>
                 </div>
+                
+                 <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSeven">
+                        	모르고 직원확인을 눌러버렸더니 쿠폰이 비활성화가 되었어요. 재발급은 안되나요?
+                        </a>
+                    </div>
+                    <div id="collapseSeven" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                        	따로 확인이 어려운 부분이라 재발급이 어렵습니다. 죄송합니다. 
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
 	</div>
 	</div>
-	
-	<%@ include file="/views/footer.jspf"%>
 
-	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-	
 </body>
 </html>

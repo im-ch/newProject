@@ -184,10 +184,6 @@ html, body {
 	<br>
 	<br>
 
-	<%@ include file="/views/footer.jspf"%>
-
-	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-
 
 </body>
 </html>

@@ -146,16 +146,7 @@
 				</div>
 
 				<!-- Pagination -->
-				<div class="pagination">
-					<ul>
-						<li class="active"><a href="#">Prev</a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">Next</a></li>
-					</ul>
-				</div>
+				
 
 			</div>
 			<!-- End gallery list-->
@@ -165,13 +156,6 @@
 
 	</div>
 	<!-- End Container -->
-
-	<%@ include file="/views/footer.jspf"%>
-	
-	<!-- End Footer -->
-
-	<!-- Scroll to Top -->
-	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
 
 </body>
 </html>

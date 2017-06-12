@@ -313,11 +313,6 @@ function modifyForm(reviewId){
       </div>
    </div>
 
-         <%@ include file="/views/footer.jspf"%>
-
-   <!-- Scroll to Top -->
-   <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-   
    <script>
          function initMap() {
         	var comId = $("#hiddenId").val();
