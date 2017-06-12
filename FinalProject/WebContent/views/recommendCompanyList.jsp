@@ -87,7 +87,7 @@
 					<c:choose>
 
 						<c:when test="${companies eq null || empty companies}">
-							<h1>등록된 기업이 없습니다.</h1>
+							<h1 style="margin-left: 40px">등록된 기업이 없습니다.</h1>
 						</c:when>
 						<c:otherwise>
 								<ul class="gallery-post-grid holder">

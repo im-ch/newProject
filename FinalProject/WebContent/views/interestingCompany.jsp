@@ -104,8 +104,8 @@
 				<div class="row clearfix">
 					<c:choose>
 
-						<c:when test="${company eq null}">
-							<h1>즐겨찾기 목록이 비어있습니다.</h1>
+						<c:when test="${company eq null || empty company}">
+							<h1 style="margin-left: 30px">즐겨찾기 목록이 비어있습니다.</h1>
 						</c:when>
 						<c:otherwise>
 								<ul class="gallery-post-grid holder">
