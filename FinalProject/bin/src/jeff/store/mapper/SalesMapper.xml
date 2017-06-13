@@ -37,6 +37,7 @@
   	SELECT salesId,comId,daysales,regdate 
   	FROM companysales_tb 
   	WHERE comId = #{companyId}
+  	ORDER BY regdate DESC
   	</select>
   	
   	<select id="selectBySalesId" resultMap="SalesMap">
@@ -48,7 +49,7 @@
   	<select id="selectAllSales" resultMap="SalesMap">
   	SELECT salesId,comId,daysales,regdate 
   	FROM companysales_tb 
-  	ORDER BY salesId ASC
+  	ORDER BY salesId DESC
   	</select>
 
   </mapper>

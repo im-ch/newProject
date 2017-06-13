@@ -48,14 +48,6 @@
 	</select>
 
 	<select id="selectAllReview" parameterType="string" resultMap="reviewMap">
-<<<<<<< HEAD
-		SELECT reviewId, userId, comId, content, regDate, reported
-		FROM
-		review_tb
-		WHERE comId = #{comId}
-=======
-		
-		
 		SELECT reviewId, userId, comId, content, regDate, reported
 		FROM
 		review_tb
@@ -63,7 +55,6 @@
 		WHERE comId = #{comId}
 		 ]]>
 		ORDER BY regDate asc
->>>>>>> 30bac0c35d1ea81b7e6b1d92f08402c9d9f7acf9
 	</select>
 
 
