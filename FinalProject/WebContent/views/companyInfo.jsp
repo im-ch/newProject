@@ -123,10 +123,10 @@ $('#btn-upload').click(function () {
 		
 		<br> <br>
 		<p>
-		
+			<c:if test="${alliance eq '2' }">
 			<button class="btn btn-large btn-warning" type="button" style="float:left"
 				onclick="location.href='${ctx}/alliance/regist?comId=${company.comId }'">제휴제안서 등록</button>
-				
+			</c:if>
 			<button class="btn btn-large btn-default" type="button" style="float:right"
 				onclick="location.href='${ctx}/company/delete?comId=${company.comId }'">Withdraw</button>
 			<button class="btn btn-large btn-inverse" type="button" style="float:right;"

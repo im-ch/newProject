@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="jeff.store.mapper.PaymentMapper">
+  
+  	<resultMap type="Payment" id="paymentMap" >
+		<result column="payDate" property="payDate" />
+		<collection column="comId" property="company" javaType="Company"
+			select="jeff.store.mapper.CompanyMapper.selectCompany" />
+		<collection column="couponId" property="coupon" javaType="Coupon"
+			select="jeff.store.mapper.CouponMapper.selectCoupon"/>
+	</resultMap>
+  	
+	<insert id="createPayment" parameterType="Hashmap">
+		INSERT INTO
+		payment_tb(comId, payDate, couponId)
+		VALUES (#{comId}, sysdate, #{couponId})
+	</insert>
+
+	<delete id="deletePayment" parameterType="Hashmap">
+		DELETE payment_tb
+		WHERE comId = #{comId} AND couponId = #{couponId}
+	</delete>
+
+	<select id="selectAllPayment" resultType="Payment" parameterType="string" resultMap="paymentMap">
+		SELECT comId, payDate, couponId
+		FROM payment_tb
+		ORDER BY payDate DESC
+	</select>	
+  	
+  </mapper>

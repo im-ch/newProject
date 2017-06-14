@@ -80,7 +80,7 @@
 										<li><img src="${ctx }/resources/img/icon/company.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
 										<span class="user-name"> ${company.comId }</span>&nbsp;&nbsp;&nbsp; 
 										<span class="user-date">${company.ownerName }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/company/findByComId?comId=${company.comId}">Info</a>
-										&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/alliance/detail?comId=${company.comId}">Alliance</a>
+										&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/alliance/findComId?comId=${company.comId}">Alliance</a>
 										</span></li>
 										<hr>
 								</c:forEach>
@@ -123,7 +123,7 @@
 										<li><img src="${ctx }/resources/img/icon/company.png" alt="Image" />&nbsp;&nbsp;&nbsp; 
 										<span class="user-name"> ${company.comId }</span>&nbsp;&nbsp;&nbsp; 
 										<span class="user-date">${company.ownerName }&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/company/findByComId?comId=${company.comId}">Info</a>
-										&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/alliance/detail?comId=${company.comId}">Alliance</a>
+										&nbsp;&nbsp;|&nbsp;&nbsp; <a href="${ctx }/alliance/findComId?comId=${company.comId}">Alliance</a>
 										</span></li>
 										<hr>
 								</c:forEach>

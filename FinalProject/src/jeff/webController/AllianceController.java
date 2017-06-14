@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import jeff.common.exception.YzRuntimeException;
 import jeff.domain.Alliance;
 import jeff.domain.Company;
 import jeff.domain.CompanyImage;
@@ -106,12 +107,18 @@ public class AllianceController {
 		String comId = (String) session.getAttribute("comId");
 		ModelAndView modelAndView = new ModelAndView("allianceDetail");
 		Alliance alliance = service.findAlliance(comId);
-		Company company = alliance.getCompany();
-		String[] lo = company.getLocation().split(";");
-		company.setLocation("[" + lo[0] + "] " + lo[1] + " " + lo[2]);
-		alliance.setCompany(company);
-
-		modelAndView.addObject("alliance", alliance);
+		
+		if(alliance != null){
+			Company company = alliance.getCompany();
+			String[] lo = company.getLocation().split(";");
+			company.setLocation("[" + lo[0] + "] " + lo[1] + " " + lo[2]);
+			alliance.setCompany(company);
+			modelAndView.addObject("alliance", alliance);
+		}else{
+			YzRuntimeException ex = new YzRuntimeException("등록된 제휴제안서가 없습니다.");
+			ex.setRedirectURL("/FinalProject/views/main.jsp");
+			throw ex;
+		}
 		return modelAndView;
 	}
 
@@ -120,11 +127,19 @@ public class AllianceController {
 	public ModelAndView allianceDetail(@RequestParam("comId") String comId) {
 		ModelAndView modelAndView = new ModelAndView("allianceDetail");
 		Alliance alliance = service.findAlliance(comId);
-		Company company = alliance.getCompany();
-		String[] lo = company.getLocation().split(";");
-		company.setLocation("[" + lo[0] + "] " + lo[1] + " " + lo[2]);
-		alliance.setCompany(company);
-		modelAndView.addObject("alliance", alliance);
+		
+		if(alliance != null){
+			Company company = alliance.getCompany();
+			String[] lo = company.getLocation().split(";");
+			company.setLocation("[" + lo[0] + "] " + lo[1] + " " + lo[2]);
+			alliance.setCompany(company);
+			modelAndView.addObject("alliance", alliance);
+		}else{
+			YzRuntimeException ex = new YzRuntimeException("등록된 제휴제안서가 없습니다.");
+			ex.setRedirectURL("/FinalProject/views/main.jsp");
+			throw ex;
+		}
+		
 		return modelAndView;
 	}
 

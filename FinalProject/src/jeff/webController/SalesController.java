@@ -25,7 +25,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import jeff.domain.CompanySales;
+import jeff.domain.Payment;
 import jeff.domain.Sales;
+import jeff.service.PaymentService;
 import jeff.service.SalesService;
 
 @RequestMapping(value = "sales")
@@ -34,6 +36,9 @@ public class SalesController {
 
 	@Autowired
 	private SalesService salesService;
+	
+	@Autowired
+	private PaymentService paymentService;
 
 	@RequestMapping(value = "/register", method = { RequestMethod.GET, RequestMethod.POST })
 	public String registSales(HttpServletRequest req, Sales sales, @RequestParam("date") String date) {
@@ -231,4 +236,12 @@ public class SalesController {
 		String str = data.toString();
 		return str;
 	}
+	
+	@RequestMapping("paymentList")
+	public String selectAllPayment(Model model){
+		List<Payment> payments = paymentService.searchAllPayment();
+		model.addAttribute("payments", payments);
+		return "/paymentList";
+	}
+	
 }

@@ -51,6 +51,18 @@
 	line-height: 40px
 }
 </style>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#exit").click(function(){
+		var radioval = "value";
+		$('#value', opener.document).append(radioval);
+		window.opener.location = '${ctx}/coupon/findList';
+		window.close();
+	});
+});
+</script>
 
 </head>
 <body>
@@ -59,11 +71,11 @@
 
 	<div class="container main-container">
 
-	   <div class="span5 logo">
+   <div class="span5 logo">
       <a href="${ctx }/views/main.jsp"><img src="${ctx }/resources/img/logo3.png"
          alt="" /></a>
       <h5>Affiliate Friends</h5>
-  	 </div>
+   </div>	
 <br><br><br>
 		<div class="row">
 			<!--Container row-->
@@ -71,28 +83,15 @@
 			<div class="span8 contact">
 				<!--Begin page content column-->
 
-				<h1>ADD Coupon</h1>
+				<h1>Complete Payment</h1>
 				<br>
 				<br>
-				<div class="alert alert-success">
-					쿠폰 사용기간 및 상세 내용을 정확하게 입력하세요 <Strong>*입력 실수로 인한 손해는 Jeff에서
-						보상하지 않습니다.</Strong>
-				</div>
 
-				<form action="${ctx }/coupon/checkAddCoupon" method="Post">
-					<div class="input-prepend">
-						<span class="add-on"><i class="icon-list-alt"></i></span> <input
-							class="span4" id="prependedInput" size="16" type="text"
-							placeholder="Coupon Name" name="couponName">
-					</div>
-
-					<h4>사용기한</h4>
-					<input type="date" id="departure" name="expiryDate" />
-					<textarea class="span6" placeholder="Coupon Detail" name="couponContent"></textarea>
+					<h4>결제가 완료되었습니다.</h4>
 					<br>
 					<div class="row">
 						<div class="span2">
-							<button type="submit" class="btn btn-large btn-warning" style="margin-left: 220px">ADD</button>
+							<button type="button" id="exit" class="btn btn-large btn-warning" style="margin-left: 220px">EXIT</button>
 						</div>
 					</div>
 				</form>

@@ -25,6 +25,7 @@ public class Company {
 	private List<Coupon> couponList;
 	private String category;
 	private List<CompanyImage> imageList;
+	private int jeffCoin;
 	
 	public String getCategory() {
 		return category;
@@ -88,6 +89,12 @@ public class Company {
 		this.imageList = imageList;
 	}
 	
+	public int getJeffCoin() {
+		return jeffCoin;
+	}
+	public void setJeffCoin(int jeffCoin) {
+		this.jeffCoin = jeffCoin;
+	}
 	public String toString() {
 		return "Company [ownerName=" + ownerName + ", comId=" + comId + ", comPassword=" + comPassword + ", comEmail="
 				+ comEmail + ", comPhoneNumber=" + comPhoneNumber + ", comName=" + comName + ", location=" + location

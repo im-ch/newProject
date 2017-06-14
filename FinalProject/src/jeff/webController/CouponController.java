@@ -8,21 +8,20 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jeff.common.exception.ChildWindowException;
+import jeff.common.exception.YzRuntimeException;
 import jeff.domain.Company;
 import jeff.domain.Coupon;
 import jeff.service.CompanyService;
 import jeff.service.CouponService;
-import jeff.service.UserCouponService;
 
 @Controller
 @RequestMapping("coupon")
@@ -33,7 +32,7 @@ public class CouponController {
 	
 	@Autowired
 	private CompanyService companyService;
-
+	
 	@RequestMapping("find")
 	public ModelAndView FindCoupon(int couponId){
 		Coupon coupon = service.findCoupon(couponId);
@@ -52,10 +51,22 @@ public class CouponController {
 		}
 		String comId = (String) session.getAttribute("comId");
 		coupon.setComId(comId);
-		service.registCoupon(coupon);
-
 		
-		return "redirect:findList";
+		Integer jeffCoin = (Integer)session.getAttribute("jeffCoin");
+		if((int)jeffCoin <= 0 ){
+			ChildWindowException ex = new ChildWindowException("JeffCoin이 부족합니다.");
+			throw ex;
+		}
+		
+		List<Coupon> list = service.findCouponByCompany(comId);
+		if(list.size() < 4){
+			service.registCoupon(coupon);
+		}else{
+			ChildWindowException ex = new ChildWindowException("최대 발행 갯수를 초과하였습니다.");
+			throw ex;
+		}
+		
+		return "redirect:/company/paymentCoupon";
 	}
 	
 	@RequestMapping(value="remove")
@@ -130,4 +141,11 @@ public class CouponController {
 		return "companyCouponList";
 		
 	}
+	
+	@RequestMapping(value="checkAddCoupon", method=RequestMethod.POST)
+	public String checkAddCoupon(Coupon coupon, Model model){
+		model.addAttribute("coupon", coupon);
+		return "/couponPayment";
+	}
+	
 }

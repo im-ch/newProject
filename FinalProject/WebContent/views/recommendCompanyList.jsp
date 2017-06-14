@@ -110,8 +110,8 @@
 									</c:forEach>
 									</a>
 										<span class="project-details"><a
-											href="${ctx }/resources/gallery-single.htm"
-											id="${com.comId }">${com.comId }</a>${com.ownerName }
+											href="${ctx }/alliance/companyDetail?comId=${com.comId}"
+											id="${com.comId }">${com.comId }</a>${com.category }
 										</span> 
 											
 

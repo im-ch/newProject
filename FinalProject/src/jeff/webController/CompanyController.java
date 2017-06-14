@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jeff.common.exception.YzRuntimeException;
 import jeff.domain.Alliance;
 import jeff.domain.Companies;
 import jeff.domain.Company;
@@ -134,9 +135,31 @@ public class CompanyController {
       String [] lo = company.getLocation().split(";");
       company.setLocation("[" + lo[0] + "] " + lo[1] + " " + lo[2]);
       
+      String alliance = null;
+      Alliance alliance2 = allianceService.findAlliance(comId);
+      if(alliance2 != null){
+    	  alliance = "1";
+      }else{
+    	  alliance = "2";
+      }
+      
       modelAndView.addObject("images", imageService.findCompanyImageList(comId));
       modelAndView.addObject("company", company);
+      modelAndView.addObject("alliance", alliance);
       return modelAndView;
+   }
+   
+   @RequestMapping("paymentCoupon")
+   public String paymentCoupon (HttpServletRequest req){
+	   HttpSession session = req.getSession();
+	   String comId = (String)session.getAttribute("comId");
+	   Company company = service.findCompany(comId);
+	   
+		   company.setJeffCoin(company.getJeffCoin()-10);
+		   service.updateCompany(company);
+		   session.removeAttribute("jeffCoin");
+		   session.setAttribute("jeffCoin", company.getJeffCoin());
+	   return "redirect:../views/couponComplete.jsp";
    }
    
    @RequestMapping(value="mapList", produces="application/xml")
@@ -269,12 +292,6 @@ public class CompanyController {
         		  img.setFileName("noimage.png");
         		  image.add(img);
         		  c.setImageList(image);
-        	  }
-        	  Alliance al = allianceService.findAlliance(c.getComId());
-        	  if(al != null){
-        		  c.setOwnerName(al.getDetail());
-        	  }else{
-        		  c.setOwnerName(" ");
         	  }
           }
           return companies;

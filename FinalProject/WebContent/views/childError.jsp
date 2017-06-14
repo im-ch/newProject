@@ -59,23 +59,9 @@
 				<p class="lead"><%=exception.getMessage()%></p>
 			</div>
 
-			<%String redirectURL = null;
-				if (exception instanceof YzRuntimeException) {
-					YzRuntimeException ex = (YzRuntimeException) exception;
-
-					redirectURL = ex.getRedirectURL();
-				}
-				if (redirectURL != null && redirectURL.length() > 0) {
-			%>
-			
 			<input class="btn btn-large" type="button"
-				onclick="javascript:location.href='<%=redirectURL%>'" value="확인" style="margin-left: 35px">
+				onclick="javascript:window.close();" value="확인" style="margin-left: 35px">
 			<br>
-
-			<%} else {%>
-			<input class="btn btn-large" type="button"
-				onclick="javascript:history.back();" value="확인" style="margin-left: 35px">
-			<%}%>
 			
 		</div>
 

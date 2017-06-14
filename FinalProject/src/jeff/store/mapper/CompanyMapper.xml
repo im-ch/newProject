@@ -14,6 +14,7 @@
      <result property="location" column="location"/>
      <result property="comPhoneNumber" column="phoneNumber"/>
      <result property="category" column="category" />
+     <result property="jeffCoin" column="jeffCoin" />
      <collection property="couponList" column="comId" javaType="List" notNullColumn=""
          select="jeff.store.mapper.CouponMapper.selectCouponByCompany" />
      <collection property="imageList" column="comId" javaType="List" notNullColumn=""
@@ -21,8 +22,8 @@
      </resultMap>
 
      <insert id="createCompany" parameterType="Company">
-     INSERT INTO company_tb(comId,ownerName,comPassword,email,comName,location,phoneNumber, category) 
-     VALUES(#{comId},#{ownerName},#{comPassword},#{comEmail,jdbcType=VARCHAR},#{comName},#{location},#{comPhoneNumber},#{category})
+     INSERT INTO company_tb(comId,ownerName,comPassword,email,comName,location,phoneNumber, category, jeffCoin) 
+     VALUES(#{comId},#{ownerName},#{comPassword},#{comEmail,jdbcType=VARCHAR},#{comName},#{location},#{comPhoneNumber},#{category},100)
       </insert>
       
       <delete id="deleteCompany" parameterType="String">
@@ -33,19 +34,19 @@
      
      <update id="modifyCompany" parameterType="Company">
      UPDATE company_tb
-     SET ownerName = #{ownerName},comPassword=#{comPassword}, email = #{comEmail} , comName = #{comName},location = #{location},phoneNumber = #{comPhoneNumber}, category = #{category}
+     SET ownerName = #{ownerName},comPassword=#{comPassword}, email = #{comEmail} , comName = #{comName},location = #{location},phoneNumber = #{comPhoneNumber}, category = #{category}, jeffCoin = #{jeffCoin}
      WHERE comId = #{comId}
       </update>
      
       
       <select id="selectAllCompany" resultMap="companyMap">
-      SELECT comId, ownerName, comPassword, email, comName, location, phoneNumber, category 
+      SELECT comId, ownerName, comPassword, email, comName, location, phoneNumber, category, jeffCoin
       FROM company_tb 
       ORDER BY comId ASC
       </select>
       
       <select id="selectCompany"  resultMap="companyMap">
-      SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category 
+      SELECT comId,ownerName,comPassword,email,comName,location,phoneNumber, category, jeffCoin
       FROM company_tb 
       WHERE comId = #{comId}
       </select>

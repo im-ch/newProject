@@ -54,7 +54,7 @@ function couponDetail(couponId) {
 			var option = "width=370, height=360, resizable=no, status=no;"; 
 			window.open(url, "", option);
 		}
-	</script>
+</script>
 
 </head>
 <body>

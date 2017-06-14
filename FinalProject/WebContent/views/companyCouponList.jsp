@@ -25,7 +25,19 @@
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="${ctx }/resources/js/bootstrap.js"></script>
 <script src="${ctx }/resources/js/jquery.custom.js"></script>
-
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#couponAdd").click(function() {
+		$("#value").empty();
+		window.name = "companyCouponList";
+		var popUrl = "${ctx }/views/addCoupon.jsp"; //팝업창에 출력될 페이지 URL
+		var popOption = "width=600, height=690, resizable=no, status=no;"; //팝업창 옵션(optoin)
+		window.open(popUrl, "", popOption);
+	});
+});
+</script>
 </head>
 <body>
 
@@ -33,7 +45,7 @@
     <div class="color-bar-2 color-bg"></div>
     
     <div class="container main-container">
-
+	
 	<%@ include file="/views/header.jspf"%>
 	
 	<div>
@@ -63,9 +75,10 @@
         </c:otherwise>
         </c:choose>
 
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <p class="lead">쿠폰을 추가하시려면<a href="${ctx }/views/addCoupon.jsp" target="_blank">[ADD]</a>를 클릭하세요!</p>
-        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <p class="lead">쿠폰을 추가하시려면  <input type="button" value="ADD" name="couponAdd" id="couponAdd" formtarget="_new" class="btn btn-large btn-warning">  를 클릭하세요!</p>
+<!--         <a href="#" target="_blank" id="couponAdd">[ADD]</a>를 클릭하세요!</p> -->
+<!--         <input type="button" value="[ADD]" name="couponAdd" id="couponAdd" formtarget="_new"> -->
     </div>	
       
 	</div>

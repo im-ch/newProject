@@ -44,10 +44,13 @@ public class UserController {
          if (loginedUser != null && loginedUser.getPassword().equals(password)) {
             HttpSession session = req.getSession();
             session.setAttribute("userId", id);
+            session.setAttribute("userName", loginedUser.getName());
             return "redirect:/views/main.jsp";
          }else if (loginedCompany != null && loginedCompany.getComPassword().equals(password)) {
             HttpSession session = req.getSession();
             session.setAttribute("comId", id);
+            session.setAttribute("comName", loginedCompany.getComName());
+            session.setAttribute("jeffCoin", loginedCompany.getJeffCoin());
             return "redirect:/views/main.jsp";
          }else {
             HttpSession session = req.getSession(false);

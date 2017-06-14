@@ -20,6 +20,7 @@
 		<typeAlias type="jeff.domain.Sales" alias="Sales" />
 		<typeAlias type="jeff.domain.User" alias="User" />
 		<typeAlias type="jeff.domain.CompanyImage" alias="CompanyImage" />
+		<typeAlias type="jeff.domain.Payment" alias="Payment" />
 	</typeAliases>
 	
 	<!-- typeHandler -->
@@ -52,6 +53,7 @@
 		<mapper resource="jeff/store/mapper/SalesMapper.xml" />
 		<mapper resource="jeff/store/mapper/UserMapper.xml" />
 		<mapper resource="jeff/store/mapper/CompanyImageMapper.xml" />
+		<mapper resource="jeff/store/mapper/PaymentMapper.xml" />
 	</mappers>
 
 

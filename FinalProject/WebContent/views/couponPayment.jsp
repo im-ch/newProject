@@ -59,11 +59,11 @@
 
 	<div class="container main-container">
 
-	   <div class="span5 logo">
+   <div class="span5 logo">
       <a href="${ctx }/views/main.jsp"><img src="${ctx }/resources/img/logo3.png"
          alt="" /></a>
       <h5>Affiliate Friends</h5>
-  	 </div>
+   </div>	
 <br><br><br>
 		<div class="row">
 			<!--Container row-->
@@ -71,7 +71,7 @@
 			<div class="span8 contact">
 				<!--Begin page content column-->
 
-				<h1>ADD Coupon</h1>
+				<h1>Confirm Payment</h1>
 				<br>
 				<br>
 				<div class="alert alert-success">
@@ -79,20 +79,37 @@
 						보상하지 않습니다.</Strong>
 				</div>
 
-				<form action="${ctx }/coupon/checkAddCoupon" method="Post">
+				<form action="${ctx }/coupon/regist" method="POST">
 					<div class="input-prepend">
-						<span class="add-on"><i class="icon-list-alt"></i></span> <input
-							class="span4" id="prependedInput" size="16" type="text"
-							placeholder="Coupon Name" name="couponName">
+						<h4>쿠폰명</h4>
+						<span class="add-on"><i class="icon-list-alt"></i></span> 
+						<input class="span4" id="prependedInput" size="16" type="text" name="couponName" readonly="readonly" value="${coupon.couponName }">
 					</div>
-
-					<h4>사용기한</h4>
-					<input type="date" id="departure" name="expiryDate" />
-					<textarea class="span6" placeholder="Coupon Detail" name="couponContent"></textarea>
+					<div class="input-prepend">
+						<h4>사용기한</h4>
+						<span class="add-on"><i class="icon-list-alt"></i></span> 
+						<input type="date" id="prependedInput" name="expiryDate" readonly="readonly" value="${coupon.expiryDate }" />
+					</div>
+					<div class="input-prepend">
+						<h4>상세 내용</h4>
+						<textarea class="span6" name="couponContent" readonly="readonly">${coupon.couponContent }</textarea>
+					</div>
+					
+					<hr>
+					<div class="input-prepend">
+						<h4>결제 JeffCoin</h4>
+						<span class="add-on"><i class="icon-list-alt"></i></span> 
+						<input type="number" id="prependedInput" name="jeffcoin1" readonly="readonly" value="10" />
+					</div>
+					<div class="input-prepend">
+						<h4>결제 후 남은 JeffCoin</h4>
+						<span class="add-on"><i class="icon-list-alt"></i></span>
+						<input type="number" id="prependedInput" name="jeffcoin2" readonly="readonly" value="${sessionScope.jeffCoin - 10 }" />
+					</div>
 					<br>
 					<div class="row">
 						<div class="span2">
-							<button type="submit" class="btn btn-large btn-warning" style="margin-left: 220px">ADD</button>
+							<button type="submit" class="btn btn-large btn-warning" style="margin-left: 220px">PAYMENT</button>
 						</div>
 					</div>
 				</form>
