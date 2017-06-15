@@ -78,7 +78,7 @@ public class UserCouponMobileController {
       for (int i = 0; i < list.size(); i++) {
     	  Coupon c = couponService.findCoupon(list.get(i));
     	  Company com = companyService.findCompany(c.getComId());
-    	  CompanyImage ci = cis.findCompanyImage(c.getComId());
+    	  CompanyImage ci =cis.findCompanyImage(c.getComId());
     	  MobileCoupon mcoupon = new MobileCoupon();
 //    	  comId에 companyName data 보냄
     	  mcoupon.setComId(com.getComName());
