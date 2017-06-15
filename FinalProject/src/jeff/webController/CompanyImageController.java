@@ -5,14 +5,11 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.Iterator;
-import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +18,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import jeff.domain.CompanyImage;
 import jeff.service.CompanyImageService;
+import jeff.util.ImageResize;
 
 @RequestMapping("image")
 @Controller
@@ -42,15 +40,17 @@ public class CompanyImageController {
 		if(file.exists() == false){
 			file.mkdirs();
 		}
+		
+		Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		while(iterator.hasNext()){
 			mf = mreq.getFile(iterator.next());
 			if(!mf.isEmpty()){
-				 Date today = new Date(Calendar.getInstance().getTimeInMillis());
 		         String reName= companyImage.getComId() + "_" + today.toString() + "_" + mf.getOriginalFilename();
 		         companyImage.setFileName(reName);
 		         companyImage.setContentType(mf.getContentType().substring(6));
 		         
 		         file = new File(filePath + companyImage.getFileName());
+		         
 		         try {
 					mf.transferTo(file);
 				} catch (IllegalStateException e) {
@@ -58,8 +58,14 @@ public class CompanyImageController {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			}
+		 }
 	         
+		}
+		String originPath = filePath + companyImage.getFileName();
+		try {
+			ImageResize.resize(originPath, originPath, 500, 405);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		service.insertCompanyImage(companyImage);
           

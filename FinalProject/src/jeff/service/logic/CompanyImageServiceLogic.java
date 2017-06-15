@@ -30,4 +30,9 @@ public class CompanyImageServiceLogic implements CompanyImageService{
 		return store.searchCompanyImageList(comId);
 	}
 
+	@Override
+	public CompanyImage findCompanyImage(String comId) {
+		return store.searchCompanyImage(comId);
+	}
+
 }

@@ -1,6 +1,7 @@
 package jeff.store.logic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -75,5 +76,18 @@ public class SalesStoreLogic implements SalesStore{
 		session.close();
 		return list;
 	}
+
+	@Override
+	public Sales selectByDate(HashMap<String, Object> map) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+		
+		SalesMapper mapper = session.getMapper(SalesMapper.class);
+		Sales sales = mapper.selectByDate(map);
+		
+		session.close();
+		return sales;
+	}
+	
+	
 
 }

@@ -60,5 +60,21 @@ public class UserStoreLogic implements UserStore{
 	public boolean loginUser(User user) {
 		return false;
 	}
+	
+	@Override
+	public String checkId(String userId) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		String checkId = mapper.checkId(userId);
+
+		String secondCheckId = mapper.secondCheckId(userId);  
+		/* 개인회원 id와 기업회원 id가 같은게 있는지 확인하는 메소드 , 만약 개인회원가 기업회원 가입시 같은 id로 가입이 가능 할 경우
+		 회원은 가입되지만 나중에 로그인이 불가능해지기 때문에 (userController의 로그인 메소드 참조) 중복된 id를 원천적으로 막기위해 2차 확인을 한다*/
+		session.close();
+		if (checkId == null && secondCheckId == null) // 회원가입 하려는 id가 user_tb와 company_tb 에 중복된게 없을 경우
+			return null;
+		else
+			return checkId + secondCheckId;
+	}
 
 }

@@ -37,5 +37,14 @@ public class CompanyImageStoreLogic implements CompanyImageStore{
 		return list;
 	}
 
+	@Override
+	public CompanyImage searchCompanyImage(String comId) {
+		SqlSession session = JeffSessionFactory.getInstance().getSession();
+		CompanyImageMapper mapper = session.getMapper(CompanyImageMapper.class);
+		
+		CompanyImage image = mapper.searchCompanyImage(comId);
+		return image;
+	}
+
 	
 }

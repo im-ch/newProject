@@ -55,7 +55,7 @@ public class SalesController {
 		return "redirect:/views/salesList.jsp";
 	}
 
-	@RequestMapping(value = "/remove")
+	@RequestMapping(value = "remove")
 	public String removeSales(Sales sales) {
 
 		salesService.removeSales(sales.getSalesId());
@@ -63,7 +63,7 @@ public class SalesController {
 		return "redirect:list";
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String updateSales(Sales sales, Model model) {
 
 		sales = salesService.findBySalesId(sales.getSalesId());
@@ -242,6 +242,25 @@ public class SalesController {
 		List<Payment> payments = paymentService.searchAllPayment();
 		model.addAttribute("payments", payments);
 		return "/paymentList";
+	}
+	
+	@RequestMapping(value = "checkSales", produces = "text/plain;charset=UTF-8")
+	public @ResponseBody String checkSales(HttpServletRequest req,@RequestParam("regDate") String regDate){
+		HttpSession session = req.getSession();
+		String comId = (String)session.getAttribute("comId");
+		String [] da = regDate.split("/");
+		String date = da[2]+"-"+da[0]+"-"+da[1];
+		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("comId", comId);
+		map.put("regdate", date);
+		
+		Sales sales = salesService.findByDate(map);
+		if(sales != null){
+			return "no";
+		}else{
+			return "yes";
+		}
 	}
 	
 }

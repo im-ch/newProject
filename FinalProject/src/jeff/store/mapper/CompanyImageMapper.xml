@@ -24,5 +24,12 @@
  		from companyImage_tb
  		where comId=#{comId}
  	</select>
+ 	
+ 	<select id="searchCompanyImage" parameterType="String" resultType="CompanyImage">
+ 		select companyImageId, comId, fileName, contentType
+ 		from companyImage_tb
+ 		where rownum = 1
+ 	
+ 	</select>
  
  </mapper>

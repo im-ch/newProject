@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jeff.domain.Company;
@@ -136,4 +137,14 @@ public class UserController {
       modelAndView.addObject("user", service.findUser(userId));
       return modelAndView;
    }
+   
+   @RequestMapping(value="checkUserId",method=RequestMethod.POST)
+   /**
+    * @param req : 인풋태그로 부터 온 개인회원의 id , 이 파라미터는 ajax checkId를 통해서 전달된다. 
+    * @return       : db에 있는 개인회원의 id로 파라미터로 받은 개인회원 id와 일치하는 id가 있을경우 해당 id를 리턴하고 없을경우 공백""을 리턴한다.
+    */
+   public @ResponseBody String checkId(HttpServletRequest req){
+	   return  service.checkId(req.getParameter("userId"));
+   }
+   
 }

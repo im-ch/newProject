@@ -135,7 +135,7 @@ function couponDetail(couponId) {
 						<c:choose>
 							<c:when test="${payments eq null || empty payments }">
 								<tr>
-									<td colspan="7" align="center">신고된 게시물이 없습니다.</td>
+									<td colspan="7" align="center">결제 내역이 없습니다.</td>
 								</tr>
 							</c:when>
 							<c:otherwise>

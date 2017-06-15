@@ -1,5 +1,6 @@
 package jeff.store;
 
+import java.util.HashMap;
 import java.util.List;
 
 import jeff.domain.CompanySales;
@@ -18,4 +19,6 @@ public interface SalesStore {
 	Sales selectBySalesId(int saleId);
 
 	List<Sales> selectAllSales(String companyId);
+	
+	Sales selectByDate(HashMap<String, Object> map);
 }

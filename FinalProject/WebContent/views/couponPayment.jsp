@@ -39,9 +39,6 @@
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="${ctx }/resources/js/bootstrap.js"></script>
 <script src="${ctx }/resources/js/jquery.custom.js"></script>
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="${ctx }/resources/js/datedropper.js"></script>
 
 <style>
@@ -51,7 +48,17 @@
 	line-height: 40px
 }
 </style>
-
+<script type="text/javascript"
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
+<script>
+$(document).ready(function(){
+	var jeffcoin = $("input[name=jeffcoin2]").val();
+	if(jeffcoin < 0){
+		alert("JeffCoin이 부족합니다.");
+		window.close();
+	}
+});
+</script>
 </head>
 <body>
 	<div class="color-bar-1"></div>

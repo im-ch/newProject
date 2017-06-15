@@ -17,5 +17,7 @@ public interface UserStore {
 	User selectUser(String userId);
 
 	boolean loginUser(User user);
+	
+	String checkId(String userId);
 
 }

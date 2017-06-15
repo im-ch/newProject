@@ -1,5 +1,6 @@
 package jeff.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import jeff.domain.Sales;
@@ -11,5 +12,5 @@ public interface SalesService {
 	public void removeSales(int salesId);
 	public List<Sales> findSalesByCompany(String companyId);
 	public Sales findBySalesId (int salesId);
-	
+	public Sales findByDate(HashMap<String, Object> map);
 }

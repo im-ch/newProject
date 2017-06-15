@@ -40,10 +40,11 @@
 <!-- JS
 ================================================== -->
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="${ctx }/resources/js/bootstrap.js"></script>
-<script src="${ctx }/resources/js/jquery.custom.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="${ctx }/resources/js/bootstrap.js"></script>
+<script src="${ctx }/resources/js/jquery.custom.js"></script>
+
 <script src="${ctx }/resources/js/datedropper.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${ctx }/resources/css/datedropper.css">
@@ -54,6 +55,35 @@
 	line-height: 40px
 }
 </style>
+<script type='text/javascript'>
+	function check() {
+		var regDate = $("input[name=date]").val();
+		if(regDate != null  || regDate != ""){
+			$.ajax({
+				type : "GET" //"POST", "GET"
+				,
+				url : '${ctx }/sales/checkSales' //Request URL
+				,
+				dataType : 'text' //전송받을 데이터 타입
+				,
+				data : {
+		            regDate : regDate
+		         },
+				success : function(data) {
+					console.log(data);
+					if(data=='no'){
+			               alert("해당 날짜에 매출이 등록되어있습니다.");
+			               return false;
+			        }else if(data == 'yes'){
+			        	return true;
+			        }
+				}
+			});
+		}
+	};
+</script>
+
+
 </head>
 
 <body>
@@ -72,8 +102,8 @@
 
 			<!-- Blog Full Post
         ================================================== -->
-			<div class="span8 blog">
-
+			<div class="span8 blog" style="margin-left: 60px">
+			
 				<form action="${ctx }/sales/register" id="comment-form">
 					<input type="text" id="departure" name="date"/>
 
@@ -93,8 +123,8 @@
 							<div class="input-prepend">
 								<span class="add-on"><i class="icon-hand-right"></i></span> <input
 									class="span4" name="sales" id="sales" size="16" type="number"
-									placeholder="Sales"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-								&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+									placeholder="Sales" onclick="check();"/>
+									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
 							</div>
 
@@ -102,7 +132,7 @@
 
 						</div>
 					</section>
-					<button class="btn btn-mini btn-inverse" type="submit">SEND</button>
+					<button class="btn btn-mini btn-inverse" type="submit" id="regist">SEND</button>
 				</form>
 
 			</div>

@@ -17,5 +17,9 @@ public interface UserMapper {
 	User selectUser(String userId);
 
 	boolean loginUser(User user);
+	
+	String checkId(String userId);
+	
+	String secondCheckId(String userId);
 
 }

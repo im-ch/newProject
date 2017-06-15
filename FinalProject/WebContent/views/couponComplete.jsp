@@ -94,7 +94,6 @@ $(document).ready(function(){
 							<button type="button" id="exit" class="btn btn-large btn-warning" style="margin-left: 220px">EXIT</button>
 						</div>
 					</div>
-				</form>
 
 			</div>
 			<!--End page content column-->

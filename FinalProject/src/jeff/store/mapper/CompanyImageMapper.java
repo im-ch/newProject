@@ -9,4 +9,5 @@ public interface CompanyImageMapper {
 	void insertCompanyImage(CompanyImage companyImage);
 	void deleteCompanyImage(int companyImageId);
 	List<CompanyImage> searchCompanyImageList(String comId);
+	CompanyImage searchCompanyImage(String comId);
 }

@@ -12,4 +12,5 @@ public interface UserService {
 	public List<User> findAllUsers();
 	public User findUser(String userId);
 	public boolean login(User user);
+	public String checkId(String userId);
 }

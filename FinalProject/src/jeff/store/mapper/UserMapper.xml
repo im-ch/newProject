@@ -41,4 +41,16 @@
 		WHERE userId = #{userId}
 	</select>
 	
+	<select id="checkId" parameterType="String" resultType="String">
+		SELECT userId
+		FROM user_tb
+		where userId=#{userId}
+	</select>
+	
+	<select id="secondCheckId" parameterType="String" resultType="String">
+		SELECT comId
+		FROM company_tb
+		where comId=#{userId}
+	</select>
+	
   </mapper>

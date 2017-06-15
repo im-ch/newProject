@@ -45,6 +45,9 @@ public class UserServiceLogic implements UserService{
 		return false;
 	}
 	
-	
+	@Override
+	public String checkId(String userId) {
+		return store.checkId(userId);
+	}
 
 }

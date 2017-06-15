@@ -21,6 +21,7 @@
 <link rel="stylesheet"
 	href="${ctx }/resources/css/jquery.lightbox-0.5.css">
 <link rel="stylesheet" href="${ctx }/resources/css/custom-styles.css?ver=2">
+<link rel="stylesheet" href="${ctx }/resources/css/Nwagon.css">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -49,55 +50,9 @@
 	src='${ctx }/resources/js/jquery-ui-custom.js'></script>
 <script type='text/javascript'
 	src='${ctx }/resources/js/fullcalendar.min.js'></script>
-<script type='text/javascript'>
-	$(document).ready(
-	function setCalendar(data) {
-		var date = new Date();
-		var d = date.getDate();
-		var m = date.getMonth();
-		var y = date.getFullYear();
-		$('#calendar').fullCalendar({
-			editable : false,
-			events : function(regDate, sales, callback) {
-				$.ajax({
-					displayLoading : true,
-					type : "POST" //"POST", "GET"
-					,
-					url : '${ctx }/sales/calendarDetailAjax' //Request URL
-					,
-					dataType : 'json' //전송받을 데이터 타입
-					,
-					success : function(data) {
-						var events = [];
-						$(data.salesList).each(function(i, e) {
-							events.push({
-								title : '' + data.salesList[i].sales,
-								start : data.salesList[i].regDate
-							});
-							
-// 							url : '${ctx}/sales/update?companyId'= + data.salesList[i].companyId
-							
-						});
-						callback(events);
-					}
-				});
-			}
-		});
-		// 달력 완료
-	});
-</script>
-<style type='text/css'>
-body {
+<script type='text/javascript' src="${ctx }/resources/js/Nwagon.js"></script>	
+<script type='text/javascript' src="${ctx }/resources/js/Nwagon_no_vml.js"></script>
 	
-	
-	font-size: 14px;
-	font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
-}
-#calendar {
-	width: 900px;
-	margin: 0 auto;
-}
-</style>
 </head>
 
 <body>
@@ -116,13 +71,42 @@ body {
 
 			<!-- Blog Full Post
         ================================================== -->
-			<div class="span8 blog" style="margin-left: 180px">
-				<section class="comments">
-					<div id="chart_div" style="width:400;;height:300"></div>
-					<div id="chart_month"></div>
-					<div id='calendar'></div>
+			<div class="span8 blog">
+			
+				
+	<h2>Line Chart with guide line
 
-				</section>
+	</h2>
+	<div id="chart71"></div>
+	<p style = 'font-size:12px; padding:0 0 40px 40px'>** Mouse over the chart area in order to move the guide line</p>
+	<script>
+		var options = {
+			'legend':{
+				names: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']
+					},
+			'dataset':{
+				title:'Playing time per day', 
+				values: [[56,76], [58,66], [60,62], [58,70], [85, 76], [86,83], [82, 73], [77,66], [87,66], [49,56], [58,76], [85, 76], [56,83], [56, 83], [45, 34], [56,76], [58,66], [60,62], [58,70], [85, 76], [86,83], [82, 73], [77,66], [87,66], [49,56], [58,76], [85, 76], [56,83], [56, 83], [45, 34]],
+				colorset: ['#0072b2', '#cc79a7'],
+				fields:['Company A', 'Company B']
+			},
+			'chartDiv' : 'chart71',
+			'chartType' : 'line',
+			'leftOffsetValue': 40,
+			'bottomOffsetValue': 60,
+			'chartSize' : {width:1200, height:300},
+			'minValue' :0,
+			'maxValue' : 100,
+			'increment' : 20,
+			'isGuideLineNeeded' : true //default set to false
+		};
+
+		Nwagon.chart(options);
+	</script>
+		
+		
+			
+			
 			</div>
 			<!--Close container row-->
 

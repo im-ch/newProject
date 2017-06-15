@@ -2,6 +2,7 @@ package jeff.service.logic;
 
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,12 @@ public class SalesServiceLogic implements SalesService {
 	public Sales findBySalesId(int salesId) {
 		return store.selectBySalesId(salesId);
 	}
+
+	@Override
+	public Sales findByDate(HashMap<String, Object> map) {
+		return store.selectByDate(map);
+	}
+	
+	
 
 }

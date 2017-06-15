@@ -51,5 +51,11 @@
   	FROM companysales_tb 
   	ORDER BY salesId DESC
   	</select>
+  	
+  	<select id="selectByDate" resultMap="SalesMap" parameterType="HashMap" resultType="Sales">
+  	SELECT salesId,comId,daysales,regdate
+  	FROM companysales_tb 
+  	WHERE comId = #{comId} AND regdate = to_date(#{regdate}, 'yyyy-mm-dd')
+  	</select>
 
   </mapper>
